@@ -16,7 +16,9 @@
 
     <div class="topleft">
       <div class="logo">
-        <img src="/images/logo-6.png" alt="">
+        <!-- <img src="/images/logo-6.png" alt=""> -->
+        <div class="logo-sub">日本結婚所連盟（ＩＢＪ）　正規加盟店</div>
+        <div class="logo-main">セントマリアージュ青山</div>
       </div>
     </div>
     <div class="topright">
@@ -107,14 +109,26 @@
   float: left;
   height: 55px;
   padding: 5px 20px;
+  display: flex;
+  align-items: center;
 }
 .logo{
-  height: 100%;
+  font-family: serif;
 }
-.logo img{
-  display: block;
-  height: 100%;
-  filter: drop-shadow(5px 5px 2px rgb(130, 217, 243));
+// .logo img{
+//   display: block;
+//   height: 100%;
+//   filter: drop-shadow(5px 5px 2px rgb(130, 217, 243));
+// }
+.logo-sub{
+  font-size: 10px;
+  color: #000875;
+}
+.logo-main{
+  font-weight: bold;
+  font-size: 30px;
+  color: #000875;
+  text-shadow: 2px 2px 2px rgb(26, 247, 255),-2px -2px 2px rgb(0, 255, 255);
 }
 .topcenter{
   display: flex;
@@ -177,6 +191,11 @@
     transition-property:height,padding-left;
     transition-duration: 0.7s;
   }
+  .logo-main{
+    font-size: 35px;
+    transition-property:font-size;
+    transition-duration: 0.7s;
+  }
   .topright{
     // line-height: 35px;
     transition-property:line-height,font-size,border-radius;
@@ -185,9 +204,10 @@
     color: white;
   }
   .form-card{
-    transition-property:border-radius;
+    transition-property:border-radius,margin-left;
     transition-duration: 0.7s;
     border-radius: 30px;
+    margin-left: 10px;
   }
 
   .site-header.transform{
@@ -198,9 +218,15 @@
     height: 65px;
     padding-left: 20px;
   }
+  .transform .logo-main{
+    font-size: 30px;
+  }
   .transform .topright{
     // line-height: 23px;
     font-size: 1.2vw;
+  }
+  .transform .form-card{
+    margin-left: 15px;
   }
 }
 /* ----------------*/

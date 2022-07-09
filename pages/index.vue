@@ -22,6 +22,16 @@
   </div>
   <div class="body">
     <div class="first-body">
+      <div class="intro">
+        <div class="intro-card">
+          <h1 class="intro-title">セントマリアージュ青山について</h1>
+          <div class="intro-cont">
+            <div class="left-pic"><img src="/images/marriage-gate.webp"></div>
+            <div class="center-p">東京青山の結婚相談所エクセレンス青山の婚活は、ご成婚第一主義。一人ひとりにあったお相手探しで、お客様の個性にあわせたオンリーワンの婚活をご提案いたします。当社が掲げる「オンリーワンのご成婚」は、お客様一人ひとりの個性にあわせて最適なパートナーをご紹介いたします。ご納得いくまでお相手をお選びいただいたうえで、お見合いをしていただき、交際～ご成婚へと繋げてまいります。私たちは、お客様の結婚という明確なゴールに向けて、全力でサポートさせていただいております。</div>
+            <div class="right-pic"><img src="/images/marriage-bouquet.jpeg"></div>
+          </div>
+        </div>
+      </div>
       <div class="news">
         <div class="box30">
           <div class="box-title">Information</div>
@@ -35,7 +45,7 @@
           </div>
         </div>
       </div>
-      <div class="emblem">
+      <!-- <div class="emblem">
         <div class="emblem-card">
           <div class="emblem-img">
             <img src="/images/ibj-certificate.png">
@@ -45,7 +55,7 @@
             <div class="emblem-p">日本結婚相談所連盟（IBJ）は、会員数・成婚数で業界No.1*となりました。※日本マーケティングリサーチ機構調べ（2021年調査、大手結婚相談所・連盟を対）<br>今後も、当社は登録会員数No.1の結婚相談所として皆様のスムースな婚活とご成婚を生み出して参ります。</div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="award">
         <div class="award-card">
           <div class="award-title">セントマリアージュ青山が IBJ AWARD 2021年下期 を受賞しました！</div>
@@ -74,47 +84,76 @@
         </div>
       </div>
       <div class="main">
-        <div class="intro">
-          <div class="intro-card">
-            <h1>セントマリアージュ青山について</h1>
-            <div class="intro-cont">
-              <div class="left-pic"><img src="/images/marriage-gate.webp"></div>
-              <div class="center-p">東京青山の結婚相談所エクセレンス青山の婚活は、ご成婚第一主義。一人ひとりにあったお相手探しで、お客様の個性にあわせたオンリーワンの婚活をご提案いたします。当社が掲げる「オンリーワンのご成婚」は、お客様一人ひとりの個性にあわせて最適なパートナーをご紹介いたします。ご納得いくまでお相手をお選びいただいたうえで、お見合いをしていただき、交際～ご成婚へと繋げてまいります。私たちは、お客様の結婚という明確なゴールに向けて、全力でサポートさせていただいております。</div>
-              <div class="right-pic"><img src="/images/marriage-bouquet.jpeg"></div>
+        <div class="main-card">
+          <h1 class="main-title"><span>St.Marriage Aoyama</span></h1>
+          <div class="PR">
+            <div class="PR-card">
+              <h1 class="pr-title"><span>選ばれる理由</span></h1>
+              <div class="pr-list"
+                v-for="(value, index) in pr" v-bind:key="index"
+                v-bind:class="{even:index%2==1}"
+              >
+                <div class="pr-pic">
+                  <img v-bind:src="value.photoUrl">
+                </div>
+                <div class="pr-cont">
+                  <h2>{{index+1}}. {{value.name}}</h2>
+                  <div class="pr-cont-p">{{value.explation}}</div>
+                  <button 
+                    @click="moveIDpage(value.id)" 
+                    v-bind:class="{selected:activeName===value.name}" 
+                    @mouseover="activeName=value.name" 
+                    @mouseout="activeName=''"
+                  >
+                    詳細をみる&ensp;&#8811;
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="PR">
-          <div class="PR-card">
-            <h1><span>選ばれる理由</span></h1>
-            <hr>
-            <div class="pr-list"
-              v-for="(value, index) in pr" v-bind:key="index"
-              v-bind:class="{even:index%2==1}"
-            >
-              <div class="pr-pic">
-                <img v-bind:src="value.photoUrl">
+          <div class="self">
+            <h1 class="self-title">カウンセラーからのご挨拶</h1>
+            <div class="self-cont">
+              <div class="self-p">はじめまして。代表カウンセラーの島田智子です。<br>三菱系の結婚相談所「ダイヤモンドファミリークラブ」のカウンセラーとして、約10年勤務しておりました。<br>延べ1000人以上の会員様を担当し、20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。　豊富な経験・知識を生かして、年齢、性別を問わず、お一人お一人に寄り添ったサポートをいたします。<br>「お見合いを成功させる秘訣」「異性に好かれる身だしなみ、行動、会話」「仮交際から真剣交際への進め方」「ご成婚への最後の一押し」等、幅広く丁寧にアドバイスいたします。<br>過去のご成婚者の方々から近況報告をいただいたり、元会員様から恋愛相談を受けたりと、現在でも長くお付き合いを続けさせていただいています。結婚後（成婚退会後）も何か悩みを抱えた時、いつでもご相談いただけるような身近な存在でありたいと思っております。<br>随時、無料相談（電話、zoom）を行っておりますので、お気軽にお問い合わせください。</div>
+              <div class="self-pic"><img src="/images/ShimadaTomoko.jpg"></div>
+              <div class="self-comment 1">入会1ヵ月以内のお見合い成立率100%</div>
+              <div class="self-comment 2">入会1カ月以内の交際成立率93%</div>
+              <div class="self-table">
+                <div>※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
+                <table>
+                  <tr v-for="(value, index) in tables" v-bind:key="index">
+                    <th>{{value.title}}</th>
+                    <td>{{value.cont}}</td>
+                  </tr>
+                </table>
               </div>
-              <div class="pr-cont">
-                <h2>{{index+1}}. {{value.name}}</h2>
-                <div class="pr-cont-p">{{value.explation}}</div>
-                <button 
-                  @click="moveIDpage(value.id)" 
-                  v-bind:class="{selected:activeName===value.name}" 
-                  @mouseover="activeName=value.name" 
-                  @mouseout="activeName=''"
+            </div>
+          </div>
+          <div class="access">
+            <h1 class="access-title">アクセス</h1>
+            <div class="access-cont">
+              <div class="access-comment">住所：〒107-0052東京都港区赤坂8-4-14　青山タワープレイス８F<br>（青山一丁目駅から徒歩3分）</div>
+              <div class="access-pic"><img src="/images/aoyamatower.jpeg"></div>
+              <div class="access-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.175124146428!2d139.72407744999748!3d35.672689687952186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d5e792882ab%3A0xc5ac8cc58a36ceef!2z6Z2S5bGx44K_44Ov44O844OX44Os44Kk44K5!5e0!3m2!1sja!2sjp!4v1657282738557!5m2!1sja!2sjp" 
+                width="400"
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
                 >
-                  詳細をみる&ensp;&#8811;
-                </button>
+                </iframe>
               </div>
             </div>
           </div>
         </div>
-        <div class="self">
-          <h1 class="self-title">カウンセラーからのご挨拶</h1>
-          <div class="self-cont">
-            <div class="self-p"></div>
-            <div class="self-pic"></div>
+        <div class="contact">
+          <div class="contact-card">
+            <div class="contact-1">CONTACT</div>
+            <div class="contact-2">080-7002-0555</div>
+            <div class="contact-3">無料カウセリング<br>男性用</div>
+            <div class="contact-4">無料カウセリング<br>女性用</div>
           </div>
         </div>
       </div>
@@ -134,6 +173,7 @@
   padding: 20px;
 }
 .cards{
+  color: #000875;
   box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
   border-radius: 10px;
   padding: 0 20px 20px;
@@ -147,9 +187,11 @@
 }
 .cards h3{
   padding: 15px 0 5px;
-  color: #000000;
   font-family:serif;
   background-color: white;
+}
+.cards:hover{
+  color: #aae0f5;
 }
 .cards .pic{
   height: 10vw;
@@ -164,7 +206,6 @@
   height: 100%;
   background-image: linear-gradient(0deg, transparent 0 60%, #FFF 100%);
 }
-
 .cards img{
   width: 100%;
   height: 100%;
@@ -179,6 +220,96 @@
   background-size: 25%;
   background-repeat: repeat;
   padding-top: 20px;
+}
+
+.intro{
+  margin-bottom: 20px;
+}
+.intro-card{
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  font-family: serif;
+  box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
+  border-radius: 10px;
+  padding: 20px 30px;
+  background-color: rgba(255, 255, 255, 0.9);
+  background-image:
+  url("/images/frame-topleft.svg"),
+  url("/images/frame-topright.svg"),
+  url("/images/frame-bottomleft.svg"),
+  url("/images/frame-bottomright.svg");
+  background-position: 
+  left 2px top 2px,
+  right 2px top 2px,
+  left 2px bottom 2px,
+  right 2px bottom 2px;
+  background-size: 66px 66px;
+}
+.intro-title{
+  display: inline-block;
+  position: relative;
+  font-family:serif;
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 0 17%;
+  background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  // -webkit-box-reflect: below -17px -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0) 10%,rgba(0, 0, 0, 0.3));
+}
+.intro-title:before, .intro-title:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	display: inline-block;
+	width: 15%;
+	height: 2px;
+	background-color: #000875;
+}
+.intro-title:before {
+	left:0;
+	background: linear-gradient(-45deg, transparent, #000875 10%, #000875 30%, transparent);
+}
+.intro-title:after {
+	right: 0;
+	background: linear-gradient(-45deg, transparent, #000875 70%, #000875 90%, transparent);
+}
+.intro-cont{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.intro .center-p{
+  font-family: serif;
+  padding: 0 20px;
+}
+.intro .left-pic,.intro .right-pic{
+  flex: 0 0 25%;
+  position: relative;
+}
+.intro .left-pic::after{
+  content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(90deg, transparent 0 60%, #FFF 100%), linear-gradient(0deg, transparent 0 60%, #FFF 100%);
+}
+.intro .right-pic::after{
+  content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(270deg, transparent 0 40%, #FFF 100%),linear-gradient(0deg, transparent 0 60%, #FFF 100%);
+}
+.intro img{
+  width: 100%;
+  height: 20vw;
+  object-fit: cover;
 }
 
 .news{
@@ -219,39 +350,39 @@
   margin-right: 10px;
 }
 
-.emblem{
-  width: 100%;
-  padding: 0% 15%;
-}
-.emblem-card{
-  box-shadow: 0 0 10px 2px rgb(0 0 0 / 10%);
-  border-radius: 10px;
-  padding: 20px;
-  background-color: rgb(255, 255, 255,0.9);
-  display: flex;
-  align-items: center;
+// .emblem{
+//   width: 100%;
+//   padding: 0% 15%;
+// }
+// .emblem-card{
+//   box-shadow: 0 0 10px 2px rgb(0 0 0 / 10%);
+//   border-radius: 10px;
+//   padding: 20px;
+//   background-color: rgb(255, 255, 255,0.9);
+//   display: flex;
+//   align-items: center;
 
-}
-.emblem-img{
-  flex: 0 0 30%;
-}
-.emblem-img img{
-  width: 100%;
-  object-fit: cover;
-}
-.emblem-cont{
-  flex: 0 0 70%;
-  font-family: serif;
-  padding-left: 20px;
-}
-.emblem-title{
-  font-size: 2vw;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: transparent;
-  background: repeating-linear-gradient(0deg, #B67B03 0.1em, #DAAF08 0.2em, #FEE9A0 0.3em, #DAAF08 0.4em, #B67B03 0.5em); 
-	background-clip: text;
-}
+// }
+// .emblem-img{
+//   flex: 0 0 30%;
+// }
+// .emblem-img img{
+//   width: 100%;
+//   object-fit: cover;
+// }
+// .emblem-cont{
+//   flex: 0 0 70%;
+//   font-family: serif;
+//   padding-left: 20px;
+// }
+// .emblem-title{
+//   font-size: 2vw;
+//   font-weight: bold;
+//   margin-bottom: 10px;
+//   color: transparent;
+//   background: repeating-linear-gradient(0deg, #B67B03 0.1em, #DAAF08 0.2em, #FEE9A0 0.3em, #DAAF08 0.4em, #B67B03 0.5em); 
+// 	background-clip: text;
+// }
 .award{
   width: 100%;
   padding: 3% 15%;
@@ -271,8 +402,6 @@
   font-size: 2vw;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #10a7f3;
-  //background-image: -webkit-linear-gradient(315deg, #b8751e 0%, #ffce08 37%, #fefeb2 47%, #fafad6 50%, #fefeb2 53%, #e1ce08 63%, #b8751e 100%);
   background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -296,6 +425,7 @@
 .side{
   padding: 20px;
   flex: 0 0 20%;
+  color: #000875;
 }
 .side-card{
   box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
@@ -320,7 +450,7 @@
 .side-menu h2{
   text-align: center;
   font-family: serif;
-  border-bottom: solid 2px black;
+  border-bottom: solid 2px #000875;
 }
 .side-menu ul {
   margin: 0;
@@ -328,17 +458,16 @@
   list-style-type: none;
 }
 .side-menu-a{
-  color: #000000;
   padding: 15px;
   text-decoration: none;
   display: block;
   font-weight: bold;
   font-family: serif;
   font-size: 1.5vw;
+  position: relative;
 }
 .side-menu-a:hover{
-  background-color: rgb(0, 0, 0);
-  color: #ffffff;
+  color: #aae0f5;
 }
 
 
@@ -346,78 +475,11 @@
   padding: 20px 30px;
   flex: 0 0 80%;
 }
-.intro{
-  margin-bottom: 20px;
-}
-.intro-card{
-  box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
-  border-radius: 10px;
-  padding: 30px;
-  background-color: rgba(255, 255, 255, 0.9);
-  background-image:
-  url("/images/frame-topleft.svg"),
-  url("/images/frame-topright.svg"),
-  url("/images/frame-bottomleft.svg"),
-  url("/images/frame-bottomright.svg");
-  background-position: 
-  left 2px top 2px,
-  right 2px top 2px,
-  left 2px bottom 2px,
-  right 2px bottom 2px;
-  background-size: 66px 66px;
-}
-.intro-card h1{
-  font-family:serif;
-  text-align: center;
-  margin-bottom: 10px;
-  color: #ffffff;
-  text-shadow: 2px 2px 2px rgb(0, 0, 0),0 0 2px rgb(0, 0, 0);
-  -webkit-box-reflect: below -17px -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0) 10%,rgba(0, 0, 0, 0.3));
-}
-.intro-cont{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.intro .center-p{
-  font-family: serif;
-  padding: 0 20px;
-}
-.intro .left-pic,.intro .right-pic{
-  flex: 0 0 25%;
-  position: relative;
-}
-.intro .left-pic::after{
-  content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(90deg, transparent 0 60%, #FFF 100%), linear-gradient(0deg, transparent 0 60%, #FFF 100%);
-}
-.intro .right-pic::after{
-  content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(270deg, transparent 0 40%, #FFF 100%),linear-gradient(0deg, transparent 0 60%, #FFF 100%);
-}
-.intro img{
-  width: 100%;
-  height: 20vw;
-  object-fit: cover;
-}
-// .PR-cont{
-
-// }
-.PR-card{
+.main-card{
   box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
   border-radius: 10px;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.8);
   background-image:
   url("/images/frame-topleft.svg"),
   url("/images/frame-topright.svg"),
@@ -428,25 +490,69 @@
   right 2px top 2px,
   left 2px bottom 2px,
   right 2px bottom 2px;
-  background-size: 66px 66px;
+  background-size: 50px 50px;
 }
-.PR h1{
-  font-family:serif;
+.main-title{
+  position: relative;
+  font-family: serif;
   text-align: center;
-  margin-bottom: 10px;
-  color: #000000;
-  -webkit-box-reflect: below -10px -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, .6)), to(transparent));
+  color:  #000875;
 }
-// .PR-cont span {
-//   background-image: -webkit-linear-gradient(315deg, #b8751e 0%, #ffce08 37%, #fefeb2 47%, #fafad6 50%, #fefeb2 53%, #e1ce08 63%, #b8751e 100%);
-//   background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%, #fefeb2 47%, #fafad6 50%, #fefeb2 53%, #e1ce08 63%, #b8751e 100%);
-//   -webkit-background-clip: text;
-//   -webkit-text-fill-color: transparent;
-// }
+.main-title:before{
+  position: absolute;
+  top: calc(50% - 4px);
+  left: 0;
+  width: 100%;
+  height: 8px;
+  content: '';
+  border-radius: 3px;
+  // background-image: linear-gradient(135deg,   #17aaee 0%, #000875 37%,#000875 63%, #17aaee 100%);
+  background-image: repeating-linear-gradient(45deg, #000875 0, #000875 1px, transparent 0, transparent 50%), repeating-linear-gradient(135deg, #ccc 0, #ccc 1px, transparent 0, transparent 50%);
+  background-size: 8px 8px;
+  background-repeat: repeat;
+}
+.main-title span {
+  position: relative;
+  padding: 0 1em;
+  background: #fff;
+}
+
+.PR{
+  font-family: serif;
+  padding: 20px;
+}
+.pr-title {
+	position: relative;
+	padding: .1em .3em .1em 1em;
+	// border-bottom: 1px solid #00ccff;
+  color:#000875;
+  margin: 0 0 10px;
+}
+.pr-title:before,.pr-title:after {
+	position: absolute;
+	content: "";
+	display: block;
+	width: 15px;
+	height: 15px;
+	border: 2px solid #000875;
+	top: 35%;
+	left: 3px;
+	transform: rotate(45deg);
+}
+.pr-title:after {
+	top: 35%;
+	left: 10px;
+	height: 15px;
+	width: 15px;
+	transform: rotate(45deg);
+	border: none;
+	background: rgba(0, 60, 255, 0.3);
+}
 .pr-list{
-  margin: 10px 0;
+  margin: 10px 20px;
   display: flex;
   overflow: scroll;
+  text-align: left;
 }
 .pr-list.even{
   flex-direction: row-reverse;
@@ -483,7 +589,167 @@
 
 .self{
   font-family: serif;
+  margin: 30px 0 0;
+  padding: 20px;
 }
+.self-title {
+	position: relative;
+	padding: .1em .3em .1em 1em;
+	// border-bottom: 1px solid #00ccff;
+  color:#000875;
+}
+.self-title:before,.self-title:after {
+	position: absolute;
+	content: "";
+	display: block;
+	width: 15px;
+	height: 15px;
+	border: 2px solid #000875;
+	top: 35%;
+	left: 3px;
+	transform: rotate(45deg);
+}
+.self-title:after {
+	top: 35%;
+	left: 10px;
+	height: 15px;
+	width: 15px;
+	transform: rotate(45deg);
+	border: none;
+	background: rgba(0, 60, 255, 0.3);
+}
+.self-cont{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0 0;
+  padding: 20px;
+}
+.self-p{
+  flex: 0 0 70%;
+  padding-right: 10px;
+
+}
+.self-pic{
+  flex: 0 0 30%;
+}
+.self-pic img{
+  width: 100%;
+}
+.self-comment{
+  flex: 70%;
+  text-align: center;
+  font-size: 2.5vw;
+  font-weight: bold;
+  background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}
+.self-table{
+  flex: 0 0 70%;
+  margin: 20px 0;
+}
+.self-table table{
+  border-collapse:  collapse;
+}
+.self-table th,.self-table td{
+  border: solid 1px;  
+  padding: 10px;
+}
+.self-table th{
+  width: 30%;
+}
+.self-table td{
+  width: 70%;
+}
+
+.access{
+  font-family: serif;
+  padding: 20px;
+}
+.access-title {
+	position: relative;
+	padding: .1em .3em .1em 1em;
+	// border-bottom: 1px solid #00ccff;
+  color:#000875;
+  margin: 0 0 10px;
+}
+.access-title:before,.access-title:after {
+	position: absolute;
+	content: "";
+	display: block;
+	width: 15px;
+	height: 15px;
+	border: 2px solid #000875;
+	top: 35%;
+	left: 3px;
+	transform: rotate(45deg);
+}
+.access-title:after {
+	top: 35%;
+	left: 10px;
+	height: 15px;
+	width: 15px;
+	transform: rotate(45deg);
+	border: none;
+	background: rgba(0, 60, 255, 0.3);
+}
+.access-cont{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  margin: 20px;
+}
+.access-comment{
+  flex: 0 0 90%;
+}
+.access-pic{
+  flex: 0 0 338px;
+}
+.access-pic img{
+  height: 450px;
+}
+.access-map{
+  flex: 0 0 20%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.contact{
+  font-family: serif;
+  margin-top: 30px;
+}
+.contact-card{
+  background: linear-gradient(to top, #21d3f3, rgb(195, 242, 248));
+  text-align: center;
+  font-size: 2vw;
+  color: #000875;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+.contact-1{
+  flex: 0 0 100%;
+  font-size: 2.5vw;
+  font-weight: bold;
+}
+.contact-2{
+  flex: 0 0 100%;
+  font-size: 3vw;
+}
+.contact-3,.contact-4{
+  flex: 0 0 30%;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  margin: 10px;
+  background-color: rgb(255, 255, 255,0.6);
+}
+.contact-2:hover,.contact-3:hover,.contact-4:hover{
+  color: #fff;
+}
+
 
 button{
   font-size: 10px;
@@ -520,12 +786,12 @@ export default {
      { 
       name:'IBJ正規加盟店',
       explation:'セントマリアージュ青山は、「日本結婚相談所連盟（IBJ）」の正規加盟店です。全国約70,000人の登録者を対象に、スマホやパソコンを使ってスムーズなお相手探しができます。毎月300名以上の新規会員の方が入会していますので、常に新たな出会いが期待できますお見合いのセッティング、交際から成婚まで、カウンセラーがきめ細かくサポートさせていただきます。',
-      photoUrl:'/images/heart-marriage.jpg' ,
+      photoUrl:'/images/ibj-certificate.png' ,
      },
     ],
     menus:[
       {
-        name:'ご成婚者様の声',
+        name:'コース案内、料金',
         img:'/images/heart-marriage.jpg',
         note:'充実したサポート内容のおススメコースです。当社の多くの会員様がこちらのコースで活動されています。',
       },
@@ -535,7 +801,7 @@ export default {
         note:'婚活にまだ迷いのある方、とりあえずお試しした方におすすめのコースです。追加料金でフルサポートコースに変更可能です。',
       },
       {
-        name:'コース案内、料金',
+        name:'ご成婚者様の声',
         img:'/images/heart-marriage.jpg',
         note:'他社で婚活中の方、プライベートな恋愛でお悩みの方が気軽に電話で相談できるコースです。一人で悩んでいないでご相談ください。',
       },
@@ -551,6 +817,11 @@ export default {
       {date:'2022/06/02',cont:'ホームページを新しくしました'},
       {date:'2022/06/03',cont:'ブログを更新しました'},
       {date:'2022/06/04',cont:'ご成婚者様からの声を追加しました'},
+    ],
+    tables:[
+      {title:'ご年齢',cont:'20代後半〜50代前半'},
+      {title:'男女比',cont:'(約) 7 対 3'},
+      {title:'ご職業',cont:'三菱グループ各社、大手通信事業社、大手広告代理店、大手建設会社、大手金融機関、他'},
     ],
 
     extra:0,
