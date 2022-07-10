@@ -2,7 +2,7 @@
 <div class="all">   
   <nav 
     class="site-header" 
-    v-bind:class="{transform : this.scroll_top > 100}"
+    v-bind:class="{transform : this.scroll_top > 0}"
   >
   <div class="nav-inside">
     <!-- <div class="menu-button" @click="drawer = !drawer"><span></span></div>
@@ -54,22 +54,6 @@
     v-bind:class="{active_bg : drawer}"
   >
   </div> 
-  
-  <header  
-   class="header-img" 
-   ref="header"
-   v-bind:style="{maxHeight: headerHeight +'px'}"
-  >
-    <img src="/images/marriage-header1.jpg" alt="">
-    <div class="message1">あなたの真剣な思いをサポートします</div>
-    <div class="message2" >
-      <div class="message2-1">結婚相談所</div>
-      <div class="message2-2">セントマリアージュ青山</div>
-      <div class="message2-3">St. Marriage Aoyama</div>
-    </div>
-  </header>
-  <!-- <div class="headerBottom" v-bind:style="{height: this.headerHeight +'px'}">
-  </div> -->
 
   <nuxt/>
   
@@ -79,13 +63,13 @@
 
 <style lang="scss" scoped>
 .site-header{
-  background-image:url("/images/luxury-2.jpg");
-  background-size: 25%;
-  background-repeat: repeat;
-  background-position: right bottom;
-  // display: flex;
-  // justify-content: space-between;
+//   background-image:url("/images/luxury-2.jpg");
+//   background-size: 25%;
+//   background-repeat: repeat;
+//   background-position: right bottom;
+  background-color: rgb(255, 255, 255,0);
   position: fixed;
+  top: 0px;
   z-index: 50;
   width: 100%;
   height: 55px;
@@ -320,65 +304,6 @@
   display: block;
 }
 
-.header-img{
-  z-index: -100;
-  width: 100%;
-  position: relative;
-  top: 0px;
-  text-align: center;
-}
-.header-img img{
-  width: 100%;
-}
-.header-img .message1{
-  width: 100%;
-  text-align: center;
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  color: #ffffff;
-  font-family: serif;
-  // font-weight: bold;
-  font-size: 3.5vw;
-  text-shadow: 2px 2px 5px rgb(68, 0, 255),2px 2px 5px rgb(17, 0, 255);
-
-}
-.header-img .message2{
-  padding: 10px 50px;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.6);
-  // border: solid 3px white;
-  background-color: rgb(255, 255, 255,0.9);
-  color: #2e31ec;
-  background-image:
-  url("/images/frame-topleft.svg"),
-  url("/images/frame-topright.svg"),
-  url("/images/frame-bottomleft.svg"),
-  url("/images/frame-bottomright.svg");
-  background-position: 
-  left 2px top 2px,
-  right 2px top 2px,
-  left 2px bottom 2px,
-  right 2px bottom 2px;
-  background-size: 50px 50px;
-}
-.header-img .message2-1{
-  font-family: serif;
-  font-size: 1.5vw;
-}
-.header-img .message2-2{
-  font-family: serif;
-  font-size: 2.5vw;
-}
-.header-img .message2-3{
-  font-family: cursive;
-  font-size: 2vw;
-  filter: drop-shadow(0 0 5px rgb(47, 0, 255));
-}
 </style>
 
 <script>
@@ -404,12 +329,6 @@
     },
     mounted() {
       window.addEventListener("scroll", this.getScroll); //スクロールのするたびに関数を呼びだす処理
-      this.headerHeight = document.documentElement.clientHeight 
-
-      // window.addEventListener('resize', this.resizeWindow); //画面サイズが変わるたびに関数実行
-      // this.dom = this.$refs.header; 
-      // this.rect = this.dom.getBoundingClientRect(); // 要素の座標と幅と高さを取得
-      // this.headerHeight = this.rect.height
     },
   }
 

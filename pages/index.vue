@@ -12,11 +12,13 @@
       v-for="(value, index) in menus" v-bind:key="index"
     >
       <div class="cards">
-        <h3>{{value.name}}</h3>
-        <div class="pic">
-          <img :src="value.img">
-        </div>
-        <!-- <div class="note">{{value.note}}</div> -->
+        <router-link class="cards-a" v-bind:to="value.url">
+          <h3>{{value.name}}</h3>
+          <div class="pic">
+            <img :src="value.img">
+          </div>
+          <!-- <div class="note">{{value.note}}</div> -->
+        </router-link>
       </div>
     </div>
   </div>
@@ -190,8 +192,11 @@
   font-family:serif;
   background-color: white;
 }
-.cards:hover{
+.cards-a:hover{
   color: #aae0f5;
+}
+.cards-a{
+  text-decoration: none;
 }
 .cards .pic{
   height: 10vw;
@@ -793,24 +798,24 @@ export default {
       {
         name:'コース案内、料金',
         img:'/images/heart-marriage.jpg',
-        note:'充実したサポート内容のおススメコースです。当社の多くの会員様がこちらのコースで活動されています。',
+        url:'/price',
       },
       {
         name:'ご入会からご結婚まで',
         img:'/images/heart-marriage.jpg',
-        note:'婚活にまだ迷いのある方、とりあえずお試しした方におすすめのコースです。追加料金でフルサポートコースに変更可能です。',
+        url:'/flow',
       },
       {
         name:'ご成婚者様の声',
         img:'/images/heart-marriage.jpg',
-        note:'他社で婚活中の方、プライベートな恋愛でお悩みの方が気軽に電話で相談できるコースです。一人で悩んでいないでご相談ください。',
+        url:'/voice',
       },
     ],
     list: [
           { title: 'ホーム', icon: 'mdi-web', url: '/' },
-          { title: 'ご成婚者様の声', icon: 'mdi-information-variant', url: '/company' },
-          { title: 'ご入会からご結婚まで', icon: 'mdi-information-variant', url: '/company' },
-          { title: 'コース案内、料金', icon: 'mdi-web', url: '/sample' },
+          { title: 'コース案内、料金', icon: 'mdi-information-variant', url: '/price' },
+          { title: 'ご入会からご結婚まで', icon: 'mdi-information-variant', url: '/flow' },
+          { title: 'ご成婚者様の声', icon: 'mdi-web', url: '/voice' },
         ],
     news:[
       {date:'2022/06/01',cont:'ご成婚者様からの声を追加しました'},
