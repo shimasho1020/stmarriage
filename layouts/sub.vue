@@ -112,7 +112,7 @@
   font-weight: bold;
   font-size: 30px;
   color: #000875;
-  text-shadow: 2px 2px 2px rgb(26, 247, 255),-2px -2px 2px rgb(0, 255, 255);
+  text-shadow: 2px 2px 2px rgb(252, 252, 252),-2px -2px 2px rgb(255, 255, 255);
 }
 .topcenter{
   display: flex;
@@ -132,8 +132,7 @@
   align-items: center;
 }
 .imfo{
-  color: #ffffff;
-  text-shadow: 0 0 2px black,0 0 2px black;
+  color: #000875;
   font-size: 1vw;
   text-align: left;
 }

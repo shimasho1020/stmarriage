@@ -2,7 +2,7 @@
 <div class="all">   
   <nav 
     class="site-header" 
-    v-bind:class="{transform : this.scroll_top > 100}"
+    v-bind:class="{transform : this.scroll_top > 0}"
   >
   <div class="nav-inside">
     <!-- <div class="menu-button" @click="drawer = !drawer"><span></span></div>
@@ -79,12 +79,10 @@
 
 <style lang="scss" scoped>
 .site-header{
-  background-image:url("/images/luxury-2.jpg");
-  background-size: 25%;
-  background-repeat: repeat;
+  // background-image:url("/images/luxury-2.jpg");
+  // background-size: 25%;
+  // background-repeat: repeat;
   background-position: right bottom;
-  // display: flex;
-  // justify-content: space-between;
   position: fixed;
   z-index: 50;
   width: 100%;
@@ -128,7 +126,7 @@
   font-weight: bold;
   font-size: 30px;
   color: #000875;
-  text-shadow: 2px 2px 2px rgb(26, 247, 255),-2px -2px 2px rgb(0, 255, 255);
+  text-shadow: 2px 2px 2px rgb(255, 255, 255),-2px -2px 2px rgb(255, 255, 255);
 }
 .topcenter{
   display: flex;
@@ -148,8 +146,8 @@
   align-items: center;
 }
 .imfo{
-  color: #ffffff;
-  text-shadow: 0 0 2px black,0 0 2px black;
+  color: #000875;
+  // text-shadow: 0 0 2px black,0 0 2px black;
   font-size: 1vw;
   text-align: left;
 }
@@ -180,7 +178,7 @@
 /* レスポンシブ対応　*/
 @media screen and (min-width: 755px){
   .site-header{
-    // background: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0);
     height: 90px;
     transition-property:height,background-color;
     transition-duration: 0.7s;
@@ -210,7 +208,7 @@
   }
 
   .site-header.transform{
-    // background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.8);
     height: 65px;
   }
   .transform .topleft{
@@ -329,6 +327,7 @@
 }
 .header-img img{
   width: 100%;
+  // object-position: 0px -100px;
 }
 .header-img .message1{
   width: 100%;
