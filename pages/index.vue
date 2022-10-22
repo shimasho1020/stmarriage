@@ -2,131 +2,193 @@
   <div>
     <div class="hero" >
       <h1 class="page-title">
-        <span class="inline-block">都内大規模オフィスビル</span>
-        <span class="inline-block">設置台数 No.1</span>
-        <span class="inline-block">新体験エレベーターメディア</span>
+        <span class="inline-block">お客様の個性にあわせた</span>
+        <span class="inline-block">オンリーワンの婚活を</span>
+        <span class="inline-block">全力でサポートします</span>
       </h1>
-      <div class="hero_img" >
-        <img class="image" src="/images/marriage-header1.jpg" alt="メイン写真">
+      <div class="img_block" >
+        <img class="hero_img" src="/images/marriage-header1.jpg" alt="メイン写真">
       </div>
-    </div>
-    <div ref="header" class="menus">
-      <div
-        class="lists"
-        v-for="(value, index) in menus" v-bind:key="index"
-      >
-        <div class="cards">
-          <router-link class="cards-a" v-bind:to="value.url">
-            <h3>{{value.name}}</h3>
-            <div class="pic">
-              <img :src="value.img">
-            </div>
-            <!-- <div class="note">{{value.note}}</div> -->
-          </router-link>
+      <div class="intro">
+        <div class="intro-card">
+          <h1 class="intro-title">セントマリアージュ青山について</h1>
+          <div class="intro-cont">
+            <div class="img_block left"><img class="img" src="/images/marriage-gate.webp"></div>
+            <div class="text">東京青山の結婚相談所エクセレンス青山の婚活は、ご成婚第一主義。一人ひとりにあったお相手探しで、お客様の個性にあわせたオンリーワンの婚活をご提案いたします。当社が掲げる「オンリーワンのご成婚」は、お客様一人ひとりの個性にあわせて最適なパートナーをご紹介いたします。ご納得いくまでお相手をお選びいただいたうえで、お見合いをしていただき、交際～ご成婚へと繋げてまいります。私たちは、お客様の結婚という明確なゴールに向けて、全力でサポートさせていただいております。</div>
+            <div class="img_block right"><img class="img" src="/images/marriage-bouquet.jpeg"></div>
+          </div>
         </div>
       </div>
     </div>
     <div class="body">
-      <div class="first-body">
-        <div class="intro">
-          <div class="intro-card">
-            <h1 class="intro-title">セントマリアージュ青山について</h1>
-            <div class="intro-cont">
-              <div class="left-pic"><img src="/images/marriage-gate.webp"></div>
-              <div class="center-p">東京青山の結婚相談所エクセレンス青山の婚活は、ご成婚第一主義。一人ひとりにあったお相手探しで、お客様の個性にあわせたオンリーワンの婚活をご提案いたします。当社が掲げる「オンリーワンのご成婚」は、お客様一人ひとりの個性にあわせて最適なパートナーをご紹介いたします。ご納得いくまでお相手をお選びいただいたうえで、お見合いをしていただき、交際～ご成婚へと繋げてまいります。私たちは、お客様の結婚という明確なゴールに向けて、全力でサポートさせていただいております。</div>
-              <div class="right-pic"><img src="/images/marriage-bouquet.jpeg"></div>
+      <div class="section --1">
+        <div class="section-wrap">
+          <div class="title_block">
+            <h1 class="title">Interview</h1>
+            <div class="title__border"></div>
+            <p class="title__sub">ご成婚者様からの声</p>
+          </div>
+          <div class="case_list">
+            <nuxt-link
+                class="case-item case-wrap"
+                v-for="(item, index) of displayCaseList"
+                :to="`/case-study/${item.num}`"
+                :key="index"
+            >
+              <div 
+                class="case-card"
+                @mouseenter="mouseenterLinkRead"
+                @mouseleave="mouseleaveLink"
+              >
+                <div class="case-item__image_block">
+                  <img class="case-item__image" :src="item.img" alt="case-image">
+                </div>
+                <div class="card">
+                  <div class="__link">
+                    <p class="__title">Interview.{{ item.num }}</p>
+                    <ArrowImage direction="right"></ArrowImage>
+                  </div>
+                  <img class="__logo" :src="item.logo" alter="logo">
+                  <p class="__title">
+                    <span class="inline-block">{{ item.company }}</span>
+                    <span class="inline-block">にインタビュー</span>
+                  </p>
+                </div>
+              </div>
+            </nuxt-link>
+            <div class="case-item empty"></div>
+            <div class="case-item empty"></div>
+          </div>
+          <div class="link-block">
+            <div class="link-wrap">
+              <nuxt-link class="list-link" to="/case-study">
+                <div class="list-link-wrap" ref="linkPos3">
+                  <span class="list-link-text inline-block">More cases</span>
+                </div>
+                <ArrowImage class="right-arrow" direction="right"></ArrowImage>
+              </nuxt-link>
             </div>
           </div>
         </div>
-        <div class="news">
-          <div class="box30">
-            <div class="box-title">Information</div>
-            <div class="box-cont">
-              <ul>
-                <li class="box-news" v-for="(value,index) in news" :key="index">
-                  <div class="news-date">{{value.date}}</div>
-                  <div class="news-cont">{{value.cont}}</div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="emblem">
-          <div class="emblem-card">
-            <div class="emblem-img">
-              <img src="/images/ibj-certificate.png">
-            </div>
-            <div class="emblem-cont">
-              <div class="emblem-title">会員数・成婚数No.1*選ばれるのには理由があります</div>
-              <div class="emblem-p">日本結婚相談所連盟（IBJ）は、会員数・成婚数で業界No.1*となりました。※日本マーケティングリサーチ機構調べ（2021年調査、大手結婚相談所・連盟を対）<br>今後も、当社は登録会員数No.1の結婚相談所として皆様のスムースな婚活とご成婚を生み出して参ります。</div>
-            </div>
-          </div>
-        </div> -->
-        <div class="award">
+        <!-- <div class="award">
           <div class="award-card">
             <div class="award-title">セントマリアージュ青山が IBJ AWARD 2021年下期 を受賞しました！</div>
             <div class="award-img">
-              <img src="/images/IBJ-award.png">
+              <img src="~/assets/images/IBJ-award.png">
             </div>
             <div class="award-cont">
               <div class="award-p">IBJ AWARD とは、日本結婚相談所連盟（IBJ)の加盟店3021社の中で、過去６か月間で特に顕著な実績を残した結婚相談所に贈られる賞です。当社は、2020年以降に開業した結婚相談所の中で、特に目覚ましい活躍をした相談所に贈られる「BEST ROOKIE部門」で受賞いたしました。こちらの受賞率は僅か10.2％（123社／1204社）になります。選定基準は、「入会数、成婚数」「地域への貢献度」「ガイドライン、法令の遵守」「クレームやトラブルがない事」等になります。これらの厳しい選定基準をクリアし、日本結婚相談所連盟(IBJ)がお勧めできる優良結婚相談所としてお墨付きをいただいたことになります。セントマリアージュ青山は開業から約1年ではございますが、多くの方々にご入会いただき、続々とご成婚が出ております。これからも、お一人でも多くの方々に幸せになっていただくために、心のこもったサポートをさせていただきたいと思っております。</div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
-      <div class="colum">
-        <div class="side">
-          <div class="side-card">
-            <div class="side-menu">
-              <h2>s.t.marriage</h2>
-              <ul>
-                <li v-for="(menu,index) in list" :key="index">
-                  <router-link class="side-menu-a" v-bind:to="menu.url">
-                    {{ menu.title }}
-                  </router-link>
-                </li>
-              </ul>
+      <div class="section --2">
+        <div class="section-wrap">
+          <div class="title_block">
+            <h1 class="title">Award</h1>
+            <div class="title__border"></div>
+            <p class="title__sub">獲得賞</p>
+          </div>
+          <div class="award-title">セントマリアージュ青山が IBJ AWARD 2021年下期 を受賞しました！</div>
+          <div class="content_wrap">
+            <div class="content_body img">
+              <div class="top-service__img">
+                <div class="c-img">
+                  <div class="c-img__border"></div>
+                  <img src="~/assets/images/IBJ-award.png" class="c-img__img" alt="ibjアワード">
+                </div>	
+              </div> 
+              <div class="top-service__img">
+                <div class="c-img">
+                  <div class="c-img__border"></div>
+                  <img src="~/assets/images/IBJ-award.png" class="c-img__img" alt="ibjアワード">
+                </div>	
+              </div> 
+            </div>
+            <div class="content_body text">
+              <p>生活をしていれば誰もが必ず足を運ぶ場所、<br>
+                エレベーター。<br>
+                &nbsp;<br>
+                皆が必ず使う場所のはずなのに、<br>
+                自転車や車、飛行機と同じ「乗り物」なのに、<br>
+                そこにはどことなく静けさを感じる。<br>
+                &nbsp;<br>
+                今まで、エレベーターは安全に移動する手段として、<br>
+                私たちの生活を支えてくれた。<br>
+                &nbsp;<br>
+                そんなエレベーターを私たちは変えたい。<br>
+                &nbsp;<br>
+                「誰とも話せない」を「誰かと話せる」空間に。<br>
+                「ちょっと寂しい」を「ちょっと楽しい」空間に。<br>
+                &nbsp;<br>
+                spacemotionは、<br>
+                皆様の日常に「ちょっとだけ」楽しさを添える、<br>
+              エレベーターの中に小さな劇場を創る会社です。</p>
             </div>
           </div>
         </div>
-        <div class="main">
-          <div class="main-card">
-            <!-- <h1 class="main-title"><span>St.Marriage Aoyama</span></h1> -->
-            <div class="PR">
-              <div class="PR-card">
-                <h1 class="pr-title"><span>選ばれる理由</span></h1>
-                <div class="pr-list"
-                  v-for="(value, index) in pr" v-bind:key="index"
-                  v-bind:class="{even:index%2==1}"
-                >
-                  <div class="pr-pic">
-                    <img v-bind:src="value.photoUrl">
-                  </div>
-                  <div class="pr-cont">
-                    <h2>{{index+1}}. {{value.name}}</h2>
-                    <div class="pr-cont-p">{{value.explation}}</div>
-                    <button 
-                      @click="moveIDpage(value.id)" 
-                      v-bind:class="{selected:activeName===value.name}" 
-                      @mouseover="activeName=value.name" 
-                      @mouseout="activeName=''"
-                    >
-                      詳細をみる&ensp;&#8811;
-                    </button>
-                  </div>
-                </div>
+      </div>
+      <div class="section --3">
+        <div class="section-wrap">
+          <div class="title_block">
+            <h1 class="title">Strangth</h1>
+            <div class="title__border"></div>
+            <p class="title__sub">選ばれる理由</p>
+          </div>
+          <ul class="content_wrap">
+            <li class="content_body">
+              
+              <h2 class="top-our_strengths__container--point">1</h2>
+              <p class="top-our_strengths__container--heading">経験豊富、<br>成婚実績多数</p>
+              <p class="top-our_strengths__container--about">
+                まるで映画館にいるような感覚でコンテンツを視聴できる、極上の体験を提供いたします。
+              </p>
+              
+              <div class="top-our_strengths__container--img">
+                <div class="c-img">
+                  <div class="c-img__border"></div>
+                  <img src="/images/heart-marriage.jpg" class="c-img__img" alt="プロジェクター">
+                </div>	
+              </div> 
+            </li>
+            <li class="content_body top-our_strengths__container">
+              <h2 class="top-our_strengths__container--point">2</h2>
+              <p class="top-our_strengths__container--heading">お一人お一人の<br>お気持ちに寄り添った<br>丁寧なサポート</p>
+              <p class="top-our_strengths__container--about">
+                通信状況が悪い環境でも安定してコンテンツを 配信する技術で、安心してコンテンツを配信、視聴可能です。（特許出願済み）
+              </p>
+              <div class="top-our_strengths__container--img">
+                <div class="c-img">
+                  <div class="c-img__border"></div>
+                  <img src="/images/heart-marriage.jpg" class="c-img__img" alt="安定したコンテンツ配信技術">
+                </div>	
+              </div> 
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="section --4">
+        <div class="section-wrap">
+          <div class="title_block">
+            <h1 class="title">Self Introduction</h1>
+            <div class="title__border"></div>
+            <p class="title__sub">カウンセラーからのご挨拶</p>
+          </div>
+          <div class="self">
+            <div class="self-cont">
+              <div class="self-pic">
+                <div class="c-img">
+                  <div class="c-img__border"></div>
+                  <img src="~/assets/images/ShimadaTomoko.jpg" class="c-img__img" alt="安定したコンテンツ配信技術">
+                </div>	
               </div>
-            </div>
-            <div class="self">
-              <h1 class="self-title">カウンセラーからのご挨拶</h1>
-              <div class="self-cont">
-                <div class="self-p">はじめまして。代表カウンセラーの島田智子です。<br>三菱系の結婚相談所「ダイヤモンドファミリークラブ」のカウンセラーとして、約10年勤務しておりました。<br>延べ1000人以上の会員様を担当し、20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。　豊富な経験・知識を生かして、年齢、性別を問わず、お一人お一人に寄り添ったサポートをいたします。<br>「お見合いを成功させる秘訣」「異性に好かれる身だしなみ、行動、会話」「仮交際から真剣交際への進め方」「ご成婚への最後の一押し」等、幅広く丁寧にアドバイスいたします。<br>過去のご成婚者の方々から近況報告をいただいたり、元会員様から恋愛相談を受けたりと、現在でも長くお付き合いを続けさせていただいています。結婚後（成婚退会後）も何か悩みを抱えた時、いつでもご相談いただけるような身近な存在でありたいと思っております。<br>随時、無料相談（電話、zoom）を行っておりますので、お気軽にお問い合わせください。</div>
-                <div class="self-pic"><img src="/images/ShimadaTomoko.jpg"></div>
+              <div class="self-p">はじめまして。代表カウンセラーの島田智子です。<br>三菱系の結婚相談所「ダイヤモンドファミリークラブ」のカウンセラーとして、約10年勤務しておりました。<br>延べ1000人以上の会員様を担当し、20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。　豊富な経験・知識を生かして、年齢、性別を問わず、お一人お一人に寄り添ったサポートをいたします。<br>「お見合いを成功させる秘訣」「異性に好かれる身だしなみ、行動、会話」「仮交際から真剣交際への進め方」「ご成婚への最後の一押し」等、幅広く丁寧にアドバイスいたします。<br>過去のご成婚者の方々から近況報告をいただいたり、元会員様から恋愛相談を受けたりと、現在でも長くお付き合いを続けさせていただいています。結婚後（成婚退会後）も何か悩みを抱えた時、いつでもご相談いただけるような身近な存在でありたいと思っております。<br>随時、無料相談（電話、zoom）を行っておりますので、お気軽にお問い合わせください。</div>
+              <div class="self-body">
                 <div class="self-comment 1">入会1ヵ月以内のお見合い成立率100%</div>
                 <div class="self-comment 2">入会1カ月以内の交際成立率93%</div>
                 <div class="self-table">
-                  <div>※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
-                  <table>
+                  <div class="text">※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
+                  <table class="table">
                     <tr v-for="(value, index) in tables" v-bind:key="index">
                       <th>{{value.title}}</th>
                       <td>{{value.cont}}</td>
@@ -135,32 +197,27 @@
                 </div>
               </div>
             </div>
-            <div class="access">
-              <h1 class="access-title">アクセス</h1>
-              <div class="access-cont">
-                <div class="access-comment">住所：〒107-0052東京都港区赤坂8-4-14　青山タワープレイス８F<br>（青山一丁目駅から徒歩3分）</div>
-                <div class="access-pic"><img src="/images/aoyamatower.jpeg"></div>
-                <div class="access-map">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.175124146428!2d139.72407744999748!3d35.672689687952186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d5e792882ab%3A0xc5ac8cc58a36ceef!2z6Z2S5bGx44K_44Ov44O844OX44Os44Kk44K5!5e0!3m2!1sja!2sjp!4v1657282738557!5m2!1sja!2sjp" 
-                  width="400"
-                  height="450" 
-                  style="border:0;" 
-                  allowfullscreen="" 
-                  loading="lazy" 
-                  referrerpolicy="no-referrer-when-downgrade"
-                  >
-                  </iframe>
-                </div>
-              </div>
-            </div>
           </div>
-          <div class="contact">
-            <div class="contact-card">
-              <div class="contact-1">CONTACT</div>
-              <div class="contact-2">080-7002-0555</div>
-              <div class="contact-3">無料カウセリング<br>男性用</div>
-              <div class="contact-4">無料カウセリング<br>女性用</div>
-            </div>
+        </div>
+      </div>
+      <div class="section --5">
+        <div class="section-wrap">
+          <div class="title_block">
+            <h1 class="title">Access</h1>
+            <div class="title__border"></div>
+            <p class="title__sub">アクセス</p>
+          </div>
+          <div class="access-comment">住所：〒107-0052東京都港区赤坂8-4-14　青山タワープレイス８F<br>（青山一丁目駅から徒歩3分）</div>
+          <div class="access-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.175124146428!2d139.72407744999748!3d35.672689687952186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d5e792882ab%3A0xc5ac8cc58a36ceef!2z6Z2S5bGx44K_44Ov44O844OX44Os44Kk44K5!5e0!3m2!1sja!2sjp!4v1657282738557!5m2!1sja!2sjp" 
+            width="100%"
+            height="400" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
           </div>
         </div>
       </div>
@@ -171,12 +228,11 @@
 <style lang="sass" scoped>
 .hero
   position: relative
-  height: 100vh
 
   > .page-title
     position: absolute
-    top: 50%
-    left: 50%
+    top: 50vh
+    left: 50vw
     transform: translate(-50%,-50%)
     text-align: center
     margin: auto
@@ -188,19 +244,572 @@
 
     +sp-view
 
-  > .hero_img
+  > .img_block
     width: 100vw
     height: 100vh
-    z-index: -20
+    z-index: -50
+    position: sticky
+    top: 0
 
-    > .image
+    > .hero_img
       width: 100%
       height: 100%
       object-fit: cover
 
+  > .intro
+    padding: 240px 0 160px
+    > .intro-card
+      width: 1080px
+      max-width: calc(100% - 10vw)
+      margin: auto
+      text-align: center
+      font-family: serif
+      box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%)
+      border-radius: 10px
+      padding: 20px 40px 40px
+      background-color: rgba(255, 255, 255, 0.9)
+      background-image: url("/images/frame-topleft.svg"), url("/images/frame-topright.svg"), url("/images/frame-bottomleft.svg"), url("/images/frame-bottomright.svg")
+      background-position: left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
+      background-size: 66px 66px
+
+      > .intro-title
+        display: inline-block
+        position: relative
+        font-family: serif
+        text-align: center
+        margin-bottom: 10px
+        padding: 0 17%
+        background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
+        background-clip: text
+        -webkit-text-fill-color: transparent
+
+        &::before,&::after 
+          content: ''
+          position: absolute
+          top: 50%
+          display: inline-block
+          width: 15%
+          height: 2px
+          background-color: #000875
+          
+        &::before 
+          left:0
+          background: linear-gradient(-45deg, transparent, #000875 10%, #000875 30%, transparent)
+        &::after 
+          right: 0
+          background: linear-gradient(-45deg, transparent, #000875 70%, #000875 90%, transparent)
+
+      > .intro-cont
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        > .text
+          font-family: serif
+          padding: 0 20px
+
+        > .img_block
+          flex: 0 0 25%
+          position: relative
+
+          &::after
+            content: ''
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+
+          &.left
+            &::after
+              background-image: linear-gradient(90deg, transparent 0 60%, #FFF 100%), linear-gradient(0deg, transparent 0 60%, #FFF 100%)
+          
+          &.right
+            &::after
+              background-image: linear-gradient(270deg, transparent 0 40%, #FFF 100%),linear-gradient(0deg, transparent 0 60%, #FFF 100%)
+          
+          > .img
+            width: 100%
+            height: 20vw
+            object-fit: cover
+
+.body
+  height: auto
+  position: relative
+  background-image: url("/images/luxury-2.jpg")
+  background-size: 25%
+  background-repeat: repeat
+  
+  > .section
+    // padding: 150px 0 150px
+    > .section-wrap
+      margin: auto
+      width: 1080px
+      max-width: calc(100% - 10vw)
+      position: relative
+      padding: 40px 0 80px
+
+      +sp-view
+        padding: 150px 0 0
+
+      > .title_block
+        display: flex
+        justify-content: center
+        width:100%
+        margin: 60px 0 60px
+
+        > .title
+          +text-title(56px)
+
+          +sp-view
+            width: 100%
+            +text-title(24px)
+
+        > .title__border
+          width: 70px
+          height: 2px
+          background: var(--main)
+          transform: rotate(-33deg)
+          margin: 50px 20px 0
+
+          +sp-view
+            transform: rotate(0)
+            margin: 3% 0
+
+        > .title__sub
+          +text-subtitle(20px)
+          margin-top: 60px
+
+          +sp-view
+            +text-subtitle(16px)
+            width: 100%
+            margin-top: 0
+            margin-bottom: 5%
+    &.--1
+      // background-color: var(--white-1)
+      > .section-wrap
+        > .case_list
+          display: flex
+          flex-wrap: wrap
+          justify-content: space-between
+          gap: 0 5px
+
+          +sp-view
+            width: 100%
+            flex-direction: column
+
+          > .case-item
+            min-width: 320px
+            flex: 1
+            margin-bottom: 40px
+            border-radius: 8px
+
+            &.empty
+              width: 100%
+              height: 0
+              margin-bottom: 0px
+              padding: 0px
+              border-top: 0
+
+            +sp-view
+              min-width: 240px
+
+            > .case-card
+              width: 100%
+              
+              > .case-item__image_block
+                position: relative
+                width: 100%
+                overflow: hidden
+                border-radius: 8px 8px 0px 0px
+
+                &::before
+                  content:""
+                  display: block
+                  padding-top: 63%    // (縦220px / 横350px)より
+
+                  +sp-view
+                    display: none
+
+                > .case-item__image
+                  display: block
+                  position: absolute
+                  height: 100%
+                  width: 100%
+                  top: 0
+                  object-fit: cover
+
+                  +sp-view
+                    position: relative
+                    height: auto
+                    width: 100%
+
+              > .card
+                display: block
+                background-color: white
+                height: fit-content
+                flex-shrink: 0
+                width: 100%
+                border-radius: 0 0 8px 8px
+                padding: 30px
+
+                +sp-view
+                  padding: 24px 5vw
+
+                > .__link
+                  padding: 8px 0
+                  display: flex
+                  align-items: center
+                  justify-content: space-between
+
+                  > .__title
+                    +text-title(32px)
+
+                    +sp-view
+                      +text-title(44px)
+                > .__logo
+                  height: 32px
+                  width: auto
+                  margin-top: 12px
+
+                > .__title
+                  margin-top: 12px
+                  +text-subtitle(16px)
+
+        > .link-block
+          text-align: right
+
+          > .link-wrap
+            display: inline-block
+
+            > .list-link
+              display: flex
+              align-items: center
+              gap: 15px
+
+              > .list-link-wrap
+                +text-title(45px)
+                overflow: hidden
+                display: flex
+                align-items: center
+                width: 240px
+
+                >.list-link-text
+                  display: inline-block
+                  padding-right: 23px
+                  white-space: nowrap
+
+                &::after
+                  content: 'More cases'
+                  display: inline-block
+                  padding-right: 23px
+                  white-space: nowrap
+
+                &:hover
+                  > .list-link-text, &::after
+                    animation: text-roll-animation 1.6s infinite linear
+
+              > .right-arrow
+                height: 11px
+                width: 27px
+
+                +sp-view
+                  +text-title(32px)
+
+    &.--2
+      background-color: var(--main)
+      > .section-wrap
+        > .title_block
+          > .title
+            color: var(--white-1)
+          > .title__border
+            background: var(--white-1)
+          > .title__sub
+            color: var(--white-1)
+
+        > .content_wrap
+          display: flex
+          justify-content: space-between
+          flex-wrap: wrap-reverse
+
+          > .content_body
+            width: calc(50% - 30px)
+
+            +sp-view
+              width: 100%
+
+            > .top-service__img
+              width: 80%
+
+              > .c-img
+                position: relative
+                width: 100%
+
+                &::before
+                  content:""
+                  display: block
+                  padding-top: 100%
+
+                > .c-img__border
+                  width: 100%
+                  height: 100%
+                  border: 1px solid #c1c1c1
+                  position: absolute
+                  top: 0
+                  left: 0
+
+                > .c-img__img
+                  display: block
+                  position: absolute
+                  height: 100%
+                  width: 100%
+                  object-fit: cover
+                  top: 0
+                  box-shadow: 3px 3px 6px rgba(0,0,0,.6)
+                  margin: 5% 0 0 5%
+                  z-index: 2
+
+            &.img
+              display: flex
+              flex-direction: column
+              gap: 80px
+            &.text
+              text-align: center
+              +text-body(16px)
+              color: var(--white-1)
+              letter-spacing: .1em
+              line-height: 1.8em
+              margin: 12% 0 0
+
+              +sp-view
+                +text-body(12px)
+                color: var(--white-1)
+                margin-bottom: 20%
+
+    &.--3
+      > .section-wrap
+        padding: 0 0 300px
+        > .content_wrap
+          display: flex
+          justify-content: space-between
+
+          > .content_body
+            width: 45%
+            transform: translateY(60px)
+            list-style: none
+            color: #707070
+            text-align: left
+
+            +sp-view
+              width: 100%
+              display: flex
+              flex-wrap: wrap-reverse
+
+            &:nth-child(1)
+              margin-top: 0
+
+              +sp-view
+                margin-top: 8%
+
+            &:nth-child(2)
+              margin-top: 10%
+
+              +sp-view
+                margin-top: 8%
+
+            > .top-our_strengths__container--point
+              +text-title(40px)
+
+              +sp-view
+                +text-title(20px)
+                &::after
+                  margin: 3% 0 5%
+
+              &::before
+                content: "Point"
+                +text-title(30px)
+                margin-right: 10px
+
+              &::after
+                content: ""
+                width: 50px
+                height: 3px
+                background: var(--main)
+                display: block 
+                margin: 5% 0 8%
+
+            > .top-our_strengths__container--heading
+              +text-title(40px)
+              line-height: 1.4em
+
+              +sp-view
+                +text-title(30px)
+
+            > .top-our_strengths__container--about
+              +text-body(24px)
+              line-height: 1.4em
+              margin: 8% 0 13%
+
+              +sp-view
+                margin:5% 0 13%
+                +text-body(20px)
+            
+            > .top-our_strengths__container--img
+              width: 95%
+              height: 25vw
+
+              +sp-view
+                width: 70vw
+                height: 40vw
+                margin: 0 0 0 auto
+
+              > .c-img
+                position: relative
+                width: 100%
+
+                &::before
+                  content:""
+                  display: block
+                  padding-top: 100%
+
+                > .c-img__border
+                  width: 100%
+                  height: 100%
+                  border: 1px solid #c1c1c1
+                  position: absolute
+                  top: 0
+                  left: 0
+
+                > .c-img__img
+                  display: block
+                  position: absolute
+                  height: 100%
+                  width: 100%
+                  top: 0
+                  object-fit: cover
+                  box-shadow: 3px 3px 6px rgba(0,0,0,.6)
+                  margin: 5% 0 0 5%
+                  z-index: 2
+
+            
+            
+
+            
+
+
+    &.--4
+      background-color: var(--white-1)
+      > .section-wrap
+        > .self
+          > .self-cont
+            display: flex
+            flex-wrap: wrap
+            justify-content: space-between
+            gap: 80px
+            margin: 20px 0 0
+            padding: 20px
+
+            > .self-pic
+              flex: 0 0 30%
+              > .c-img
+                position: relative
+                width: 100%
+
+                &::before
+                  content:""
+                  display: block
+                  padding-top: 160%
+
+                > .c-img__border
+                  width: 100%
+                  height: 100%
+                  border: 1px solid #c1c1c1
+                  position: absolute
+                  top: 0
+                  left: 0
+
+                > .c-img__img
+                  display: block
+                  position: absolute
+                  height: 100%
+                  width: 100%
+                  top: 0
+                  object-fit: cover
+                  box-shadow: 3px 3px 6px rgba(0,0,0,.6)
+                  margin: 5% 0 0 5%
+                  z-index: 2
+
+            > .self-p
+              +text-body(16px)
+              line-height: 2
+              flex: 0 0 60%
+
+            > .self-body
+              flex: 70%
+
+              > .self-comment
+                text-align: center
+                +text-title(40px)
+                background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%)
+                background-clip: text
+                -webkit-text-fill-color: transparent
+
+              > .self-table
+                width: 70%
+                margin: 20px auto
+                +text-body(16px)
+                
+                table
+                  border-collapse:  collapse
+              
+                th, td
+                  border: solid 1px
+                  padding: 10px
+              
+                th
+                  width: 30%
+              
+                td
+                  width: 70%
+              
+    &.--5
+      background-color: var(--white-1)
+      > .section-wrap
+        width: 100%
+        max-width: 100%
+
+        > .access-comment
+          text-align: center
+          margin: 40px 0 40px
+          +text-body(16px)
+        > .access-map
+          width: 100%
+          height: 400px
+          object-fit: cover
+
 </style>
 
 <style lang="scss" scoped>
+// .content_body{width:45%;transform:translateY(60px)}
+// @media (max-width:768px){.content_body{width:100%}}
+// .top-our_strengths__container{list-style:none;color:#707070;text-align:left}
+// @media (max-width:768px){.top-our_strengths__container{display:flex;display:-ms-flexbox;flex-wrap:wrap-reverse}}
+// .top-our_strengths__container:first-child{margin-top:3%}
+// @media (max-width:768px){.top-our_strengths__container:first-child{margin-top:8%}}
+// .top-our_strengths__container:nth-child(2){margin-top:13%}
+// @media (max-width:768px){.top-our_strengths__container:nth-child(2){margin-top:8%}}
+// .top-our_strengths__container--point{font-size:5em;font-weight:400}
+// @media (max-width:768px){.top-our_strengths__container--point{font-size:3.5em;margin-top:5%}}
+// .top-our_strengths__container--point:before{content:"Point";font-size:.5em;margin-right:10px}
+// .top-our_strengths__container--point:after{content:"";width:50px;height:3px;background:#e2e2e2;display:block;margin:5% 0 8%}
+// @media (max-width:768px){.top-our_strengths__container--point:after{margin:3% 0 5%}}
+// .top-our_strengths__container--heading{font-size:2.4em;font-weight:700;letter-spacing:.1em;line-height:1.4em}
+// @media (max-width:768px){.top-our_strengths__container--heading{font-size:1.8em}}
+// .top-our_strengths__container--about{font-size:1.6em;line-height:1.4em;margin:8% 0 13%}
+// @media (max-width:768px){.top-our_strengths__container--about{font-size:1.4em;margin:5% 0 13%}}
+// .top-our_strengths__container--img{width:95%;height:25vw}
+// @media (max-width:768px){.top-our_strengths__container--img{width:70vw;height:40vw;margin:0 0 0 auto}}
+
 .menus{
   display: flex;
   width: 100%;
@@ -263,167 +872,6 @@
   padding-top: 20px;
 }
 
-.intro{
-  margin-bottom: 20px;
-}
-.intro-card{
-  width: 80%;
-  margin: auto;
-  text-align: center;
-  font-family: serif;
-  box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
-  border-radius: 10px;
-  padding: 20px 30px;
-  background-color: rgba(255, 255, 255, 0.9);
-  background-image:
-  url("/images/frame-topleft.svg"),
-  url("/images/frame-topright.svg"),
-  url("/images/frame-bottomleft.svg"),
-  url("/images/frame-bottomright.svg");
-  background-position: 
-  left 2px top 2px,
-  right 2px top 2px,
-  left 2px bottom 2px,
-  right 2px bottom 2px;
-  background-size: 66px 66px;
-}
-.intro-title{
-  display: inline-block;
-  position: relative;
-  font-family:serif;
-  text-align: center;
-  margin-bottom: 10px;
-  padding: 0 17%;
-  background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  // -webkit-box-reflect: below -17px -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0) 10%,rgba(0, 0, 0, 0.3));
-}
-.intro-title:before, .intro-title:after {
-	content: '';
-	position: absolute;
-	top: 50%;
-	display: inline-block;
-	width: 15%;
-	height: 2px;
-	background-color: #000875;
-}
-.intro-title:before {
-	left:0;
-	background: linear-gradient(-45deg, transparent, #000875 10%, #000875 30%, transparent);
-}
-.intro-title:after {
-	right: 0;
-	background: linear-gradient(-45deg, transparent, #000875 70%, #000875 90%, transparent);
-}
-.intro-cont{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.intro .center-p{
-  font-family: serif;
-  padding: 0 20px;
-}
-.intro .left-pic,.intro .right-pic{
-  flex: 0 0 25%;
-  position: relative;
-}
-.intro .left-pic::after{
-  content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(90deg, transparent 0 60%, #FFF 100%), linear-gradient(0deg, transparent 0 60%, #FFF 100%);
-}
-.intro .right-pic::after{
-  content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(270deg, transparent 0 40%, #FFF 100%),linear-gradient(0deg, transparent 0 60%, #FFF 100%);
-}
-.intro img{
-  width: 100%;
-  height: 20vw;
-  object-fit: cover;
-}
-
-.news{
-  padding: 0 20%;
-}
-.box30 {
-  width: 100%;
-  margin: 2em 0;
-  background: #f1f1f1;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
-  font-family: serif;
-  border-radius: 10px;
-}
-.box30 .box-title {
-  width: 100%;
-  font-size: 1.2em;
-  background: rgba(112, 124, 233, 0.534);
-  padding: 4px;
-  text-align: center;
-  color: #FFF;
-  font-weight: bold;
-  letter-spacing: 0.05em;
-}
-.box30 .box-cont{
-    padding: 10px 20px 15px;
-    margin: 0;
-}
-.box30 ul{
-  list-style-type: none;
-}
-.box30 li{
-  padding: 5px 0;
-  border-bottom: dashed 1px gray;
-  display: flex;
-}
-.box30 .news-date{
-  color: #5fc2f5;
-  margin-right: 10px;
-}
-
-// .emblem{
-//   width: 100%;
-//   padding: 0% 15%;
-// }
-// .emblem-card{
-//   box-shadow: 0 0 10px 2px rgb(0 0 0 / 10%);
-//   border-radius: 10px;
-//   padding: 20px;
-//   background-color: rgb(255, 255, 255,0.9);
-//   display: flex;
-//   align-items: center;
-
-// }
-// .emblem-img{
-//   flex: 0 0 30%;
-// }
-// .emblem-img img{
-//   width: 100%;
-//   object-fit: cover;
-// }
-// .emblem-cont{
-//   flex: 0 0 70%;
-//   font-family: serif;
-//   padding-left: 20px;
-// }
-// .emblem-title{
-//   font-size: 2vw;
-//   font-weight: bold;
-//   margin-bottom: 10px;
-//   color: transparent;
-//   background: repeating-linear-gradient(0deg, #B67B03 0.1em, #DAAF08 0.2em, #FEE9A0 0.3em, #DAAF08 0.4em, #B67B03 0.5em); 
-// 	background-clip: text;
-// }
 .award{
   width: 100%;
   padding: 3% 15%;
@@ -439,13 +887,16 @@
   font-family: serif;
 }
 .award-title{
+  text-align: center;
   width: 100%;
+  font-family: serif;
   font-size: 2vw;
   font-weight: bold;
   margin-bottom: 10px;
   background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin: 0 0 40px;
 }
 .award-img{
   flex: 0 0 30%;
@@ -629,82 +1080,81 @@
   font-weight: bold;
 }
 
-.self{
-  font-family: serif;
-  margin: 30px 0 0;
-  padding: 20px;
-}
-.self-title {
-	position: relative;
-	padding: .1em .3em .1em 1em;
-	// border-bottom: 1px solid #00ccff;
-  color:#000875;
-}
-.self-title:before,.self-title:after {
-	position: absolute;
-	content: "";
-	display: block;
-	width: 15px;
-	height: 15px;
-	border: 2px solid #000875;
-	top: 35%;
-	left: 3px;
-	transform: rotate(45deg);
-}
-.self-title:after {
-	top: 35%;
-	left: 10px;
-	height: 15px;
-	width: 15px;
-	transform: rotate(45deg);
-	border: none;
-	background: rgba(0, 60, 255, 0.3);
-}
-.self-cont{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 20px 0 0;
-  padding: 20px;
-}
-.self-p{
-  flex: 0 0 70%;
-  padding-right: 10px;
+// .self{
+//   font-family: serif;
+//   margin: 30px 0 0;
+//   padding: 20px;
+// }
+// .self-title {
+// 	position: relative;
+// 	padding: .1em .3em .1em 1em;
+// 	// border-bottom: 1px solid #00ccff;
+//   color:#000875;
+// }
+// .self-title:before,.self-title:after {
+// 	position: absolute;
+// 	content: "";
+// 	display: block;
+// 	width: 15px;
+// 	height: 15px;
+// 	border: 2px solid #000875;
+// 	top: 35%;
+// 	left: 3px;
+// 	transform: rotate(45deg);
+// }
+// .self-title:after {
+// 	top: 35%;
+// 	left: 10px;
+// 	height: 15px;
+// 	width: 15px;
+// 	transform: rotate(45deg);
+// 	border: none;
+// 	background: rgba(0, 60, 255, 0.3);
+// }
+// .self-cont{
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   margin: 20px 0 0;
+//   padding: 20px;
+// }
+// .self-p{
+//   flex: 0 0 70%;
+//   padding-right: 10px;
 
-}
-.self-pic{
-  flex: 0 0 30%;
-}
-.self-pic img{
-  width: 100%;
-}
-.self-comment{
-  flex: 70%;
-  text-align: center;
-  font-size: 2.5vw;
-  font-weight: bold;
-  background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+// }
+// .self-pic{
+//   flex: 0 0 30%;
+// }
+// .self-pic img{
+//   width: 100%;
+// }
+// .self-comment{
+//   text-align: center;
+//   font-size: 2.5vw;
+//   font-weight: bold;
+//   background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%);
+//   background-clip: text;
+//   -webkit-text-fill-color: transparent;
 
-}
-.self-table{
-  flex: 0 0 70%;
-  margin: 20px 0;
-}
-.self-table table{
-  border-collapse:  collapse;
-}
-.self-table th,.self-table td{
-  border: solid 1px;  
-  padding: 10px;
-}
-.self-table th{
-  width: 30%;
-}
-.self-table td{
-  width: 70%;
-}
+// }
+// .self-table{
+//   flex: 0 0 70%;
+//   margin: 20px 0;
+// }
+// .self-table table{
+//   border-collapse:  collapse;
+// }
+// .self-table th,.self-table td{
+//   border: solid 1px;  
+//   padding: 10px;
+// }
+// .self-table th{
+//   width: 30%;
+// }
+// .self-table td{
+//   width: 70%;
+// }
 
 .access{
   font-family: serif;
@@ -831,7 +1281,7 @@ export default {
       photoUrl:'/images/ibj-certificate.png' ,
      },
     ],
-    menus:[
+    displayCaseList:[
       {
         name:'コース案内、料金',
         img:'/images/heart-marriage.jpg',

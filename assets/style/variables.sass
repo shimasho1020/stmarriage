@@ -1,6 +1,12 @@
+@keyframes text-roll-animation
+  0%
+    transform: translateX(0%)
+
+  100%
+    transform: translateX(-100%)
 
 html
-  --white-1: rgba(248, 241, 231, 1)
+  --white-1: #eff4f4
   --black-1: rgba(33, 33, 33, 0.1)
   --main: #000875
 
@@ -19,19 +25,20 @@ $sp-page-side-padding: 16px
   font-size: $fs
   font-weight: bold
   line-height: 100%
-  color: var(--main-color-1)
+  color: var(--main)
 
 =text-subtitle($fs: 16px)
   font-family: serif
   font-size: $fs
   // font-weight: 400
-  color: var(--main-color-1)
+  color: var(--main)
 
 =text-body($fs: 16px)
   font-family: serif
   font-size: $fs
+  line-height: 140%
   // font-weight: 500
-  color: var(--color-black-1) 0 $sc, -1px -1px 0 $sc
+  color: var(--main)
 
 $sp-sm-size: "(max-width: 370px)"
 $sp-size: "(max-width: 750px)"

@@ -42,7 +42,22 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     '@nuxtjs/composition-api/module',
+    'nuxt-gsap-module',
   ],
+
+  gsap: {
+    extraPlugins: {
+      /**
+       * After activation, plugins are automatically
+       * registered and available globally
+       */
+      scrollTo: true,
+      scrollTrigger: true
+    },
+    extraEases: {
+      expoScaleEase: true
+    }
+  },
 
   styleResources: {
     sass: [
