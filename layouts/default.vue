@@ -1,81 +1,361 @@
 <template>
-<div class="all">   
-  <nav 
-    class="site-header" 
-    v-bind:class="{transform : this.scroll_top > 0}"
-  >
-  <div class="nav-inside">
-    <!-- <div class="menu-button" @click="drawer = !drawer"><span></span></div>
-    <ul class="bar-nav">
-      <li class="bar-nav-menu" v-for="(menu,index) in menus" :key="index">
-        <router-link class="var-menu-a" v-bind:to="menu.url">
-          {{ menu.title }}
-        </router-link>
-      </li>
-    </ul> -->
-
-    <div class="topleft">
-      <div class="logo">
-        <!-- <img src="/images/logo-6.png" alt=""> -->
+  <div class="all"> 
+    <header class="header active" ref="pageHeader"
+            id="header"
+            :class="{'side-active': false}">
+      <nuxt-link @click.native.prevent="nuxtLinkTrigger" to="/" class="logo">
         <div class="logo-sub">日本結婚所連盟（ＩＢＪ）　正規加盟店</div>
         <div class="logo-main">セントマリアージュ青山</div>
+      </nuxt-link>
+      <div class="menu pc pc-header" id="header-menu-pc">
+        <nuxt-link class="menu--link" to="/mediasheet">
+          <div class="link-wrap"><span class="link-text">Media sheet</span></div>
+        </nuxt-link>
+        <nuxt-link class="menu--link" to="/calendar">
+          <div class="link-wrap"><span class="link-text">Ads calendar</span></div>
+        </nuxt-link>
+        <nuxt-link class="menu--link" to="/news">
+          <div class="link-wrap"><span class="link-text">News</span></div>
+        </nuxt-link>
+        <div class="spacer"></div>
+        <nuxt-link class="menu--link" to="/case-study">
+          <div class="link-wrap"><span class="link-text">Case study</span></div>
+        </nuxt-link>
+        <nuxt-link class="menu--link" to="/faq">
+          <div class="link-wrap"><span class="link-text">FAQ/Contact</span></div>
+        </nuxt-link>
       </div>
+      <div
+          class="menu sp"
+          @click="toggleMenu"
+      >
+        <span></span>
+      </div>
+    </header>
+    <div class="sp-menu" ref="sideMenu">
+      <div class="sp-menu-wrap">
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/mediasheet">Media sheet</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/calendar">Ads calendar</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/news">News</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/case-study">Case study</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/faq">FAQ/Contact</nuxt-link>
+      </div>
+    </div>  
+    <div class="flow_block">
+      <div class="circle_form man"><span class="inline-block">無料相談<br>男性用</span></div>
+      <div class="circle_form woman"><span class="inline-block">無料相談<br>女性用</span></div>
     </div>
-    <div class="topright">
-      <div class="imfo">
-        <div class="top-time">営業時間：11:00~18:00</div>
-        <div class="top-access">アクセス：青山一丁目駅から徒歩３分</div>
-      </div>
-      <div class="form">
-        <div class="form-card man" style="backgroundColor: #51b3e0">無料カウンセリング<br>男性用</div>
-        <div class="form-card woman">無料カウンセリング<br>女性用</div>
-      </div>
+
+    <div class="body">
+      <nuxt/>
     </div>
+
+    <footer class="footer">
+      <div class="footer-wrap">
+        <!-- <get-in-touch class="get-in-touch" v-show="isGetInTouchVisible"></get-in-touch> -->
+        <div class="bottom">
+          <div class="bottom-block">Copyright ©️ 2020 St. Marriage Aotama</div>
+        </div>
+      </div>
+    </footer>
   </div>
-  </nav>
-
-  <aside 
-    @click="drawer = !drawer" 
-    class="drawer-menu" 
-    v-bind:class="{active_nav : drawer}"
-  >
-    <h2 >株式会社東京</h2>
-    <ul>
-      <li v-for="(menu,index) in menus" :key="index">
-        <router-link class="drawer-menu-a" v-bind:to="menu.url">
-          {{ menu.title }}
-        </router-link>
-      </li>
-    </ul>
-  </aside>
-  <div 
-    class="menu-background" 
-    @click="drawer = !drawer" 
-    v-bind:class="{active_bg : drawer}"
-  >
-  </div> 
-  
-  <header  
-   class="header-img" 
-   ref="header"
-   v-bind:style="{maxHeight: headerHeight +'px'}"
-  >
-    <img src="/images/marriage-header1.jpg" alt="">
-    <div class="message1">あなたの真剣な思いをサポートします</div>
-    <div class="message2" >
-      <div class="message2-1">結婚相談所</div>
-      <div class="message2-2">セントマリアージュ青山</div>
-      <div class="message2-3">St. Marriage Aoyama</div>
-    </div>
-  </header>
-  <!-- <div class="headerBottom" v-bind:style="{height: this.headerHeight +'px'}">
-  </div> -->
-
-  <nuxt/>
-  
-</div>
 </template>
 
+<script>
+  export default {
+    data() {
+      return {
+        drawer: false,
+        menus: [
+          { title: 'top', icon: 'mdi-web', url: '/' },
+          { title: 'company', icon: 'mdi-information-variant', url: '/company' },
+          { title: 'sample', icon: 'mdi-web', url: '/sample' },
+        ],
+        scroll_top:0,
+        dom:'',
+        rect:[],
+        headerHeight:0,
+      }
+    },
+    methods: {
+      getScroll() {
+        this.scroll_top = window.scrollY
+      },
+    },
+    mounted() {
+      window.addEventListener("scroll", this.getScroll); //スクロールのするたびに関数を呼びだす処理
+      this.headerHeight = document.documentElement.clientHeight 
+
+      // window.addEventListener('resize', this.resizeWindow); //画面サイズが変わるたびに関数実行
+      // this.dom = this.$refs.header; 
+      // this.rect = this.dom.getBoundingClientRect(); // 要素の座標と幅と高さを取得
+      // this.headerHeight = this.rect.height
+    },
+  }
+
+  
+</script>
+
+<style lang="sass">
+@keyframes text-roll-animation
+  0%
+    transform: translateX(0%)
+
+  100%
+    transform: translateX(-100%)
+
+::selection
+  background-color: var(--color-red-200)
+  color: var(--color-white-300)
+
+.inline-block
+  display: inline-block
+
+.header
+  position: fixed
+  z-index: 100
+  top: 0
+  left: 50%
+  transform: translateX(-50%)
+  width: calc(100% - 160px)
+  min-width: calc(100% - 10vw)
+  height: 100px
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 35px 0px 20px
+  opacity: 0
+  border-bottom: 1px solid var(--color-black-100)
+
+  +sp-view
+    height: 64px
+    padding: 20px 0 15px
+
+  &.active
+    opacity: 1
+    transition: .3s
+
+  > .logo
+    > .logo-sub
+      +text-subtitle(10px)
+
+    > .logo-main
+      +text-title(35px)
+      text-shadow: 2px 2px 2px rgb(255, 255, 255),-2px -2px 2px rgb(255, 255, 255)
+
+  > .menu
+    width: 660px
+    display: flex
+    justify-content: flex-end
+    column-gap: 23px
+
+    +pc-sm-view
+      flex-wrap: wrap
+      justify-content: flex-end
+      row-gap: 4px
+
+    > .spacer
+      display: none
+
+      +pc-sm-view
+        display: inline-block
+        width: 100%
+
+    > .menu--link
+      +text-title(20px)
+      text-decoration: none
+      display: inline-block
+      overflow: hidden
+
+      > .link-wrap
+        overflow: hidden
+        display: flex
+        align-items: center
+
+        > .link-text
+          display: inline-block
+          padding-right: 23px
+          white-space: nowrap
+
+        &::after
+          display: inline-block
+          padding-right: 23px
+          white-space: nowrap
+
+        &:hover
+          > .link-text, &::after
+            animation: text-roll-animation 1.6s infinite linear
+
+      &:nth-child(1)
+        flex: 0 0 105px
+
+        .link-wrap
+          &::after
+            content: 'Media sheet'
+
+      &:nth-child(2)
+        flex: 0 0 116px
+
+        .link-wrap
+          &::after
+            content: 'Ads calendar'
+
+      &:nth-child(3)
+        flex: 0 0 47px
+
+        .link-wrap
+          &::after
+            content: 'News'
+
+      &:nth-child(5)
+        flex: 0 0 95px
+
+        .link-wrap
+          &::after
+            content: 'Case study'
+
+      &:nth-child(6)
+        flex: 0 0 111px
+
+        .link-wrap
+          &::after
+            content: 'FAQ/Contact'
+
+    &.pc
+      transition: .3s
+
+      +sp-view
+        display: none
+
+    &.sp
+      display: none
+
+      +sp-view
+        display: block
+        position: relative
+        width: 20px
+        height: 1px
+        padding: 20px 0
+        cursor: pointer
+        color: var(--color-red-200)
+
+        &.white
+          color: var(--color-white-300)
+
+        > span, span:before, span:after
+          position: absolute
+          content: ''
+          width: 100%
+          display: block
+          height: 1px
+          background: currentColor
+          transform: rotate(0deg)
+
+        > span:before
+          transition: .3s
+          transform: translateY(-7px)
+
+        > span:after
+          transition: .3s
+          transform: translateY(7px)
+
+  &.side-active
+    border-bottom: 1px solid var(--color-red-200) !important
+
+    > .sp
+      > span
+        background: rgba(255, 255, 255, 0)
+
+      > span:before, span:after
+        background: var(--color-white-300)
+        transform-origin: center center
+
+      > span:before
+        transform: rotate(-45deg) translateY(0px)
+
+      > span:after
+        transform: rotate(45deg) translateY(0px)
+
+.sp-menu
+  position: fixed
+  top: 0
+  left: 0
+  transform: translateX(-100vw)
+  transition: .3s
+  width: 100vw
+  height: 100vh
+  z-index: 50
+
+  display: none
+
+  &.active
+    display: block
+    transform: translateX(0)
+
+    > .sp-menu-wrap
+      opacity: 0
+      height: 100%
+      width: 100%
+      padding: 0 20px
+      +text-title(40px)
+      line-height: 1.5
+      color: var(--color-white-300)
+      background-color: var(--color-red-200)
+      display: flex
+      flex-direction: column
+      justify-content: center
+
+      > .menu--link
+        color: currentColor
+
+.flow_block
+  display: flex
+  align-items: center
+  position: fixed
+  bottom: 20px
+  right: min(80px, 5vw)
+  z-index: 100
+
+  > .circle_form
+    height: 120px
+    width: 120px
+    margin-left: 10px
+    box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%)
+    border-radius: 60px
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    +text-subtitle(20px)
+    color: var(--white-1)
+    
+    &.man
+      background: linear-gradient(to bottom, #5f51e0, rgb(195, 242, 248))
+    &.woman
+      background: linear-gradient(to bottom, #e051bc, rgb(195, 242, 248))
+
+.footer
+  // background-color: var(--color-white-300)
+
+  > .footer-wrap
+    // padding: 120px 0 0
+
+    > .bottom
+      position: relative
+      z-index: 10
+      background-color: var(--main)
+      padding: 30px 0 10px
+      text-align: center
+      +text-subtitle(14px)
+      color: var(--white-1)
+
+      +sp-view
+        padding: 25px 5vw
+
+      > .bottom-block
+
+
+</style>
 
 <style lang="scss" scoped>
 .site-header{
@@ -120,12 +400,12 @@
 // }
 .logo-sub{
   font-size: 10px;
-  color: #000875;
+  color: var(--main);
 }
 .logo-main{
   font-weight: bold;
   font-size: 30px;
-  color: #000875;
+  color: var(--main);
   text-shadow: 2px 2px 2px rgb(255, 255, 255),-2px -2px 2px rgb(255, 255, 255);
 }
 .topcenter{
@@ -146,7 +426,7 @@
   align-items: center;
 }
 .imfo{
-  color: #000875;
+  color: var(--main);
   // text-shadow: 0 0 2px black,0 0 2px black;
   font-size: 1vw;
   text-align: left;
@@ -155,13 +435,6 @@
   padding: 10px;
   align-items: center;
   display: flex;
-}
-.form-card{
-  padding: 0 20px;
-  margin-left: 10px;
-  box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
-  border-radius: 20px;
-  align-items: center;
 }
 .form-card.man{
   background: linear-gradient(to bottom, #5f51e0, rgb(195, 242, 248));
@@ -200,15 +473,9 @@
     font-size: 1.5vw;
     color: white;
   }
-  .form-card{
-    transition-property:border-radius,margin-left;
-    transition-duration: 0.7s;
-    border-radius: 30px;
-    margin-left: 10px;
-  }
 
   .site-header.transform{
-    background: rgba(255, 255, 255, 0.8);
+    // background: rgba(255, 255, 255, 0.8);
     height: 65px;
   }
   .transform .topleft{
@@ -220,9 +487,6 @@
   .transform .topright{
     // line-height: 23px;
     font-size: 1.2vw;
-  }
-  .transform .form-card{
-    margin-left: 15px;
   }
 }
 /* ----------------*/
@@ -320,7 +584,8 @@
 
 .header-img{
   z-index: -100;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   position: relative;
   top: 0px;
   text-align: center;
@@ -379,38 +644,3 @@
   filter: drop-shadow(0 0 5px rgb(47, 0, 255));
 }
 </style>
-
-<script>
-  export default {
-    data() {
-      return {
-        drawer: false,
-        menus: [
-          { title: 'top', icon: 'mdi-web', url: '/' },
-          { title: 'company', icon: 'mdi-information-variant', url: '/company' },
-          { title: 'sample', icon: 'mdi-web', url: '/sample' },
-        ],
-        scroll_top:0,
-        dom:'',
-        rect:[],
-        headerHeight:0,
-      }
-    },
-    methods: {
-      getScroll() {
-        this.scroll_top = window.scrollY
-      },
-    },
-    mounted() {
-      window.addEventListener("scroll", this.getScroll); //スクロールのするたびに関数を呼びだす処理
-      this.headerHeight = document.documentElement.clientHeight 
-
-      // window.addEventListener('resize', this.resizeWindow); //画面サイズが変わるたびに関数実行
-      // this.dom = this.$refs.header; 
-      // this.rect = this.dom.getBoundingClientRect(); // 要素の座標と幅と高さを取得
-      // this.headerHeight = this.rect.height
-    },
-  }
-
-  
-</script>

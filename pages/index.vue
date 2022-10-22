@@ -1,168 +1,204 @@
 <template>
-<div 
-  :style="{marginTop:- extra+'px'}"
-  class="all"
->
-  <div
-    ref="header"
-    class="menus"
-  >
-    <div
-      class="lists"
-      v-for="(value, index) in menus" v-bind:key="index"
-    >
-      <div class="cards">
-        <router-link class="cards-a" v-bind:to="value.url">
-          <h3>{{value.name}}</h3>
-          <div class="pic">
-            <img :src="value.img">
-          </div>
-          <!-- <div class="note">{{value.note}}</div> -->
-        </router-link>
+  <div>
+    <div class="hero" >
+      <h1 class="page-title">
+        <span class="inline-block">都内大規模オフィスビル</span>
+        <span class="inline-block">設置台数 No.1</span>
+        <span class="inline-block">新体験エレベーターメディア</span>
+      </h1>
+      <div class="hero_img" >
+        <img class="image" src="/images/marriage-header1.jpg" alt="メイン写真">
       </div>
     </div>
-  </div>
-  <div class="body">
-    <div class="first-body">
-      <div class="intro">
-        <div class="intro-card">
-          <h1 class="intro-title">セントマリアージュ青山について</h1>
-          <div class="intro-cont">
-            <div class="left-pic"><img src="/images/marriage-gate.webp"></div>
-            <div class="center-p">東京青山の結婚相談所エクセレンス青山の婚活は、ご成婚第一主義。一人ひとりにあったお相手探しで、お客様の個性にあわせたオンリーワンの婚活をご提案いたします。当社が掲げる「オンリーワンのご成婚」は、お客様一人ひとりの個性にあわせて最適なパートナーをご紹介いたします。ご納得いくまでお相手をお選びいただいたうえで、お見合いをしていただき、交際～ご成婚へと繋げてまいります。私たちは、お客様の結婚という明確なゴールに向けて、全力でサポートさせていただいております。</div>
-            <div class="right-pic"><img src="/images/marriage-bouquet.jpeg"></div>
-          </div>
-        </div>
-      </div>
-      <div class="news">
-        <div class="box30">
-          <div class="box-title">Information</div>
-          <div class="box-cont">
-            <ul>
-              <li class="box-news" v-for="(value,index) in news" :key="index">
-                <div class="news-date">{{value.date}}</div>
-                <div class="news-cont">{{value.cont}}</div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="emblem">
-        <div class="emblem-card">
-          <div class="emblem-img">
-            <img src="/images/ibj-certificate.png">
-          </div>
-          <div class="emblem-cont">
-            <div class="emblem-title">会員数・成婚数No.1*選ばれるのには理由があります</div>
-            <div class="emblem-p">日本結婚相談所連盟（IBJ）は、会員数・成婚数で業界No.1*となりました。※日本マーケティングリサーチ機構調べ（2021年調査、大手結婚相談所・連盟を対）<br>今後も、当社は登録会員数No.1の結婚相談所として皆様のスムースな婚活とご成婚を生み出して参ります。</div>
-          </div>
-        </div>
-      </div> -->
-      <div class="award">
-        <div class="award-card">
-          <div class="award-title">セントマリアージュ青山が IBJ AWARD 2021年下期 を受賞しました！</div>
-          <div class="award-img">
-            <img src="/images/IBJ-award.png">
-          </div>
-          <div class="award-cont">
-            <div class="award-p">IBJ AWARD とは、日本結婚相談所連盟（IBJ)の加盟店3021社の中で、過去６か月間で特に顕著な実績を残した結婚相談所に贈られる賞です。当社は、2020年以降に開業した結婚相談所の中で、特に目覚ましい活躍をした相談所に贈られる「BEST ROOKIE部門」で受賞いたしました。こちらの受賞率は僅か10.2％（123社／1204社）になります。選定基準は、「入会数、成婚数」「地域への貢献度」「ガイドライン、法令の遵守」「クレームやトラブルがない事」等になります。これらの厳しい選定基準をクリアし、日本結婚相談所連盟(IBJ)がお勧めできる優良結婚相談所としてお墨付きをいただいたことになります。セントマリアージュ青山は開業から約1年ではございますが、多くの方々にご入会いただき、続々とご成婚が出ております。これからも、お一人でも多くの方々に幸せになっていただくために、心のこもったサポートをさせていただきたいと思っております。</div>
-          </div>
+    <div ref="header" class="menus">
+      <div
+        class="lists"
+        v-for="(value, index) in menus" v-bind:key="index"
+      >
+        <div class="cards">
+          <router-link class="cards-a" v-bind:to="value.url">
+            <h3>{{value.name}}</h3>
+            <div class="pic">
+              <img :src="value.img">
+            </div>
+            <!-- <div class="note">{{value.note}}</div> -->
+          </router-link>
         </div>
       </div>
     </div>
-    <div class="colum">
-      <div class="side">
-        <div class="side-card">
-          <div class="side-menu">
-            <h2>s.t.marriage</h2>
-            <ul>
-              <li v-for="(menu,index) in list" :key="index">
-                <router-link class="side-menu-a" v-bind:to="menu.url">
-                  {{ menu.title }}
-                </router-link>
-              </li>
-            </ul>
+    <div class="body">
+      <div class="first-body">
+        <div class="intro">
+          <div class="intro-card">
+            <h1 class="intro-title">セントマリアージュ青山について</h1>
+            <div class="intro-cont">
+              <div class="left-pic"><img src="/images/marriage-gate.webp"></div>
+              <div class="center-p">東京青山の結婚相談所エクセレンス青山の婚活は、ご成婚第一主義。一人ひとりにあったお相手探しで、お客様の個性にあわせたオンリーワンの婚活をご提案いたします。当社が掲げる「オンリーワンのご成婚」は、お客様一人ひとりの個性にあわせて最適なパートナーをご紹介いたします。ご納得いくまでお相手をお選びいただいたうえで、お見合いをしていただき、交際～ご成婚へと繋げてまいります。私たちは、お客様の結婚という明確なゴールに向けて、全力でサポートさせていただいております。</div>
+              <div class="right-pic"><img src="/images/marriage-bouquet.jpeg"></div>
+            </div>
+          </div>
+        </div>
+        <div class="news">
+          <div class="box30">
+            <div class="box-title">Information</div>
+            <div class="box-cont">
+              <ul>
+                <li class="box-news" v-for="(value,index) in news" :key="index">
+                  <div class="news-date">{{value.date}}</div>
+                  <div class="news-cont">{{value.cont}}</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="emblem">
+          <div class="emblem-card">
+            <div class="emblem-img">
+              <img src="/images/ibj-certificate.png">
+            </div>
+            <div class="emblem-cont">
+              <div class="emblem-title">会員数・成婚数No.1*選ばれるのには理由があります</div>
+              <div class="emblem-p">日本結婚相談所連盟（IBJ）は、会員数・成婚数で業界No.1*となりました。※日本マーケティングリサーチ機構調べ（2021年調査、大手結婚相談所・連盟を対）<br>今後も、当社は登録会員数No.1の結婚相談所として皆様のスムースな婚活とご成婚を生み出して参ります。</div>
+            </div>
+          </div>
+        </div> -->
+        <div class="award">
+          <div class="award-card">
+            <div class="award-title">セントマリアージュ青山が IBJ AWARD 2021年下期 を受賞しました！</div>
+            <div class="award-img">
+              <img src="/images/IBJ-award.png">
+            </div>
+            <div class="award-cont">
+              <div class="award-p">IBJ AWARD とは、日本結婚相談所連盟（IBJ)の加盟店3021社の中で、過去６か月間で特に顕著な実績を残した結婚相談所に贈られる賞です。当社は、2020年以降に開業した結婚相談所の中で、特に目覚ましい活躍をした相談所に贈られる「BEST ROOKIE部門」で受賞いたしました。こちらの受賞率は僅か10.2％（123社／1204社）になります。選定基準は、「入会数、成婚数」「地域への貢献度」「ガイドライン、法令の遵守」「クレームやトラブルがない事」等になります。これらの厳しい選定基準をクリアし、日本結婚相談所連盟(IBJ)がお勧めできる優良結婚相談所としてお墨付きをいただいたことになります。セントマリアージュ青山は開業から約1年ではございますが、多くの方々にご入会いただき、続々とご成婚が出ております。これからも、お一人でも多くの方々に幸せになっていただくために、心のこもったサポートをさせていただきたいと思っております。</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="main">
-        <div class="main-card">
-          <h1 class="main-title"><span>St.Marriage Aoyama</span></h1>
-          <div class="PR">
-            <div class="PR-card">
-              <h1 class="pr-title"><span>選ばれる理由</span></h1>
-              <div class="pr-list"
-                v-for="(value, index) in pr" v-bind:key="index"
-                v-bind:class="{even:index%2==1}"
-              >
-                <div class="pr-pic">
-                  <img v-bind:src="value.photoUrl">
-                </div>
-                <div class="pr-cont">
-                  <h2>{{index+1}}. {{value.name}}</h2>
-                  <div class="pr-cont-p">{{value.explation}}</div>
-                  <button 
-                    @click="moveIDpage(value.id)" 
-                    v-bind:class="{selected:activeName===value.name}" 
-                    @mouseover="activeName=value.name" 
-                    @mouseout="activeName=''"
-                  >
-                    詳細をみる&ensp;&#8811;
-                  </button>
-                </div>
-              </div>
+      <div class="colum">
+        <div class="side">
+          <div class="side-card">
+            <div class="side-menu">
+              <h2>s.t.marriage</h2>
+              <ul>
+                <li v-for="(menu,index) in list" :key="index">
+                  <router-link class="side-menu-a" v-bind:to="menu.url">
+                    {{ menu.title }}
+                  </router-link>
+                </li>
+              </ul>
             </div>
           </div>
-          <div class="self">
-            <h1 class="self-title">カウンセラーからのご挨拶</h1>
-            <div class="self-cont">
-              <div class="self-p">はじめまして。代表カウンセラーの島田智子です。<br>三菱系の結婚相談所「ダイヤモンドファミリークラブ」のカウンセラーとして、約10年勤務しておりました。<br>延べ1000人以上の会員様を担当し、20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。　豊富な経験・知識を生かして、年齢、性別を問わず、お一人お一人に寄り添ったサポートをいたします。<br>「お見合いを成功させる秘訣」「異性に好かれる身だしなみ、行動、会話」「仮交際から真剣交際への進め方」「ご成婚への最後の一押し」等、幅広く丁寧にアドバイスいたします。<br>過去のご成婚者の方々から近況報告をいただいたり、元会員様から恋愛相談を受けたりと、現在でも長くお付き合いを続けさせていただいています。結婚後（成婚退会後）も何か悩みを抱えた時、いつでもご相談いただけるような身近な存在でありたいと思っております。<br>随時、無料相談（電話、zoom）を行っておりますので、お気軽にお問い合わせください。</div>
-              <div class="self-pic"><img src="/images/ShimadaTomoko.jpg"></div>
-              <div class="self-comment 1">入会1ヵ月以内のお見合い成立率100%</div>
-              <div class="self-comment 2">入会1カ月以内の交際成立率93%</div>
-              <div class="self-table">
-                <div>※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
-                <table>
-                  <tr v-for="(value, index) in tables" v-bind:key="index">
-                    <th>{{value.title}}</th>
-                    <td>{{value.cont}}</td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="access">
-            <h1 class="access-title">アクセス</h1>
-            <div class="access-cont">
-              <div class="access-comment">住所：〒107-0052東京都港区赤坂8-4-14　青山タワープレイス８F<br>（青山一丁目駅から徒歩3分）</div>
-              <div class="access-pic"><img src="/images/aoyamatower.jpeg"></div>
-              <div class="access-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.175124146428!2d139.72407744999748!3d35.672689687952186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d5e792882ab%3A0xc5ac8cc58a36ceef!2z6Z2S5bGx44K_44Ov44O844OX44Os44Kk44K5!5e0!3m2!1sja!2sjp!4v1657282738557!5m2!1sja!2sjp" 
-                width="400"
-                height="450" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade"
+        </div>
+        <div class="main">
+          <div class="main-card">
+            <!-- <h1 class="main-title"><span>St.Marriage Aoyama</span></h1> -->
+            <div class="PR">
+              <div class="PR-card">
+                <h1 class="pr-title"><span>選ばれる理由</span></h1>
+                <div class="pr-list"
+                  v-for="(value, index) in pr" v-bind:key="index"
+                  v-bind:class="{even:index%2==1}"
                 >
-                </iframe>
+                  <div class="pr-pic">
+                    <img v-bind:src="value.photoUrl">
+                  </div>
+                  <div class="pr-cont">
+                    <h2>{{index+1}}. {{value.name}}</h2>
+                    <div class="pr-cont-p">{{value.explation}}</div>
+                    <button 
+                      @click="moveIDpage(value.id)" 
+                      v-bind:class="{selected:activeName===value.name}" 
+                      @mouseover="activeName=value.name" 
+                      @mouseout="activeName=''"
+                    >
+                      詳細をみる&ensp;&#8811;
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="self">
+              <h1 class="self-title">カウンセラーからのご挨拶</h1>
+              <div class="self-cont">
+                <div class="self-p">はじめまして。代表カウンセラーの島田智子です。<br>三菱系の結婚相談所「ダイヤモンドファミリークラブ」のカウンセラーとして、約10年勤務しておりました。<br>延べ1000人以上の会員様を担当し、20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。　豊富な経験・知識を生かして、年齢、性別を問わず、お一人お一人に寄り添ったサポートをいたします。<br>「お見合いを成功させる秘訣」「異性に好かれる身だしなみ、行動、会話」「仮交際から真剣交際への進め方」「ご成婚への最後の一押し」等、幅広く丁寧にアドバイスいたします。<br>過去のご成婚者の方々から近況報告をいただいたり、元会員様から恋愛相談を受けたりと、現在でも長くお付き合いを続けさせていただいています。結婚後（成婚退会後）も何か悩みを抱えた時、いつでもご相談いただけるような身近な存在でありたいと思っております。<br>随時、無料相談（電話、zoom）を行っておりますので、お気軽にお問い合わせください。</div>
+                <div class="self-pic"><img src="/images/ShimadaTomoko.jpg"></div>
+                <div class="self-comment 1">入会1ヵ月以内のお見合い成立率100%</div>
+                <div class="self-comment 2">入会1カ月以内の交際成立率93%</div>
+                <div class="self-table">
+                  <div>※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
+                  <table>
+                    <tr v-for="(value, index) in tables" v-bind:key="index">
+                      <th>{{value.title}}</th>
+                      <td>{{value.cont}}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="access">
+              <h1 class="access-title">アクセス</h1>
+              <div class="access-cont">
+                <div class="access-comment">住所：〒107-0052東京都港区赤坂8-4-14　青山タワープレイス８F<br>（青山一丁目駅から徒歩3分）</div>
+                <div class="access-pic"><img src="/images/aoyamatower.jpeg"></div>
+                <div class="access-map">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.175124146428!2d139.72407744999748!3d35.672689687952186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d5e792882ab%3A0xc5ac8cc58a36ceef!2z6Z2S5bGx44K_44Ov44O844OX44Os44Kk44K5!5e0!3m2!1sja!2sjp!4v1657282738557!5m2!1sja!2sjp" 
+                  width="400"
+                  height="450" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade"
+                  >
+                  </iframe>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="contact">
-          <div class="contact-card">
-            <div class="contact-1">CONTACT</div>
-            <div class="contact-2">080-7002-0555</div>
-            <div class="contact-3">無料カウセリング<br>男性用</div>
-            <div class="contact-4">無料カウセリング<br>女性用</div>
+          <div class="contact">
+            <div class="contact-card">
+              <div class="contact-1">CONTACT</div>
+              <div class="contact-2">080-7002-0555</div>
+              <div class="contact-3">無料カウセリング<br>男性用</div>
+              <div class="contact-4">無料カウセリング<br>女性用</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </template>
+
+<style lang="sass" scoped>
+.hero
+  position: relative
+  height: 100vh
+
+  > .page-title
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+    text-align: center
+    margin: auto
+    width: 1080px
+    max-width: calc(100% - 10vw)
+    color: #ffffff
+    font-family: serif
+    font-size: 3.5vw
+
+    +sp-view
+
+  > .hero_img
+    width: 100vw
+    height: 100vh
+    z-index: -20
+
+    > .image
+      width: 100%
+      height: 100%
+      object-fit: cover
+
+</style>
 
 <style lang="scss" scoped>
 .menus{
@@ -220,7 +256,7 @@
   text-align: left;
 }
 
-.body{
+.first-body{
   background-image:url("/images/luxury-2.jpg");
   background-size: 25%;
   background-repeat: repeat;
@@ -426,6 +462,7 @@
 
 .colum{
   display: flex;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 .side{
   padding: 20px;
@@ -433,24 +470,24 @@
   color: #000875;
 }
 .side-card{
-  box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
+  // box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
   border-radius: 10px;
   padding: 20px;
   height: 500px;
   position: sticky;
   top: 70px;
-  background-color: rgba(255, 255, 255, 0.9);
-  background-image:
-  url("/images/frame-topleft.svg"),
-  url("/images/frame-topright.svg"),
-  url("/images/frame-bottomleft.svg"),
-  url("/images/frame-bottomright.svg");
-  background-position: 
-  left 2px top 2px,
-  right 2px top 2px,
-  left 2px bottom 2px,
-  right 2px bottom 2px;
-  background-size: 50px 50px;
+  // background-color: rgba(255, 255, 255, 0.9);
+  // background-image:
+  // url("/images/frame-topleft.svg"),
+  // url("/images/frame-topright.svg"),
+  // url("/images/frame-bottomleft.svg"),
+  // url("/images/frame-bottomright.svg");
+  // background-position: 
+  // left 2px top 2px,
+  // right 2px top 2px,
+  // left 2px bottom 2px,
+  // right 2px bottom 2px;
+  // background-size: 50px 50px;
 }
 .side-menu h2{
   text-align: center;
@@ -480,23 +517,23 @@
   padding: 20px 30px;
   flex: 0 0 80%;
 }
-.main-card{
-  box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
-  border-radius: 10px;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
-  background-image:
-  url("/images/frame-topleft.svg"),
-  url("/images/frame-topright.svg"),
-  url("/images/frame-bottomleft.svg"),
-  url("/images/frame-bottomright.svg");
-  background-position: 
-  left 2px top 2px,
-  right 2px top 2px,
-  left 2px bottom 2px,
-  right 2px bottom 2px;
-  background-size: 50px 50px;
-}
+// .main-card{
+// //   box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
+// //   border-radius: 10px;
+// //   padding: 20px;
+//   // background-color: rgba(255, 255, 255, 0.8);
+// //   background-image:
+// //   url("/images/frame-topleft.svg"),
+// //   url("/images/frame-topright.svg"),
+// //   url("/images/frame-bottomleft.svg"),
+// //   url("/images/frame-bottomright.svg");
+// //   background-position: 
+// //   left 2px top 2px,
+// //   right 2px top 2px,
+// //   left 2px bottom 2px,
+// //   right 2px bottom 2px;
+// //   background-size: 50px 50px;
+// }
 .main-title{
   position: relative;
   font-family: serif;
