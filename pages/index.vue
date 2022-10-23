@@ -14,7 +14,7 @@
           <h1 class="intro-title">セントマリアージュ青山について</h1>
           <div class="intro-cont">
             <div class="img_block left"><img class="img" src="/images/marriage-gate.webp"></div>
-            <div class="text">東京青山の結婚相談所エクセレンス青山の婚活は、ご成婚第一主義。一人ひとりにあったお相手探しで、お客様の個性にあわせたオンリーワンの婚活をご提案いたします。当社が掲げる「オンリーワンのご成婚」は、お客様一人ひとりの個性にあわせて最適なパートナーをご紹介いたします。ご納得いくまでお相手をお選びいただいたうえで、お見合いをしていただき、交際～ご成婚へと繋げてまいります。私たちは、お客様の結婚という明確なゴールに向けて、全力でサポートさせていただいております。</div>
+            <div class="text">東京青山の結婚相談所エクセレンス青山の婚活は、ご成婚第一主義。一人ひとりにあったお相手探しで、お客様の個性にあわせたオンリーワンの婚活をご提案いたします。当社が掲げる「オンリーワンのご成婚」は、お客様一人ひとりの個性にあわせて最適なパートナーをご紹介いたします。</div>
             <div class="img_block right"><img class="img" src="/images/marriage-bouquet.jpeg"></div>
           </div>
         </div>
@@ -23,7 +23,7 @@
     <div class="body">
       <div class="section --1">
         <div class="section-wrap">
-          <div class="title_block">
+          <div class="title_block --1">
             <h1 class="title">Interview</h1>
             <div class="title__border"></div>
             <p class="title__sub">ご成婚者様からの声</p>
@@ -36,21 +36,17 @@
                 :key="index"
             >
               <div 
-                class="case-card"
-                @mouseenter="mouseenterLinkRead"
-                @mouseleave="mouseleaveLink"
-              >
+                class="case-card">
                 <div class="case-item__image_block">
                   <img class="case-item__image" :src="item.img" alt="case-image">
                 </div>
                 <div class="card">
                   <div class="__link">
                     <p class="__title">Interview.{{ item.num }}</p>
-                    <ArrowImage direction="right"></ArrowImage>
+                    <!-- <arrow-image direction="right"></arrow-image> -->
                   </div>
-                  <img class="__logo" :src="item.logo" alter="logo">
                   <p class="__title">
-                    <span class="inline-block">{{ item.company }}</span>
+                    <span class="inline-block">{{ item.name }}</span>
                     <span class="inline-block">にインタビュー</span>
                   </p>
                 </div>
@@ -63,34 +59,27 @@
             <div class="link-wrap">
               <nuxt-link class="list-link" to="/case-study">
                 <div class="list-link-wrap" ref="linkPos3">
-                  <span class="list-link-text inline-block">More cases</span>
+                  <span class="list-link-text inline-block">More Interview</span>
                 </div>
-                <ArrowImage class="right-arrow" direction="right"></ArrowImage>
+                <!-- <ArrowImage class="right-arrow"></ArrowImage> -->
               </nuxt-link>
             </div>
           </div>
         </div>
-        <!-- <div class="award">
-          <div class="award-card">
-            <div class="award-title">セントマリアージュ青山が IBJ AWARD 2021年下期 を受賞しました！</div>
-            <div class="award-img">
-              <img src="~/assets/images/IBJ-award.png">
-            </div>
-            <div class="award-cont">
-              <div class="award-p">IBJ AWARD とは、日本結婚相談所連盟（IBJ)の加盟店3021社の中で、過去６か月間で特に顕著な実績を残した結婚相談所に贈られる賞です。当社は、2020年以降に開業した結婚相談所の中で、特に目覚ましい活躍をした相談所に贈られる「BEST ROOKIE部門」で受賞いたしました。こちらの受賞率は僅か10.2％（123社／1204社）になります。選定基準は、「入会数、成婚数」「地域への貢献度」「ガイドライン、法令の遵守」「クレームやトラブルがない事」等になります。これらの厳しい選定基準をクリアし、日本結婚相談所連盟(IBJ)がお勧めできる優良結婚相談所としてお墨付きをいただいたことになります。セントマリアージュ青山は開業から約1年ではございますが、多くの方々にご入会いただき、続々とご成婚が出ております。これからも、お一人でも多くの方々に幸せになっていただくために、心のこもったサポートをさせていただきたいと思っております。</div>
-            </div>
-          </div>
-        </div> -->
       </div>
       <div class="section --2">
         <div class="section-wrap">
-          <div class="title_block">
+          <div class="title_block --2">
             <h1 class="title">Award</h1>
             <div class="title__border"></div>
             <p class="title__sub">獲得賞</p>
           </div>
-          <div class="award-title">セントマリアージュ青山が IBJ AWARD 2021年下期 を受賞しました！</div>
-          <div class="content_wrap">
+          <div class="award-title">
+            <span class="inline-block">セントマリアージュ青山が</span>
+            <span class="inline-block">IBJ AWARD 2021年下期</span>
+            <span class="inline-block">を受賞しました！</span>
+          </div>
+          <div class="content_wrap --2">
             <div class="content_body img">
               <div class="top-service__img">
                 <div class="c-img">
@@ -120,56 +109,14 @@
                 &nbsp;<br>
                 「誰とも話せない」を「誰かと話せる」空間に。<br>
                 「ちょっと寂しい」を「ちょっと楽しい」空間に。<br>
-                &nbsp;<br>
-                spacemotionは、<br>
-                皆様の日常に「ちょっとだけ」楽しさを添える、<br>
-              エレベーターの中に小さな劇場を創る会社です。</p>
+              </p>
             </div>
           </div>
         </div>
       </div>
       <div class="section --3">
         <div class="section-wrap">
-          <div class="title_block">
-            <h1 class="title">Strangth</h1>
-            <div class="title__border"></div>
-            <p class="title__sub">選ばれる理由</p>
-          </div>
-          <ul class="content_wrap">
-            <li class="content_body">
-              
-              <h2 class="top-our_strengths__container--point">1</h2>
-              <p class="top-our_strengths__container--heading">経験豊富、<br>成婚実績多数</p>
-              <p class="top-our_strengths__container--about">
-                まるで映画館にいるような感覚でコンテンツを視聴できる、極上の体験を提供いたします。
-              </p>
-              
-              <div class="top-our_strengths__container--img">
-                <div class="c-img">
-                  <div class="c-img__border"></div>
-                  <img src="/images/heart-marriage.jpg" class="c-img__img" alt="プロジェクター">
-                </div>	
-              </div> 
-            </li>
-            <li class="content_body top-our_strengths__container">
-              <h2 class="top-our_strengths__container--point">2</h2>
-              <p class="top-our_strengths__container--heading">お一人お一人の<br>お気持ちに寄り添った<br>丁寧なサポート</p>
-              <p class="top-our_strengths__container--about">
-                通信状況が悪い環境でも安定してコンテンツを 配信する技術で、安心してコンテンツを配信、視聴可能です。（特許出願済み）
-              </p>
-              <div class="top-our_strengths__container--img">
-                <div class="c-img">
-                  <div class="c-img__border"></div>
-                  <img src="/images/heart-marriage.jpg" class="c-img__img" alt="安定したコンテンツ配信技術">
-                </div>	
-              </div> 
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="section --4">
-        <div class="section-wrap">
-          <div class="title_block">
+          <div class="title_block --4">
             <h1 class="title">Self Introduction</h1>
             <div class="title__border"></div>
             <p class="title__sub">カウンセラーからのご挨拶</p>
@@ -189,10 +136,12 @@
                 <div class="self-table">
                   <div class="text">※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
                   <table class="table">
-                    <tr v-for="(value, index) in tables" v-bind:key="index">
-                      <th>{{value.title}}</th>
-                      <td>{{value.cont}}</td>
-                    </tr>
+                    <tbody>
+                      <tr v-for="(value, index) in tables" v-bind:key="index">
+                        <th>{{value.title}}</th>
+                        <td>{{value.cont}}</td>
+                      </tr>
+                    </tbody>
                   </table>
                 </div>
               </div>
@@ -200,9 +149,50 @@
           </div>
         </div>
       </div>
+      <div class="section --4">
+        <div class="section-wrap">
+          <div class="title_block --3">
+            <h1 class="title">Strangth</h1>
+            <div class="title__border"></div>
+            <p class="title__sub">選ばれる理由</p>
+          </div>
+          <ul class="content_wrap">
+            <li class="content_body ---1 top-our_strengths__container">
+              <div class="top-our_strengths__container--body">
+                <h2 class="top-our_strengths__container--point">1</h2>
+                <p class="top-our_strengths__container--heading">お一人お一人の<br>お気持ちに寄り添った<br>丁寧なサポート</p>
+                <p class="top-our_strengths__container--about">
+                  通信状況が悪い環境でも安定してコンテンツを 配信する技術で、安心してコンテンツを配信、視聴可能です。（特許出願済み）
+                </p>
+              </div>
+              <div class="top-our_strengths__container--img">
+                <div class="c-img">
+                  <div class="c-img__border"></div>
+                  <img src="/images/heart-marriage.jpg" class="c-img__img" alt="プロジェクター">
+                </div>	
+              </div> 
+            </li>
+            <li class="content_body ---2 top-our_strengths__container">
+              <div class="top-our_strengths__container--body">
+                <h2 class="top-our_strengths__container--point">2</h2>
+                <p class="top-our_strengths__container--heading">お一人お一人の<br>お気持ちに寄り添った<br>丁寧なサポート</p>
+                <p class="top-our_strengths__container--about">
+                  通信状況が悪い環境でも安定してコンテンツを 配信する技術で、安心してコンテンツを配信、視聴可能です。（特許出願済み）
+                </p>
+              </div>
+              <div class="top-our_strengths__container--img">
+                <div class="c-img">
+                  <div class="c-img__border"></div>
+                  <img src="/images/heart-marriage.jpg" class="c-img__img" alt="安定したコンテンツ配信技術">
+                </div>	
+              </div> 
+            </li>
+          </ul>
+        </div>
+      </div>
       <div class="section --5">
         <div class="section-wrap">
-          <div class="title_block">
+          <div class="title_block --5">
             <h1 class="title">Access</h1>
             <div class="title__border"></div>
             <p class="title__sub">アクセス</p>
@@ -213,7 +203,6 @@
             width="100%"
             height="400" 
             style="border:0;" 
-            allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade"
             >
@@ -224,6 +213,91 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed, defineComponent, ref, watch, reactive, onMounted } from '@nuxtjs/composition-api'
+
+interface Table {
+  title: string,cont: string
+}
+interface CaseList {
+  num: number,
+  name: string,
+  img: string,
+  url?: string,
+}
+
+const tables: Table[] = [
+  {title:'ご年齢',cont:'20代後半〜50代前半'},
+  {title:'男女比',cont:'(約) 7 対 3'},
+  {title:'ご職業',cont:'三菱グループ各社、大手通信事業社、大手広告代理店、大手建設会社、大手金融機関、他'},
+]
+const displayCaseList: CaseList[] = [
+  {
+    num: 1,
+    name:'xxx xxxx',
+    img:'/images/heart-marriage.jpg',
+  },
+  {
+    num: 2,
+    name:'yyy yyyy',
+    img:'/images/heart-marriage.jpg',
+    url:'/flow',
+  },
+  {
+    num: 3,
+    name:'zzz zzzz',
+    img:'/images/heart-marriage.jpg',
+    url:'/voice',
+  },
+]
+onMounted(() => {
+  
+});
+  
+</script>
+
+<!-- <script>
+export default {
+  data () {
+  return {
+    displayCaseList:[
+      {
+        name:'コース案内、料金',
+        img:'/images/heart-marriage.jpg',
+        url:'/price',
+      },
+      {
+        name:'ご入会からご結婚まで',
+        img:'/images/heart-marriage.jpg',
+        url:'/flow',
+      },
+      {
+        name:'ご成婚者様の声',
+        img:'/images/heart-marriage.jpg',
+        url:'/voice',
+      },
+    ],
+    list: [
+          { title: 'ホーム', icon: 'mdi-web', url: '/' },
+          { title: 'コース案内、料金', icon: 'mdi-information-variant', url: '/price' },
+          { title: 'ご入会からご結婚まで', icon: 'mdi-information-variant', url: '/flow' },
+          { title: 'ご成婚者様の声', icon: 'mdi-web', url: '/voice' },
+        ],
+    tables:[
+      {title:'ご年齢',cont:'20代後半〜50代前半'},
+      {title:'男女比',cont:'(約) 7 対 3'},
+      {title:'ご職業',cont:'三菱グループ各社、大手通信事業社、大手広告代理店、大手建設会社、大手金融機関、他'},
+    ],
+  }
+  },
+  mounted() {
+      // this.dom = this.$refs.header; 
+      // this.rect = this.dom.getBoundingClientRect(); // 要素の座標と幅と高さを取得
+      // this.extra = this.rect.height
+  },
+}
+</script> -->
 
 <style lang="sass" scoped>
 .hero
@@ -238,12 +312,12 @@
     margin: auto
     width: 1080px
     max-width: calc(100% - 10vw)
-    color: #ffffff
-    font-family: serif
-    font-size: 3.5vw
+    +text-subtitle(54px)
+    color: var(--white-1)
 
     +sp-view
-
+      +text-subtitle(27px)
+      color: var(--white-1)
   > .img_block
     width: 100vw
     height: 100vh
@@ -258,21 +332,28 @@
 
   > .intro
     padding: 240px 0 160px
+
+    +sp-view
+      padding: 100px 0 80px
+
     > .intro-card
       width: 1080px
       max-width: calc(100% - 10vw)
       margin: auto
       text-align: center
-      font-family: serif
       box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%)
       border-radius: 10px
-      padding: 20px 40px 40px
+      padding: 30px 40px 40px
       background-color: rgba(255, 255, 255, 0.9)
       background-image: url("/images/frame-topleft.svg"), url("/images/frame-topright.svg"), url("/images/frame-bottomleft.svg"), url("/images/frame-bottomright.svg")
       background-position: left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
       background-size: 66px 66px
 
+      +sp-view
+        padding: 30px 30px 40px
+
       > .intro-title
+        +text-title(36px)
         display: inline-block
         position: relative
         font-family: serif
@@ -283,6 +364,10 @@
         background-clip: text
         -webkit-text-fill-color: transparent
 
+        +sp-view
+          font-size: 24px
+          padding: 0
+
         &::before,&::after 
           content: ''
           position: absolute
@@ -291,6 +376,9 @@
           width: 15%
           height: 2px
           background-color: #000875
+
+          +sp-view
+            display: none
           
         &::before 
           left:0
@@ -305,12 +393,15 @@
         align-items: center
 
         > .text
-          font-family: serif
+          +text-body(16px)
           padding: 0 20px
 
         > .img_block
           flex: 0 0 25%
           position: relative
+
+          +sp-view
+            display: none
 
           &::after
             content: ''
@@ -350,20 +441,22 @@
       padding: 40px 0 80px
 
       +sp-view
-        padding: 150px 0 0
+        padding: 80px 0 80px
 
       > .title_block
         display: flex
         justify-content: center
+        flex-wrap: wrap
         width:100%
         margin: 60px 0 60px
+        text-align: center
 
         > .title
-          +text-title(56px)
+          +text-title(64px)
 
           +sp-view
             width: 100%
-            +text-title(24px)
+            +text-title(48px)
 
         > .title__border
           width: 70px
@@ -399,7 +492,7 @@
             flex-direction: column
 
           > .case-item
-            min-width: 320px
+            min-width: 280px
             flex: 1
             margin-bottom: 40px
             border-radius: 8px
@@ -466,7 +559,7 @@
                     +text-title(32px)
 
                     +sp-view
-                      +text-title(44px)
+                      +text-title(28px)
                 > .__logo
                   height: 32px
                   width: auto
@@ -488,11 +581,14 @@
               gap: 15px
 
               > .list-link-wrap
-                +text-title(45px)
+                +text-title(40px)
                 overflow: hidden
                 display: flex
                 align-items: center
                 width: 240px
+
+                +sp-view
+                +text-title(32px)
 
                 >.list-link-text
                   display: inline-block
@@ -500,7 +596,7 @@
                   white-space: nowrap
 
                 &::after
-                  content: 'More cases'
+                  content: 'More Interview'
                   display: inline-block
                   padding-right: 23px
                   white-space: nowrap
@@ -527,6 +623,19 @@
           > .title__sub
             color: var(--white-1)
 
+        > .award-title
+          text-align: center
+          width: 100%
+          +text-title(40px)
+          margin-bottom: 10px
+          background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%)
+          background-clip: text
+          -webkit-text-fill-color: transparent
+          margin: 0 0 40px
+
+          +sp-view
+            font-size: 28px
+
         > .content_wrap
           display: flex
           justify-content: space-between
@@ -539,7 +648,12 @@
               width: 100%
 
             > .top-service__img
-              width: 80%
+              width: 60%
+              margin: auto
+
+              +sp-view
+                width: 300px
+                margin: auto
 
               > .c-img
                 position: relative
@@ -582,135 +696,28 @@
               margin: 12% 0 0
 
               +sp-view
-                +text-body(12px)
+                +text-body(16px)
                 color: var(--white-1)
                 margin-bottom: 20%
 
     &.--3
-      > .section-wrap
-        padding: 0 0 300px
-        > .content_wrap
-          display: flex
-          justify-content: space-between
-
-          > .content_body
-            width: 45%
-            transform: translateY(60px)
-            list-style: none
-            color: #707070
-            text-align: left
-
-            +sp-view
-              width: 100%
-              display: flex
-              flex-wrap: wrap-reverse
-
-            &:nth-child(1)
-              margin-top: 0
-
-              +sp-view
-                margin-top: 8%
-
-            &:nth-child(2)
-              margin-top: 10%
-
-              +sp-view
-                margin-top: 8%
-
-            > .top-our_strengths__container--point
-              +text-title(40px)
-
-              +sp-view
-                +text-title(20px)
-                &::after
-                  margin: 3% 0 5%
-
-              &::before
-                content: "Point"
-                +text-title(30px)
-                margin-right: 10px
-
-              &::after
-                content: ""
-                width: 50px
-                height: 3px
-                background: var(--main)
-                display: block 
-                margin: 5% 0 8%
-
-            > .top-our_strengths__container--heading
-              +text-title(40px)
-              line-height: 1.4em
-
-              +sp-view
-                +text-title(30px)
-
-            > .top-our_strengths__container--about
-              +text-body(24px)
-              line-height: 1.4em
-              margin: 8% 0 13%
-
-              +sp-view
-                margin:5% 0 13%
-                +text-body(20px)
-            
-            > .top-our_strengths__container--img
-              width: 95%
-              height: 25vw
-
-              +sp-view
-                width: 70vw
-                height: 40vw
-                margin: 0 0 0 auto
-
-              > .c-img
-                position: relative
-                width: 100%
-
-                &::before
-                  content:""
-                  display: block
-                  padding-top: 100%
-
-                > .c-img__border
-                  width: 100%
-                  height: 100%
-                  border: 1px solid #c1c1c1
-                  position: absolute
-                  top: 0
-                  left: 0
-
-                > .c-img__img
-                  display: block
-                  position: absolute
-                  height: 100%
-                  width: 100%
-                  top: 0
-                  object-fit: cover
-                  box-shadow: 3px 3px 6px rgba(0,0,0,.6)
-                  margin: 5% 0 0 5%
-                  z-index: 2
-
-            
-            
-
-            
-
-
-    &.--4
       background-color: var(--white-1)
       > .section-wrap
+        border-bottom: 1px solid black
         > .self
           > .self-cont
             display: flex
             flex-wrap: wrap
             justify-content: space-between
-            gap: 80px
+            gap: 60px
             margin: 20px 0 0
             padding: 20px
 
             > .self-pic
               flex: 0 0 30%
+
+              +sp-view
+                flex: 0 0 100%
               > .c-img
                 position: relative
                 width: 100%
@@ -719,6 +726,9 @@
                   content:""
                   display: block
                   padding-top: 160%
+
+                  +sp-view
+                  padding-top: 140%
 
                 > .c-img__border
                   width: 100%
@@ -744,6 +754,9 @@
               line-height: 2
               flex: 0 0 60%
 
+              +sp-view
+                flex: 0 0 100%
+
             > .self-body
               flex: 70%
 
@@ -753,11 +766,18 @@
                 background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%)
                 background-clip: text
                 -webkit-text-fill-color: transparent
+                margin-bottom: 20px
+
+                +sp-view
+                  font-size: 24px
 
               > .self-table
                 width: 70%
                 margin: 20px auto
-                +text-body(16px)
+                +text-subtitle(16px)
+
+                +sp-view
+                  width: 100%
                 
                 table
                   border-collapse:  collapse
@@ -771,12 +791,142 @@
               
                 td
                   width: 70%
+
+    &.--4
+      background-color: var(--white-1)
+      > .section-wrap
+        border-bottom: 1px solid black
+        // padding: 0 0 300px
+        > .content_wrap
+          display: flex
+          justify-content: space-between
+          flex-wrap: wrap
+
+          +sp-view
+            gap: 40px
+
+          > .content_body
+            width: 45%
+            // transform: translateY(60px)
+            list-style: none
+            color: #707070
+            text-align: left
+            padding: 10px
+            // background-color: var(--white-1)
+
+            +sp-view
+              width: 100%
+              display: flex
+              flex-wrap: wrap-reverse
+              gap: 10px
+
+            &:nth-child(1)
+              margin-top: 0
+
+              +sp-view
+                // margin-top: 8%
+
+            &:nth-child(2)
+              margin-top: 10%
+
+              +sp-view
+                // margin-top: 8%
+
+            > .top-our_strengths__container--body
+              > .top-our_strengths__container--point
+                +text-title(40px)
+                color: var(--main)
+
+                +sp-view
+                  &::after
+                    margin: 3% 0 5%
+
+                &::before
+                  content: "Point"
+                  +text-subtitle(30px)
+                  color: var(--sub)
+                  margin-right: 10px
+
+                  +sp-view
+                    font-size: 20px
+
+                &::after
+                  content: ""
+                  width: 50px
+                  height: 3px
+                  background: var(--sub)
+                  display: block 
+                  margin: 5% 0 8%
+
+                  +sp-view
+                    margin: 0% 0 8%
+
+              > .top-our_strengths__container--heading
+                +text-title(40px)
+                line-height: 1.4em
+
+                +sp-view
+                  +text-title(30px)
+
+              > .top-our_strengths__container--about
+                +text-body(20px)
+                line-height: 1.4em
+                margin: 8% 0 13%
+
+                +sp-view
+                  margin:5% 0 5%
+                  +text-body(16px)
+            
+            > .top-our_strengths__container--img
+              width: 95%
+              // height: 25vw
+
+              +sp-view
+                width: 65vw
+                // height: 40vw
+                margin: 0 0 0 auto
+                padding: 0 5% 0 0
+
+              > .c-img
+                position: relative
+                width: 100%
+
+                &::before
+                  content:""
+                  display: block
+                  padding-top: 100%
+
+                  +sp-view
+                    padding-top: 70%
+
+                > .c-img__border
+                  width: 100%
+                  height: 100%
+                  border: 1px solid #c1c1c1
+                  position: absolute
+                  top: 0
+                  left: 0
+
+                > .c-img__img
+                  display: block
+                  position: absolute
+                  height: 100%
+                  width: 100%
+                  top: 0
+                  object-fit: cover
+                  box-shadow: 3px 3px 6px rgba(0,0,0,.6)
+                  margin: 5% 0 0 5%
+                  z-index: 2
               
     &.--5
       background-color: var(--white-1)
       > .section-wrap
         width: 100%
         max-width: 100%
+
+        +sp-view
+          width: 1080px
+          max-width: calc(100% - 10vw)
 
         > .access-comment
           text-align: center
@@ -886,18 +1036,18 @@
   flex-wrap: wrap;
   font-family: serif;
 }
-.award-title{
-  text-align: center;
-  width: 100%;
-  font-family: serif;
-  font-size: 2vw;
-  font-weight: bold;
-  margin-bottom: 10px;
-  background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0 0 40px;
-}
+// .award-title{
+//   text-align: center;
+//   width: 100%;
+//   font-family: serif;
+//   font-size: 2vw;
+//   font-weight: bold;
+//   margin-bottom: 10px;
+//   background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%);
+//   background-clip: text;
+//   -webkit-text-fill-color: transparent;
+//   margin: 0 0 40px;
+// }
 .award-img{
   flex: 0 0 30%;
 }
@@ -1259,73 +1409,3 @@ button{
   color:#fff;
 }
 </style>
-
-<script>
-export default {
-  data () {
-  return {
-    pr:[
-     { 
-      name:'経験豊富、成婚実績多数',
-      explation:'大手結婚相談所で約10年間勤務し、1000人以上の会員様の担当カウンセラーとして婚活サポートを行ってきました。20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。これらの経験を活かし、ご成婚までしっかりサポートさせていただきます。',
-      photoUrl:'/images/heart-marriage.jpg' ,
-     },
-     { 
-      name:'お一人お一人のお気持ちに寄り添った丁寧なサポート',
-      explation:'会員様お一人お一人のお気持ちに寄り添い、丁寧なサポートをさせていただきます。お見合い後の振り返りや、交際中のデートの状況などを確認しながら、活動状況に応じてアドバイスをさせていただきます。婚活中は誰にも相談できず孤独に陥りがちですが、メール、Line、電話等で、いつでもご相談いただける体制を整えております。また、レスポンスの速さには自信がありますので、時間を無駄にすることなく活動を進めていただく事ができます。',
-      photoUrl:'/images/heart-marriage.jpg' ,
-     },
-     { 
-      name:'IBJ正規加盟店',
-      explation:'セントマリアージュ青山は、「日本結婚相談所連盟（IBJ）」の正規加盟店です。全国約70,000人の登録者を対象に、スマホやパソコンを使ってスムーズなお相手探しができます。毎月300名以上の新規会員の方が入会していますので、常に新たな出会いが期待できますお見合いのセッティング、交際から成婚まで、カウンセラーがきめ細かくサポートさせていただきます。',
-      photoUrl:'/images/ibj-certificate.png' ,
-     },
-    ],
-    displayCaseList:[
-      {
-        name:'コース案内、料金',
-        img:'/images/heart-marriage.jpg',
-        url:'/price',
-      },
-      {
-        name:'ご入会からご結婚まで',
-        img:'/images/heart-marriage.jpg',
-        url:'/flow',
-      },
-      {
-        name:'ご成婚者様の声',
-        img:'/images/heart-marriage.jpg',
-        url:'/voice',
-      },
-    ],
-    list: [
-          { title: 'ホーム', icon: 'mdi-web', url: '/' },
-          { title: 'コース案内、料金', icon: 'mdi-information-variant', url: '/price' },
-          { title: 'ご入会からご結婚まで', icon: 'mdi-information-variant', url: '/flow' },
-          { title: 'ご成婚者様の声', icon: 'mdi-web', url: '/voice' },
-        ],
-    news:[
-      {date:'2022/06/01',cont:'ご成婚者様からの声を追加しました'},
-      {date:'2022/06/02',cont:'ホームページを新しくしました'},
-      {date:'2022/06/03',cont:'ブログを更新しました'},
-      {date:'2022/06/04',cont:'ご成婚者様からの声を追加しました'},
-    ],
-    tables:[
-      {title:'ご年齢',cont:'20代後半〜50代前半'},
-      {title:'男女比',cont:'(約) 7 対 3'},
-      {title:'ご職業',cont:'三菱グループ各社、大手通信事業社、大手広告代理店、大手建設会社、大手金融機関、他'},
-    ],
-
-    extra:0,
-    dom:'',
-    rect:[],
-    activeName:"",
-  }
-  },
-  mounted() {
-      this.dom = this.$refs.header; 
-      this.rect = this.dom.getBoundingClientRect(); // 要素の座標と幅と高さを取得
-      this.extra = this.rect.height
-  },
-}
-</script>

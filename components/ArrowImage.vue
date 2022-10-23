@@ -14,9 +14,9 @@ export default {
     direction: {
       type: String,
       default: 'left',
-      validator: (value) => {
-        return ['left', 'right'].indexOf(value) !== -1
-      }
+    //   validator: (value) => {
+    //     return ['left', 'right'].indexOf(value) !== -1
+    //   }
     }
   },
 }

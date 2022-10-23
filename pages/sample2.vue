@@ -1,41 +1,29 @@
 <template>
   <div>
-    <div v-for="(name, i) in names" :key="i">
-      <input v-model="checkedNames" :value="name" type="checkbox" />
-      <label>{{ name }}</label>
-    </div>
-    <p>{{ text }}</p>
+    <h1>{{ state.text }}</h1>
+    <p>{{ state.count }}</p>
+    <button @click="changeText">button</button>
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, ref, watch } from '@nuxtjs/composition-api'
+<script setup lang="ts">
+import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api'
 
-export default defineComponent({
-  setup() {
-    const names = ['Jack', 'John', 'Mike']
-    const checkedNames = ref<string[]>([])
+interface State {
+  text: string
+  count: number
+}
 
-    // computed版
-    const text = computed(() => {
-      return 'checkedNames: ' + checkedNames.value.join(', ')
+  
+    const state = reactive<State>({
+      text: 'Hello, World!',
+      count: 0,
     })
 
-    // // watch版
-    // const text = ref('')
-    // watch(
-    //   checkedNames,
-    //   (newValue, oldValue) => {
-    //     text.value = 'checkedNames: ' + newValue.join(', ')
-    //   },
-    //   { immediate: true, deep: false }
-    // )
+    const { count } = toRefs(state)
 
-    return {
-      names,
-      checkedNames,
-      text,
+    const changeText = () => {
+      state.text = 'Hello, Nuxt!'
+      count.value++
     }
-  },
-})
 </script>
