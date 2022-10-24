@@ -9,20 +9,20 @@
         <div class="logo-main">セントマリアージュ青山</div>
       </nuxt-link>
       <div class="menu pc pc-header" id="header-menu-pc">
-        <nuxt-link class="menu--link" to="/mediasheet">
+        <nuxt-link class="menu--link" to="/price">
           <div class="link-wrap"><span class="link-text">コース案内</span></div>
         </nuxt-link>
-        <nuxt-link class="menu--link" to="/calendar">
+        <nuxt-link class="menu--link" to="/price">
           <div class="link-wrap"><span class="link-text">入会から結婚まで</span></div>
         </nuxt-link>
-        <nuxt-link class="menu--link" to="/news">
+        <nuxt-link class="menu--link" to="/price">
           <div class="link-wrap"><span class="link-text">あいさつ</span></div>
         </nuxt-link>
         <div class="spacer"></div>
-        <nuxt-link class="menu--link" to="/case-study">
+        <nuxt-link class="menu--link" to="/price">
           <div class="link-wrap"><span class="link-text">成婚者の声</span></div>
         </nuxt-link>
-        <nuxt-link class="menu--link" to="/faq">
+        <nuxt-link class="menu--link" to="/price">
           <div class="link-wrap"><span class="link-text">お問い合せ</span></div>
         </nuxt-link>
       </div>
@@ -36,11 +36,11 @@
     </div>
     <div class="sp-menu" ref="sideMenu">
       <div class="sp-menu-wrap">
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/mediasheet">Media sheet</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/calendar">Ads calendar</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/news">News</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/case-study">Case study</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/faq">FAQ/Contact</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/price">Media sheet</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/price">Ads calendar</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/price">News</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/price">Case study</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="//price">FAQ/Contact</nuxt-link>
       </div>
     </div>  
     <div class="flow_block">
@@ -48,7 +48,7 @@
       <div class="circle_form woman"><span class="inline-block">無料相談<br>女性用</span></div>
     </div>
 
-    <div class="body">
+    <div class="Body">
       <nuxt/>
     </div>
 
@@ -65,6 +65,7 @@
 
 <script>
 import { nextTick } from 'vue'
+
 export default {
   data() {
     return {
@@ -76,26 +77,69 @@ export default {
       ],
       sideActive: false,
       fuwaTrigger: [],
-      trigger: [
-        '.intro',
-        '.title_block.--1',
-        '.case_list',
-        '.link-block',
-        '.title_block.--2',
-        '.award-title',
-        '.content_body.img',
-        '.content_body.text',
-        '.title_block.--3',
-        '.content_body.---1',
-        '.content_body.---2',
-        '.title_block.--4',
-        '.self-pic',
-        '.self-p',
-        '.title_block.--5',
-        '.access-comment',
-        '.access-map',
-      ],
+      pageWidth: 900,
+      headerAnim: [],
+      circleAnim: [],
+      circleManAnim: [],
+      circleWomanAnim: [],
     }
+  },
+  watch: {
+    pageWidth(val) {
+      if (val > 770 && this.sideActive) this.toggleMenu()
+    },
+  },
+  mounted() {
+    window.removeEventListener('resize', this.watchWidth, false);
+    // this.circleAnim = this.$gsap.to(".circle_form",{
+    //   scrollTrigger: {
+    //     trigger: '.body',
+    //     start: 'top bottom',
+    //     end: 'bottom bottom',
+    //     toggleActions: 'play reverse play reverse',
+    //   },
+    //   opacity: 1,
+    //   duration: .3, 
+    // })
+
+    this.watchWidth()
+    this.circleManAnim = this.$gsap.to(".circle_form.man",{
+      scrollTrigger: {
+        trigger: '.body',
+        start: 'top bottom',
+        end: 'bottom bottom',
+        scrub: 1,
+      },
+      x: -(this.pageWidth * 0.9 - 250),
+      duration: .3, 
+    })
+    this.circleWomanAnim = this.$gsap.to(".circle_form.woman",{
+      scrollTrigger: {
+        trigger: '.body',
+        start: 'top bottom',
+        end: 'bottom bottom',
+        scrub: 3,
+      },
+      x: -(this.pageWidth * 0.9 - 250),
+      duration: .3, 
+    })
+
+    this.headerAnim = this.$gsap.to(".header_wrap",{
+      scrollTrigger: {
+        trigger: '.intro',
+        start: 'top 30%',
+        toggleActions: 'play none none reverse',
+      },
+      'background-color': '#000875',
+      duration: .3, 
+    })
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.watchWidth, false);
+    this.circleAnim.scrollTrigger.disable()
+    this.circleManAnim.scrollTrigger.disable()
+    this.circleWomanAnim.scrollTrigger.disable()
+    this.headerAnim.scrollTrigger.disable()
   },
   methods: {
     nuxtLinkTrigger(event) {
@@ -126,44 +170,10 @@ export default {
           autoAlpha: 1,
         })
       }
-    }
-  },
-  mounted() {
-    window.addEventListener("scroll", this.getScroll); //スクロールのするたびに関数を呼びだす処理
-    this.headerHeight = document.documentElement.clientHeight 
-
-    this.$gsap.to(".circle_form",{
-      scrollTrigger: {
-        trigger: '.footer',
-        start: 'top bottom',
-        toggleActions: 'play none none reverse',
-      },
-      opacity: 0,
-      duration: .3, 
-    })
-    this.$gsap.to(".header_wrap",{
-      scrollTrigger: {
-        trigger: '.intro',
-        start: 'top 30%',
-        toggleActions: 'play none none reverse',
-      },
-      'background-color': '#000875',
-      duration: .3, 
-    })
-    this.$nextTick( () => {
-      this.trigger.forEach(value => {
-        this.fuwaTrigger[value] = this.$gsap.fromTo(value, 1, {
-          opacity: 0,
-        },
-        {
-          scrollTrigger: {
-            trigger: value,
-            start: 'top 70%',
-          },
-          opacity: 1,
-        })
-      })
-    });
+    },
+    watchWidth() {
+      this.pageWidth = window.innerWidth
+    },
   },
 }
 
@@ -420,6 +430,7 @@ export default {
     text-align: center
     +text-subtitle(20px)
     color: var(--white-1)
+    opacity: 0
     
     &.man
       background: linear-gradient(to bottom, #5f51e0, rgb(195, 242, 248))

@@ -8,7 +8,7 @@
         </p>
       </nuxt-link>
     </div>
-    <div class="footer__contact overlay" ref="footerTarget" @mouseleave="mouseoutFooter">
+    <div class="footer__contact overlay" ref="footerTarget" @mouseleave="mouseOutFooter">
       <div class="link-wrap">
       </div>
       <nuxt-link to="/" class="contact-link">
@@ -21,54 +21,47 @@
   </div>
 </template>
 
-<script>
-// import {TweenMax} from "gsap";
+<script setup lang="ts">
+import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount } from 'vue'
+import gsap from "gsap"
 
-export default {
-  name: "GetInTouch",
-  components: {},
-  props: {},
-  data() {
-    return {}
-  },
-  mounted() {
-    document.addEventListener('mousemove', this.watchFooterCursor)
-  },
-  destroyed() {
-    document.removeEventListener('mousemove', this.watchFooterCursor)
-  },
-  methods: {
-    watchFooterCursor(event) {
-      const targetEle = this.$refs[`footerTarget`]
-      const right = targetEle.getBoundingClientRect().right
-      const bottom = targetEle.getBoundingClientRect().bottom
-      const top = targetEle.getBoundingClientRect().top
-      const posX = event.clientX
-      const posY = event.clientY - top
-      if(posY >= 0 && (bottom - top) >= posY && posX <= (right) && 0 <= posX){
-        this.$gsap.to(targetEle, {
-          "clip-path": `circle(120px at ${posX}px ${posY}px)`,
-          duration: 0.3
-        })
-      }else{
-        this.$gsap.to(targetEle, {
-          "clip-path": `circle(0px at ${posX}px ${posY}px)`,
-          duration: 0.3
-        })
+const footerTarget = ref()
+const mouseOutFooter = (event: MouseEvent) => {
+  const posX = event.clientX
+  const posY = event.clientY - footerTarget.value.getBoundingClientRect().top
+  gsap.to(footerTarget.value, .3, {
+    css: {
+        "clip-path": `circle(0px at ${posX}px ${posY}px)`
       }
-    },
-    mouseoutFooter(event){
-      const targetEle = this.$refs[`footerTarget`]
-      const posX = event.clientX
-      const posY = event.clientY - targetEle.getBoundingClientRect().top
-      this.$gsap.to(targetEle, .3, {
-        css: {
-            "clip-path": `circle(0px at ${posX}px ${posY}px)`
-          }
-      })
-    },
-  },
+  })
 }
+const watchFooterCursor = (event: MouseEvent) => {
+  const right = footerTarget.value.getBoundingClientRect().right
+  const bottom = footerTarget.value.getBoundingClientRect().bottom
+  const top = footerTarget.value.getBoundingClientRect().top
+  const posX = event.clientX
+  const posY = event.clientY - top
+  if(posY >= 0 && (bottom - top) >= posY && posX <= (right) && 0 <= posX){
+    gsap.to(footerTarget.value, {
+      "clip-path": `circle(120px at ${posX}px ${posY}px)`,
+      duration: 0.3
+    })
+  }else{
+    gsap.to(footerTarget.value, {
+      "clip-path": `circle(0px at ${posX}px ${posY}px)`,
+      duration: 0.3
+    })
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('mousemove', watchFooterCursor)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('mousemove', watchFooterCursor)
+})
+
 </script>
 
 <style lang="sass" scoped>

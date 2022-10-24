@@ -1,5 +1,6 @@
 <template>
-  <ArrowLeft class="arrow" :class="{'right': direction === 'right'}"></ArrowLeft>
+  <arrow-left class="arrow" :class="{'right': direction === 'right'}"></arrow-left>
+  <!-- <img class="arrow right" src="~/assets/images/arrow-horizontal-left.svg" /> -->
 </template>
 
 <script>
@@ -24,6 +25,8 @@ export default {
 
 <style scoped lang="sass">
 .arrow
+  path
+    fill: currentColor
   &.right
     transform: rotate(180deg)
 </style>

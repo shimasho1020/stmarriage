@@ -43,7 +43,7 @@
                 <div class="card">
                   <div class="__link">
                     <p class="__title">Interview.{{ item.num }}</p>
-                    <!-- <arrow-image direction="right"></arrow-image> -->
+                    <ArrowImage class="right-arrow" direction="right"></ArrowImage>
                   </div>
                   <p class="__title">
                     <span class="inline-block">{{ item.name }}</span>
@@ -61,7 +61,7 @@
                 <div class="list-link-wrap" ref="linkPos3">
                   <span class="list-link-text inline-block">More Interview</span>
                 </div>
-                <!-- <ArrowImage class="right-arrow"></ArrowImage> -->
+                <ArrowImage class="right-arrow" direction="right"></ArrowImage>
               </nuxt-link>
             </div>
           </div>
@@ -215,7 +215,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineComponent, ref, watch, reactive, onMounted } from '@nuxtjs/composition-api'
+import gsap from "gsap"
+import { computed, defineComponent, ref, watch, reactive, onMounted, onBeforeUnmount } from '@nuxtjs/composition-api'
 
 interface Table {
   title: string,cont: string
@@ -231,6 +232,25 @@ const tables: Table[] = [
   {title:'ご年齢',cont:'20代後半〜50代前半'},
   {title:'男女比',cont:'(約) 7 対 3'},
   {title:'ご職業',cont:'三菱グループ各社、大手通信事業社、大手広告代理店、大手建設会社、大手金融機関、他'},
+]
+const trigger: string[] = [
+  '.intro',
+  '.title_block.--1',
+  '.case_list',
+  '.link-block',
+  '.title_block.--2',
+  '.award-title',
+  '.content_body.img',
+  '.content_body.text',
+  '.title_block.--3',
+  '.content_body.---1',
+  '.content_body.---2',
+  '.title_block.--4',
+  '.self-pic',
+  '.self-p',
+  '.title_block.--5',
+  '.access-comment',
+  '.access-map',
 ]
 const displayCaseList: CaseList[] = [
   {
@@ -251,9 +271,43 @@ const displayCaseList: CaseList[] = [
     url:'/voice',
   },
 ]
+
+let circleAnim: gsap.core.Tween
+let fuwaAnim: gsap.core.Tween[] = []
+
 onMounted(() => {
-  
-});
+  circleAnim = gsap.to(".circle_form",{
+    scrollTrigger: {
+      trigger: '.body',
+      start: 'top bottom',
+      end: 'bottom bottom',
+      toggleActions: 'play reverse play reverse',
+    },
+    opacity: 1,
+    duration: .3, 
+  })
+
+  trigger.forEach(value => {
+    let array: gsap.core.Tween = gsap.fromTo(value, 1, {
+      opacity: 0,
+    },
+    {
+      scrollTrigger: {
+        trigger: value,
+        start: 'top 70%',
+      },
+      opacity: 1,
+    })
+    fuwaAnim.push(array)
+  })
+})
+
+onBeforeUnmount(() => {
+  circleAnim.scrollTrigger?.disable()
+  fuwaAnim.forEach(value => {
+    value.scrollTrigger?.disable()
+  })
+})
   
 </script>
 
@@ -560,6 +614,9 @@ export default {
 
                     +sp-view
                       +text-title(28px)
+
+                  > .right-arrow
+                    color: var(--main)
                 > .__logo
                   height: 32px
                   width: auto
@@ -608,6 +665,7 @@ export default {
               > .right-arrow
                 height: 11px
                 width: 27px
+                color: var(--main)
 
                 +sp-view
                   +text-title(32px)
@@ -937,475 +995,4 @@ export default {
           height: 400px
           object-fit: cover
 
-</style>
-
-<style lang="scss" scoped>
-// .content_body{width:45%;transform:translateY(60px)}
-// @media (max-width:768px){.content_body{width:100%}}
-// .top-our_strengths__container{list-style:none;color:#707070;text-align:left}
-// @media (max-width:768px){.top-our_strengths__container{display:flex;display:-ms-flexbox;flex-wrap:wrap-reverse}}
-// .top-our_strengths__container:first-child{margin-top:3%}
-// @media (max-width:768px){.top-our_strengths__container:first-child{margin-top:8%}}
-// .top-our_strengths__container:nth-child(2){margin-top:13%}
-// @media (max-width:768px){.top-our_strengths__container:nth-child(2){margin-top:8%}}
-// .top-our_strengths__container--point{font-size:5em;font-weight:400}
-// @media (max-width:768px){.top-our_strengths__container--point{font-size:3.5em;margin-top:5%}}
-// .top-our_strengths__container--point:before{content:"Point";font-size:.5em;margin-right:10px}
-// .top-our_strengths__container--point:after{content:"";width:50px;height:3px;background:#e2e2e2;display:block;margin:5% 0 8%}
-// @media (max-width:768px){.top-our_strengths__container--point:after{margin:3% 0 5%}}
-// .top-our_strengths__container--heading{font-size:2.4em;font-weight:700;letter-spacing:.1em;line-height:1.4em}
-// @media (max-width:768px){.top-our_strengths__container--heading{font-size:1.8em}}
-// .top-our_strengths__container--about{font-size:1.6em;line-height:1.4em;margin:8% 0 13%}
-// @media (max-width:768px){.top-our_strengths__container--about{font-size:1.4em;margin:5% 0 13%}}
-// .top-our_strengths__container--img{width:95%;height:25vw}
-// @media (max-width:768px){.top-our_strengths__container--img{width:70vw;height:40vw;margin:0 0 0 auto}}
-
-.menus{
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-.lists{
-  flex: 0 0 25%;
-  padding: 20px;
-}
-.cards{
-  color: #000875;
-  box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
-  border-radius: 10px;
-  padding: 0 20px 20px;
-  height: 100%;
-  text-align:center;
-  background-color: rgb(240, 240, 255,0.9);
-  background-image:url("/images/luxury-2.jpg");
-  background-size: 50%;
-  background-repeat: repeat;
-  background-position: right bottom;
-}
-.cards h3{
-  padding: 15px 0 5px;
-  font-family:serif;
-  background-color: white;
-}
-.cards-a:hover{
-  color: #aae0f5;
-}
-.cards-a{
-  text-decoration: none;
-}
-.cards .pic{
-  height: 10vw;
-  position: relative;
-}
-.cards .pic::after{
-  content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(0deg, transparent 0 60%, #FFF 100%);
-}
-.cards img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.cards .note{
-  text-align: left;
-}
-
-.first-body{
-  background-image:url("/images/luxury-2.jpg");
-  background-size: 25%;
-  background-repeat: repeat;
-  padding-top: 20px;
-}
-
-.award{
-  width: 100%;
-  padding: 3% 15%;
-}
-.award-card{
-  box-shadow: 0 0 10px 2px rgb(0 0 0 / 10%);
-  border-radius: 10px;
-  padding: 20px;
-  background-color: rgb(255, 255, 255,0.9);
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  font-family: serif;
-}
-// .award-title{
-//   text-align: center;
-//   width: 100%;
-//   font-family: serif;
-//   font-size: 2vw;
-//   font-weight: bold;
-//   margin-bottom: 10px;
-//   background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%);
-//   background-clip: text;
-//   -webkit-text-fill-color: transparent;
-//   margin: 0 0 40px;
-// }
-.award-img{
-  flex: 0 0 30%;
-}
-.award-img img{
-  width: 100%;
-  object-fit: cover;
-}
-.award-cont{
-  flex: 0 0 70%;
-  padding-left: 20px;
-}
-
-
-.colum{
-  display: flex;
-  background-color: rgba(255, 255, 255, 0.9);
-}
-.side{
-  padding: 20px;
-  flex: 0 0 20%;
-  color: #000875;
-}
-.side-card{
-  // box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
-  border-radius: 10px;
-  padding: 20px;
-  height: 500px;
-  position: sticky;
-  top: 70px;
-  // background-color: rgba(255, 255, 255, 0.9);
-  // background-image:
-  // url("/images/frame-topleft.svg"),
-  // url("/images/frame-topright.svg"),
-  // url("/images/frame-bottomleft.svg"),
-  // url("/images/frame-bottomright.svg");
-  // background-position: 
-  // left 2px top 2px,
-  // right 2px top 2px,
-  // left 2px bottom 2px,
-  // right 2px bottom 2px;
-  // background-size: 50px 50px;
-}
-.side-menu h2{
-  text-align: center;
-  font-family: serif;
-  border-bottom: solid 2px #000875;
-}
-.side-menu ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-.side-menu-a{
-  padding: 15px;
-  text-decoration: none;
-  display: block;
-  font-weight: bold;
-  font-family: serif;
-  font-size: 1.5vw;
-  position: relative;
-}
-.side-menu-a:hover{
-  color: #aae0f5;
-}
-
-
-.main{
-  padding: 20px 30px;
-  flex: 0 0 80%;
-}
-// .main-card{
-// //   box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
-// //   border-radius: 10px;
-// //   padding: 20px;
-//   // background-color: rgba(255, 255, 255, 0.8);
-// //   background-image:
-// //   url("/images/frame-topleft.svg"),
-// //   url("/images/frame-topright.svg"),
-// //   url("/images/frame-bottomleft.svg"),
-// //   url("/images/frame-bottomright.svg");
-// //   background-position: 
-// //   left 2px top 2px,
-// //   right 2px top 2px,
-// //   left 2px bottom 2px,
-// //   right 2px bottom 2px;
-// //   background-size: 50px 50px;
-// }
-.main-title{
-  position: relative;
-  font-family: serif;
-  text-align: center;
-  color:  #000875;
-}
-.main-title:before{
-  position: absolute;
-  top: calc(50% - 4px);
-  left: 0;
-  width: 100%;
-  height: 8px;
-  content: '';
-  border-radius: 3px;
-  // background-image: linear-gradient(135deg,   #17aaee 0%, #000875 37%,#000875 63%, #17aaee 100%);
-  background-image: repeating-linear-gradient(45deg, #000875 0, #000875 1px, transparent 0, transparent 50%), repeating-linear-gradient(135deg, #ccc 0, #ccc 1px, transparent 0, transparent 50%);
-  background-size: 8px 8px;
-  background-repeat: repeat;
-}
-.main-title span {
-  position: relative;
-  padding: 0 1em;
-  background: #fff;
-}
-
-.PR{
-  font-family: serif;
-  padding: 20px;
-}
-.pr-title {
-	position: relative;
-	padding: .1em .3em .1em 1em;
-	// border-bottom: 1px solid #00ccff;
-  color:#000875;
-  margin: 0 0 10px;
-}
-.pr-title:before,.pr-title:after {
-	position: absolute;
-	content: "";
-	display: block;
-	width: 15px;
-	height: 15px;
-	border: 2px solid #000875;
-	top: 35%;
-	left: 3px;
-	transform: rotate(45deg);
-}
-.pr-title:after {
-	top: 35%;
-	left: 10px;
-	height: 15px;
-	width: 15px;
-	transform: rotate(45deg);
-	border: none;
-	background: rgba(0, 60, 255, 0.3);
-}
-.pr-list{
-  margin: 10px 20px;
-  display: flex;
-  overflow: scroll;
-  text-align: left;
-}
-.pr-list.even{
-  flex-direction: row-reverse;
-}
-.pr-pic{
-  flex: 0 0 30%;
-  padding-top: 30%;
-  position: relative;
-}
-.pr-pic img{
-  position: absolute;
-  top:0;
-  left:0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.pr-cont{
-  padding: 20px;
-  flex: 0 0 70%;
-  position: relative;
-  min-width: 50%;
-}
-.pr-cont h2{
-  color:#000000;
-  padding: 20px 0;
-  font-family:serif;
-}
-.pr-cont-p{
-  text-align: left;
-  font-family:serif;
-  font-weight: bold;
-}
-
-// .self{
-//   font-family: serif;
-//   margin: 30px 0 0;
-//   padding: 20px;
-// }
-// .self-title {
-// 	position: relative;
-// 	padding: .1em .3em .1em 1em;
-// 	// border-bottom: 1px solid #00ccff;
-//   color:#000875;
-// }
-// .self-title:before,.self-title:after {
-// 	position: absolute;
-// 	content: "";
-// 	display: block;
-// 	width: 15px;
-// 	height: 15px;
-// 	border: 2px solid #000875;
-// 	top: 35%;
-// 	left: 3px;
-// 	transform: rotate(45deg);
-// }
-// .self-title:after {
-// 	top: 35%;
-// 	left: 10px;
-// 	height: 15px;
-// 	width: 15px;
-// 	transform: rotate(45deg);
-// 	border: none;
-// 	background: rgba(0, 60, 255, 0.3);
-// }
-// .self-cont{
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   margin: 20px 0 0;
-//   padding: 20px;
-// }
-// .self-p{
-//   flex: 0 0 70%;
-//   padding-right: 10px;
-
-// }
-// .self-pic{
-//   flex: 0 0 30%;
-// }
-// .self-pic img{
-//   width: 100%;
-// }
-// .self-comment{
-//   text-align: center;
-//   font-size: 2.5vw;
-//   font-weight: bold;
-//   background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%);
-//   background-clip: text;
-//   -webkit-text-fill-color: transparent;
-
-// }
-// .self-table{
-//   flex: 0 0 70%;
-//   margin: 20px 0;
-// }
-// .self-table table{
-//   border-collapse:  collapse;
-// }
-// .self-table th,.self-table td{
-//   border: solid 1px;  
-//   padding: 10px;
-// }
-// .self-table th{
-//   width: 30%;
-// }
-// .self-table td{
-//   width: 70%;
-// }
-
-.access{
-  font-family: serif;
-  padding: 20px;
-}
-.access-title {
-	position: relative;
-	padding: .1em .3em .1em 1em;
-	// border-bottom: 1px solid #00ccff;
-  color:#000875;
-  margin: 0 0 10px;
-}
-.access-title:before,.access-title:after {
-	position: absolute;
-	content: "";
-	display: block;
-	width: 15px;
-	height: 15px;
-	border: 2px solid #000875;
-	top: 35%;
-	left: 3px;
-	transform: rotate(45deg);
-}
-.access-title:after {
-	top: 35%;
-	left: 10px;
-	height: 15px;
-	width: 15px;
-	transform: rotate(45deg);
-	border: none;
-	background: rgba(0, 60, 255, 0.3);
-}
-.access-cont{
-  display: flex;
-  flex-wrap: wrap;
-  margin: 20px 0;
-  margin: 20px;
-}
-.access-comment{
-  flex: 0 0 90%;
-}
-.access-pic{
-  flex: 0 0 338px;
-}
-.access-pic img{
-  height: 450px;
-}
-.access-map{
-  flex: 0 0 20%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.contact{
-  font-family: serif;
-  margin-top: 30px;
-}
-.contact-card{
-  background: linear-gradient(to top, #21d3f3, rgb(195, 242, 248));
-  text-align: center;
-  font-size: 2vw;
-  color: #000875;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 20px;
-}
-.contact-1{
-  flex: 0 0 100%;
-  font-size: 2.5vw;
-  font-weight: bold;
-}
-.contact-2{
-  flex: 0 0 100%;
-  font-size: 3vw;
-}
-.contact-3,.contact-4{
-  flex: 0 0 30%;
-  border: 3px solid rgb(255, 255, 255);
-  border-radius: 10px;
-  margin: 10px;
-  background-color: rgb(255, 255, 255,0.6);
-}
-.contact-2:hover,.contact-3:hover,.contact-4:hover{
-  color: #fff;
-}
-
-
-button{
-  font-size: 10px;
-  font-weight: bold;
-  padding: 3px;
-  border-radius: 5px;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  background-color: rgb(245, 245, 236);
-  overflow: scroll;
-}
-.selected{
-  background-color: blueviolet;
-  color:#fff;
-}
 </style>
