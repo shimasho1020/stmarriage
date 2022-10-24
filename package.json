@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nuxtjs/composition-api": "^0.33.1",
+    "@vueuse/core": "^9.3.1",
     "core-js": "^3.19.3",
     "nuxt": "^2.15.8",
     "sass": "^1.55.0",

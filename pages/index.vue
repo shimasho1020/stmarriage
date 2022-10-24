@@ -218,6 +218,7 @@
 import gsap from "gsap"
 import { computed, defineComponent, ref, watch, reactive, onMounted, onBeforeUnmount } from '@nuxtjs/composition-api'
 
+
 interface Table {
   title: string,cont: string
 }
