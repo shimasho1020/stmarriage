@@ -217,6 +217,7 @@
 <script setup lang="ts">
 import gsap from "gsap"
 import { computed, defineComponent, ref, watch, reactive, onMounted, onBeforeUnmount } from '@nuxtjs/composition-api'
+// import { createStore, Store as baseUseStore } from "vuex";
 
 
 interface Table {
@@ -228,6 +229,8 @@ interface CaseList {
   img: string,
   url?: string,
 }
+
+// const store = useStore()
 
 const tables: Table[] = [
   {title:'ご年齢',cont:'20代後半〜50代前半'},

@@ -79,7 +79,6 @@ export default {
       fuwaTrigger: [],
       pageWidth: 900,
       headerAnim: [],
-      circleAnim: [],
       circleManAnim: [],
       circleWomanAnim: [],
     }
@@ -136,7 +135,7 @@ export default {
   },
   destroyed() {
     window.removeEventListener('resize', this.watchWidth, false);
-    this.circleAnim.scrollTrigger.disable()
+    // this.circleAnim.scrollTrigger.disable()
     this.circleManAnim.scrollTrigger.disable()
     this.circleWomanAnim.scrollTrigger.disable()
     this.headerAnim.scrollTrigger.disable()
