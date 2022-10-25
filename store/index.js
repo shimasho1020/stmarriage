@@ -3,7 +3,13 @@ export const state = () => ({
 })
 
 export const actions = {
-  //内容
+  ActionExample(context, payload) {
+    console.log(payload.config)
+    context.commit('setData', payload.config)
+  },
+  exposeLog(text){
+    console.log(text)
+  },
 };
 
 export const mutations = {

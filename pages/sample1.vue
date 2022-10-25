@@ -1,48 +1,40 @@
 <template>
-  <div class="container">
-    <div class="wrap">
-      <h1 class="title">
-        nuxt_typescript_app
-      </h1>
-      <h2 class="subtitle">
-        My epic Nuxt.js project
-      </h2>
-      <user-name :user="userName" />
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-         Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+  <div>
+    <h1>{{ text }}</h1>
+    <button @click="changeText">button</button>
   </div>
 </template>
 
-<script>
-import UserName from '~/components/UserName.vue'
+<script lang="ts">
+import { defineComponent, ref, useContext, useStore, SetupContext, getCurrentInstance } from '@nuxtjs/composition-api';
 
-export default {
-  components: {
-    UserName
-  },
-  data() {
-    return {
-      userName: {
-        familyName: '田中',
-        givenName: '1234'
-      }
+export default defineComponent({
+  layout: 'sub',
+  setup(_props, context) {
+    // const scrolmagic = (context.root as any).$sleep
+    const UseContextReturn = useContext()
+    const { app, store } = useContext()
+    // const store  = useStore ();
+
+    // UseContextReturn.app.context.$test()
+    // UseContextReturn.app.$test()
+    // UseContextReturn.$test()
+    console.log(store)
+    // console.log(UseContextReturn.store.getters['pageWidth'])
+    // app.$text()
+
+    // console.log(getCurrentInstance())
+
+    const text = ref('Hello, World!')
+
+    const changeText = () => {
+      text.value = 'Hello, Nuxt!'
     }
-  }
-}
-</script>
 
-<style lang="sass" scoped>
-.container
-  padding: 100px 0 0
-</style>
+    return {
+      text,
+      changeText,
+    }
+  },
+})
+</script>

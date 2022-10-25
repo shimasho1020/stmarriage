@@ -216,7 +216,7 @@
 
 <script setup lang="ts">
 import gsap from "gsap"
-import { computed, defineComponent, ref, watch, reactive, onMounted, onBeforeUnmount } from '@nuxtjs/composition-api'
+import { computed, defineComponent, ref, watch, reactive, onMounted, onBeforeUnmount } from 'vue'
 // import { createStore, Store as baseUseStore } from "vuex";
 
 

@@ -10,9 +10,14 @@ import ArrowLeft from '~/assets/images/arrow-horizontal-left.svg'
 components: {
   ArrowLeft
 }
-defineProps<{
-  direction?: string;
-}>();
+interface Props {
+  direction?: string
+  // labels?: string[]
+}
+const props = withDefaults(defineProps<Props>(), {
+  direction: 'left',
+  // labels: () => ['one', 'two']
+})
 
 // export default {
 //   name: "ArrowImage",

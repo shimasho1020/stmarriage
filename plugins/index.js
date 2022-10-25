@@ -1,13 +1,14 @@
-import { defineNuxtPlugin } from '@nuxtjs/composition-api'
-export default defineNuxtPlugin((ctx, inject) => { 
-  const test = () => {
-    return 10000
-  } 
-  inject('test', test);
-});
+const sleep = (milliseconds) => {
+  return new Promise(resolve => {
+    setTimeout(resolve, milliseconds)
+  })
+}
 
-// 次のように使う
-// setup() {
-//   const { $test } = useContext()
-//   console.log($test())
-// },
+const test = () => {
+  console.log(10000)
+} 
+
+export default ({}, inject) => {
+  inject('sleep', sleep)
+  inject('test', test)
+}
