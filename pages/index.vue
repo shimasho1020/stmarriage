@@ -216,7 +216,8 @@
 
 <script setup lang="ts">
 import gsap from "gsap"
-import { computed, defineComponent, ref, watch, reactive, onMounted, onBeforeUnmount } from 'vue'
+// import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
 // import { createStore, Store as baseUseStore } from "vuex";
 
 
@@ -229,8 +230,6 @@ interface CaseList {
   img: string,
   url?: string,
 }
-
-// const store = useStore()
 
 const tables: Table[] = [
   {title:'ご年齢',cont:'20代後半〜50代前半'},
@@ -276,8 +275,19 @@ const displayCaseList: CaseList[] = [
   },
 ]
 
+const { app, store } = useContext()
+let pageWidth = computed<number>(() => store.getters['pageWidth'])
+
 let circleAnim: gsap.core.Tween
+let circleManAnim: gsap.core.Tween
+let circleWomanAnim: gsap.core.Tween
+let headerAnim: gsap.core.Tween
 let fuwaAnim: gsap.core.Tween[] = []
+
+watch(pageWidth, (newVal, oldVal) => {
+  console.log(newVal)
+  // ScrollTrigger.refresh()
+})
 
 onMounted(() => {
   circleAnim = gsap.to(".circle_form",{
@@ -288,6 +298,37 @@ onMounted(() => {
       toggleActions: 'play reverse play reverse',
     },
     opacity: 1,
+    duration: .3, 
+  })
+
+  circleManAnim = gsap.to(".circle_form.man",{
+    scrollTrigger: {
+      trigger: '.body',
+      start: 'top bottom',
+      end: 'bottom bottom',
+      scrub: 1,
+    },
+    x: -(pageWidth.value * 0.9 - 250),
+    duration: .3, 
+  })
+  circleWomanAnim = gsap.to(".circle_form.woman",{
+    scrollTrigger: {
+      trigger: '.body',
+      start: 'top bottom',
+      end: 'bottom bottom',
+      scrub: 3,
+    },
+    x: -(pageWidth.value * 0.9 - 250),
+    duration: .3, 
+  })
+
+  headerAnim = gsap.to(".header_wrap",{
+    scrollTrigger: {
+      trigger: '.intro',
+      start: 'top 30%',
+      toggleActions: 'play none none reverse',
+    },
+    'background-color': '#000875',
     duration: .3, 
   })
 
@@ -308,6 +349,9 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   circleAnim.scrollTrigger?.disable()
+  circleManAnim.scrollTrigger?.disable()
+  circleWomanAnim.scrollTrigger?.disable()
+  headerAnim.scrollTrigger?.disable()
   fuwaAnim.forEach(value => {
     value.scrollTrigger?.disable()
   })

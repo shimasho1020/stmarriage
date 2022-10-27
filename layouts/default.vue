@@ -63,7 +63,75 @@
   </div>
 </template>
 
-<script>
+
+
+<script setup lang="ts">
+import gsap from "gsap"
+import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
+// import { store } from "~/store/store"
+
+const router = useRouter()
+const route = useRoute()
+const { app, store } = useContext()
+
+let sideActive= ref<boolean>(false)
+let pageWidth = ref<number>(900)
+const sideMenu = ref()
+const pageHeader = ref()
+
+const nuxtLinkTrigger = (event: any) => {
+  if (sideActive.value) {
+    toggleMenu()
+  }
+  router.push({path: event.target.pathname || '/'})
+}
+
+const toggleMenu = () => {
+  const classList = sideMenu.value.classList
+  const headerClassList = pageHeader.value.classList
+  if (sideActive.value) {
+    sideActive.value = false
+    gsap.to('.sp-menu-wrap', {
+      duration: .7,
+      autoAlpha: 0,
+      onComplete: () => {
+        classList.remove('active')
+      },
+    })
+    headerClassList.remove('side-active')
+  } else {
+    sideActive.value = true
+    headerClassList.add('side-active')
+    classList.add('active')
+    gsap.to('.sp-menu-wrap', {
+      duration: .7,
+      autoAlpha: 1,
+    })
+  }
+}
+
+const watchWidth = () => {
+  pageWidth.value = window.innerWidth
+  store.commit('getWidth', pageWidth.value)
+}
+
+watch(pageWidth, (newVal, oldVal) => {
+  if (newVal > 770 && sideActive.value) toggleMenu()
+})
+
+onMounted(() => {
+  watchWidth()
+  window.addEventListener('resize', watchWidth, false)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', watchWidth, false)
+})
+
+</script>
+
+
+<!-- <script>
 import { nextTick } from 'vue'
 
 export default {
@@ -177,7 +245,7 @@ export default {
 }
 
   
-</script>
+</script> -->
 
 <style lang="sass">
 @keyframes text-roll-animation
