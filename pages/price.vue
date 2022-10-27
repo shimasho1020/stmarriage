@@ -542,7 +542,6 @@
 
 <script>
 export default {
-  layout:'sub',
   data () {
   return {
     courses:[

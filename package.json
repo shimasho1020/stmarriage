@@ -9,17 +9,32 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/composition-api": "^0.33.1",
+    "@vueuse/core": "^9.3.1",
     "core-js": "^3.19.3",
     "nuxt": "^2.15.8",
+    "sass": "^1.55.0",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
-    "vue-template-compiler": "^2.6.14",
+    "vue-template-compiler": "^2.7.13",
     "vuetify": "^2.6.1",
+    "vuex": "^4.0.2",
     "webpack": "^4.46.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.8",
     "@nuxt/typescript-build": "^2.1.0",
-    "@nuxtjs/vuetify": "^1.12.3"
-  }
+    "@nuxtjs/eslint-config-typescript": "^11.0.0",
+    "@nuxtjs/style-resources": "^1.2.1",
+    "@nuxtjs/svg": "^0.4.0",
+    "@nuxtjs/vuetify": "^1.12.3",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nuxt-gsap-module": "^1.7.2",
+    "nuxt-svg-loader": "^1.2.0",
+    "prettier": "^2.7.1",
+    "vue-svg-loader": "^0.16.0"
+  },
+  "lint": "eslint --ext .ts,.js,.vue ."
 }
