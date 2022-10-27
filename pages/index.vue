@@ -32,7 +32,7 @@
             <nuxt-link
                 class="case-item case-wrap"
                 v-for="(item, index) of displayCaseList"
-                :to="`/case-study/${item.num}`"
+                to="/"
                 :key="index"
             >
               <div 
@@ -57,7 +57,7 @@
           </div>
           <div class="link-block">
             <div class="link-wrap">
-              <nuxt-link class="list-link" to="/case-study">
+              <nuxt-link class="list-link" to="/">
                 <div class="list-link-wrap" ref="linkPos3">
                   <span class="list-link-text inline-block">More Interview</span>
                 </div>
