@@ -23,9 +23,6 @@ export default defineComponent({
     // console.log(UseContextReturn.store.getters['pageWidth'])
     // app.$text()
 
-    // console.log(getCurrentInstance())
-    
-
     const text = ref('Hello, World!')
 
     const changeText = () => {
