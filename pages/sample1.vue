@@ -6,20 +6,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, useContext, useStore, SetupContext, getCurrentInstance } from '@nuxtjs/composition-api';
+import { defineComponent, ref, SetupContext, getCurrentInstance } from 'vue';
 
 export default defineComponent({
   layout: 'sub',
   setup(_props, context) {
     // const scrolmagic = (context.root as any).$sleep
-    const UseContextReturn = useContext()
-    const { app, store } = useContext()
+    // const UseContextReturn = useContext()
+    // const { app, store } = useContext()
     // const store  = useStore ();
 
     // UseContextReturn.app.context.$test()
     // UseContextReturn.app.$test()
     // UseContextReturn.$test()
-    console.log(store)
+    // console.log(store)
     // console.log(UseContextReturn.store.getters['pageWidth'])
     // app.$text()
 
