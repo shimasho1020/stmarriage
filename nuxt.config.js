@@ -1,6 +1,8 @@
-import colors from 'vuetify/es5/util/colors'
+import { defineNuxtConfig } from '@nuxt/bridge'
 
-export default {
+export default defineNuxtConfig({
+  // bridge: false,
+
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -51,10 +53,10 @@ export default {
   buildModules: [
     '@nuxtjs/style-resources',
     // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
+    // '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    '@nuxtjs/composition-api/module',
+    // '@nuxtjs/composition-api/module',
     'nuxt-gsap-module',
     '@nuxtjs/composition-api/module',
   ],
@@ -109,19 +111,19 @@ export default {
   // },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-    extend: (config) => {
-      const svgRule = config.module.rules.find(rule => rule.test.test('.svg'));
+  // build: {
+  //   extend: (config) => {
+  //     const svgRule = config.module.rules.find(rule => rule.test.test('.svg'));
 
-      svgRule.test = /\.(png|jpe?g|gif|webp)$/;
+  //     svgRule.test = /\.(png|jpe?g|gif|webp)$/;
 
-      config.module.rules.push({
-        test: /\.svg$/,
-        use: [
-          'babel-loader',
-          'vue-svg-loader',
-        ],
-      });
-    },
-  },
-}
+  //     config.module.rules.push({
+  //       test: /\.svg$/,
+  //       use: [
+  //         'babel-loader',
+  //         'vue-svg-loader',
+  //       ],
+  //     });
+  //   },
+  // },
+})
