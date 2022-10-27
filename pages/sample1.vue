@@ -24,6 +24,7 @@ export default defineComponent({
     // app.$text()
 
     // console.log(getCurrentInstance())
+    
 
     const text = ref('Hello, World!')
 
