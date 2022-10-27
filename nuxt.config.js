@@ -56,6 +56,7 @@ export default {
     '@nuxtjs/vuetify',
     '@nuxtjs/composition-api/module',
     'nuxt-gsap-module',
+    '@nuxtjs/composition-api/module',
   ],
 
   gsap: {
