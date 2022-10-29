@@ -1,7 +1,8 @@
 <template>
   <div class="all"> 
-    <div class="header_wrap">
-    <header class="header active" ref="pageHeader"
+    <div class="header_wrap" :class="{'not-top-page': $route.name !== 'index'}">
+    <header class="header active"
+            ref="pageHeader"
             id="header"
             :class="{'side-active': false}">
       <nuxt-link @click.native.prevent="nuxtLinkTrigger" to="/" class="logo">
@@ -69,6 +70,7 @@
 import gsap from "gsap"
 import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
 // import { store } from "~/store/store"
+// gsap.registerPlugin(ScrollTrigger)
 
 const router = useRouter()
 const route = useRoute()
@@ -117,6 +119,22 @@ const watchWidth = () => {
 
 watch(pageWidth, (newVal, oldVal) => {
   if (newVal > 770 && sideActive.value) toggleMenu()
+})
+
+let headerColor = computed<boolean>(() => store.getters['headerScrollTriggerActive'])
+
+watch(headerColor, (newVal, oldVal) => {
+  if(newVal){
+    gsap.to(".header_wrap", {
+      'background-color': '#000875',
+      duration: .3, 
+    })
+  } else {
+    gsap.to(".header_wrap", {
+      'background-color': '#00000000',
+      duration: .3, 
+    })
+  }
 })
 
 onMounted(() => {
@@ -269,6 +287,9 @@ export default {
   background-color: rgba(33, 33, 33, 0)
   width: 100%
   border-radius: 0 0 30px 30px
+
+  &.not-top-page
+    background-color: var(--main)
 
 .header
   margin: auto

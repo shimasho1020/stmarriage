@@ -286,7 +286,6 @@ let fuwaAnim: gsap.core.Tween[] = []
 
 watch(pageWidth, (newVal, oldVal) => {
   console.log(newVal)
-  // ScrollTrigger.refresh()
 })
 
 onMounted(() => {
@@ -325,11 +324,12 @@ onMounted(() => {
   headerAnim = gsap.to(".header_wrap",{
     scrollTrigger: {
       trigger: '.intro',
-      start: 'top 30%',
+      start: 'top 40%',
       toggleActions: 'play none none reverse',
+      markers:true,
     },
-    'background-color': '#000875',
-    duration: .3, 
+    onStart: () => store.commit('changeHeaderToBlue'),
+    onReverseComplete: () => store.commit('changeHeaderToTrans'),
   })
 
   trigger.forEach(value => {
