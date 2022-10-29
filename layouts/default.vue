@@ -69,8 +69,7 @@
 <script setup lang="ts">
 import gsap from "gsap"
 import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
-// import { store } from "~/store/store"
-// gsap.registerPlugin(ScrollTrigger)
+
 
 const router = useRouter()
 const route = useRoute()
