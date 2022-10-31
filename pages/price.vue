@@ -1,122 +1,117 @@
 <template>
-<div class="body">
-  <div class="top-space" style="height:90px"></div>
-  <div style="text-align:center"><h1 class="Title">コース案内、料金</h1></div>
-  <div class="menus">
-    <div
-      class="lists"
-      v-for="(value, index) in courses" v-bind:key="index"
-    >
-      <div class="cards" :class="{one:index==0,two:index==1,three:index==2}">
-        <a class="cards-a" v-bind:href="value.href">
-        <h2>{{value.name}}</h2>
-        <div class="cards-pic">
-          <img :src="value.img">
-        </div>
-        <div class="cards-note">
-          {{value.note}}
-        </div>
-        </a>
-      </div>
-    </div>
+<div class="">
+  <div class="title_block" style="text-align:center">
+    <h1 class="title">コース案内、料金</h1>
   </div>
-  <div class="colum">
-    <div class="side">
-      <div class="side-card">
-        <div class="side-menu">
-          <h2>s.t.marriage</h2>
-          <ul>
-            <li v-for="(menu,index) in list" :key="index">
-            <router-link class="side-menu-a" v-bind:to="menu.url">
-                {{ menu.title }}
-            </router-link>
-            </li>
-          </ul>
+  <div class="body">
+    <div class="menu">
+      <div
+        class="lists"
+        v-for="(value, index) in courses" v-bind:key="index"
+      >
+        <div class="cards" :class="{one:index==0,two:index==1,three:index==2}">
+          <a class="cards-a" v-bind:href="value.href">
+          <h2>{{value.name}}</h2>
+          <div class="cards-pic">
+            <img :src="value.img">
+          </div>
+          <div class="cards-note">
+            {{value.note}}
+          </div>
+          </a>
         </div>
       </div>
     </div>
-    <div class="main">
-      <div class="full-card" id="full">
-        <h1 class="full-title"><span>フルサポートコース</span></h1>
-        <div class="full-subtitle-1">充実したサポート内容をリーズナブルに提供しているおすすめコースです。</div>
-        <div class="full-subtitle-2">当社のほとんど会員様が、こちらのコースで活動されています。</div>
-        <div class="full-cont">
-          <div class="full-img">
-            <img src="/images/marriage-gate.webp">
-          </div>
-          <table class="full-table">
-            <tr v-for="(value, index) in fullTables" v-bind:key="index">
-              <th>{{value.title}}</th>
-              <td>{{value.price}}</td>
-            </tr>
-          </table>
-          <div class="full-p1">
-            <h3 class="full-p1-title">入会時サポート内容</h3>
-            <ul>
-              <li>プロフィールシート作成サポート</li>
-              <li>写真館への同行（希望者のみ）</li>
-            </ul>
-          </div>
-          <div class="full-p2">
-            <h3 class="full-p2-title">活動時サポート内容</h3>
-            <ul>
-              <li>お申し込み：月 <span>50件</span>まで無料</li>
-              <li>お申し受け：無制限</li>
-              <li>お見合い料：<span>無料</span>（月８回まで）</li>
-              <li>お見合いセッティング（お店の代行予約等）</li>
-              <li>電話、メールでのご相談：無制限</li>
-              <li>面談（対面orZOOM)：月１回</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="casual-card" id="casual">
-        <h1 class="casual-title"><span>カジュアルコース</span></h1>
-        <div class="casual-subtitle-1">活動に迷いがある方、とりあえずお試ししたい方におすすめのコースです。</div>
-        <div class="casual-cont">
-          <table class="casual-table">
-            <tr v-for="(value, index) in casualTables" v-bind:key="index">
-              <th>{{value.title}}</th>
-              <td>{{value.price}}</td>
-            </tr>
-          </table>
-          <div class="casual-img">
-            <img src="/images/marriage-gate.webp">
-          </div>
-          <div class="casual-p1">
-            <h3 class="casual-p1-title">入会時サポート内容</h3>
-            <ul>
-              <li>プロフィールシート作成サポート</li>
-            </ul>
-          </div>
-          <div class="casual-p2">
-            <h3 class="casual-p2-title">活動時サポート内容</h3>
-            <ul>
-              <li>お申し込み：月 <span>30件</span>まで無料</li>
-              <li>お申し受け：無制限</li>
-              <li>お見合い料：あり（１回　3,300円）</li>
-              <li>お見合いセッティング（お店の代行予約等）</li>
-              <li>電話、メールでのご相談：無制限</li>
-              <li>フルサポートコースへの変更：可能（入会金の差額をお支払いいただきます）</li>
-            </ul>
+    <div class="colum">
+      <div class="section">
+        <div class="card_wrap">
+          <div class="full-card" id="full">
+            <h1 class="full-title"><span>フルサポートコース</span></h1>
+            <div class="full-subtitle-1">充実したサポート内容をリーズナブルに提供しているおすすめコースです。</div>
+            <div class="full-subtitle-2">当社のほとんど会員様が、こちらのコースで活動されています。</div>
+            <div class="full-cont">
+              <div class="full-img">
+                <img src="/images/marriage-gate.webp">
+              </div>
+              <table class="full-table">
+                <tr v-for="(value, index) in fullTables" v-bind:key="index">
+                  <th>{{value.title}}</th>
+                  <td>{{value.price}}</td>
+                </tr>
+              </table>
+              <div class="full-p1">
+                <h3 class="full-p1-title">入会時サポート内容</h3>
+                <ul>
+                  <li>プロフィールシート作成サポート</li>
+                  <li>写真館への同行（希望者のみ）</li>
+                </ul>
+              </div>
+              <div class="full-p2">
+                <h3 class="full-p2-title">活動時サポート内容</h3>
+                <ul>
+                  <li>お申し込み：月 <span>50件</span>まで無料</li>
+                  <li>お申し受け：無制限</li>
+                  <li>お見合い料：<span>無料</span>（月８回まで）</li>
+                  <li>お見合いセッティング（お店の代行予約等）</li>
+                  <li>電話、メールでのご相談：無制限</li>
+                  <li>面談（対面orZOOM)：月１回</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="counseling-card" id="counseling">
-        <h1 class="counseling-title"><span>カウンセリングコース</span></h1>
-        <div class="counseling-subtitle-1">活動に迷いがある方、とりあえずお試ししたい方におすすめのコースです。</div>
-        <div class="counseling-cont">
-          <div class="counseling-img">
-            <img src="/images/marriage-gate.webp">
+        <div class="card_wwrap">
+          <div class="casual-card" id="casual">
+            <h1 class="casual-title"><span>カジュアルコース</span></h1>
+            <div class="casual-subtitle-1">活動に迷いがある方、とりあえずお試ししたい方におすすめのコースです。</div>
+            <div class="casual-cont">
+              <table class="casual-table">
+                <tr v-for="(value, index) in casualTables" v-bind:key="index">
+                  <th>{{value.title}}</th>
+                  <td>{{value.price}}</td>
+                </tr>
+              </table>
+              <div class="casual-img">
+                <img src="/images/marriage-gate.webp">
+              </div>
+              <div class="casual-p1">
+                <h3 class="casual-p1-title">入会時サポート内容</h3>
+                <ul>
+                  <li>プロフィールシート作成サポート</li>
+                </ul>
+              </div>
+              <div class="casual-p2">
+                <h3 class="casual-p2-title">活動時サポート内容</h3>
+                <ul>
+                  <li>お申し込み：月 <span>30件</span>まで無料</li>
+                  <li>お申し受け：無制限</li>
+                  <li>お見合い料：あり（１回　3,300円）</li>
+                  <li>お見合いセッティング（お店の代行予約等）</li>
+                  <li>電話、メールでのご相談：無制限</li>
+                  <li>フルサポートコースへの変更：可能（入会金の差額をお支払いいただきます）</li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <table class="counseling-table">
-            <div><span>電話でのご相談</span></div>
-            <tr v-for="(value, index) in counselingTables" v-bind:key="index">
-              <th>{{value.title}}</th>
-              <td>{{value.price}}</td>
-            </tr>
-            <div>※　電話料金：無料<br>（当社負担）</div>
-          </table>
+        </div>
+        <div class="card_wrap">
+          <div class="counseling-card" id="counseling">
+            <h1 class="counseling-title"><span>カウンセリングコース</span></h1>
+            <div class="counseling-subtitle-1">活動に迷いがある方、とりあえずお試ししたい方におすすめのコースです。</div>
+            <div class="counseling-cont">
+              <div class="counseling-img">
+                <img src="/images/marriage-gate.webp">
+              </div>
+              <table class="counseling-table">
+                <div><span>電話でのご相談</span></div>
+                <tr v-for="(value, index) in counselingTables" v-bind:key="index">
+                  <th>{{value.title}}</th>
+                  <td>{{value.price}}</td>
+                </tr>
+                <div>※　電話料金：無料<br>（当社負担）</div>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -124,85 +119,66 @@
 </div>
 </template>
 
+<style lang="sass" scoped>
+
+.title_block
+  > .title
+    +text-title(40px)
+    position: relative
+    padding: 1.5rem 2rem
+    -webkit-box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
+    box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
+    background-color: rgb(255, 255, 255,0.7)
+    color: #000875
+
+    &::before,&::after
+      position: absolute
+      left: 0
+      width: 100%
+      height: 4px
+      content: ''
+      background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
+
+    &::before
+      top: 0
+    &::after
+      bottom: 0
+
+.body
+  > .menu
+    padding: 80px 0 80px
+    display: flex
+    width: 100%
+    justify-content: center
+
+    > .lists
+      flex: 0 0 30%
+      padding: 20px
+
+      > .cards
+        color: #000875
+        font-family: serif
+        border: solid 1px #000875
+        border-radius: 10px
+        padding: 0 25px 20px
+        height: 100%
+        text-align: center
+        background-color: rgba(255, 255, 255, 0.9)
+        background-image: url("/images/frame-topleft.svg"), url("/images/frame-topright.svg"), url("/images/frame-bottomleft.svg"), url("/images/frame-bottomright.svg")
+        background-position:  left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
+        background-size: 50px 50px
+
+  > .colum
+    margin: auto
+    width: 1080px
+    max-width: calc(100% - 10vw)
+    > .section
+      > .card_wrap
+        padding: 20px 0 20px
+
+</style>
+
 <style lang="scss" scoped>
-.body{
-  background-image:url("/images/luxury-2.jpg");
-  background-size: 25%;
-  background-repeat: repeat;
-  padding-top: 20px;
-  font-family: serif;
-}
-
-.Title {
-  font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'Hiragino Mincho ProN', 'HGS明朝E', 'ＭＳ Ｐ明朝', serif;
-  position: relative;
-  padding: 1.5rem 2rem;
-  -webkit-box-shadow: 0 2px 14px rgba(0, 0, 0, .1);
-  box-shadow: 0 2px 14px rgba(0, 0, 0, .1);
-  background-color: rgb(255, 255, 255,0.7);
-  color: #000875;
-}
-.Title:before,
-.Title:after {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  content: '';
-  background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%);
-}
-.Title:before {
-  top: 0;
-}
-.Title:after {
-  bottom: 0;
-}
-
-.menus{
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-.lists{
-  flex: 0 0 30%;
-  padding: 20px;
-}
-.cards{
-  color: #000875;
-  font-family:serif;
-  border: solid 1px #000875;
-  // box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
-  border-radius: 10px;
-  padding: 0 25px 20px;
-  height: 100%;
-  text-align:center;
-  background-color: rgba(255, 255, 255, 0.9);
-  // background: linear-gradient(to bottom right,white 0%,white 50%,#000875);
-  background-image:
-  url("/images/frame-topleft.svg"),
-  url("/images/frame-topright.svg"),
-  url("/images/frame-bottomleft.svg"),
-  url("/images/frame-bottomright.svg");
-  background-position: 
-  left 2px top 2px,
-  right 2px top 2px,
-  left 2px bottom 2px,
-  right 2px bottom 2px;
-  background-size: 50px 50px;
-  // background-image:url("/images/luxury-2.jpg");
-  // background-size: 50%;
-  // background-repeat: repeat;
-  // background-position: right bottom;
-}
-// .cards.one{
-//   background: linear-gradient(to bottom right,white 0%,white 50%,#79d7e4);
-// }
-// .cards.two{
-//   background: linear-gradient(to bottom right,white 0%,white 50%,#3479fa);
-// }
-// .cards.three{
-//   background: linear-gradient(to bottom right,white 0%,white 50%,#000875);
-// }
 .cards-a:hover{
   color: #aae0f5;
 }
@@ -236,9 +212,6 @@
   color: black;
 }
 
-.colum{
-  display: flex;
-}
 .side{
   padding: 20px;
   flex: 0 0 20%;
@@ -287,16 +260,11 @@
   color: #aae0f5;
 }
 
-
-.main{
-  padding: 20px 30px;
-  flex: 0 0 80%;
-}
 .full-card{
   box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%);
   border-radius: 10px;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 1);
   background-image:
   url("/images/frame-topleft.svg"),
   url("/images/frame-topright.svg"),
@@ -308,7 +276,6 @@
   left 2px bottom 2px,
   right 2px bottom 2px;
   background-size: 50px 50px;
-  margin: 0 0 20px;
 }
 .full-title{
   position: relative;

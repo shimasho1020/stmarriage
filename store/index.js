@@ -1,6 +1,7 @@
 export const state = () => ({
   pageWidth: 0,
   headerScrollTrigger: false,
+  formDisplay:false,
 })
 
 export const actions = {
@@ -17,6 +18,12 @@ export const mutations = {
   changeHeaderToBlue(state){
     state.headerScrollTrigger = true
   },
+  changeFormToDis(state){
+    state.formDisplay = true
+  },
+  changeFormToNone(state){
+    state.formDisplay = false
+  },
 };
 
 export const getters = {
@@ -26,4 +33,7 @@ export const getters = {
   headerScrollTriggerActive(state) {
     return state.headerScrollTrigger
   },
+  formDisplayActive(state){
+    return state.formDisplay
+  }
 };

@@ -1,15 +1,15 @@
 <template>
   <div class="all"> 
-    <div class="header_wrap" :class="{'not-top-page': $route.name !== 'index'}">
+    <div class="header_wrap" :class="{'top-page': $route.name === 'index'}">
     <header class="header active"
             ref="pageHeader"
             id="header"
             :class="{'side-active': false}">
-      <nuxt-link @click.native.prevent="nuxtLinkTrigger" to="/" class="logo">
+      <nuxt-link @click.native.prevent="nuxtLinkTrigger" to="/" class="logo" :class="{'top-page': $route.name === 'index'}">
         <div class="logo-sub">日本結婚所連盟（ＩＢＪ）　正規加盟店</div>
         <div class="logo-main">セントマリアージュ青山</div>
       </nuxt-link>
-      <div class="menu pc pc-header" id="header-menu-pc">
+      <div class="menu pc pc-header" id="header-menu-pc" :class="{'top-page': $route.name === 'index'}">
         <nuxt-link class="menu--link" to="/price">
           <div class="link-wrap"><span class="link-text">コース案内</span></div>
         </nuxt-link>
@@ -44,12 +44,12 @@
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="//price">FAQ/Contact</nuxt-link>
       </div>
     </div>  
-    <div class="flow_block">
+    <div class="flow_block" :class="{'top-page': $route.name === 'index'}">
       <div class="circle_form man"><span class="inline-block">無料相談<br>男性用</span></div>
       <div class="circle_form woman"><span class="inline-block">無料相談<br>女性用</span></div>
     </div>
 
-    <div class="Body">
+    <div class="Body" :class="{'not-top-page': $route.name !== 'index'}">
       <nuxt/>
     </div>
 
@@ -121,16 +121,47 @@ watch(pageWidth, (newVal, oldVal) => {
 })
 
 let headerColor = computed<boolean>(() => store.getters['headerScrollTriggerActive'])
+let formDisplay = computed<boolean>(() => store.getters['formDisplayActive'])
 
 watch(headerColor, (newVal, oldVal) => {
+  const color = '#010146'
   if(newVal){
     gsap.to(".header_wrap", {
-      'background-color': '#000875',
+      'background-color': color,
+      duration: .3, 
+    })
+    gsap.to(".logo", {
+      color: '#eff4f4',
+      duration: .3, 
+    })
+    gsap.to(".menu", {
+      color: '#eff4f4',
       duration: .3, 
     })
   } else {
     gsap.to(".header_wrap", {
       'background-color': '#00000000',
+      duration: .3, 
+    })
+    gsap.to(".logo", {
+      color: color,
+      duration: .3, 
+    })
+    gsap.to(".menu", {
+      color: color,
+      duration: .3, 
+    })
+  }
+})
+watch(formDisplay, (newVal, oldVal) => {
+  if(newVal){
+    gsap.to(".flow_block", {
+      opacity: 1,
+      duration: .3, 
+    })
+  } else {
+    gsap.to(".flow_block", {
+      opacity: 0,
       duration: .3, 
     })
   }
@@ -146,123 +177,6 @@ onUnmounted(() => {
 })
 
 </script>
-
-
-<!-- <script>
-import { nextTick } from 'vue'
-
-export default {
-  data() {
-    return {
-      drawer: false,
-      menus: [
-        { title: 'top', icon: 'mdi-web', url: '/' },
-        { title: 'company', icon: 'mdi-information-variant', url: '/company' },
-        { title: 'sample', icon: 'mdi-web', url: '/sample' },
-      ],
-      sideActive: false,
-      fuwaTrigger: [],
-      pageWidth: 900,
-      headerAnim: [],
-      circleManAnim: [],
-      circleWomanAnim: [],
-    }
-  },
-  watch: {
-    pageWidth(val) {
-      if (val > 770 && this.sideActive) this.toggleMenu()
-    },
-  },
-  mounted() {
-    window.removeEventListener('resize', this.watchWidth, false);
-    // this.circleAnim = this.$gsap.to(".circle_form",{
-    //   scrollTrigger: {
-    //     trigger: '.body',
-    //     start: 'top bottom',
-    //     end: 'bottom bottom',
-    //     toggleActions: 'play reverse play reverse',
-    //   },
-    //   opacity: 1,
-    //   duration: .3, 
-    // })
-
-    this.watchWidth()
-    this.circleManAnim = this.$gsap.to(".circle_form.man",{
-      scrollTrigger: {
-        trigger: '.body',
-        start: 'top bottom',
-        end: 'bottom bottom',
-        scrub: 1,
-      },
-      x: -(this.pageWidth * 0.9 - 250),
-      duration: .3, 
-    })
-    this.circleWomanAnim = this.$gsap.to(".circle_form.woman",{
-      scrollTrigger: {
-        trigger: '.body',
-        start: 'top bottom',
-        end: 'bottom bottom',
-        scrub: 3,
-      },
-      x: -(this.pageWidth * 0.9 - 250),
-      duration: .3, 
-    })
-
-    this.headerAnim = this.$gsap.to(".header_wrap",{
-      scrollTrigger: {
-        trigger: '.intro',
-        start: 'top 30%',
-        toggleActions: 'play none none reverse',
-      },
-      'background-color': '#000875',
-      duration: .3, 
-    })
-  },
-  destroyed() {
-    window.removeEventListener('resize', this.watchWidth, false);
-    // this.circleAnim.scrollTrigger.disable()
-    this.circleManAnim.scrollTrigger.disable()
-    this.circleWomanAnim.scrollTrigger.disable()
-    this.headerAnim.scrollTrigger.disable()
-  },
-  methods: {
-    nuxtLinkTrigger(event) {
-      if (this.sideActive) {
-        this.toggleMenu()
-      }
-      this.$router.push({path: event.target.pathname || '/'})
-    },
-    toggleMenu() {
-      const classList = this.$refs.sideMenu.classList
-      const headerClassList = this.$refs.pageHeader.classList
-      if (this.sideActive) {
-        this.sideActive = false
-        this.$gsap.to('.sp-menu-wrap', {
-          duration: .7,
-          autoAlpha: 0,
-          onComplete: () => {
-            classList.remove('active')
-          },
-        })
-        headerClassList.remove('side-active')
-      } else {
-        this.sideActive = true
-        headerClassList.add('side-active')
-        classList.add('active')
-        this.$gsap.to('.sp-menu-wrap', {
-          duration: .7,
-          autoAlpha: 1,
-        })
-      }
-    },
-    watchWidth() {
-      this.pageWidth = window.innerWidth
-    },
-  },
-}
-
-  
-</script> -->
 
 <style lang="sass">
 @keyframes text-roll-animation
@@ -283,12 +197,12 @@ export default {
   position: fixed
   z-index: 100
   top: 0
-  background-color: rgba(33, 33, 33, 0)
+  background-color: var(--main)
   width: 100%
   border-radius: 0 0 30px 30px
 
-  &.not-top-page
-    background-color: var(--main)
+  &.top-page
+    background-color: #00000000
 
 .header
   margin: auto
@@ -309,20 +223,23 @@ export default {
 
   &.active
     opacity: 1
-    transition: .3s
 
   > .logo
+    color: var(--white-1)
+
+    &.top-page
+      color: var(--main)
+
     > .logo-sub
       +text-subtitle(10px)
-      color: var(--white-1)
+      color: currentColor
       
-
       +sp-view
         display: none
 
     > .logo-main
       +text-title(36px)
-      color: var(--white-1)
+      color: currentColor
       // text-shadow: 1px 1px 1px rgb(255, 255, 255),-1px -1px 1px rgb(255, 255, 255)
 
       +sp-view
@@ -334,12 +251,16 @@ export default {
     display: flex
     justify-content: flex-end
     column-gap: 23px
+    color: var(--white-1)
 
     +pc-sm-view
       width: 400px
       flex-wrap: wrap
       justify-content: flex-end
       row-gap: 4px
+
+    &.top-page
+      color: var(--main)
 
     > .spacer
       display: none
@@ -350,7 +271,7 @@ export default {
 
     > .menu--link
       +text-title(20px)
-      color: var(--white-1)
+      color: currentColor
       // text-shadow: 1px 1px 1px rgb(255, 255, 255),-1px -1px 1px rgb(255, 255, 255)
       text-decoration: none
       display: inline-block
@@ -411,7 +332,7 @@ export default {
             content: 'FAQ/Contact'
 
     &.pc
-      transition: .3s
+      // transition: .3s
 
       +sp-view
         display: none
@@ -504,6 +425,10 @@ export default {
   bottom: 20px
   right: min(80px, 5vw)
   z-index: 100
+  opacity: 1
+
+  &.top-page
+    opacity: 0
 
   > .circle_form
     height: 120px
@@ -517,12 +442,18 @@ export default {
     text-align: center
     +text-subtitle(20px)
     color: var(--white-1)
-    opacity: 0
     
     &.man
       background: linear-gradient(to bottom, #5f51e0, rgb(195, 242, 248))
     &.woman
       background: linear-gradient(to bottom, #e051bc, rgb(195, 242, 248))
+
+.Body
+  &.not-top-page
+    padding: 120px 0 0
+    background-image: url("/images/luxury-2.jpg")
+    background-size: 25%
+    background-repeat: repeat
 
 .footer
   background-color: var(--white-1)
