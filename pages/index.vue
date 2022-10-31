@@ -2,9 +2,28 @@
   <div>
     <div class="hero" >
       <h1 class="page-title">
-        <span class="inline-block">お客様の個性にあわせた</span>
+        <div class="page-title__block">
+          <div class="page-title__block--sp">
+            <span class="page-title__character" v-for="text in Array.from('都内大規模オフィスビル')" :key="text">
+              <span class="page-title__child">{{ text }}</span>
+            </span>
+          </div>
+          <div class="page-title__block--sp">
+            <span class="page-title__character" v-for="text in Array.from('設置台数 No.1')" :key="text">
+              <span class="page-title__child">{{ text }}</span>
+            </span>
+          </div>
+        </div>
+        <div class="page-title__block">
+          <div class="page-title__block--sp">
+            <span class="page-title__character" v-for="text in Array.from('新体験エレベーターメディア')" :key="text">
+              <span class="page-title__child">{{ text }}</span>
+            </span>
+          </div>
+        </div>
+        <!-- <span class="inline-block">お客様の個性にあわせた</span>
         <span class="inline-block">オンリーワンの婚活を</span>
-        <span class="inline-block">全力でサポートします</span>
+        <span class="inline-block">全力でサポートします</span> -->
       </h1>
       <div class="img_block" >
         <img class="hero_img" src="~/assets/images/jewelry_hero.jpg" alt="メイン写真">
@@ -310,7 +329,26 @@ watch(pageWidth, (newVal, oldVal) => {
   circleManAnim.scrollTrigger?.refresh()
 })
 
+const titleAnimation = () => {
+  return new Promise((resolve) => {
+    gsap.to(".page-title__child", {
+      y: 0,
+      opacity: 1,
+      duration: 2,
+      ease: "expo.out",
+      stagger: {
+        amount: 2,
+        ease: "none"
+      }
+    }).then(() => {
+      return resolve(1)
+    })
+  })
+}
+
 onMounted(() => {
+  store.dispatch('startLoading')
+  titleAnimation()
   circleAnim = gsap.fromTo(".flow_block",{
     opacity: 0,
   }, {
@@ -407,6 +445,24 @@ onBeforeUnmount(() => {
     +sp-view
       +text-subtitle(27px)
       color: var(--white-1)
+
+    > .page-title__block
+      display: flex
+      flex-wrap: wrap
+      justify-content: center
+      > .page-title__block--sp
+        display: flex
+        justify-content: center
+        padding: 8px 0
+        .page-title__character
+          //overflow: hidden
+          > .page-title__child
+            transform: translateY(32px)
+            display: block
+            opacity: 0
+
+
+
   > .img_block
     width: 100vw
     height: 100vh

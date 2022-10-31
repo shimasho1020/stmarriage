@@ -7,6 +7,9 @@ export default ({ store, app }) => {
       store.commit('changeHeaderToBlue')
       store.commit('changeFormToDis')
     }
+    if (from.name !== null && to.name == 'index') {
+      store.commit('setLoadingEnable', false)
+    }
     next();
   });
 };
