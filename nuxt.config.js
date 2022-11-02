@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  loading: '~/components/loading.vue',
+  loading: '~/components/Loading.vue',
 
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',

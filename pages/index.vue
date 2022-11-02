@@ -348,7 +348,7 @@ const titleAnimation = () => {
 
 onMounted(() => {
   store.dispatch('startLoading')
-  titleAnimation()
+  // titleAnimation()
   circleAnim = gsap.fromTo(".flow_block",{
     opacity: 0,
   }, {
