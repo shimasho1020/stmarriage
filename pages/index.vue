@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="top_page_body">
     <div class="hero" >
       <h1 class="page-title">
         <div class="page-title__block">
@@ -21,9 +21,6 @@
             </span>
           </div>
         </div>
-        <!-- <span class="inline-block">お客様の個性にあわせた</span>
-        <span class="inline-block">オンリーワンの婚活を</span>
-        <span class="inline-block">全力でサポートします</span> -->
       </h1>
       <div class="img_block" >
         <img class="hero_img" src="~/assets/images/jewelry_hero.jpg" alt="メイン写真">
@@ -147,7 +144,11 @@
                   <img src="~/assets/images/ShimadaTomoko.jpg" class="img" alt="カウンセラーの写真">
                 </div>	
               </div>
-              <div class="self-p">はじめまして。代表カウンセラーの島田智子です。<br>三菱系の結婚相談所「ダイヤモンドファミリークラブ」のカウンセラーとして、約10年勤務しておりました。<br>延べ1000人以上の会員様を担当し、20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。　豊富な経験・知識を生かして、年齢、性別を問わず、お一人お一人に寄り添ったサポートをいたします。<br>「お見合いを成功させる秘訣」「異性に好かれる身だしなみ、行動、会話」「仮交際から真剣交際への進め方」「ご成婚への最後の一押し」等、幅広く丁寧にアドバイスいたします。<br>過去のご成婚者の方々から近況報告をいただいたり、元会員様から恋愛相談を受けたりと、現在でも長くお付き合いを続けさせていただいています。結婚後（成婚退会後）も何か悩みを抱えた時、いつでもご相談いただけるような身近な存在でありたいと思っております。<br>随時、無料相談（電話、zoom）を行っておりますので、お気軽にお問い合わせください。</div>
+              <div class="self-p">
+                <div class="self-p_wrap">
+                  <span class="inline-block">はじめまして。代表カウンセラーの島田智子です。<br>三菱系の結婚相談所「ダイヤモンドファミリークラブ」のカウンセラーとして、約10年勤務しておりました。<br>延べ1000人以上の会員様を担当し、20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。　豊富な経験・知識を生かして、年齢、性別を問わず、お一人お一人に寄り添ったサポートをいたします。<br>「お見合いを成功させる秘訣」「異性に好かれる身だしなみ、行動、会話」「仮交際から真剣交際への進め方」「ご成婚への最後の一押し」等、幅広く丁寧にアドバイスいたします。<br>過去のご成婚者の方々から近況報告をいただいたり、元会員様から恋愛相談を受けたりと、現在でも長くお付き合いを続けさせていただいています。結婚後（成婚退会後）も何か悩みを抱えた時、いつでもご相談いただけるような身近な存在でありたいと思っております。<br>随時、無料相談（電話、zoom）を行っておりますので、お気軽にお問い合わせください。</span>
+                </div>
+              </div>
               <div class="self-body">
                 <div class="self-comment 1">入会1ヵ月以内のお見合い成立率100%</div>
                 <div class="self-comment 2">入会1カ月以内の交際成立率93%</div>
@@ -329,26 +330,12 @@ watch(pageWidth, (newVal, oldVal) => {
   circleManAnim.scrollTrigger?.refresh()
 })
 
-const titleAnimation = () => {
-  return new Promise((resolve) => {
-    gsap.to(".page-title__child", {
-      y: 0,
-      opacity: 1,
-      duration: 2,
-      ease: "expo.out",
-      stagger: {
-        amount: 2,
-        ease: "none"
-      }
-    }).then(() => {
-      return resolve(1)
-    })
-  })
-}
+let isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled'])
 
 onMounted(() => {
-  store.dispatch('startLoading')
-  // titleAnimation()
+  if(isLoadingEnabled.value) {
+    store.dispatch('startLoading')
+  }
   circleAnim = gsap.fromTo(".flow_block",{
     opacity: 0,
   }, {
@@ -440,7 +427,7 @@ onBeforeUnmount(() => {
     width: 1080px
     max-width: calc(100% - 10vw)
     +text-subtitle(54px)
-    color: var(--white-1)
+    color: var(--sub)
 
     +sp-view
       +text-subtitle(27px)
@@ -459,7 +446,10 @@ onBeforeUnmount(() => {
           > .page-title__child
             transform: translateY(32px)
             display: block
-            opacity: 0
+            // opacity: 0
+            // background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
+            // background-clip: text
+            // -webkit-text-fill-color: transparent
 
 
 
@@ -499,15 +489,15 @@ onBeforeUnmount(() => {
 
       > .intro-title
         +text-title(36px)
+        color: var(--sub)
         display: inline-block
         position: relative
-        font-family: serif
         text-align: center
         margin-bottom: 10px
         padding: 0 17%
-        background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
-        background-clip: text
-        -webkit-text-fill-color: transparent
+        // background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
+        // background-clip: text
+        // -webkit-text-fill-color: transparent
 
         +sp-view
           font-size: 24px
@@ -900,11 +890,29 @@ onBeforeUnmount(() => {
 
             > .self-p
               +text-body(16px)
+              position: relative
               line-height: 2
               flex: 0 0 60%
 
               +sp-view
                 flex: 0 0 100%
+
+              > .self-p_wrap
+                padding: 4% 5%
+
+                &::after
+                  content: ''
+                  position: absolute
+                  top: 0
+                  left: 0
+                  width: 100%
+                  height: 100%
+                  background-image: linear-gradient(90deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(0deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(180deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(270deg, transparent 0 95%, white 95%, transparent 100%)
+
+
+                > .inline-block
+                  background-color: white
+                  padding: 20px 0
 
             > .self-body
               flex: 70%

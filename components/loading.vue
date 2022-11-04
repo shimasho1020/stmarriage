@@ -55,7 +55,6 @@ const loadingBD = ref()
 let isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled'])
 
 const startLoading = () => {
-  console.log('sstart')
   setTimeout(() => loading.value = true, 100)
 }
 const finishLoading = () => {
@@ -75,10 +74,16 @@ watch(isPageLoading, (newVal, oldVal) => {
   if(newVal) {
     nextTick(() => {
       console.log('start')
+      gsap.to(".top_page_body", {
+        position: 'fixed'
+      })
       startLoading()
     })
   } else {
     console.log('finish')
+    gsap.to(".top_page_body", {
+      position: 'relative'
+    })
     finishLoading()
   }
 })
@@ -103,7 +108,6 @@ const titleAnimation = () => {
 
 onMounted(() => {
   titleAnimation()
-  // setTimeout(() => store.dispatch('finishLoading'), 2000)
 }) 
 
 </script>

@@ -13,7 +13,7 @@
         <nuxt-link class="menu--link" to="/price">
           <div class="link-wrap"><span class="link-text">コース案内</span></div>
         </nuxt-link>
-        <nuxt-link class="menu--link" to="/price">
+        <nuxt-link class="menu--link" to="/flow">
           <div class="link-wrap"><span class="link-text">入会から結婚まで</span></div>
         </nuxt-link>
         <nuxt-link class="menu--link" to="/price">
@@ -128,28 +128,28 @@ watch(headerColor, (newVal, oldVal) => {
   if(newVal){
     gsap.to(".header_wrap", {
       'background-color': color,
-      duration: .3, 
+      // duration: .3, 
     })
     gsap.to(".logo", {
       color: '#eff4f4',
-      duration: .3, 
+      // duration: .3, 
     })
     gsap.to(".menu", {
       color: '#eff4f4',
-      duration: .3, 
+      // duration: .3, 
     })
   } else {
     gsap.to(".header_wrap", {
       'background-color': '#00000000',
-      duration: .3, 
+      // duration: .3, 
     })
     gsap.to(".logo", {
       color: color,
-      duration: .3, 
+      // duration: .3, 
     })
     gsap.to(".menu", {
       color: color,
-      duration: .3, 
+      // duration: .3, 
     })
   }
 })
@@ -247,17 +247,19 @@ onUnmounted(() => {
         color: var(--white-1)
 
   > .menu
-    width: 660px
+    max-width: 640px
     display: flex
     justify-content: flex-end
     column-gap: 23px
     color: var(--white-1)
+    padding: 5px 0 0
 
     +pc-sm-view
-      width: 400px
+      max-width: 400px
       flex-wrap: wrap
       justify-content: flex-end
       row-gap: 4px
+      column-gap: 20px
 
     &.top-page
       color: var(--main)
@@ -270,66 +272,31 @@ onUnmounted(() => {
         width: 100%
 
     > .menu--link
-      +text-title(20px)
+      +text-title(18px)
       color: currentColor
-      // text-shadow: 1px 1px 1px rgb(255, 255, 255),-1px -1px 1px rgb(255, 255, 255)
       text-decoration: none
       display: inline-block
-      overflow: hidden
+      position: relative
+
+      // &::after 
+      //   position: absolute
+      //   bottom: -10px
+      //   left: calc(50% - 15px)
+      //   width: 30px
+      //   height: 3px
+      //   content: ''
+      //   border-radius: 3px
+      //   background-color: var(--main)
 
       > .link-wrap
         overflow: hidden
         display: flex
         align-items: center
-
+        position: relative
+          
         > .link-text
           display: inline-block
-          padding-right: 20px
           white-space: nowrap
-
-        &::after
-          display: inline-block
-          padding-right: 20px
-          white-space: nowrap
-
-        &:hover
-          > .link-text, &::after
-            animation: text-roll-animation 1.6s infinite linear
-
-      &:nth-child(1)
-        flex: 0 0 100px
-
-        .link-wrap
-          &::after
-            content: 'Media sheet'
-
-      &:nth-child(2)
-        flex: 0 0 160px
-
-        .link-wrap
-          &::after
-            content: 'Ads calendar'
-
-      &:nth-child(3)
-        flex: 0 0 80px
-
-        .link-wrap
-          &::after
-            content: 'News'
-
-      &:nth-child(5)
-        flex: 0 0 100px
-
-        .link-wrap
-          &::after
-            content: 'Case study'
-
-      &:nth-child(6)
-        flex: 0 0 100px
-
-        .link-wrap
-          &::after
-            content: 'FAQ/Contact'
 
     &.pc
       // transition: .3s
@@ -454,6 +421,7 @@ onUnmounted(() => {
     background-image: url("/images/luxury-2.jpg")
     background-size: 25%
     background-repeat: repeat
+    background-color: var(--white-1)
 
 .footer
   background-color: var(--white-1)
