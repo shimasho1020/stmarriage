@@ -148,7 +148,7 @@
 
 .body
   > .menu
-    padding: 80px 0 80px
+    padding: 64px 0 
     display: flex
     width: 100%
     justify-content: center
