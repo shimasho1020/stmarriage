@@ -1,18 +1,19 @@
 <template>
   <div class="all"> 
-    <div class="header_wrap">
-    <header class="header active" ref="pageHeader"
+    <div class="header_wrap" :class="{'top-page': $route.name === 'index'}">
+    <header class="header active"
+            ref="pageHeader"
             id="header"
             :class="{'side-active': false}">
-      <nuxt-link @click.native.prevent="nuxtLinkTrigger" to="/" class="logo">
+      <nuxt-link @click.native.prevent="nuxtLinkTrigger" to="/" class="logo" :class="{'top-page': $route.name === 'index'}">
         <div class="logo-sub">日本結婚所連盟（ＩＢＪ）　正規加盟店</div>
         <div class="logo-main">セントマリアージュ青山</div>
       </nuxt-link>
-      <div class="menu pc pc-header" id="header-menu-pc">
+      <div class="menu pc pc-header" id="header-menu-pc" :class="{'top-page': $route.name === 'index'}">
         <nuxt-link class="menu--link" to="/price">
           <div class="link-wrap"><span class="link-text">コース案内</span></div>
         </nuxt-link>
-        <nuxt-link class="menu--link" to="/price">
+        <nuxt-link class="menu--link" to="/flow">
           <div class="link-wrap"><span class="link-text">入会から結婚まで</span></div>
         </nuxt-link>
         <nuxt-link class="menu--link" to="/price">
@@ -43,12 +44,12 @@
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="//price">FAQ/Contact</nuxt-link>
       </div>
     </div>  
-    <div class="flow_block">
+    <div class="flow_block" :class="{'top-page': $route.name === 'index'}">
       <div class="circle_form man"><span class="inline-block">無料相談<br>男性用</span></div>
       <div class="circle_form woman"><span class="inline-block">無料相談<br>女性用</span></div>
     </div>
 
-    <div class="Body">
+    <div class="Body" :class="{'not-top-page': $route.name !== 'index'}">
       <nuxt/>
     </div>
 
@@ -63,120 +64,118 @@
   </div>
 </template>
 
-<script>
-import { nextTick } from 'vue'
 
-export default {
-  data() {
-    return {
-      drawer: false,
-      menus: [
-        { title: 'top', icon: 'mdi-web', url: '/' },
-        { title: 'company', icon: 'mdi-information-variant', url: '/company' },
-        { title: 'sample', icon: 'mdi-web', url: '/sample' },
-      ],
-      sideActive: false,
-      fuwaTrigger: [],
-      pageWidth: 900,
-      headerAnim: [],
-      circleManAnim: [],
-      circleWomanAnim: [],
-    }
-  },
-  watch: {
-    pageWidth(val) {
-      if (val > 770 && this.sideActive) this.toggleMenu()
-    },
-  },
-  mounted() {
-    window.removeEventListener('resize', this.watchWidth, false);
-    // this.circleAnim = this.$gsap.to(".circle_form",{
-    //   scrollTrigger: {
-    //     trigger: '.body',
-    //     start: 'top bottom',
-    //     end: 'bottom bottom',
-    //     toggleActions: 'play reverse play reverse',
-    //   },
-    //   opacity: 1,
-    //   duration: .3, 
-    // })
 
-    this.watchWidth()
-    this.circleManAnim = this.$gsap.to(".circle_form.man",{
-      scrollTrigger: {
-        trigger: '.body',
-        start: 'top bottom',
-        end: 'bottom bottom',
-        scrub: 1,
-      },
-      x: -(this.pageWidth * 0.9 - 250),
-      duration: .3, 
-    })
-    this.circleWomanAnim = this.$gsap.to(".circle_form.woman",{
-      scrollTrigger: {
-        trigger: '.body',
-        start: 'top bottom',
-        end: 'bottom bottom',
-        scrub: 3,
-      },
-      x: -(this.pageWidth * 0.9 - 250),
-      duration: .3, 
-    })
+<script setup lang="ts">
+import gsap from "gsap"
+import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
 
-    this.headerAnim = this.$gsap.to(".header_wrap",{
-      scrollTrigger: {
-        trigger: '.intro',
-        start: 'top 30%',
-        toggleActions: 'play none none reverse',
-      },
-      'background-color': '#000875',
-      duration: .3, 
-    })
-  },
-  destroyed() {
-    window.removeEventListener('resize', this.watchWidth, false);
-    // this.circleAnim.scrollTrigger.disable()
-    this.circleManAnim.scrollTrigger.disable()
-    this.circleWomanAnim.scrollTrigger.disable()
-    this.headerAnim.scrollTrigger.disable()
-  },
-  methods: {
-    nuxtLinkTrigger(event) {
-      if (this.sideActive) {
-        this.toggleMenu()
-      }
-      this.$router.push({path: event.target.pathname || '/'})
-    },
-    toggleMenu() {
-      const classList = this.$refs.sideMenu.classList
-      const headerClassList = this.$refs.pageHeader.classList
-      if (this.sideActive) {
-        this.sideActive = false
-        this.$gsap.to('.sp-menu-wrap', {
-          duration: .7,
-          autoAlpha: 0,
-          onComplete: () => {
-            classList.remove('active')
-          },
-        })
-        headerClassList.remove('side-active')
-      } else {
-        this.sideActive = true
-        headerClassList.add('side-active')
-        classList.add('active')
-        this.$gsap.to('.sp-menu-wrap', {
-          duration: .7,
-          autoAlpha: 1,
-        })
-      }
-    },
-    watchWidth() {
-      this.pageWidth = window.innerWidth
-    },
-  },
+
+const router = useRouter()
+const route = useRoute()
+const { app, store } = useContext()
+
+let sideActive= ref<boolean>(false)
+let pageWidth = ref<number>(900)
+const sideMenu = ref()
+const pageHeader = ref()
+
+const nuxtLinkTrigger = (event: any) => {
+  if (sideActive.value) {
+    toggleMenu()
+  }
+  router.push({path: event.target.pathname || '/'})
 }
 
-  
+const toggleMenu = () => {
+  const classList = sideMenu.value.classList
+  const headerClassList = pageHeader.value.classList
+  if (sideActive.value) {
+    sideActive.value = false
+    gsap.to('.sp-menu-wrap', {
+      duration: .7,
+      autoAlpha: 0,
+      onComplete: () => {
+        classList.remove('active')
+      },
+    })
+    headerClassList.remove('side-active')
+  } else {
+    sideActive.value = true
+    headerClassList.add('side-active')
+    classList.add('active')
+    gsap.to('.sp-menu-wrap', {
+      duration: .7,
+      autoAlpha: 1,
+    })
+  }
+}
+
+const watchWidth = () => {
+  pageWidth.value = window.innerWidth
+  store.commit('getWidth', pageWidth.value)
+}
+
+watch(pageWidth, (newVal, oldVal) => {
+  if (newVal > 770 && sideActive.value) toggleMenu()
+})
+
+let headerColor = computed<boolean>(() => store.getters['headerScrollTriggerActive'])
+let formDisplay = computed<boolean>(() => store.getters['formDisplayActive'])
+
+watch(headerColor, (newVal, oldVal) => {
+  const color = '#010146'
+  if(newVal){
+    gsap.to(".header_wrap", {
+      'background-color': color,
+      // duration: .3, 
+    })
+    gsap.to(".logo", {
+      color: '#eff4f4',
+      // duration: .3, 
+    })
+    gsap.to(".menu", {
+      color: '#eff4f4',
+      // duration: .3, 
+    })
+  } else {
+    gsap.to(".header_wrap", {
+      'background-color': '#00000000',
+      // duration: .3, 
+    })
+    gsap.to(".logo", {
+      color: color,
+      // duration: .3, 
+    })
+    gsap.to(".menu", {
+      color: color,
+      // duration: .3, 
+    })
+  }
+})
+watch(formDisplay, (newVal, oldVal) => {
+  if(newVal){
+    gsap.to(".flow_block", {
+      opacity: 1,
+      duration: .3, 
+    })
+  } else {
+    gsap.to(".flow_block", {
+      opacity: 0,
+      duration: .3, 
+    })
+  }
+})
+
+onMounted(() => {
+  watchWidth()
+  window.addEventListener('resize', watchWidth, false)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', watchWidth, false)
+})
+
 </script>
 
 <style lang="sass">
@@ -198,9 +197,12 @@ export default {
   position: fixed
   z-index: 100
   top: 0
-  background-color: rgba(33, 33, 33, 0)
+  background-color: var(--main)
   width: 100%
   border-radius: 0 0 30px 30px
+
+  &.top-page
+    background-color: #00000000
 
 .header
   margin: auto
@@ -221,20 +223,23 @@ export default {
 
   &.active
     opacity: 1
-    transition: .3s
 
   > .logo
+    color: var(--white-1)
+
+    &.top-page
+      color: var(--main)
+
     > .logo-sub
       +text-subtitle(10px)
-      color: var(--white-1)
+      color: currentColor
       
-
       +sp-view
         display: none
 
     > .logo-main
       +text-title(36px)
-      color: var(--white-1)
+      color: currentColor
       // text-shadow: 1px 1px 1px rgb(255, 255, 255),-1px -1px 1px rgb(255, 255, 255)
 
       +sp-view
@@ -242,16 +247,22 @@ export default {
         color: var(--white-1)
 
   > .menu
-    width: 660px
+    max-width: 640px
     display: flex
     justify-content: flex-end
     column-gap: 23px
+    color: var(--white-1)
+    padding: 5px 0 0
 
     +pc-sm-view
-      width: 400px
+      max-width: 400px
       flex-wrap: wrap
       justify-content: flex-end
       row-gap: 4px
+      column-gap: 20px
+
+    &.top-page
+      color: var(--main)
 
     > .spacer
       display: none
@@ -261,69 +272,34 @@ export default {
         width: 100%
 
     > .menu--link
-      +text-title(20px)
-      color: var(--white-1)
-      // text-shadow: 1px 1px 1px rgb(255, 255, 255),-1px -1px 1px rgb(255, 255, 255)
+      +text-title(18px)
+      color: currentColor
       text-decoration: none
       display: inline-block
-      overflow: hidden
+      position: relative
+
+      // &::after 
+      //   position: absolute
+      //   bottom: -10px
+      //   left: calc(50% - 15px)
+      //   width: 30px
+      //   height: 3px
+      //   content: ''
+      //   border-radius: 3px
+      //   background-color: var(--main)
 
       > .link-wrap
         overflow: hidden
         display: flex
         align-items: center
-
+        position: relative
+          
         > .link-text
           display: inline-block
-          padding-right: 20px
           white-space: nowrap
-
-        &::after
-          display: inline-block
-          padding-right: 20px
-          white-space: nowrap
-
-        &:hover
-          > .link-text, &::after
-            animation: text-roll-animation 1.6s infinite linear
-
-      &:nth-child(1)
-        flex: 0 0 100px
-
-        .link-wrap
-          &::after
-            content: 'Media sheet'
-
-      &:nth-child(2)
-        flex: 0 0 160px
-
-        .link-wrap
-          &::after
-            content: 'Ads calendar'
-
-      &:nth-child(3)
-        flex: 0 0 80px
-
-        .link-wrap
-          &::after
-            content: 'News'
-
-      &:nth-child(5)
-        flex: 0 0 100px
-
-        .link-wrap
-          &::after
-            content: 'Case study'
-
-      &:nth-child(6)
-        flex: 0 0 100px
-
-        .link-wrap
-          &::after
-            content: 'FAQ/Contact'
 
     &.pc
-      transition: .3s
+      // transition: .3s
 
       +sp-view
         display: none
@@ -416,6 +392,10 @@ export default {
   bottom: 20px
   right: min(80px, 5vw)
   z-index: 100
+  opacity: 1
+
+  &.top-page
+    opacity: 0
 
   > .circle_form
     height: 120px
@@ -429,12 +409,19 @@ export default {
     text-align: center
     +text-subtitle(20px)
     color: var(--white-1)
-    opacity: 0
     
     &.man
       background: linear-gradient(to bottom, #5f51e0, rgb(195, 242, 248))
     &.woman
       background: linear-gradient(to bottom, #e051bc, rgb(195, 242, 248))
+
+.Body
+  &.not-top-page
+    padding: 120px 0 0
+    background-image: url("/images/luxury-2.jpg")
+    background-size: 25%
+    background-repeat: repeat
+    background-color: var(--white-1)
 
 .footer
   background-color: var(--white-1)

@@ -1,6 +1,8 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  loading: '~/components/loading.vue',
+
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -22,6 +24,12 @@ export default {
     ]
   },
 
+  router: {
+    scrollBehavior: function (to, from, savedPosition) {
+      return { x: 0, y: 0 }
+    }
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
@@ -29,6 +37,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/index.js',
+    '@/plugins/routerOptions.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
