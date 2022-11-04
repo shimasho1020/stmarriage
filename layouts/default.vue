@@ -20,7 +20,7 @@
           <div class="link-wrap"><span class="link-text">あいさつ</span></div>
         </nuxt-link>
         <div class="spacer"></div>
-        <nuxt-link class="menu--link" to="/price">
+        <nuxt-link class="menu--link" to="/interview">
           <div class="link-wrap"><span class="link-text">成婚者の声</span></div>
         </nuxt-link>
         <nuxt-link class="menu--link" to="/price">
