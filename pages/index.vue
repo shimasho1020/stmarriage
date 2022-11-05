@@ -208,7 +208,7 @@
               </div>
               <div class="top-our_strengths__container--img">
                 <div class="img_block">
-                  <img src="/images/heart-marriage.jpg" class="img" alt="プロジェクター">
+                  <img src="/images/marriage-gate.webp" class="img" alt="プロジェクター">
                 </div>	
               </div> 
             </li>
@@ -222,7 +222,7 @@
               </div>
               <div class="top-our_strengths__container--img">
                 <div class="img_block">
-                  <img src="/images/heart-marriage.jpg" class="img" alt="安定したコンテンツ配信技術">
+                  <img src="/images/marriage-gate.webp" class="img" alt="安定したコンテンツ配信技術">
                 </div>	
               </div> 
             </li>
@@ -299,18 +299,18 @@ const displayCaseList: CaseList[] = [
   {
     num: 1,
     name:'xxx xxxx',
-    img:'/images/heart-marriage.jpg',
+    img:'/images/marriage-gate.webp',
   },
   {
     num: 2,
     name:'yyy yyyy',
-    img:'/images/heart-marriage.jpg',
+    img:'/images/marriage-gate.webp',
     url:'/flow',
   },
   {
     num: 3,
     name:'zzz zzzz',
-    img:'/images/heart-marriage.jpg',
+    img:'/images/marriage-gate.webp',
     url:'/voice',
   },
 ]
@@ -384,12 +384,12 @@ onMounted(() => {
   trigger.forEach(value => {
     let array: gsap.core.Tween = gsap.fromTo(value, {
       opacity: 0,
-      transform: 'translateY(80px)'
+      transform: 'translateY(40px)'
     },
     {
       scrollTrigger: {
         trigger: value,
-        start: 'top 60%',
+        start: 'top 70%',
         toggleActions: 'play none none reverse',
       },
       opacity: 1,

@@ -1,17 +1,229 @@
 <template>
 <div class="">
   <div class="title_block" style="text-align:center">
-    <h1 class="title">入会から結婚までの流れ</h1>
+    <h1 class="title">ご入会からご結婚まで</h1>
   </div>
   <div class="body">
+    <div class="menu">
+      <div class="flow">
+        <div class="text">無料相談</div>
+        <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
+        <div class="text">ご入会手続き</div>
+        <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
+        <div class="text">プロフィール作成</div>
+        <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
+        <div class="text">お相手探し</div>
+        <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
+        <div class="text">お見合い</div>
+        <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
+        <div class="text">プレ交際</div>
+        <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
+        <div class="text">真剣交際</div>
+        <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
+        <div class="text">プロポーズ</div>
+        <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
+        <div class="text">成婚</div>
+      </div>
+    </div>
     <div class="body_wrap">
-
+      <div class="section --1">
+        <h1 class="title">ご入会の流れ</h1>
+        <div class="section_content --1">
+          <h2 class="section_title" data-number="01">無料カウンセリング</h2>
+          <div class="section_body">
+            <div class="body_img">
+              <img class="img" src="/images/marriage-gate.webp">
+            </div>
+            <div class="body_block">
+              <div class="text">
+                今までの婚活状況や、いつまでに結婚したいかなどをお話し、不安を解消してから、カウンセラーがお客様ごとにベストな婚活の進め方をご提案します。
+              </div>
+              <div class="about">
+                <nuxt-link class="ul" to="/">
+                  <div class="inline-block li">
+                    <arrow class="arrow man"></arrow>
+                    <span class="form man">男性無料相談はこちら</span>
+                  </div>
+                </nuxt-link>
+                <nuxt-link class="ul" to="/"> 
+                  <div class="inline-block li">
+                    <arrow class="arrow woman"></arrow>
+                    <span class="form woman">女性無料相談はこちら</span>
+                  </div>
+                </nuxt-link>        
+              </div>
+            </div>
+          </div>
+          <div class="nextArrow_wrap">
+            <nextArrow class="nextArrow"></nextArrow>
+          </div>
+        </div>
+        <div class="section_content --2">
+          <h2 class="section_title" data-number="02">ご入会手続き</h2>
+          <div class="section_body">
+            <div class="body_img">
+              <img class="img" src="/images/marriage-gate.webp">
+            </div>
+            <div class="body_block">
+              <div class="text">
+                入会の意思が固まったら入会手続きへと進みましょう。独身証明書などが必須のため、他の婚活サービスと比べても信頼度が高く、安心して活動が始められます。
+              </div>
+              <div class="about">
+                <ol class="original_list">
+                  <li>住民票（3カ月以内の原本）</li>
+                  <li>独身証明書（3カ月以内の原本）</li>
+                  <li>最終学歴証明書※短卒以上（卒業証書のコピーまたは卒業証明書）</li>
+                  <li>写真付身分証明書（免許証、パスポート等）のコピー</li>
+                  <li>収入証明書（源泉徴収票、所得証明等）</li>
+                  <li>勤務先が確認できるもの（社員証、健康保険証等）</li>
+                  <li>資格をお持ちの方はその証明書</li>
+                  <li>プロフィールシート​</li>
+                  <li>写真1枚以上（6か月以内に撮影したもの）</li>
+                </ol>       
+              </div>
+            </div>
+          </div>
+          <div class="nextArrow_wrap">
+            <nextArrow class="nextArrow"></nextArrow>
+          </div>
+        </div>
+        <div class="section_content --3">
+          <h2 class="section_title" data-number="03">プロフィール作成、写真撮影</h2>
+          <div class="section_body">
+            <div class="body_img">
+              <img class="img" src="/images/marriage-gate.webp">
+            </div>
+            <div class="body_block">
+              <div class="text">
+                結婚相談所で活動するための準備として、プロフィール作成・写真撮影を行います。婚活を効果的に進めていく上で、プロフィールと写真は重要なポイントです。　カウンセラーと一緒に仕上げることで、魅力的なプロフィールが作成できます。好印象になる自己PR文の書き方、アピールポイントをしっかりアドバイスします。写真は、多くの成婚者が利用してきたおススメのスタジオにカウンセラーも同行し、撮影していただきます。お一人で撮影に行かれるよりも、表情が柔らかくなり、より素敵な写真が撮れると言われています。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section --1">
+        <h1 class="title">お相手探しから成婚まで</h1>
+        <div class="section_content --1">
+          <h2 class="section_title" data-number="01">お相手探し</h2>
+          <div class="section_body">
+            <div class="body_img">
+              <img class="img" src="/images/marriage-gate.webp">
+            </div>
+            <div class="body_block">
+              <div class="text">
+                約8,000名の会員の中からプロフィールやお見合い写真などで気になる相手を探し、お見合い申込をしましょう。<br>
+                パソコンやスマートフォンのアプリから、いつでもどこでもお相手を検索できるので効率的に出会えます。検索以外に、カウンセラーからの紹介も受けられるサービスもあります。
+              </div>
+            </div>
+          </div>
+          <div class="nextArrow_wrap">
+            <nextArrow class="nextArrow"></nextArrow>
+          </div>
+        </div>
+        <div class="section_content --2">
+          <h2 class="section_title" data-number="02">お見合い</h2>
+          <div class="section_body">
+            <div class="body_img">
+              <img class="img" src="/images/marriage-gate.webp">
+            </div>
+            <div class="body_block">
+              <div class="text">
+                お見合いでは、1時間程度お相手と直接会ってお話をします。お見合い中は、楽しむことを目標にお話をしてみましょう。場所はホテルのラウンジやカフェなどで行うため、落ち着いた雰囲気で、ゆっくりとお話ができます。日程調整や場所はカウンセラーがセッティングします。お見合い後のお返事は、カウンセラーを通じて確認できます。
+              </div>
+            </div>
+          </div>
+          <div class="nextArrow_wrap">
+            <nextArrow class="nextArrow"></nextArrow>
+          </div>
+        </div>
+        <div class="section_content --3">
+          <h2 class="section_title" data-number="03">プレ交際（～交際2か月頃まで）</h2>
+          <div class="section_body">
+            <div class="body_img">
+              <img class="img" src="/images/marriage-gate.webp">
+            </div>
+            <div class="body_block">
+              <div class="text">
+                お見合い後にお互い印象が良ければ、プレ交際へ進みます。プレ交際とは、お相手との相性を確かめるためのお試し期間ですので、複数の方と交際することもできます。一人ひとりと向き合いながら結婚相手として相応しいか見極めることが大切です。週１回のお茶やランチなどの短時間のデートから始めて、徐々に会う時間を長くしていきましょう。メールやLineでのコミュニケーションもしっかり取りましょう。
+              </div>
+            </div>
+          </div>
+          <div class="nextArrow_wrap">
+            <nextArrow class="nextArrow"></nextArrow>
+          </div>
+        </div>
+        <div class="section_content --4">
+          <h2 class="section_title" data-number="04">真剣交際（交際２カ月頃～）</h2>
+          <div class="section_body">
+            <div class="body_img">
+              <img class="img" src="/images/marriage-gate.webp">
+            </div>
+            <div class="body_block">
+              <div class="text">
+                プレ交際のお相手と結婚前提にお付き合いしたいと思った場合は、真剣交際へ進みましょう。真剣交際では、お相手を一人に絞り、結婚前提としたお付き合いをします。プレ交際とは違い、具体的に結婚後のイメージをすり合わせることで、お互いを深く知っていきます。カウンセラーがあなたの交際状況に合わせてアドバイスします。お相手に聞きづらいことは、お相手相談所のカウンセラーを通じて確認できます。
+              </div>
+            </div>
+          </div>
+          <div class="nextArrow_wrap">
+            <nextArrow class="nextArrow"></nextArrow>
+          </div>
+        </div>
+        <div class="section_content --5">
+          <h2 class="section_title" data-number="05">プロポーズ</h2>
+          <div class="section_body">
+            <div class="body_img">
+              <img class="img" src="/images/marriage-gate.webp">
+            </div>
+            <div class="body_block">
+              <div class="text">
+                お互いの結婚に対する意思が固まったら、プロポーズをします。結婚相談所では、いつまでにプロポーズをするかなど、交際中も目標を決めて活動しています。そのため、相手のことを深く知ろうとする意識が働き、短期間で成婚される方が多いです。
+              </div>
+            </div>
+          </div>
+          <div class="nextArrow_wrap">
+            <nextArrow class="nextArrow"></nextArrow>
+          </div>
+        </div>
+        <div class="section_content --6">
+          <h2 class="section_title" data-number="06">ご成婚</h2>
+          <div class="section_body">
+            <div class="body_img">
+              <img class="img" src="/images/marriage-gate.webp">
+            </div>
+            <div class="body_block">
+              <div class="text">
+                プロポーズが成功したら晴れてご成婚（婚約）となります。結婚相談所を退会し、結婚に向けてお二人で準備を始めましょう。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 </template>
 
+<script setup lang="ts">
+import Arrow from '~/assets/images/arrow.svg'
+import nextArrow from '~/assets/images/nextarrow.svg'
+components: {
+  Arrow
+  nextArrow
+}
+</script>
+
+
 <style lang="sass" scoped>
+.arrow
+  display: inline-block
+  width: 24px
+  height: 24px
+  &.man
+    circle
+      fill: #5f51e0
+  &.woman
+    circle
+      fill: #e051bc
 .title_block
   > .title
     +text-title(40px)
@@ -20,7 +232,6 @@
     -webkit-box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
     box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
     background-color: rgb(255, 255, 255,0.7)
-    color: #000875
 
     &::before,&::after
       position: absolute
@@ -28,7 +239,7 @@
       width: 100%
       height: 4px
       content: ''
-      background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
+      background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
 
     &::before
       top: 0
@@ -36,10 +247,176 @@
       bottom: 0
 
 .body
-  height: 1000px
+  padding: 60px 0
+
+  > .menu
+    width: calc(100% - 160px)
+    min-width: calc(100% - 10vw)
+    margin: auto
+    padding: 20px
+    border-radius: 20px
+    background-color: #ffffffdd
+    background-image: url("/images/frame-topleft.svg"), url("/images/frame-topright.svg"), url("/images/frame-bottomleft.svg"), url("/images/frame-bottomright.svg")
+    background-position:  left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
+    background-size: 50px 50px
+    position: sticky
+    top: 90px
+
+    > .flow
+      display: flex
+      justify-content: space-around
+      // gap: 20px
+      > .text
+        +text-subtitle(16px)
+        color: var(--white-1)
+        flex: 0 0 40px
+        height: 150px
+        writing-mode: vertical-rl
+        text-align: center
+        display: flex
+        align-items: center
+        justify-content: center
+        border-radius: 20px
+        // background-color: var(--main)
+        background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
+
+      > .nextArrow_wrap
+        text-align: center
+        writing-mode: vertical-rl
+        width: 40px
+        > .nextArrow
+          display: inline-block
+          transform: rotate(270deg) 
+          transform-origin:70% 30%
+          height: 48px
+
   > .body_wrap
     margin: auto
     width: 1080px
     max-width: calc(100% - 10vw)
+
+    > .section
+      border-radius: 30px
+      padding: 20px 20px
+      background-color: var(--white-1)
+      margin: 40px 0 80px
+
+      > .title
+        +text-subtitle(40px)
+        position: relative
+        text-align: center
+        margin: 0 0 20px
+
+        &::before 
+          position: absolute
+          bottom: -10px
+          left: calc(50% - 50px)
+          width: 100px
+          height: 5px
+          content: ''
+          border-radius: 3px
+          background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
+        
+      > .section_content
+        padding: 32px
+
+        > .section_title
+          +text-title(32px)
+          position: relative
+          // background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
+          // background-clip: text
+          // -webkit-text-fill-color: transparent
+          margin: 0 0 20px
+          display: inline-block
+
+          &::before 
+            content: attr(data-number)
+            display: inline-block
+            margin-right: 20px
+            +text-title(44px)
+            border-bottom: 1px solid var(--main)
+
+          +sp-view
+            &::after
+              margin: 3% 0 5%
+
+          // &::before
+          //   content: "Step"
+          //   +text-subtitle(36px)
+          //   margin-right: 10px
+
+          //   +sp-view
+          //     font-size: 20px
+
+          // &::after
+          //   content: ""
+          //   width: 50px
+          //   height: 4px
+          //   position: absolute
+          //   bottom: -16px
+          //   left: 0
+          //   border-radius: 3px
+          //   background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
+
+          //   +sp-view
+          //     margin: 0% 0 8%
+
+        // > .section_title
+        //   margin: 16px 0 
+        //   display: inline-block
+        //   +text-title(36px)
+        //   line-height: 1.4em
+        //   background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
+        //   background-clip: text
+        //   -webkit-text-fill-color: transparent
+        //   // color: var(--main)
+
+        //   +sp-view
+        //     +text-title(30px)
+
+        > .section_body
+          display: flex
+          flex-direction: row-reverse
+          > .body_img
+            flex: 0 0 45%
+            > .img
+              width: 100%
+              border-radius: 15px
+
+          > .body_block
+            padding: 20px 
+            > .text
+              +text-body(18px)
+              color: var(--main)
+              padding: 0 0 40px
+            > .about
+              > .ul
+                list-style-type: none
+                > .li
+                  +text-subtitle(24px)
+                  padding: 10px 0
+                  transition-duration: .3s
+
+                  &:hover
+                    transform: scale(1.1)
+
+                  > .arrow
+                    position: relative
+                    top: 8px
+                  > .form
+                    display: inline-block
+                    &.man
+                      border-bottom: 2px solid #5f51e0
+                    &.woman
+                      border-bottom: 2px solid #e051bc
+
+        > .nextArrow_wrap
+          text-align: center
+          padding: 60px 0 0
+          > .nextArrow
+            display: inline-block
+            text-align: center
+            path
+              fill: var(--main)
 
 </style>

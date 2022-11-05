@@ -10,20 +10,20 @@
         <div class="logo-main">セントマリアージュ青山</div>
       </nuxt-link>
       <div class="menu pc pc-header" id="header-menu-pc" :class="{'top-page': $route.name === 'index'}">
-        <nuxt-link class="menu--link" to="/price">
+        <nuxt-link class="menu--link" to="/" :class="{'highlight': $route.name === 'index'}">
+          <div class="link-wrap"><span class="link-text">ホーム</span></div>
+        </nuxt-link>
+        <nuxt-link class="menu--link" to="/price" :class="{'highlight': $route.name === 'price'}">
           <div class="link-wrap"><span class="link-text">コース案内</span></div>
         </nuxt-link>
-        <nuxt-link class="menu--link" to="/flow">
+        <nuxt-link class="menu--link" to="/flow" :class="{'highlight': $route.name === 'flow'}">
           <div class="link-wrap"><span class="link-text">入会から結婚まで</span></div>
         </nuxt-link>
-        <nuxt-link class="menu--link" to="/price">
-          <div class="link-wrap"><span class="link-text">あいさつ</span></div>
-        </nuxt-link>
         <div class="spacer"></div>
-        <nuxt-link class="menu--link" to="/interview">
+        <nuxt-link class="menu--link" to="/interview" :class="{'highlight': $route.name === 'interview'}">
           <div class="link-wrap"><span class="link-text">成婚者の声</span></div>
         </nuxt-link>
-        <nuxt-link class="menu--link" to="/price">
+        <nuxt-link class="menu--link" to="/">
           <div class="link-wrap"><span class="link-text">お問い合せ</span></div>
         </nuxt-link>
       </div>
@@ -277,6 +277,18 @@ onUnmounted(() => {
       text-decoration: none
       display: inline-block
       position: relative
+
+      &.highlight
+        &::before 
+          position: absolute
+          bottom: -10px
+          left: calc(50%)
+          transform: translateX(-50%)
+          width: 50%
+          height: 5px
+          content: ''
+          border-radius: 3px
+          background-image: linear-gradient(135deg, #17aaee 0%, #176dee 50%,  #17aaee 100%, )
 
       // &::after 
       //   position: absolute
