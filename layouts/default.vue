@@ -258,7 +258,7 @@ onUnmounted(() => {
       max-width: 400px
       flex-wrap: wrap
       justify-content: flex-end
-      row-gap: 4px
+      row-gap: 10px
       column-gap: 20px
 
     &.top-page

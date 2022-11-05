@@ -205,7 +205,7 @@
 
 <script setup lang="ts">
 import Arrow from '~/assets/images/arrow.svg'
-import nextArrow from '~/assets/images/nextarrow.svg'
+import nextArrow from '~/assets/images/next-arrow.svg'
 components: {
   Arrow
   nextArrow
@@ -247,7 +247,7 @@ components: {
       bottom: 0
 
 .body
-  padding: 60px 0
+  padding: 64px 0
 
   > .menu
     width: calc(100% - 160px)
