@@ -21,7 +21,7 @@
         </nuxt-link>
         <div class="spacer"></div>
         <nuxt-link class="menu--link" to="/interview" :class="{'highlight': $route.name === 'interview'}">
-          <div class="link-wrap"><span class="link-text">成婚者の声</span></div>
+          <div class="link-wrap"><span class="link-text">ご成婚事例</span></div>
         </nuxt-link>
         <nuxt-link class="menu--link" to="/">
           <div class="link-wrap"><span class="link-text">お問い合せ</span></div>

@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div class="title_block" style="text-align:center">
-      <h1 class="title">ご成婚者様の声</h1>
+      <h1 class="title">ご成婚事例</h1>
     </div>
     <div class="body">
       <div class="body_wrap">
@@ -19,10 +19,10 @@
               </div>
               <div class="about">
                 <ol class="special_list">
-                <li>お申し込み：月 <span class="highlight">50件</span>まで無料</li>
-                <li>お申し受け：無制限</li>
-                <li>お見合い料：<span class="highlight">無料</span>（月８回まで）</li>
-                <li>お見合いセッティング（お店の代行予約等）</li>
+                <li>31歳男性</li>
+                <li>会社員</li>
+                <li>活動期間10ヶ月</li>
+                <li>お相手は34歳女性</li>
               </ol>
               </div>
               <div class="link_wrap">
@@ -117,7 +117,7 @@ const caseList: CaseList[] = [
     > .case_list
       display: flex
       flex-direction: column
-      gap: 80px
+      gap: 40px
       > .case_item
         padding: 30px
         border-radius: 20px
