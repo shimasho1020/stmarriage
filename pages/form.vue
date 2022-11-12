@@ -98,7 +98,6 @@ const resetForm = () => {
   isError.value         = false;
 }
 
-
 let sendingClass = computed(() => {
   return {
     'is-sending'  : isSending,
