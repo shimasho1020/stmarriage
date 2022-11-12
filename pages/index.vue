@@ -557,7 +557,7 @@ onBeforeUnmount(() => {
   background-image: url("/images/luxury-2.jpg")
   background-size: 25%
   background-repeat: repeat
-  
+
   > .section
     // padding: 150px 0 150px
     > .section-wrap
