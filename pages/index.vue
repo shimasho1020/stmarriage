@@ -154,14 +154,6 @@
                 <div class="self-comment 2">入会1カ月以内の交際成立率93%</div>
                 <div class="self-table">
                   <div class="text">※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
-                  <!-- <table class="table">
-                    <tbody>
-                      <tr v-for="(value, index) in tables" v-bind:key="index">
-                        <th>{{value.title}}</th>
-                        <td>{{value.cont}}</td>
-                      </tr>
-                    </tbody>
-                  </table> -->
                   <div class="table">
                     <h4 class="table_title">職業一覧</h4>
                     <ul class="table_list">
