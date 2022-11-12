@@ -59,6 +59,14 @@ let isSending = ref(false)
 let isError = ref(false)
 let completeMessage = ref('')
 
+let sendingClass = computed(() => {
+  return {
+    'is-sending'  : isSending,
+    'is-error'    : isError,
+    'is-complete' : isSubmit
+  }
+})
+
 const onSubmit = () => {
   if(isSending.value){
     return;
@@ -98,13 +106,5 @@ const resetForm = () => {
   isError.value         = false;
 }
 
-
-let sendingClass = computed(() => {
-  return {
-    'is-sending'  : isSending,
-    'is-error'    : isError,
-    'is-complete' : isSubmit
-  }
-})
 
 </script>
