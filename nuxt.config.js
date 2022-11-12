@@ -39,6 +39,7 @@ export default {
     '@/plugins/index.js',
     '@/plugins/routerOptions.js',
     '@/plugins/firebase.js',
+    '@/plugins/api.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -95,6 +96,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
     [
       '@nuxtjs/firebase',
       {
@@ -126,6 +128,10 @@ export default {
       }
     ],
   ],
+
+  axios: {
+    baseURL: 'https://reqres.in/api/',
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   // vuetify: {

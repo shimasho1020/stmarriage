@@ -8,6 +8,7 @@
       "ESNext.AsyncIterable",
       "DOM"
     ],
+    "resolveJsonModule": true, // 追加
     "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,
