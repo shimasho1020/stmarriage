@@ -3,6 +3,11 @@
     <form class="p-contact__form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" @submit.prevent="onSubmit" :class="sendingClass">
       <h1 class="title">お問い合わせ</h1>
       <input type="hidden" name="form-name" value="contact">
+      <div class="p-contact__item radio">
+        <label for="sex">性別<span class="necessary">(必須)</span></label><br>
+        <input type="radio" id="sex" name="sex" value="男性" v-model="sex"> 男性
+        <input type="radio" id="sex" name="sex" value="女性" v-model="sex"> 女性
+      </div>
       <div class="p-contact__item">
         <label for="username">お名前<span class="necessary">(必須)</span></label><br>
         <p class="checkUsername" v-if="!checkUsername">※文字を入力してください</p>
@@ -10,14 +15,14 @@
       </div>
       <div class="p-contact__item">
         <label for="katakana">フリガナ<span class="necessary">(必須)</span></label><br>
-        <input type="text" id="katakana" name="katakana" v-model="katakana" placeholder="オナマエ">
+        <input type="text" id="katakana" name="katakana" v-model="katakana" placeholder="フリガナ">
       </div>
       <div class="p-contact__item">
         <label for="age">年齢<span class="necessary">(必須)</span></label><br>
         <input type="text" id="age" name="age" v-model="age" placeholder="35歳">
       </div>
       <div class="p-contact__item">
-        <label for="salary">年収<span class="necessary">(必須)</span></label><br>
+        <label for="salary">年収<span class="necessary">(必須(男性のみ))</span></label><br>
         <input type="text" id="salary" name="salary" v-model="salary" placeholder="400万円">
       </div>
       <div class="p-contact__item">
@@ -29,8 +34,8 @@
         <input type="text" id="useremail" name="useremail" v-model="useremail" autocomplete="email" placeholder="your@example.com">
       </div>
       <div class="p-contact__item">
-        <label for="message">お問い合わせ内容</label><br>
-        <textarea id="message" name="message" v-model="message" placeholder="お問い合わせ内容です"></textarea>
+        <label for="message">質問・その他</label><br>
+        <textarea id="message" name="message" v-model="message" placeholder="その他、質問などです。"></textarea>
       </div>
       <div class="p-contact__item" v-show="false">
         <label for="message">スパムでない場合は空欄</label>
@@ -51,6 +56,7 @@ import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted
 import axios from 'axios'
 
 const { app, store } = useContext()
+let sex = ref('')
 let username = ref('')
 let katakana = ref('')
 let age = ref('')
@@ -146,6 +152,11 @@ const resetForm = () => {
 
     > .p-contact__item
       padding: 20px 0 20px
+      &.radio
+        padding: 20px 0 0 
+        > input
+          height: auto
+          width: auto
       > label
         +text-body(16px)
         font-weight: bold
