@@ -23,7 +23,7 @@
         <nuxt-link class="menu--link" to="/interview" :class="{'highlight': $route.name === 'interview'}">
           <div class="link-wrap"><span class="link-text">ご成婚事例</span></div>
         </nuxt-link>
-        <nuxt-link class="menu--link" to="/">
+        <nuxt-link class="menu--link" to="/contact" :class="{'highlight': $route.name === 'contact'}">
           <div class="link-wrap"><span class="link-text">お問い合せ</span></div>
         </nuxt-link>
       </div>
