@@ -126,16 +126,10 @@ export default {
       }
     ],
     '@nuxtjs/axios',
-    ['@nuxtjs/dotenv', { filename: `.env_${process.env.NODE_ENV}` }],
   ],
 
   axios: {
     // proxy: true
-  },
-
-  env: {
-    // これを設定しないとNuxtでprocess.env.NODE_ENVを取得したときにデフォルトの値になってしまう
-    NODE_ENV: process.env.NODE_ENV
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -178,7 +172,7 @@ export default {
     baseURL: process.env.BASE_URL || 'http://locahost:3000',
     apiURL: process.env.API_URL || 'http://localhost:3333',
   },
-  
+
   privateRuntimeConfig: {
     secret: process.env.SECRET_KEY,
   },
