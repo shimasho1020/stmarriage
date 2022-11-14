@@ -3,6 +3,9 @@ command = "yarn generate"
 functions = "functions"
 publish = "dist"
 
+[functions]
+  directory = "functions"
+
 # Branch deploy context:
 # All deploys that are not from a pull/merge request
 # or from the production branch will inherit these settings.
