@@ -10,10 +10,10 @@ exports.handler = function(event, context, callback) {
   // OAuth認証情報
   const auth = {
     type         : 'OAuth2',
-    user         : process.env.OAUTH_USER,
-    clientId     : process.env.OAUTH_CLIENT_ID,
-    clientSecret : process.env.OAUTH_CLIENT_SECRET,
-    refreshToken : process.env.OAUTH_REFRESH_TOKEN
+    user         : 'shimasho1020@gmail.com',
+    clientId     : '1079165802195-1fib7jtg9tace4jheb1jgjvi32j6p3m8.apps.googleusercontent.com',
+    clientSecret : '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',
+    refreshToken : '1//04OyjDuX3zyLfCgYIARAAGAQSNwF-L9IrMkCWdxuZpzp1Yz1Dh8Jq7nw1eofpD_NV4Xl3IQtUgbUI8uDqBjef4_VgvCbO6BcT3bg'
   };
 
 
