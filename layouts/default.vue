@@ -24,7 +24,7 @@
           <div class="link-wrap"><span class="link-text">ご成婚事例</span></div>
         </nuxt-link>
         <nuxt-link class="menu--link" to="/contact" :class="{'highlight': $route.name === 'contact'}">
-          <div class="link-wrap"><span class="link-text">お問い合せ</span></div>
+          <div class="link-wrap"><span class="link-text">相談フォーム</span></div>
         </nuxt-link>
       </div>
       <div
@@ -44,7 +44,7 @@
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="//price">FAQ/Contact</nuxt-link>
       </div>
     </div>  
-    <div class="flow_block" :class="{'top-page': $route.name === 'index'}">
+    <div class="flow_block" v-if="$route.name !== 'contact'" :class="{'top-page': $route.name === 'index'}">
       <div class="circle_form man"><span class="inline-block">無料相談<br>男性用</span></div>
       <div class="circle_form woman"><span class="inline-block">無料相談<br>女性用</span></div>
     </div>
@@ -55,7 +55,7 @@
 
     <footer class="footer">
       <div class="footer-wrap">
-        <get-in-touch class="get-in-touch"></get-in-touch>
+        <get-in-touch v-if="$route.name !== 'contact'" class="get-in-touch"></get-in-touch>
         <div class="bottom">
           <div class="bottom-block">Copyright ©️ 2020 St. Marriage Aotama</div>
         </div>
