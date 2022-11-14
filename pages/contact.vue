@@ -3,6 +3,7 @@
     <form class="p-contact__form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" @submit.prevent="onSubmit" :class="sendingClass">
       <h1 class="title">無料相談フォーム</h1>
       <input type="hidden" name="form-name" value="contact">
+      <input type="hidden" name="subject" value="Sales inquiry from mysitename.netlify.app" />
       <div class="p-contact__item radio">
         <label for="sex">性別<span class="necessary">(必須)</span></label><br>
         <input type="radio" id="sex" name="sex" value="男性" v-model="sex"> 男性
