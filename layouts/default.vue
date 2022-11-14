@@ -45,8 +45,8 @@
       </div>
     </div>  
     <div class="flow_block" v-if="$route.name !== 'contact'" :class="{'top-page': $route.name === 'index'}">
-      <div class="circle_form man"><span class="inline-block">無料相談<br>男性用</span></div>
-      <div class="circle_form woman"><span class="inline-block">無料相談<br>女性用</span></div>
+      <nuxt-link to="/contact" class="circle_form man"><span class="inline-block">無料相談<br>男性用</span></nuxt-link>
+      <nuxt-link to="/contact" class="circle_form woman"><span class="inline-block">無料相談<br>女性用</span></nuxt-link>
     </div>
 
     <div class="Body" :class="{'not-top-page': $route.name !== 'index'}">

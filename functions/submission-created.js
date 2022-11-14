@@ -3,7 +3,7 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 
 exports.handler = function(event, context, callback) {
-  const { username, katakana, useremail, message } = JSON.parse(event.body).payload.data;
+  const { username, katakana, age, salary, number, useremail, message } = JSON.parse(event.body).payload.data;
 
   // OAuth認証情報
   const auth = {

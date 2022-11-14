@@ -1,7 +1,7 @@
 <template>
   <div class="p-contact">
     <form class="p-contact__form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" @submit.prevent="onSubmit" :class="sendingClass">
-      <h1 class="title">お問い合わせ</h1>
+      <h1 class="title">無料相談フォーム</h1>
       <input type="hidden" name="form-name" value="contact">
       <div class="p-contact__item radio">
         <label for="sex">性別<span class="necessary">(必須)</span></label><br>
@@ -11,7 +11,7 @@
       <div class="p-contact__item">
         <label for="username">お名前<span class="necessary">(必須)</span></label><br>
         <p class="necessary" v-if="username.length >= 30">※30文字以下で書いてください</p>
-        <input type="text" id="username" name="username" v-model="username" autocomplete="name" placeholder="お名前">
+        <input type="text" id="username" name="username" v-model="username" autocomplete="name" placeholder="姓名">
       </div>
       <div class="p-contact__item">
         <label for="katakana">フリガナ<span class="necessary">(必須)</span></label><br>
@@ -34,9 +34,9 @@
         <input type="text" id="number" name="number" v-model="number" placeholder="090-1234-5678">
       </div>
       <div class="p-contact__item">
-        <label for="useremail">メールアドレス<span class="necessary">(必須)</span></label><br>
+        <label for="email">メールアドレス<span class="necessary">(必須)</span></label><br>
         <p class="necessary" v-if="useremail.length !== 0 &&!checkEmailString(useremail)">※メールアドレス形式で入力してください</p>
-        <input type="text" id="useremail" name="useremail" v-model="useremail" autocomplete="email" placeholder="your@example.com">
+        <input type="text" id="email" name="email" v-model="useremail" autocomplete="email" placeholder="your@example.com">
       </div>
       <div class="p-contact__item">
         <label for="message">質問・その他</label><br>
@@ -112,7 +112,7 @@ const onSubmit = () => {
   params.append('age', age.value);
   params.append('salary', salary.value);
   params.append('number', number.value);
-  params.append('useremail', useremail.value);
+  params.append('email', useremail.value);
   params.append('message', message.value);
   if(botField.value){
     params.append('bot-field', botField.value);
