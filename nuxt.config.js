@@ -173,4 +173,13 @@ export default {
       });
     },
   },
+
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL || 'http://locahost:3000',
+    apiURL: process.env.API_URL || 'http://localhost:3333',
+  },
+  
+  privateRuntimeConfig: {
+    secret: process.env.SECRET_KEY,
+  },
 }

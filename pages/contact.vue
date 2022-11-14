@@ -62,7 +62,8 @@ import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted
 // import { userApi } from '@/api/user'
 import axios from 'axios'
 
-const { app, store } = useContext()
+const { app, store, $config } = useContext()
+console.log($config.secret)
 let sex = ref('')
 let username = ref('')
 let katakana = ref('')
