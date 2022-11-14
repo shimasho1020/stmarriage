@@ -1,20 +1,20 @@
 <template>
   <div class="footer">
     <div class="footer__contact base">
-      <nuxt-link to="/" class="contact-link">
+      <nuxt-link to="/contact" class="contact-link">
         <p class="contact-link__text">
-          <span class="inline-block big">Get in Touch</span>
-          <span class="inline-block small">お問い合わせはこちら</span>
+          <span class="inline-block big">Contact Form</span>
+          <span class="inline-block small">無料相談フォーム</span>
         </p>
       </nuxt-link>
     </div>
     <div class="footer__contact overlay" ref="footerTarget" @mouseleave="mouseOutFooter">
       <div class="link-wrap">
       </div>
-      <nuxt-link to="/" class="contact-link">
+      <nuxt-link to="/contact" class="contact-link">
         <p class="contact-link__text">
-          <span class="inline-block big">Get in Touch</span>
-          <span class="inline-block small">お問い合わせはこちら</span>
+          <span class="inline-block big">Contact Form</span>
+          <span class="inline-block small">無料相談フォーム</span>
         </p>
       </nuxt-link>
     </div>
