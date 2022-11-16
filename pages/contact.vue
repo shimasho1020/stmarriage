@@ -63,7 +63,6 @@ import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted
 import axios from 'axios'
 
 const { app, store, $config } = useContext()
-console.log($config.secret)
 let sex = ref('')
 let username = ref('')
 let katakana = ref('')
@@ -108,7 +107,7 @@ const onSubmit = () => {
   completeMessage.value = '送信処理中…';
   const params = new URLSearchParams();
   params.append('form-name', 'contact');
-  params.append('password', $config.secret);
+  params.append('password', $config.emailAddress);
   params.append('sex', sex.value);
   params.append('username', username.value);
   params.append('katakana', katakana.value);
