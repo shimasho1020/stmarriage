@@ -107,7 +107,6 @@ const onSubmit = () => {
   completeMessage.value = '送信処理中…';
   const params = new URLSearchParams();
   params.append('form-name', 'contact');
-  params.append('password', $config.emailAddress);
   params.append('sex', sex.value);
   params.append('username', username.value);
   params.append('katakana', katakana.value);

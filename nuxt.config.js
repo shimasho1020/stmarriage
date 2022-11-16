@@ -168,10 +168,6 @@ export default {
     },
   },
 
-  env: {
-    secret: process.env.SECRET_KEY,
-  },
-
   publicRuntimeConfig: {
     baseURL: process.env.BASE_URL || 'http://locahost:3000',
     apiURL: process.env.API_URL || 'http://localhost:3333',
@@ -180,6 +176,6 @@ export default {
   privateRuntimeConfig: {
     secret: process.env.SECRET_KEY,
     emailAddress: process.env.EMAIL_KEY,
-    password: process.env.PASSWORD_KEY,
+    password: process.env.EMAIL_PASSWORD,
   },
 }
