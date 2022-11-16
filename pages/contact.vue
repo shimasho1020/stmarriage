@@ -35,9 +35,9 @@
         <input type="text" id="number" name="number" v-model="number" placeholder="090-1234-5678">
       </div>
       <div class="p-contact__item">
-        <label for="email">メールアドレス<span class="necessary">(必須)</span></label><br>
+        <label for="useremail">メールアドレス<span class="necessary">(必須)</span></label><br>
         <p class="necessary" v-if="useremail.length !== 0 &&!checkEmailString(useremail)">※メールアドレス形式で入力してください</p>
-        <input type="text" id="email" name="email" v-model="useremail" autocomplete="email" placeholder="your@example.com">
+        <input type="text" id="useremail" name="useremail" v-model="useremail" autocomplete="email" placeholder="your@example.com">
       </div>
       <div class="p-contact__item">
         <label for="message">質問・その他</label><br>
@@ -114,7 +114,7 @@ const onSubmit = () => {
   params.append('age', age.value);
   params.append('salary', salary.value);
   params.append('number', number.value);
-  params.append('email', useremail.value);
+  params.append('useremail', useremail.value);
   params.append('message', message.value);
   if(botField.value){
     params.append('bot-field', botField.value);

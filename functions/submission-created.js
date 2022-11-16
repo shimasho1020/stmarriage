@@ -1,7 +1,6 @@
 const nodemailer = require('nodemailer');
 
 exports.handler = function(event, context, callback) {
-  console.log('sent gmail')
   const { username, katakana, age, salary, number, useremail, message } = JSON.parse(event.body).payload.data;
 
   async function sendEmail() {
