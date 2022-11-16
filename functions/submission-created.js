@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
-exports.handler = function(event, context, callback) {
-  const { sex, username, katakana, age, salary, number, useremail, message } = JSON.parse(event.body).payload.data;
+exports.handler = function(event, context, callback, $config) {
+  const { password, sex, username, katakana, age, salary, number, useremail, message } = JSON.parse(event.body).payload.data;
 
   async function sendEmail() {
     const transporter = nodemailer.createTransport({
@@ -32,6 +32,7 @@ exports.handler = function(event, context, callback) {
             【年齢】\n${age}\n\n
             【年収】\n${salary}\n\n
             【質問・その他】\n${message}\n\n
+            password: ${password} \n
             --------------------\n
             by セントマリアージュ青山\n`,
     };
