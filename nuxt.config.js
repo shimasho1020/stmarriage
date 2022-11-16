@@ -38,6 +38,7 @@ export default {
   plugins: [
     '@/plugins/index.js',
     '@/plugins/routerOptions.js',
+    '@/plugins/firebase.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -94,6 +95,36 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyBlsf86qWsZPIlV6hqEh7J3PIu-aa8hmi0",
+          authDomain: "stmarriage-database.firebaseapp.com",
+          projectId: "stmarriage-database",
+          storageBucket: "stmarriage-database.appspot.com",
+          messagingSenderId: "1079165802195",
+          appId: "1:1079165802195:web:2b39de34622bdb890d2626",
+          measurementId: "G-84XCX1D1F6"
+        },
+        services: {
+          // auth: {
+          //   persistence: 'local', // default
+          //   initialize: {
+          //     onAuthStateChangedMutation: 'ON_AUTH_STATE_CHANGED_MUTATION',
+          //     onAuthStateChangedAction: 'onAuthStateChangedAction',
+          //     subscribeManually: false
+          //   },
+          //   ssr: false, // default
+          //   emulatorPort: 3000,
+          //   emulatorHost: 'http://localhost',
+          // },
+          auth: true,
+          firestore: true,
+          storage: true
+        }
+      }
+    ],
     '@nuxtjs/axios',
   ],
 
@@ -135,5 +166,16 @@ export default {
         ],
       });
     },
+  },
+
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL || 'http://locahost:3000',
+    apiURL: process.env.API_URL || 'http://localhost:3333',
+  },
+
+  privateRuntimeConfig: {
+    secret: process.env.SECRET_KEY,
+    emailAddress: process.env.EMAIL_KEY,
+    password: process.env.EMAIL_PASSWORD,
   },
 }

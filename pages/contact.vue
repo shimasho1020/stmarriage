@@ -20,14 +20,9 @@
         <input type="text" id="katakana" name="katakana" v-model="katakana" placeholder="フリガナ">
       </div>
       <div class="p-contact__item">
-        <label for="age">年齢<span class="necessary">(必須)</span></label><br>
-        <p class="necessary" v-if="age.length >= 30">※30文字以下で書いてください</p>
-        <input type="text" id="age" name="age" v-model="age" placeholder="35歳">
-      </div>
-      <div class="p-contact__item" v-if="sex === '男性'">
-        <label for="salary">年収</label><br>
-        <p class="necessary" v-if="salary.length >= 30">※30文字以下で書いてください</p>
-        <input type="text" id="salary" name="salary" v-model="salary" placeholder="400万円">
+        <label for="useremail">メールアドレス<span class="necessary">(必須)</span></label><br>
+        <p class="necessary" v-if="useremail.length !== 0 &&!checkEmailString(useremail)">※メールアドレス形式で入力してください</p>
+        <input type="text" id="useremail" name="useremail" v-model="useremail" autocomplete="email" placeholder="your@example.com">
       </div>
       <div class="p-contact__item">
         <label for="number">電話番号</label><br>
@@ -35,9 +30,14 @@
         <input type="text" id="number" name="number" v-model="number" placeholder="090-1234-5678">
       </div>
       <div class="p-contact__item">
-        <label for="email">メールアドレス<span class="necessary">(必須)</span></label><br>
-        <p class="necessary" v-if="useremail.length !== 0 &&!checkEmailString(useremail)">※メールアドレス形式で入力してください</p>
-        <input type="text" id="email" name="email" v-model="useremail" autocomplete="email" placeholder="your@example.com">
+        <label for="age">年齢<span class="necessary">(必須)</span></label><br>
+        <p class="necessary" v-if="age.length >= 30">※30文字以下で書いてください</p>
+        <input type="text" id="age" name="age" v-model="age" placeholder="35歳">
+      </div>
+      <div class="p-contact__item" v-show="sex === '男性'">
+        <label for="salary">年収</label><br>
+        <p class="necessary" v-if="salary.length >= 30">※30文字以下で書いてください</p>
+        <input type="text" id="salary" name="salary" v-model="salary" placeholder="400万円">
       </div>
       <div class="p-contact__item">
         <label for="message">質問・その他</label><br>
@@ -62,7 +62,7 @@ import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted
 // import { userApi } from '@/api/user'
 import axios from 'axios'
 
-const { app, store } = useContext()
+const { app, store, $config } = useContext()
 let sex = ref('')
 let username = ref('')
 let katakana = ref('')
@@ -113,7 +113,7 @@ const onSubmit = () => {
   params.append('age', age.value);
   params.append('salary', salary.value);
   params.append('number', number.value);
-  params.append('email', useremail.value);
+  params.append('useremail', useremail.value);
   params.append('message', message.value);
   if(botField.value){
     params.append('bot-field', botField.value);
