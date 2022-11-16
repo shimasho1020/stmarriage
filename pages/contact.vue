@@ -34,7 +34,7 @@
         <p class="necessary" v-if="age.length >= 30">※30文字以下で書いてください</p>
         <input type="text" id="age" name="age" v-model="age" placeholder="35歳">
       </div>
-      <div class="p-contact__item" v-if="sex === '男性'">
+      <div class="p-contact__item" v-show="sex === '男性'">
         <label for="salary">年収</label><br>
         <p class="necessary" v-if="salary.length >= 30">※30文字以下で書いてください</p>
         <input type="text" id="salary" name="salary" v-model="salary" placeholder="400万円">
