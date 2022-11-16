@@ -2,7 +2,8 @@ const nodemailer = require('nodemailer');
 
 exports.handler = function(event, context, callback, $config) {
   const { password, sex, username, katakana, age, salary, number, useremail, message } = JSON.parse(event.body).payload.data;
-
+  console.log(password)
+  
   async function sendEmail() {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -17,7 +18,7 @@ exports.handler = function(event, context, callback, $config) {
     const mailContents = {
       from: 'stmarriage0108@gmail.com',
       to: `${useremail}`,
-      subject: '【セントマリアージュ青山より】お問い合わせありがとうございます',
+      subject: '【セントマリアージュ青山】お問い合わせありがとうございます',
       text: `${username} 様\n\n
             お問い合わせありがとうございます。\n
             以下の内容でフォームを送信いたしました。\n
