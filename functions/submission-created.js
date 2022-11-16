@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 exports.handler = function(event, context, callback) {
-  const { username, katakana, age, salary, number, useremail, message } = JSON.parse(event.body).payload.data;
+  const { sex, username, katakana, age, salary, number, useremail, message } = JSON.parse(event.body).payload.data;
 
   async function sendEmail() {
     const transporter = nodemailer.createTransport({
@@ -17,8 +17,23 @@ exports.handler = function(event, context, callback) {
     const mailContents = {
       from: 'stmarriage0108@gmail.com',
       to: `${useremail}`,
-      subject: '【notes by SHARESL】お問い合わせありがとうございます',
-      text: `${username} 様\n\nお問い合わせありがとうございます。\n以下の内容でフォームを送信いたしました。\n数日中に追って担当者よりメールにて回答をお送りいたします。\n今しばらくお待ちください。\n\n------ 送信内容 ------\n【お名前】\n${username}\n\n【フリガナ】\n${katakana}\n\n【メールアドレス】\n${useremail}\n\n【お問い合わせ内容】\n${message}\n\n--------------------\nnotes by SHARESL\n`,
+      subject: '【セントマリアージュ青山より】お問い合わせありがとうございます',
+      text: `${username} 様\n\n
+            お問い合わせありがとうございます。\n
+            以下の内容でフォームを送信いたしました。\n
+            数日中に追って連絡いたします。\n
+            今しばらくお待ちください。\n\n
+            ------ 送信内容 ------\n
+            【性別】\n${sex}\n\n
+            【お名前】\n${username}\n\n
+            【フリガナ】\n${katakana}\n\n
+            【メールアドレス】\n${useremail}\n\n
+            【電話番号】\n${number}\n\n
+            【年齢】\n${age}\n\n
+            【年収】\n${salary}\n\n
+            【質問・その他】\n${message}\n\n
+            --------------------\n
+            by セントマリアージュ青山\n`,
     };
 
     await transporter.sendMail(mailContents, function (error, info) {
