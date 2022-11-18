@@ -6,36 +6,37 @@
     <div class="body">
       <div class="body_wrap">
         <div class="case_list">
-          <nuxt-link
+          <component
+            :is=" item.isInterview ? 'nuxt-link' : 'div'"
             class="case_item"
             v-for="(item, index) of caseList"
-            :to="`/interview/${item.num}`"
+            :to=" item.isInterview ? `/interview/${item.num}` : ''"
             :key="index"
           >
             <div class="case_block">
-              <h1 class="case_title">31歳の男性会員様がご成婚されました！</h1>
+              <h1 class="case_title">{{item.age}}歳の{{item.sex}}会員様がご成婚されました！</h1>
               <div class="text">
                 
               </div>
               <div class="about">
                 <ol class="special_list">
-                <li>31歳男性</li>
-                <li>会社員</li>
-                <li>活動期間10ヶ月</li>
-                <li>お相手は34歳女性</li>
+                <li>{{item.age}}歳{{item.sex}}</li>
+                <li>{{item.job}}</li>
+                <li>活動期間{{item.term}}ヶ月</li>
+                <li>お相手は{{item.partnerAge}}歳{{changeSex(item.sex)}}</li>
               </ol>
               </div>
               <div class="link_wrap">
-                <div class="link">
+                <div v-if="item.isInterview" class="link">
                   <arrow class="arrow"></arrow>
-                  <span class="form">詳しくはこちら</span>
+                  <span class="form">ご成婚インタビューがあるので、詳しくはこちら</span>
                 </div>
               </div>
             </div>
             <div class="case_img">
               <img class="img" src="/images/marriage-gate.webp">
             </div>
-          </nuxt-link>
+          </component>
         </div>
       </div>
     </div>
@@ -52,30 +53,51 @@ components: {
 
 interface CaseList {
   num: number,
-  name: string,
-  img: string,
-  url?: string,
+  name?: string,
+  age: number,
+  sex: '男性' | '女性'
+  job?: string,
+  term?: number,
+  partnerAge?: number,
+  img?: string,
+  isInterview: boolean,
 }
 
 const caseList: CaseList[] = [
   {
     num: 1,
-    name:'xxx xxxx',
+    age: 40,
+    sex: '男性',
+    job: '弁護士',
+    term: 10,
+    partnerAge: 35,
     img:'/images/marriage-gate.webp',
+    isInterview: true,
   },
   {
     num: 2,
-    name:'yyy yyyy',
+    age: 40,
+    sex: '男性',
+    job: '弁護士',
+    term: 10,
+    partnerAge: 35,
     img:'/images/marriage-gate.webp',
-    url:'/flow',
+    isInterview: false,
   },
   {
     num: 3,
-    name:'zzz zzzz',
+    age: 40,
+    sex: '男性',
+    job: '弁護士',
+    term: 10,
+    partnerAge: 35,
     img:'/images/marriage-gate.webp',
-    url:'/voice',
+    isInterview: true,
   },
 ]
+const changeSex = (sex: '男性' | '女性') => {
+  return sex === '男性' ? '女性' : '男性'
+}
 </script>
 
 <style lang="sass" scoped>
