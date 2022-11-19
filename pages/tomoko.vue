@@ -1,7 +1,14 @@
 <template>
 <v-app>
-  <div>
+  <div style="position:relative;">
     <h1 class="text-center pa-5">ご成婚事例編集ページ</h1>
+    <div class="saveButoon">
+      <v-btn 
+        class="white--text green darken-1" 
+        x-large
+        :disabled="!activeButton"
+      >保存する</v-btn>
+    </div>
     <div class=".inline-block mx-auto" style="width:160px">
       <div class="green--text text-h5 text-center" v-if="isPublic">現在公開中</div>
       <div class="red--text text-h5 text-center" v-if="!isPublic">現在非公開中</div>
@@ -29,51 +36,126 @@
             ></v-text-field>
           </div>
           <div class="pa-5">
-            <h1 class="subtitle">名前<span class="necessary">(必須)</span></h1>
+            <h1 class="subtitle">性別<span class="necessary">(必須)</span></h1>
+            <v-autocomplete
+              v-model="sex"
+              :items="itemsSex"
+              placeholder="性別"
+            ></v-autocomplete>
+          </div>
+          <div class="pa-5">
+            <h1 class="subtitle">年齢<span class="necessary">(必須)</span></h1>
+            <v-autocomplete
+              v-model="age"
+              :items="itemsAge"
+              placeholder="年齢"
+              style="width:100px;display: inline-block"
+            ></v-autocomplete>
+            <span>歳</span>
+          </div>
+          <div class="pa-5">
+            <h1 class="subtitle">職業</h1>
             <v-text-field
-              v-model="name"
-              placeholder="名前"
+              v-model="job"
+              placeholder="職業"
             ></v-text-field>
           </div>
           <div class="pa-5">
-            <h1 class="subtitle">名前<span class="necessary">(必須)</span></h1>
-            <v-text-field
-              v-model="name"
-              placeholder="名前"
-            ></v-text-field>
+            <h1 class="subtitle">活動期間<span class="necessary">(必須)</span></h1>
+            <v-autocomplete
+              v-model="term"
+              :items="itemsTerm"
+              placeholder="期間"
+              style="width:100px;display: inline-block"
+            ></v-autocomplete>
+            <span>ヶ月</span>
           </div>
           <div class="pa-5">
-            <h1 class="subtitle">名前<span class="necessary">(必須)</span></h1>
-            <v-text-field
-              v-model="name"
-              placeholder="名前"
-            ></v-text-field>
-          </div>
-          <div class="pa-5">
-            <h1 class="subtitle">名前<span class="necessary">(必須)</span></h1>
-            <v-text-field
-              v-model="name"
-              placeholder="名前"
-            ></v-text-field>
-          </div>
-          <div class="pa-5">
-            <h1 class="subtitle">名前<span class="necessary">(必須)</span></h1>
-            <v-text-field
-              v-model="name"
-              placeholder="名前"
-            ></v-text-field>
-          </div>
-          <div class="pa-5">
-            <h1 class="subtitle">名前<span class="necessary">(必須)</span></h1>
-            <v-text-field
-              v-model="name"
-              placeholder="名前"
-            ></v-text-field>
+            <h1 class="subtitle">相手の年齢<span class="necessary">(必須)</span></h1>
+            <v-autocomplete
+              v-model="partnerAge"
+              :items="itemsAge"
+              placeholder="相手の年齢"
+              style="width:120px;display: inline-block"
+            ></v-autocomplete>
+            <span>歳</span>
           </div>
         </v-form>
       </div>
-      <div style="flex: 0 0 65%">
-
+      <div style="flex: 0 0 65%;border: 1px solid black;" class="left_edit_side rounded-lg pa-5" :class="{active:isInterview}">
+        <div class="section">
+          <div class="section_title_block">
+            <h1 class="section_title">{{age}}歳の{{sex}}会員様がご成婚されました！</h1>
+          </div>
+          <v-file-input
+            label="ファイルを選択"
+            v-model="profImg"
+            accept="image/*"
+          ></v-file-input>
+          <!-- {{profImg}} -->
+          <div class="section_img">
+            <img class="img" :src="profImg.name">
+          </div>
+          <div class="section_block">
+            <div class="text">
+              <v-textarea
+                outlined
+                label="この方の簡単な説明や結婚までの経緯"
+                v-model="aboutText"
+              ></v-textarea>
+              <div style="white-space: pre-wrap;" v-text="aboutText"></div>
+            </div>
+            <div class="about">
+              <h1 class="title">ご成婚者様の声</h1>
+              <div class="list">
+                <div class="list_item">
+                  <h1 class="subtitle">婚活を始めたきっかけ</h1>
+                  <div class="text">
+                    <v-textarea
+                      outlined
+                      label="婚活を始めたきっかけ"
+                      v-model="questionText1"
+                    ></v-textarea>
+                    <div style="white-space: pre-wrap;" v-text="questionText1"></div>
+                  </div>
+                </div>
+                <div class="list_item">
+                  <h1 class="subtitle">こちらの相談所を選んだきっかけ</h1>
+                  <div class="text">
+                    <v-textarea
+                      outlined
+                      label="こちらの相談所を選んだきっかけ"
+                      v-model="questionText2"
+                    ></v-textarea>
+                    <div style="white-space: pre-wrap;" v-text="questionText2"></div>
+                  </div>
+                </div>
+                <div class="list_item">
+                  <h1 class="subtitle">カウンセラーとの思い出のエピソード</h1>
+                  <div class="text">
+                    <v-textarea
+                      outlined
+                      label="カウンセラーとの思い出のエピソード"
+                      v-model="questionText3"
+                    ></v-textarea>
+                    <div style="white-space: pre-wrap;" v-text="questionText3"></div>
+                  </div>
+                </div>
+                <div class="list_item">
+                  <h1 class="subtitle">システムやルールで感じたこと</h1>
+                  <div class="text">
+                    <v-textarea
+                      outlined
+                      label="システムやルールで感じたこと"
+                      v-model="questionText4"
+                    ></v-textarea>
+                    <div style="white-space: pre-wrap;" v-text="questionText4"></div>
+                  </div>
+                </div>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div>
         <!-- <v-btn
@@ -105,24 +187,40 @@ interface CaseList {
   age: number,
   term?: number,
   partnerAge?: number,
-  sex: '男性' | '女性'
+  sex: '男性' | '女性' | ''
   name?: string,
   job?: string,
   img?: string,
   isInterview: boolean,
 }
 
+const itemsSex = ['男性', '女性']
+const itemsAge:number[] = []
+for(let i=20;i<=65;i++){
+  itemsAge.push(i)
+}
+const itemsTerm:number[] = []
+for(let i=1;i<=60;i++){
+  itemsTerm.push(i)
+}
 const { app, store, $config } = useContext()
 let isPublic = ref(false)
 let num = ref(0)
 let age = ref(0)
 let term = ref(0)
 let partnerAge = ref(0)
-let sex = ref('男性')
+let sex = ref('')
 let name = ref('')
 let job = ref('')
 let img = ref('')
 let isInterview = ref('')
+
+let profImg = ref({} as HTMLInputElement)
+let aboutText = ref('')
+let questionText1 = ref('')
+let questionText2 = ref('')
+let questionText3 = ref('')
+let questionText4 = ref('')
 
 let isSubmit = ref(false)
 let isSending = ref(false)
@@ -130,7 +228,12 @@ let isError = ref(false)
 let completeMessage = ref('')
 
 let activeButton = computed(() => {
-  return 
+  return !!name.value && 
+          !!age.value && 
+          !!sex.value &&
+          !!term.value &&
+          !!partnerAge.value &&
+          !!isInterview.value
 })
 
 let sendingClass = computed(() => {
@@ -181,6 +284,10 @@ const resetForm = () => {
   isError.value         = false;
 }
 
+watch(profImg,(neeVal) => {
+  console.log(neeVal)
+})
+
 </script>
 
 <style lang="sass" scoped>
@@ -189,81 +296,115 @@ const resetForm = () => {
 .subtitle
   +text-body(20px)
 
+.saveButoon
+  position: fixed
+  top: 50px
+  right: 100px
+  z-index: 10
 
-.p-contact
-  padding: 40px 0 80px
-  > .p-contact__form
-    width: 800px
-    max-width: calc(100% - 10vw)
+.left_edit_side
+  opacity: .3
+  pointer-events: none
+  &.active
+    opacity: 1
+    pointer-events: auto
+
+
+
+
+.section
+  padding: 30px
+  border-radius: 20px
+  background-color: var(--white-1)
+  background-image: url("/images/frame-topleft.svg"), url("/images/frame-topright.svg"), url("/images/frame-bottomleft.svg"), url("/images/frame-bottomright.svg")
+  background-position:  left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
+  background-size: 50px 50px
+  display: flex
+  flex-direction: column
+  gap: 40px
+  // justify-content: center
+
+  > .section_title_block
+    > .section_title
+      +text-title(32px)
+      position: relative
+      margin-left: 40px
+      padding-right: 10px
+      display: inline-block
+      background: linear-gradient(transparent 70%, #a7d6ff 70%)
+      // color: var(--white-1)
+      text-shadow: 0 0 2px white
+      // background: var(--w)
+      z-index: 1
+      border-radius: 0 10px 10px
+
+      &::before 
+        content: ""
+        position: absolute
+        background: var(--skyBlue)
+        width: 50px
+        height: 50px
+        border-radius: 50%
+        top: 50%
+        left: -15px
+        -webkit-transform: translateY(-50%)
+        transform: translateY(-50%)
+        z-index: -1
+
+  > .section_img
+    flex: 60px
+    width: 60%
     margin: auto
-    padding: 5%
-    background-color: var(--white-1)
-    border-radius: 20px
-
-    > .title
-      text-align: center
-      +text-title(40px)
-      padding: 0 0 20px
-
-    > .p-contact__item
-      padding: 20px 0 20px
-      &.radio
-        padding: 20px 0 0 
-        > input
-          height: auto
-          width: auto
-      > label
-        +text-body(16px)
-        font-weight: bold
-        padding: 0 0 10px
-        display: inline-block
-
-      > input
-        border: 1px solid var(--sub)
-        border-radius: 5px
-        padding: 10px
-        background-color: snow
-        width: 50%
-        height: 32px
-        line-height: 1.2
-        outline: none
-        &::placeholder
-          color: #aaa
-
-      > textarea
-        border: 1px solid var(--sub)
-        border-radius: 10px
-        padding: 10px
-        background-color: snow
-        width: 100%
-        height: 120px
-        line-height: 1.2
-        outline: none
-        &::placeholder
-          color: #aaa
-
-    > .message
-      position: fixed
-      bottom: 0px
-      left: 0
-      z-index: 50
-      width: 100vw
-      background-color: var(--main)
-      text-align: center
-      +text-subtitle(32px)
-      color: var(--white-1)
-      padding: 20px
-    > .p-contact__submit
+    > .img
       width: 100%
-      > button
-        width: 100%
-        text-align: center
-        border-radius: 10px
-        background-color: var(--main)
-        +text-title(24px)
-        color: var(--white-1)
-        padding: 10px 0 10px
+
+  > .section_block
+    > .text
+      padding: 0 10% 40px
+      +text-body(20px)
+
+    > .about
+      > .title
+        +text-title(28px)
+        position: relative
+        margin: 0 0 20px  7%
+        // padding: 0 0 20px
+        background: linear-gradient(transparent 70%, #a7d6ff 70%)
         display: inline-block
-        &:disabled
-          opacity: .1
+        
+      > .list
+        margin-left: 10%
+
+        > .list_item
+          > .subtitle
+            +text-title(24px)
+            position: relative
+            padding: 20px 0 10px
+
+            &::after,&::before
+              content: ""
+              position: absolute
+              border-radius: 50%
+
+            &::before
+              left: -32px
+              width: 20px
+              height: 20px
+              background: var(--skyBlue)
+              top: 50%
+              -moz-transform: translateY(-50%)
+              -webkit-transform: translateY(-50%)
+              -o-transform: translateY(-50%)
+              -ms-transform: translateY(-50%)
+              transform: translateY(-50%)
+            
+            &::after
+              top: 45%
+              left: -24px
+              width: 16px
+              height: 16px
+              background: var(--sub)
+
+          > .text
+            +text-body(16px)
 </style>
