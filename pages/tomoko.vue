@@ -91,8 +91,13 @@
             label="ファイルを選択"
             v-model="profImg"
             accept="image/*"
+            ref="image"
+            @change="previewFile"
           ></v-file-input>
-          <!-- {{profImg}} -->
+          <!-- <input type="file" @change="previewFile"><br> -->
+          <div>
+            <img :src="uploadFile" alt="">
+          </div>
           <div class="section_img">
             <img class="img" :src="profImg.name">
           </div>
@@ -180,7 +185,8 @@ export default defineComponent({
 
 <script setup lang="ts">
 import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
-// import { userApi } from '@/api/user'
+import axios from 'axios'
+import { getStorage, ref as REF, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 interface CaseList {
   num: number,
@@ -204,6 +210,8 @@ for(let i=1;i<=60;i++){
   itemsTerm.push(i)
 }
 const { app, store, $config } = useContext()
+console.log(app.$fire.storage)
+
 let isPublic = ref(false)
 let num = ref(0)
 let age = ref(0)
@@ -270,7 +278,7 @@ const onSubmit = () => {
   // });
 }
 
-
+let fileUrl = ref('')
 const resetForm = () => {
   num.value        = 0;
   age.value        = 0;
@@ -284,9 +292,81 @@ const resetForm = () => {
   isError.value         = false;
 }
 
-watch(profImg,(neeVal) => {
-  console.log(neeVal)
-})
+const image = ref()
+const uploadFile = ref()
+
+function previewFile(e:any) {
+  // const file = e.target.files;
+  const file = e;
+  console.log(image.value);
+  if(file) {
+    const blob = new Blob(file, { type: "image/*" });
+    console.log(blob)
+    const reader = new FileReader();
+    reader.addEventListener("load", function () {
+      // 画像ファイルを base64 文字列に変換します
+      uploadFile.value = reader.result;
+    }, false);
+    reader.readAsDataURL(blob)
+  } else {
+    alert('適当なメッセージ');
+  }
+}
+
+// const upload = (e: HTMLInputElement) => {
+//   let fileReader = new FileReader()
+//   const metadata = {
+//     contentType: 'image/*'
+//   }
+//   const file = e
+//   console.log(file)
+//   const storage = getStorage();
+//   const storageRef = REF(storage, 'images/' + file.name);
+
+//   const uploadTask = uploadBytesResumable(storageRef, file, metadata)
+//   uploadTask.on('state_changed',
+//   (snapshot) => {
+//     // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+//     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+//     console.log('Upload is ' + progress + '% done');
+//     switch (snapshot.state) {
+//       case 'paused':
+//         console.log('Upload is paused');
+//         break;
+//       case 'running':
+//         console.log('Upload is running');
+//         break;
+//     }
+//   }, 
+//   (error) => {
+//     // A full list of error codes is available at
+//     // https://firebase.google.com/docs/storage/web/handle-errors
+//     switch (error.code) {
+//       case 'storage/unauthorized':
+//         // User doesn't have permission to access the object
+//         break;
+//       case 'storage/canceled':
+//         // User canceled the upload
+//         break;
+
+//       // ...
+
+//       case 'storage/unknown':
+//         // Unknown error occurred, inspect error.serverResponse
+//         break;
+//     }
+//   }, 
+//   () => {
+//     // Upload completed successfully, now we can get the download URL
+//     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+//       console.log('File available at', downloadURL);
+//     });
+//   });
+// }
+
+// watch(profImg,(neeVal) => {
+//   console.log(neeVal)
+// })
 
 </script>
 
