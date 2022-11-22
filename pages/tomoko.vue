@@ -82,24 +82,20 @@
           </div>
         </v-form>
       </div>
+
+
       <div style="flex: 0 0 65%;border: 1px solid black;" class="left_edit_side rounded-lg pa-5" :class="{active:isInterview}">
         <div class="section">
           <div class="section_title_block">
             <h1 class="section_title">{{age}}歳の{{sex}}会員様がご成婚されました！</h1>
           </div>
-          <v-file-input
-            label="ファイルを選択"
-            v-model="profImg"
+          <input 
+            type="file" 
+            @change="previewFile" 
             accept="image/*"
-            ref="image"
-            @change="previewFile"
-          ></v-file-input>
-          <!-- <input type="file" @change="previewFile"><br> -->
-          <div>
-            <img :src="uploadFile" alt="">
-          </div>
+          >
           <div class="section_img">
-            <img class="img" :src="profImg.name">
+            <img class="img" :src="uploadFile">
           </div>
           <div class="section_block">
             <div class="text">
@@ -223,7 +219,6 @@ let job = ref('')
 let img = ref('')
 let isInterview = ref('')
 
-let profImg = ref({} as HTMLInputElement)
 let aboutText = ref('')
 let questionText1 = ref('')
 let questionText2 = ref('')
@@ -292,77 +287,63 @@ const resetForm = () => {
   isError.value         = false;
 }
 
-const image = ref()
 const uploadFile = ref()
+function previewFile(event: Event) {
+  const file = (event.target as HTMLInputElement).files;
+  if(file === null) return
+  const blob = new Blob(file as any, { type: "image/*" });
+  const reader = new FileReader();
+  reader.addEventListener("load", function () {
+    // 画像ファイルを base64 文字列に変換します
+    uploadFile.value = reader.result;
+  }, false);
+  reader.readAsDataURL(blob)
 
-function previewFile(e:any) {
-  // const file = e.target.files;
-  const file = e;
-  console.log(image.value);
-  if(file) {
-    const blob = new Blob(file, { type: "image/*" });
-    console.log(blob)
-    const reader = new FileReader();
-    reader.addEventListener("load", function () {
-      // 画像ファイルを base64 文字列に変換します
-      uploadFile.value = reader.result;
-    }, false);
-    reader.readAsDataURL(blob)
-  } else {
-    alert('適当なメッセージ');
+
+  const metadata = {
+    contentType: 'image/*'
   }
+  const storage = getStorage();
+  const storageRef = REF(storage, 'images/' + file[0].name);
+
+  const uploadTask = uploadBytesResumable(storageRef, file[0], metadata)
+  uploadTask.on('state_changed',
+  (snapshot) => {
+    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+    switch (snapshot.state) {
+      case 'paused':
+        console.log('Upload is paused');
+        break;
+      case 'running':
+        console.log('Upload is running');
+        break;
+    }
+  }, 
+  (error) => {
+    switch (error.code) {
+      case 'storage/unauthorized':
+        // User doesn't have permission to access the object
+        break;
+      case 'storage/canceled':
+        // User canceled the upload
+        break;
+
+      // ...
+
+      case 'storage/unknown':
+        // Unknown error occurred, inspect error.serverResponse
+        break;
+    }
+  }, 
+  () => {
+    // Upload completed successfully, now we can get the download URL
+    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      console.log('File available at', downloadURL);
+    });
+  });
 }
-
-// const upload = (e: HTMLInputElement) => {
-//   let fileReader = new FileReader()
-//   const metadata = {
-//     contentType: 'image/*'
-//   }
-//   const file = e
-//   console.log(file)
-//   const storage = getStorage();
-//   const storageRef = REF(storage, 'images/' + file.name);
-
-//   const uploadTask = uploadBytesResumable(storageRef, file, metadata)
-//   uploadTask.on('state_changed',
-//   (snapshot) => {
-//     // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-//     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-//     console.log('Upload is ' + progress + '% done');
-//     switch (snapshot.state) {
-//       case 'paused':
-//         console.log('Upload is paused');
-//         break;
-//       case 'running':
-//         console.log('Upload is running');
-//         break;
-//     }
-//   }, 
-//   (error) => {
-//     // A full list of error codes is available at
-//     // https://firebase.google.com/docs/storage/web/handle-errors
-//     switch (error.code) {
-//       case 'storage/unauthorized':
-//         // User doesn't have permission to access the object
-//         break;
-//       case 'storage/canceled':
-//         // User canceled the upload
-//         break;
-
-//       // ...
-
-//       case 'storage/unknown':
-//         // Unknown error occurred, inspect error.serverResponse
-//         break;
-//     }
-//   }, 
-//   () => {
-//     // Upload completed successfully, now we can get the download URL
-//     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-//       console.log('File available at', downloadURL);
-//     });
-//   });
-// }
 
 // watch(profImg,(neeVal) => {
 //   console.log(neeVal)
