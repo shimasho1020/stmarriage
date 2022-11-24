@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <v-app>
+    <h1 class="text-center pa-5">ご成婚事例編集ページ</h1>
     <nuxt/>
-  </div>
+  </v-app>
 </template>
 
 <script>

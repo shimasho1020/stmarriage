@@ -1,16 +1,14 @@
 <template>
-  <div class="">
-    <div class="title_block" style="text-align:center">
-      <h1 class="title">ご成婚事例</h1>
-    </div>
+<div>
+  <div style="position:relative;">
     <div class="body">
       <div class="body_wrap">
         <div class="case_list">
-          <component
-            :is=" item.isInterview ? 'nuxt-link' : 'div'"
+          <nuxt-link
             class="case_item"
+            :class="{moya: !isPublic}"
             v-for="(item, index) of caseList"
-            :to=" item.isInterview ? `/interview/${item.id}` : ''"
+            :to="`/tomoko/${item.id}`"
             :key="index"
           >
             <div class="case_block">
@@ -25,27 +23,33 @@
                 <li>活動期間{{item.term}}ヶ月</li>
                 <li>お相手は{{item.partnerAge}}歳{{changeSex(item.sex)}}</li>
               </ol>
+              <div v-if="isPublic" class="green--text text-h4">現在公開中です</div>
+              <div v-if="!isPublic" class="red--text text-h4">現在非公開中です</div>
               </div>
               <div class="link_wrap">
-                <div v-if="item.isInterview" class="link">
-                  <arrow class="arrow"></arrow>
-                  <span class="form">ご成婚インタビューがあるので、詳しくはこちら</span>
-                </div>
+                <div v-if="!item.isInterview" class="link red--text text-h6">インタービューはありません</div>
               </div>
             </div>
             <div class="case_img">
               <img class="img" src="/images/marriage-gate.webp">
             </div>
-          </component>
+          </nuxt-link>
         </div>
       </div>
     </div>
   </div>
-  </template>
+</div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from '@nuxtjs/composition-api'
+export default defineComponent({
+ layout: "sub"
+});
+</script>
 
 <script setup  lang="ts">
-import gsap from "gsap"
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
+import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
 import Arrow from '~/assets/images/arrow.svg'
 components: {
   Arrow
@@ -62,6 +66,8 @@ interface CaseList {
   img?: string,
   isInterview: boolean,
 }
+
+const isPublic = ref(false)
 
 const caseList: CaseList[] = [
   {
@@ -101,34 +107,8 @@ const changeSex = (sex: '男性' | '女性') => {
 </script>
 
 <style lang="sass" scoped>
-.arrow
-  display: inline-block
-  width: 24px
-  height: 24px
-  circle
-    fill: var(--main)
-.title_block
-  > .title
-    +text-title(40px)
-    position: relative
-    padding: 1.5rem 2rem
-    -webkit-box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
-    box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
-    background-color: rgb(255, 255, 255,0.7)
-
-    &::before,&::after
-      position: absolute
-      left: 0
-      width: 100%
-      height: 4px
-      content: ''
-      background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
-
-    &::before
-      top: 0
-    &::after
-      bottom: 0
-
+.moya
+  opacity: 0.5
 .body
   padding: 64px 0
   > .body_wrap
@@ -189,16 +169,6 @@ const changeSex = (sex: '男性' | '女性') => {
 
           > .link_wrap
             width: 100%
-            text-align: right
-            > .link
-              text-align: right
-
-              > .arrow
-                position: relative
-                top: 8px
-              > .form
-                +text-body(16px)
-          
 
         > .case_img
           flex: 0 0 45%

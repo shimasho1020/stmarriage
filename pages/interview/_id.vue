@@ -14,36 +14,16 @@
         </div>
         <div class="section_block">
           <div class="text">
-            当社の31歳の男性会員様がご成婚されました。お相手は29歳の女性会員様です。<br>お見合からお互い好印象で仮交際がスタートし、１カ月半で真剣交際に進み、3カ月でご成婚が決まりました。毎日のようにLineや電話でコミュニケーションを取り、毎週末デートを重ねることでお二人の距離を縮めていかれたそうです。溌溂としたパワーあふれる男性と、おっとり柔らかい雰囲気のお綺麗な女性の大変お似合いのお二人です。末永いお幸せをお祈りいたします♡
+            <div style="white-space: pre-wrap;" v-text="interview.aboutText"></div>
           </div>
           <div class="about">
             <h1 class="title">ご成婚者様の声</h1>
             <div class="list">
-              <div class="list_item">
-                <h1 class="subtitle">婚活を始めたきっかけ</h1>
-                <div class="text">
-                  30歳を過ぎ、また世の中もコロナ真っ只中の中で、このまま一人でいいのだろうか？家族がいた方がより人生が豊かになるのではないか？と思っていた矢先に、知人からの紹介を受けご縁があったので。
-                </div>
-              </div>
-              <div class="list_item">
-                <h1 class="subtitle">こちらの相談所を選んだきっかけ</h1>
-                <div class="text">
-                  30歳を過ぎ、また世の中もコロナ真っ只中の中で、このまま一人でいいのだろうか？家族がいた方がより人生が豊かになるのではないか？と思っていた矢先に、知人からの紹介を受けご縁があったので。
-                </div>
-              </div>
-              <div class="list_item">
-                <h1 class="subtitle">カウンセラーとの思い出のエピソード</h1>
-                <div class="text">
-                  30歳を過ぎ、また世の中もコロナ真っ只中の中で、このまま一人でいいのだろうか？家族がいた方がより人生が豊かになるのではないか？と思っていた矢先に、知人からの紹介を受けご縁があったので。
-                </div>
-              </div>
-              <div class="list_item">
-                <h1 class="subtitle">システムやルールで感じたこと</h1>
-                <div class="text">
-                  30歳を過ぎ、また世の中もコロナ真っ只中の中で、このまま一人でいいのだろうか？家族がいた方がより人生が豊かになるのではないか？と思っていた矢先に、知人からの紹介を受けご縁があったので。
-                </div>
-              </div>
-              </div>
+              <div class="list_item" v-for="(item, index) in interview.interviewContents" :key="index">
+                <h1 class="subtitle">{{item.title}}</h1>
+                <div class="text">{{item.text}}</div>
+              </div>  
+            </div>
           </div>
         </div>
       </div>
@@ -51,6 +31,36 @@
   </div>
 </div>
 </template>
+
+<script setup lang="ts">
+type InterviewContent = {
+  title: string
+  text: string
+}
+type Interview = {
+  aboutText: string
+  interviewContents: InterviewContent[]
+}
+
+const interview = {
+  img: '',
+  aboutText: '当社の31歳の男性会員様がご成婚されました。お相手は29歳の女性会員様です。\nお見合からお互い好印象で仮交際がスタートし、１カ月半で真剣交際に進み、3カ月でご成婚が決まりました。毎日のようにLineや電話でコミュニケーションを取り、毎週末デートを重ねることでお二人の距離を縮めていかれたそうです。溌溂としたパワーあふれる男性と、おっとり柔らかい雰囲気のお綺麗な女性の大変お似合いのお二人です。末永いお幸せをお祈りいたします♡',
+  interviewContents: [
+    {
+      title: '婚活を始めたきっかけ',
+      text:'30歳を過ぎ、また世の中もコロナ真っ只中の中で、このまま一人でいいのだろうか？家族がいた方がより人生が豊かになるのではないか？と思っていた矢先に、知人からの紹介を受けご縁があったので。'
+    },
+    {
+      title: 'こちらの相談所を選んだきっかけ',
+      text:'30歳を過ぎ、また世の中もコロナ真っ只中の中で、このまま一人でいいのだろうか？家族がいた方がより人生が豊かになるのではないか？と思っていた矢先に、知人からの紹介を受けご縁があったので。'
+    },
+    {
+      title: 'カウンセラーとの思い出のエピソード',
+      text:'30歳を過ぎ、また世の中もコロナ真っ只中の中で、このまま一人でいいのだろうか？家族がいた方がより人生が豊かになるのではないか？と思っていた矢先に、知人からの紹介を受けご縁があったので。'
+    },
+  ]
+}
+</script>
 
 <style lang="sass" scoped>
 .title_block
@@ -130,7 +140,7 @@
       > .section_block
         > .text
           padding: 0 10% 40px
-          +text-body(20px)
+          +text-body(18px)
 
         > .about
           > .title

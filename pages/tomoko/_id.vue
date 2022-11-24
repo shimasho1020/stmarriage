@@ -1,12 +1,13 @@
 <template>
-<v-app>
+<div>
   <div style="position:relative;">
-    <h1 class="text-center pa-5">ご成婚事例編集ページ</h1>
+    <div class="message">{{completeMessage}}</div>
     <div class="saveButoon">
       <v-btn 
         class="white--text green darken-1" 
         x-large
         :disabled="!activeButton"
+        @click="onSubmit"
       >保存する</v-btn>
     </div>
     <div class=".inline-block mx-auto" style="width:160px">
@@ -24,21 +25,21 @@
           <div class="pa-5">
             <h1 class="subtitle">インタビューの有無<span class="necessary">(必須)</span></h1>
             <v-switch
-              v-model="isInterview"
-              :label="isInterview ? 'インタビュー有り': 'インタビュー無し'"
+              v-model="caseList.isInterview"
+              :label="caseList.isInterview ? 'インタビュー有り': 'インタビュー無し'"
             ></v-switch>
           </div>
           <div class="pa-5">
             <h1 class="subtitle">名前<span class="necessary">(必須)</span></h1>
             <v-text-field
-              v-model="name"
+              v-model="caseList.name"
               placeholder="名前"
             ></v-text-field>
           </div>
           <div class="pa-5">
             <h1 class="subtitle">性別<span class="necessary">(必須)</span></h1>
             <v-autocomplete
-              v-model="sex"
+              v-model="caseList.sex"
               :items="itemsSex"
               placeholder="性別"
             ></v-autocomplete>
@@ -46,7 +47,7 @@
           <div class="pa-5">
             <h1 class="subtitle">年齢<span class="necessary">(必須)</span></h1>
             <v-autocomplete
-              v-model="age"
+              v-model="caseList.age"
               :items="itemsAge"
               placeholder="年齢"
               style="width:100px;display: inline-block"
@@ -56,14 +57,14 @@
           <div class="pa-5">
             <h1 class="subtitle">職業</h1>
             <v-text-field
-              v-model="job"
+              v-model="caseList.job"
               placeholder="職業"
             ></v-text-field>
           </div>
           <div class="pa-5">
             <h1 class="subtitle">活動期間<span class="necessary">(必須)</span></h1>
             <v-autocomplete
-              v-model="term"
+              v-model="caseList.term"
               :items="itemsTerm"
               placeholder="期間"
               style="width:100px;display: inline-block"
@@ -73,7 +74,7 @@
           <div class="pa-5">
             <h1 class="subtitle">相手の年齢<span class="necessary">(必須)</span></h1>
             <v-autocomplete
-              v-model="partnerAge"
+              v-model="caseList.partnerAge"
               :items="itemsAge"
               placeholder="相手の年齢"
               style="width:120px;display: inline-block"
@@ -84,11 +85,25 @@
       </div>
 
 
-      <div style="flex: 0 0 65%;border: 1px solid black;" class="left_edit_side rounded-lg pa-5" :class="{active:isInterview}">
+      <div style="flex: 0 0 65%;border: 1px solid black;" class="left_edit_side rounded-lg pa-5" :class="{active:caseList.isInterview}">
         <div class="section">
           <div class="section_title_block">
-            <h1 class="section_title">{{age}}歳の{{sex}}会員様がご成婚されました！</h1>
+            <h1 class="section_title">{{caseList.age}}歳の{{caseList.sex}}会員様がご成婚されました！</h1>
           </div>
+          <v-text-field
+            v-model="text"
+            placeholder="名"
+          ></v-text-field>
+          <v-btn
+            width="100"
+            @click="submit"
+            class="button"
+          >登録</v-btn>
+          <v-btn
+            width="100"
+            @click="firestoreTest"
+            class="button"
+          >テスト</v-btn>
           <input 
             type="file" 
             @change="previewFile" 
@@ -109,51 +124,29 @@
             <div class="about">
               <h1 class="title">ご成婚者様の声</h1>
               <div class="list">
-                <div class="list_item">
-                  <h1 class="subtitle">婚活を始めたきっかけ</h1>
+                <div class="list_item" v-for="n of interviewCount" :key="n">
+                  <h1 class="subtitle">
+                    <div style="white-space: pre-wrap;" v-text="questionTitle[n-1]"></div>
+                  </h1>
+                  <v-text-field
+                    outlined
+                    label="インタビュータイトル入力"
+                    v-model="questionTitle[n-1]"
+                  ></v-text-field>
                   <div class="text">
-                    <v-textarea
-                      outlined
-                      label="婚活を始めたきっかけ"
-                      v-model="questionText1"
-                    ></v-textarea>
-                    <div style="white-space: pre-wrap;" v-text="questionText1"></div>
+                    <div style="white-space: pre-wrap;" v-text="questionText[n-1]"></div>
                   </div>
+                  <v-textarea
+                    outlined
+                    label="インタビューの内容入力"
+                    v-model="questionText[n-1]"
+                  ></v-textarea>
                 </div>
-                <div class="list_item">
-                  <h1 class="subtitle">こちらの相談所を選んだきっかけ</h1>
-                  <div class="text">
-                    <v-textarea
-                      outlined
-                      label="こちらの相談所を選んだきっかけ"
-                      v-model="questionText2"
-                    ></v-textarea>
-                    <div style="white-space: pre-wrap;" v-text="questionText2"></div>
-                  </div>
-                </div>
-                <div class="list_item">
-                  <h1 class="subtitle">カウンセラーとの思い出のエピソード</h1>
-                  <div class="text">
-                    <v-textarea
-                      outlined
-                      label="カウンセラーとの思い出のエピソード"
-                      v-model="questionText3"
-                    ></v-textarea>
-                    <div style="white-space: pre-wrap;" v-text="questionText3"></div>
-                  </div>
-                </div>
-                <div class="list_item">
-                  <h1 class="subtitle">システムやルールで感じたこと</h1>
-                  <div class="text">
-                    <v-textarea
-                      outlined
-                      label="システムやルールで感じたこと"
-                      v-model="questionText4"
-                    ></v-textarea>
-                    <div style="white-space: pre-wrap;" v-text="questionText4"></div>
-                  </div>
-                </div>
-                </div>
+                <div class="plus_button">
+                  <div class="text">インタービュー内容を追加</div>
+                  <div class="my-parts" @click="interviewCount++"><span></span></div>
+                </div>  
+              </div>
             </div>
           </div>
         </div>
@@ -169,7 +162,7 @@
       <div style="border-top: 1px solid black" class="my-10"></div>
     </div>
   </div>
-</v-app>
+</div>
 </template>
 
 <script lang="ts">
@@ -181,11 +174,12 @@ export default defineComponent({
 
 <script setup lang="ts">
 import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
-import axios from 'axios'
 import { getStorage, ref as REF, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where } from "firebase/firestore"
+import { firestore, storage } from '~/plugins/firebase.js'
 
 interface CaseList {
-  num: number,
+  id: number,
   age: number,
   term?: number,
   partnerAge?: number,
@@ -194,6 +188,14 @@ interface CaseList {
   job?: string,
   img?: string,
   isInterview: boolean,
+}
+type InterviewContent = {
+  title: string
+  text: string
+}
+type Interview = {
+  aboutText: string
+  interviewContents: InterviewContent[]
 }
 
 const itemsSex = ['男性', '女性']
@@ -205,86 +207,69 @@ const itemsTerm:number[] = []
 for(let i=1;i<=60;i++){
   itemsTerm.push(i)
 }
+
 const { app, store, $config } = useContext()
-console.log(app.$fire.storage)
 
-let isPublic = ref(false)
-let num = ref(0)
-let age = ref(0)
-let term = ref(0)
-let partnerAge = ref(0)
-let sex = ref('')
-let name = ref('')
-let job = ref('')
-let img = ref('')
-let isInterview = ref('')
-
-let aboutText = ref('')
-let questionText1 = ref('')
-let questionText2 = ref('')
-let questionText3 = ref('')
-let questionText4 = ref('')
-
-let isSubmit = ref(false)
-let isSending = ref(false)
-let isError = ref(false)
-let completeMessage = ref('')
-
-let activeButton = computed(() => {
-  return !!name.value && 
-          !!age.value && 
-          !!sex.value &&
-          !!term.value &&
-          !!partnerAge.value &&
-          !!isInterview.value
-})
-
-let sendingClass = computed(() => {
+const isPublic = ref(false)
+const caseList = ref({id: 1,isInterview: false} as CaseList)
+const interview = computed<Interview>(() => {
   return {
-    'is-sending'  : isSending,
-    'is-error'    : isError,
-    'is-complete' : isSubmit
+    aboutText: aboutText.value,
+    interviewContents: questionTitle.value.map((val, index) => {
+      return {
+        title: val,
+        text: questionText.value[index]
+      }
+    }).filter((val) => {
+      return !!val.text && !!val.title
+    })
   }
 })
 
-const onSubmit = () => {
+const interviewCount = ref(1)
+const aboutText = ref('')
+const questionTitle = ref<string[]>([])
+const questionText = ref<string[]>([])
+
+const activeButton = computed(() => {
+  return !!caseList.value.name && 
+          !!caseList.value.age && 
+          !!caseList.value.sex &&
+          !!caseList.value.term &&
+          !!caseList.value.partnerAge 
+})
+
+const isSending = ref(false)
+const isError = ref(false)
+const completeMessage = ref('')
+
+const onSubmit = async() => {
+  const data = {
+    id: 1,
+    isPublic: isPublic.value,
+    caseList: caseList.value,
+    interview: interview.value,
+  }
+  const exampleRef = doc(firestore, "sample", '1');
+
   if(isSending.value){
     return;
   }
   isSending.value = true;
-  completeMessage.value = '送信処理中…';
-  
-  // axios.
-  // post('/', params)
-  // .then(() => {
-  //   completeMessage.value = 'お問い合わせを送信しました！';
-  //   resetForm();
-  //   isSubmit.value  = true;
-  // })
-  // .catch((err: any)=> {
-  //   completeMessage.value = 'お問い合わせの送信が失敗しました';
-  //   isError.value   = true;
-  // })
-  // .finally(() => {
-  //   isSending.value = false;
-  //   setTimeout(() => {
-  //     completeMessage.value = ''
-  //   }, 3000)
-  // });
-}
+  completeMessage.value = '処理中…';
 
-let fileUrl = ref('')
-const resetForm = () => {
-  num.value        = 0;
-  age.value        = 0;
-  term.value        = 0;
-  partnerAge.value        = 0;
-  sex.value        = '男性';
-  name.value        = '';
-  job.value        = '';
-  img.value        = '';
-  isInterview.value        = '';
-  isError.value         = false;
+  try{
+    await setDoc(exampleRef, data)
+    completeMessage.value = '保存しました';
+  } catch(e) {
+    completeMessage.value = '失敗しました' + 'ERROR: ' + e;
+    isError.value   = true;
+  } finally {
+    isSending.value = false;
+    setTimeout(() => {
+      completeMessage.value = ''
+    }, 3000)
+  }
 }
 
 const uploadFile = ref()
@@ -303,7 +288,7 @@ function previewFile(event: Event) {
   const metadata = {
     contentType: 'image/*'
   }
-  const storage = getStorage();
+  // const storage = getStorage();
   const storageRef = REF(storage, 'images/' + file[0].name);
 
   const uploadTask = uploadBytesResumable(storageRef, file[0], metadata)
@@ -345,13 +330,77 @@ function previewFile(event: Event) {
   });
 }
 
-// watch(profImg,(neeVal) => {
-//   console.log(neeVal)
-// })
+
+const text = ref('')
+const submit = async() => {
+  const washingtonRef = doc(firestore, "cities", "DC");
+  const frankDocRef = doc(firestore, "users", "frank");
+  try {
+    // const docRef = await addDoc(collection(firestore, "users"), {
+    //   first: text.value,
+    //   last: "Lovelace",
+    //   born: 1815
+    // });
+    // console.log("Document written with ID: ", docRef.id);
+    const data = {
+      name: "Frank",
+      favorites: { food: "Pizza", color: "Blue", subject: "recess" },
+      age: 12,
+    }
+    // await setDoc(frankDocRef, data, { merge: true });
+    await updateDoc(washingtonRef, {
+      // regions: arrayUnion("greater_virginia")
+      population: 100
+    });
+    console.log('Document written')
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+
+  // try {
+  //   await runTransaction(firestore, async (transaction) => {
+  //     const sfDoc = await transaction.get(washingtonRef);
+  //     if (!sfDoc.exists()) {
+  //       throw "Document does not exist!";
+  //     }
+
+  //     const newPopulation = sfDoc.data().population + 1;
+  //     transaction.update(washingtonRef, { population: newPopulation });
+  //   });
+  //   console.log("Transaction successfully committed!");
+  // } catch (e) {
+  //   console.log("Transaction failed: ", e);
+  // }
+}
+const firestoreTest = async() => {
+  try{
+    // const docRef = doc(firestore, "cities", "SF");
+    // const docSnap = await getDoc(docRef);
+    // if (docSnap.exists()) {
+    //   console.log("Document data:", docSnap.data());
+    // } else {
+    //   console.log("No such document!");
+    // }
+
+    // const q = query(collection(firestore, "cities"), where("capital", "==", true));
+    const citiesRef =  collection(firestore, "cities")
+    const q = query(citiesRef, where('country', 'in', ['USA', 'Japan']));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data());
+    });
+    console.log('Document written')
+  } catch(e) {
+    console.log("firestore failed: ", e);
+  }
+}
 
 </script>
 
 <style lang="sass" scoped>
+.message
+  +text-title(40px)
+  text-align: center
 .necessary
   color: #ff0000a0
 .subtitle
@@ -370,6 +419,36 @@ function previewFile(event: Event) {
     opacity: 1
     pointer-events: auto
 
+.plus_button
+  text-align: center
+
+  > .text
+    +text-title(20px)
+  >.my-parts 
+    display: inline-block
+    margin: auto
+    width: 32px
+    height: 32px
+    position: relative
+    border: 1px solid var(--main)
+    border-radius: 50%
+    cursor: pointer
+    
+    span
+      &::before,&::after
+        display: block
+        content: ""
+        position: absolute
+        top: 50%
+        left: 50%
+        width: 84%
+        height: 16%
+        margin: -8% 0 0 -42%
+        background: var(--main)
+        border-radius: 30%
+      
+      &::after
+        transform: rotate(90deg)
 
 
 
