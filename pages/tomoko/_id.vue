@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div style="position:relative;">
+  <div style="position:relative;" class="py-10">
     <div v-if="completeMessage" class="message">{{completeMessage}}</div>
     <div class="backButoon">
       <v-btn 
