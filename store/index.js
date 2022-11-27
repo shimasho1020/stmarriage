@@ -34,15 +34,6 @@ export const actions = {
     })
   },
   logout ({ commit }) {
-    // onAuthStateChanged( auth, (user) => {
-    //   signOut(auth).then(()=>{
-    //     console.log("ログアウトしました");
-    //     // commit('switchLogin', false)
-    //   })
-    //   .catch( (error)=>{
-    //     console.log(`ログアウト時にエラーが発生しました (${error})`);
-    //   });
-    // });
     signOut(auth).then(()=>{
       console.log("ログアウトしました");
       commit('switchLogin', false)

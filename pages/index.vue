@@ -39,7 +39,7 @@
     <div class="body">
       <div class="section --1">
         <div class="section-wrap">
-          <div class="title_block --1">
+          <div class="section_title_block --1">
             <h1 class="title">Interview</h1>
             <div class="title__border"></div>
             <p class="title__sub">ご成婚者様からの声</p>
@@ -85,7 +85,7 @@
       </div>
       <div class="section --2">
         <div class="section-wrap">
-          <div class="title_block --2">
+          <div class="section_title_block --2">
             <h1 class="title">Award</h1>
             <div class="title__border"></div>
             <p class="title__sub">獲得賞</p>
@@ -132,7 +132,7 @@
       </div>
       <div class="section --3">
         <div class="section-wrap">
-          <div class="title_block --4">
+          <div class="section_title_block --4">
             <h1 class="title">Self Introduction</h1>
             <div class="title__border"></div>
             <p class="title__sub">カウンセラーからのご挨拶</p>
@@ -192,7 +192,7 @@
       </div>
       <div class="section --4">
         <div class="section-wrap">
-          <div class="title_block --3">
+          <div class="section_title_block --3">
             <h1 class="title">Strangth</h1>
             <div class="title__border"></div>
             <p class="title__sub">選ばれる理由</p>
@@ -231,7 +231,7 @@
       </div>
       <div class="section --5">
         <div class="section-wrap">
-          <div class="title_block --5">
+          <div class="section_title_block --5">
             <h1 class="title">Access</h1>
             <div class="title__border"></div>
             <p class="title__sub">アクセス</p>
@@ -277,21 +277,21 @@ const tables: Table[] = [
 ]
 const trigger: string[] = [
   '.intro',
-  '.title_block.--1',
+  '.section_title_block.--1',
   '.case_list',
   '.link-block',
-  '.title_block.--2',
+  '.section_title_block.--2',
   '.award-title',
   '.content_body.img',
   '.content_body.text',
-  '.title_block.--3',
+  '.section_title_block.--3',
   '.content_body.---1',
   '.content_body.---2',
-  '.title_block.--4',
+  '.section_title_block.--4',
   '.self-pic',
   '.self-p',
   '.self-body',
-  '.title_block.--5',
+  '.section_title_block.--5',
   '.access-comment',
   '.access-map',
 ]
@@ -578,7 +578,7 @@ onBeforeUnmount(() => {
       +sp-view
         padding: 80px 0 80px
 
-      > .title_block
+      > .section_title_block
         display: flex
         justify-content: center
         flex-wrap: wrap
@@ -754,7 +754,7 @@ onBeforeUnmount(() => {
     &.--2
       background-color: var(--main)
       > .section-wrap
-        > .title_block
+        > .section_title_block
           > .title
             color: var(--white-1)
           > .title__border

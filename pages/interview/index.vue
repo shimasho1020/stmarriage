@@ -6,36 +6,36 @@
     <div class="body">
       <div class="body_wrap">
         <div class="case_list">
-          <nuxt-link
+          <component
+            :is=" item.isInterview ? 'nuxt-link' : 'div'"
             class="case_item"
-            v-for="(item, index) of caseList"
-            :to="`/interview/${item.num}`"
+            v-for="(item, index) of displayCaseList"
+            :to=" item.isInterview ? `/interview/${item.id}` : ''"
             :key="index"
           >
-            <div class="case_block">
-              <h1 class="case_title">31歳の男性会員様がご成婚されました！</h1>
-              <div class="text">
-                
+            <div class="case_img">
+              <div class="img_wrap">
+                <img class="img" :src="item.url">
               </div>
+            </div>
+            <div class="case_block">
+              <h1 class="case_title">{{item.age}}歳の{{item.sex}}会員様がご成婚されました！</h1>
               <div class="about">
                 <ol class="special_list">
-                <li>31歳男性</li>
-                <li>会社員</li>
-                <li>活動期間10ヶ月</li>
-                <li>お相手は34歳女性</li>
+                <li>{{item.age}}歳{{item.sex}}</li>
+                <li>{{item.job}}</li>
+                <li>活動期間{{item.term}}ヶ月</li>
+                <li>お相手は{{item.partnerAge}}歳{{changeSex(item.sex)}}</li>
               </ol>
               </div>
               <div class="link_wrap">
-                <div class="link">
+                <div v-if="item.isInterview" class="link">
                   <arrow class="arrow"></arrow>
-                  <span class="form">詳しくはこちら</span>
+                  <span class="form">ご成婚インタビューはこちら</span>
                 </div>
               </div>
             </div>
-            <div class="case_img">
-              <img class="img" src="/images/marriage-gate.webp">
-            </div>
-          </nuxt-link>
+          </component>
         </div>
       </div>
     </div>
@@ -44,38 +44,50 @@
 
 <script setup  lang="ts">
 import gsap from "gsap"
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
+import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where } from "firebase/firestore"
+import { getStorage, ref as REF, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { firestore, storage } from '~/plugins/firebase.js'
+import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 import Arrow from '~/assets/images/arrow.svg'
 components: {
   Arrow
 }
 
-interface CaseList {
-  num: number,
-  name: string,
-  img: string,
-  url?: string,
-}
+const interviewer = ref([] as DisplayInterviewer[])
+const displayCaseList = computed(() => {
+  return interviewer.value.map((val) => {
+    return {
+      id: val.id,
+      url: val.url,
+      isPublic: val.isPublic,
+      ...val.caseList
+    }
+  })
+})
 
-const caseList: CaseList[] = [
-  {
-    num: 1,
-    name:'xxx xxxx',
-    img:'/images/marriage-gate.webp',
-  },
-  {
-    num: 2,
-    name:'yyy yyyy',
-    img:'/images/marriage-gate.webp',
-    url:'/flow',
-  },
-  {
-    num: 3,
-    name:'zzz zzzz',
-    img:'/images/marriage-gate.webp',
-    url:'/voice',
-  },
-]
+useAsync(async () => {
+  const q = query(collection(firestore, "interviewer"), where("isPublic", "==", true))
+  const querySnapshot = await getDocs(q)
+
+  interviewer.value = await Promise.all(
+    querySnapshot.docs.map(async(doc) => {
+      const url = await getDownloadURL(REF(storage, `images/${doc.id}`))
+      .catch((error) => {
+        console.log(error)
+      })
+      return {
+        id: doc.id,
+        url: url ?? '',
+        ...doc.data() as Interviewer
+      }
+    })
+  )
+})
+
+const changeSex = (sex: '' | '男性' | '女性') => {
+  return sex === '男性' ? '女性' : '男性'
+}
 </script>
 
 <style lang="sass" scoped>
@@ -85,27 +97,6 @@ const caseList: CaseList[] = [
   height: 24px
   circle
     fill: var(--main)
-.title_block
-  > .title
-    +text-title(40px)
-    position: relative
-    padding: 1.5rem 2rem
-    -webkit-box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
-    box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
-    background-color: rgb(255, 255, 255,0.7)
-
-    &::before,&::after
-      position: absolute
-      left: 0
-      width: 100%
-      height: 4px
-      content: ''
-      background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
-
-    &::before
-      top: 0
-    &::after
-      bottom: 0
 
 .body
   padding: 64px 0
@@ -127,6 +118,10 @@ const caseList: CaseList[] = [
         background-size: 50px 50px
         display: flex
         justify-content: space-between
+        flex-direction: row-reverse
+
+        +sp-view
+          display: block
 
         > .case_block
           > .case_title
@@ -159,7 +154,7 @@ const caseList: CaseList[] = [
               background: var(--sub)
 
           > .about
-            padding: 20px 0
+            padding: 32px
 
             > .ol.original_list
               >li
@@ -179,11 +174,24 @@ const caseList: CaseList[] = [
           
 
         > .case_img
-          flex: 0 0 45%
+          flex: 0 0 35%
 
-          > .img
+          > .img_wrap
+            position: relative
             width: 100%
 
-            border-radius: 20px
+            &::before
+              content:""
+              display: block
+              padding-top: 100%
+
+            > .img
+              display: block
+              position: absolute
+              height: 100%
+              width: 100%
+              object-fit: cover
+              top: 0
+              border-radius: 20px
 
 </style>

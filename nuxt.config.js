@@ -66,7 +66,23 @@ export default {
     '@nuxtjs/vuetify',
     '@nuxtjs/composition-api/module',
     'nuxt-gsap-module',
+    '@nuxtjs/google-fonts',
   ],
+
+  googleFonts: {
+    families: {
+      'Noto+Serif+JP': true,
+      'Noto+Sans+JP': true,
+      'DM+Serif+Display': true,
+      'Zen+Antique': true,
+      'Zen+Antique+Soft': true,
+      'Zen+Old+Mincho': true,
+    },
+    display: 'block',
+    download: true,
+    inject: true,
+    overwriting: true,
+  },
 
   gsap: {
     extraPlugins: {

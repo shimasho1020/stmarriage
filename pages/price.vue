@@ -123,28 +123,6 @@
   // background-color: var(--main)
   font-size: 20px
   color: yellow
-.title_block
-  > .title
-    +text-title(40px)
-    position: relative
-    padding: 1.5rem 2rem
-    -webkit-box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
-    box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
-    background-color: rgb(255, 255, 255,0.7)
-    color: #000875
-
-    &::before,&::after
-      position: absolute
-      left: 0
-      width: 100%
-      height: 4px
-      content: ''
-      background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
-
-    &::before
-      top: 0
-    &::after
-      bottom: 0
 
 .body
   > .menu

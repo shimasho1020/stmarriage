@@ -238,7 +238,7 @@ onUnmounted(() => {
         display: none
 
     > .logo-main
-      +text-title(36px)
+      +text-logo(36px)
       color: currentColor
       // text-shadow: 1px 1px 1px rgb(255, 255, 255),-1px -1px 1px rgb(255, 255, 255)
 
