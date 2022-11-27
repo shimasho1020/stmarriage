@@ -69,19 +69,6 @@ const displayCaseList = computed(() => {
 useAsync(async () => {
   const q = query(collection(firestore, "interviewer"), where("isPublic", "==", true))
   const querySnapshot = await getDocs(q)
-  // querySnapshot.forEach((doc) => {
-  //   getDownloadURL(REF(storage, `images/${doc.id}`))
-  //   .then((url) => {
-  //     interviewer.value.push({
-  //       id: doc.id,
-  //       url: url,
-  //       ...doc.data() as Interviewer
-  //     })
-  //   })
-  //   .catch((error) => {
-  //     console.log(error)
-  //   })
-  // })
 
   interviewer.value = await Promise.all(
     querySnapshot.docs.map(async(doc) => {

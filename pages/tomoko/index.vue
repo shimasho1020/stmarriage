@@ -84,19 +84,20 @@ watch(displayCaseList,(val) => {
 
 useAsync(async () => {
   const querySnapshot = await getDocs(collection(firestore, "interviewer"));
-  querySnapshot.forEach( async(doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
-    const url = await getDownloadURL(REF(storage, `images/${doc.id}`))
-    .catch((error) => {
-      console.log(error)
+  
+  interviewer.value = await Promise.all(
+    querySnapshot.docs.map(async(doc) => {
+      const url = await getDownloadURL(REF(storage, `images/${doc.id}`))
+      .catch((error) => {
+        console.log(error)
+      })
+      return {
+        id: doc.id,
+        url: url ?? '',
+        ...doc.data() as Interviewer
+      }
     })
-    interviewer.value.push({
-      id: doc.id,
-      url: url ?? '',
-      ...doc.data() as Interviewer
-    })
-  })
+  )
 })
 
 
