@@ -1,8 +1,5 @@
 <template>
 <div class="">
-  <!-- <div class="title_block" style="text-align:center">
-    <h1 class="title">入会から結婚までの流れ</h1>
-  </div> -->
   <div class="body">
     <div class="body_wrap">
       <div class="section">
@@ -10,21 +7,24 @@
           <h1 class="section_title">31歳の男性会員様がご成婚されました!</h1>
         </div>
         <div class="section_img">
-          <img class="img" src="/images/marriage-gate.webp">
+          <img class="img" :src="imageURL">
         </div>
         <div class="section_block">
           <div class="text">
-            <div style="white-space: pre-wrap;" v-text="interview.aboutText"></div>
+            <div style="white-space: pre-wrap;" v-text="displayInterview.aboutText"></div>
           </div>
           <div class="about">
             <h1 class="title">ご成婚者様の声</h1>
             <div class="list">
-              <div class="list_item" v-for="(item, index) in interview.interviewContents" :key="index">
+              <div class="list_item" v-for="(item, index) in displayInterview.interviewContents" :key="index">
                 <h1 class="subtitle">{{item.title}}</h1>
                 <div class="text">{{item.text}}</div>
               </div>  
             </div>
           </div>
+        </div>
+        <div class="backButoon">
+          <button @click="router.go(-1)">戻る</button>
         </div>
       </div>
     </div>
@@ -32,58 +32,64 @@
 </div>
 </template>
 
-<script setup lang="ts">
-type InterviewContent = {
-  title: string
-  text: string
-}
-type Interview = {
-  aboutText: string
-  interviewContents: InterviewContent[]
-}
+<script lang="ts">
+import { defineComponent } from '@nuxtjs/composition-api'
+export default defineComponent({
+ name: "editInterview",
+});
+</script>
 
-const interview = {
-  img: '',
-  aboutText: '当社の31歳の男性会員様がご成婚されました。お相手は29歳の女性会員様です。\nお見合からお互い好印象で仮交際がスタートし、１カ月半で真剣交際に進み、3カ月でご成婚が決まりました。毎日のようにLineや電話でコミュニケーションを取り、毎週末デートを重ねることでお二人の距離を縮めていかれたそうです。溌溂としたパワーあふれる男性と、おっとり柔らかい雰囲気のお綺麗な女性の大変お似合いのお二人です。末永いお幸せをお祈りいたします♡',
-  interviewContents: [
-    {
-      title: '婚活を始めたきっかけ',
-      text:'30歳を過ぎ、また世の中もコロナ真っ只中の中で、このまま一人でいいのだろうか？家族がいた方がより人生が豊かになるのではないか？と思っていた矢先に、知人からの紹介を受けご縁があったので。'
-    },
-    {
-      title: 'こちらの相談所を選んだきっかけ',
-      text:'30歳を過ぎ、また世の中もコロナ真っ只中の中で、このまま一人でいいのだろうか？家族がいた方がより人生が豊かになるのではないか？と思っていた矢先に、知人からの紹介を受けご縁があったので。'
-    },
-    {
-      title: 'カウンセラーとの思い出のエピソード',
-      text:'30歳を過ぎ、また世の中もコロナ真っ只中の中で、このまま一人でいいのだろうか？家族がいた方がより人生が豊かになるのではないか？と思っていた矢先に、知人からの紹介を受けご縁があったので。'
-    },
-  ]
-}
+<script setup lang="ts">
+import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
+import { getStorage, ref as REF, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where } from "firebase/firestore"
+import { firestore, storage } from '~/plugins/firebase.js'
+import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
+
+
+const router = useRouter()
+const route = useRoute()
+const displayInterview = ref({} as Interview)
+const imageURL = ref()
+
+useAsync(async () => {
+  const thisPageId = route.value.params.id
+  const docRef = doc(firestore, "interviewer", thisPageId);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data())
+    const result = docSnap.data() as Interviewer
+    displayInterview.value = result.interview
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+    router.push({path: '/'})
+  }
+
+  getDownloadURL(REF(storage, `images/${thisPageId}`))
+  .then((url) => {
+    imageURL.value = url
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+})
+
 </script>
 
 <style lang="sass" scoped>
-.title_block
-  > .title
-    +text-title(40px)
-    position: relative
-    padding: 1.5rem 2rem
-    -webkit-box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
-    box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
-    background-color: rgb(255, 255, 255,0.7)
-
-    &::before,&::after
-      position: absolute
-      left: 0
-      width: 100%
-      height: 4px
-      content: ''
-      background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
-
-    &::before
-      top: 0
-    &::after
-      bottom: 0
+.backButoon
+  width: 20%
+  margin: auto
+  > button
+    width: 100%
+    text-align: center
+    border-radius: 10px
+    background-color: var(--main)
+    +text-title(20px)
+    color: var(--white-1)
+    padding: 10px 0 10px
+    display: inline-block
 
 .body
   padding: 64px 0

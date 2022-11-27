@@ -2,17 +2,22 @@
 <div>
   <div style="position:relative;">
     <div class="body">
-      <div class="body_wrap">
+      <div class="body_wrap pb-10">
+        <div class="pa-5" style="text-align: center;">
+          <nuxt-link to="/tomoko/0" style="display: inline-block;">
+            <v-btn height="50" width="200" color="blue" class="white--text">新しく追加する</v-btn>
+          </nuxt-link>
+        </div>
         <div class="case_list">
           <nuxt-link
             class="case_item"
-            :class="{moya: !isPublic}"
-            v-for="(item, index) of caseList"
+            v-for="(item, index) of displayCaseList"
+            :class="{moya: !item.isPublic}"
             :to="`/tomoko/${item.id}`"
             :key="index"
           >
             <div class="case_block">
-              <h1 class="case_title">{{item.age}}歳の{{item.sex}}会員様がご成婚されました！</h1>
+              <h1 class="case_title">{{item.name}}</h1>
               <div class="text">
                 
               </div>
@@ -23,15 +28,17 @@
                 <li>活動期間{{item.term}}ヶ月</li>
                 <li>お相手は{{item.partnerAge}}歳{{changeSex(item.sex)}}</li>
               </ol>
-              <div v-if="isPublic" class="green--text text-h4">現在公開中です</div>
-              <div v-if="!isPublic" class="red--text text-h4">現在非公開中です</div>
+              <div v-if="item.isPublic" class="green--text text-h4">現在公開中です</div>
+              <div v-if="!item.isPublic" class="red--text text-h4">現在非公開中です</div>
               </div>
               <div class="link_wrap">
                 <div v-if="!item.isInterview" class="link red--text text-h6">インタービューはありません</div>
               </div>
             </div>
             <div class="case_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <div class="img_wrap">
+                <img class="img" :src="item.url">
+              </div>
             </div>
           </nuxt-link>
         </div>
@@ -49,68 +56,59 @@ export default defineComponent({
 </script>
 
 <script setup  lang="ts">
-import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
-import Arrow from '~/assets/images/arrow.svg'
-components: {
-  Arrow
-}
+import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
+import { getStorage, ref as REF, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where } from "firebase/firestore"
+import { firestore, storage } from '~/plugins/firebase.js'
+import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 
-interface CaseList {
-  id: number,
-  name?: string,
-  age: number,
-  sex: '男性' | '女性'
-  job?: string,
-  term?: number,
-  partnerAge?: number,
-  img?: string,
-  isInterview: boolean,
-}
 
-const isPublic = ref(false)
+const interviewer = ref([] as DisplayInterviewer[])
+const displayCaseList = computed(() => {
+  return interviewer.value.map((val) => {
+    return {
+      id: val.id,
+      isPublic: val.isPublic,
+      url: val.url,
+      ...val.caseList
+    }
+  })
+})
 
-const caseList: CaseList[] = [
-  {
-    id: 1,
-    age: 40,
-    sex: '男性',
-    job: '弁護士',
-    term: 10,
-    partnerAge: 35,
-    img:'/images/marriage-gate.webp',
-    isInterview: true,
-  },
-  {
-    id: 2,
-    age: 40,
-    sex: '男性',
-    job: '弁護士',
-    term: 10,
-    partnerAge: 35,
-    img:'/images/marriage-gate.webp',
-    isInterview: false,
-  },
-  {
-    id: 3,
-    age: 40,
-    sex: '男性',
-    job: '弁護士',
-    term: 10,
-    partnerAge: 35,
-    img:'/images/marriage-gate.webp',
-    isInterview: true,
-  },
-]
-const changeSex = (sex: '男性' | '女性') => {
-  return sex === '男性' ? '女性' : '男性'
+watch(interviewer,(val) => {
+  console.log(val)
+})
+watch(displayCaseList,(val) => {
+  console.log(val)
+})
+
+useAsync(async () => {
+  const querySnapshot = await getDocs(collection(firestore, "interviewer"));
+  querySnapshot.forEach( async(doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+    const url = await getDownloadURL(REF(storage, `images/${doc.id}`))
+    .catch((error) => {
+      console.log(error)
+    })
+    interviewer.value.push({
+      id: doc.id,
+      url: url ?? '',
+      ...doc.data() as Interviewer
+    })
+  })
+})
+
+
+const changeSex = (sex: '' | '男性' | '女性') => {
+  return !sex ? '' : sex === '男性' ? '女性' : '男性'
 }
 </script>
 
 <style lang="sass" scoped>
 .moya
-  opacity: 0.5
+  opacity: 0.3
 .body
-  padding: 64px 0
   > .body_wrap
     margin: auto
     width: 1080px
@@ -171,11 +169,24 @@ const changeSex = (sex: '男性' | '女性') => {
             width: 100%
 
         > .case_img
-          flex: 0 0 45%
+          flex: 0 0 35%
 
-          > .img
+          > .img_wrap
+            position: relative
             width: 100%
 
-            border-radius: 20px
+            &::before
+              content:""
+              display: block
+              padding-top: 100%
+
+            > .img
+              display: block
+              position: absolute
+              height: 100%
+              width: 100%
+              object-fit: cover
+              top: 0
+              border-radius: 20px
 
 </style>

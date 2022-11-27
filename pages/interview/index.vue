@@ -9,15 +9,17 @@
           <component
             :is=" item.isInterview ? 'nuxt-link' : 'div'"
             class="case_item"
-            v-for="(item, index) of caseList"
+            v-for="(item, index) of displayCaseList"
             :to=" item.isInterview ? `/interview/${item.id}` : ''"
             :key="index"
           >
+            <div class="case_img">
+              <div class="img_wrap">
+                <img class="img" :src="item.url">
+              </div>
+            </div>
             <div class="case_block">
               <h1 class="case_title">{{item.age}}歳の{{item.sex}}会員様がご成婚されました！</h1>
-              <div class="text">
-                
-              </div>
               <div class="about">
                 <ol class="special_list">
                 <li>{{item.age}}歳{{item.sex}}</li>
@@ -29,12 +31,9 @@
               <div class="link_wrap">
                 <div v-if="item.isInterview" class="link">
                   <arrow class="arrow"></arrow>
-                  <span class="form">ご成婚インタビューがあるので、詳しくはこちら</span>
+                  <span class="form">ご成婚インタビューはこちら</span>
                 </div>
               </div>
-            </div>
-            <div class="case_img">
-              <img class="img" src="/images/marriage-gate.webp">
             </div>
           </component>
         </div>
@@ -45,57 +44,61 @@
 
 <script setup  lang="ts">
 import gsap from "gsap"
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
+import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where } from "firebase/firestore"
+import { getStorage, ref as REF, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { firestore, storage } from '~/plugins/firebase.js'
+import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 import Arrow from '~/assets/images/arrow.svg'
 components: {
   Arrow
 }
 
-interface CaseList {
-  id: number,
-  name?: string,
-  age: number,
-  sex: '男性' | '女性'
-  job?: string,
-  term?: number,
-  partnerAge?: number,
-  img?: string,
-  isInterview: boolean,
-}
+const interviewer = ref([] as DisplayInterviewer[])
+const displayCaseList = computed(() => {
+  return interviewer.value.map((val) => {
+    return {
+      id: val.id,
+      url: val.url,
+      isPublic: val.isPublic,
+      ...val.caseList
+    }
+  })
+})
 
-const caseList: CaseList[] = [
-  {
-    id: 1,
-    age: 40,
-    sex: '男性',
-    job: '弁護士',
-    term: 10,
-    partnerAge: 35,
-    img:'/images/marriage-gate.webp',
-    isInterview: true,
-  },
-  {
-    id: 2,
-    age: 40,
-    sex: '男性',
-    job: '弁護士',
-    term: 10,
-    partnerAge: 35,
-    img:'/images/marriage-gate.webp',
-    isInterview: false,
-  },
-  {
-    id: 3,
-    age: 40,
-    sex: '男性',
-    job: '弁護士',
-    term: 10,
-    partnerAge: 35,
-    img:'/images/marriage-gate.webp',
-    isInterview: true,
-  },
-]
-const changeSex = (sex: '男性' | '女性') => {
+useAsync(async () => {
+  const q = query(collection(firestore, "interviewer"), where("isPublic", "==", true))
+  const querySnapshot = await getDocs(q)
+  // querySnapshot.forEach((doc) => {
+  //   getDownloadURL(REF(storage, `images/${doc.id}`))
+  //   .then((url) => {
+  //     interviewer.value.push({
+  //       id: doc.id,
+  //       url: url,
+  //       ...doc.data() as Interviewer
+  //     })
+  //   })
+  //   .catch((error) => {
+  //     console.log(error)
+  //   })
+  // })
+
+  interviewer.value = await Promise.all(
+    querySnapshot.docs.map(async(doc) => {
+      const url = await getDownloadURL(REF(storage, `images/${doc.id}`))
+      .catch((error) => {
+        console.log(error)
+      })
+      return {
+        id: doc.id,
+        url: url ?? '',
+        ...doc.data() as Interviewer
+      }
+    })
+  )
+})
+
+const changeSex = (sex: '' | '男性' | '女性') => {
   return sex === '男性' ? '女性' : '男性'
 }
 </script>
@@ -107,27 +110,6 @@ const changeSex = (sex: '男性' | '女性') => {
   height: 24px
   circle
     fill: var(--main)
-.title_block
-  > .title
-    +text-title(40px)
-    position: relative
-    padding: 1.5rem 2rem
-    -webkit-box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
-    box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
-    background-color: rgb(255, 255, 255,0.7)
-
-    &::before,&::after
-      position: absolute
-      left: 0
-      width: 100%
-      height: 4px
-      content: ''
-      background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
-
-    &::before
-      top: 0
-    &::after
-      bottom: 0
 
 .body
   padding: 64px 0
@@ -149,6 +131,10 @@ const changeSex = (sex: '男性' | '女性') => {
         background-size: 50px 50px
         display: flex
         justify-content: space-between
+        flex-direction: row-reverse
+
+        +sp-view
+          display: block
 
         > .case_block
           > .case_title
@@ -181,7 +167,7 @@ const changeSex = (sex: '男性' | '女性') => {
               background: var(--sub)
 
           > .about
-            padding: 20px 0
+            padding: 32px
 
             > .ol.original_list
               >li
@@ -201,11 +187,24 @@ const changeSex = (sex: '男性' | '女性') => {
           
 
         > .case_img
-          flex: 0 0 45%
+          flex: 0 0 35%
 
-          > .img
+          > .img_wrap
+            position: relative
             width: 100%
 
-            border-radius: 20px
+            &::before
+              content:""
+              display: block
+              padding-top: 100%
+
+            > .img
+              display: block
+              position: absolute
+              height: 100%
+              width: 100%
+              object-fit: cover
+              top: 0
+              border-radius: 20px
 
 </style>
