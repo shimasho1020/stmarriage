@@ -325,7 +325,6 @@ let fuwaAnim: gsap.core.Tween[] = []
 let pageWidth = computed<number>(() => store.getters['pageWidth'])
 
 watch(pageWidth, (newVal, oldVal) => {
-  console.log(newVal)
   circleManAnim.scrollTrigger?.refresh()
 })
 

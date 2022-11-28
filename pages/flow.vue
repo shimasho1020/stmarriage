@@ -4,25 +4,25 @@
     <h1 class="title">ご入会からご結婚まで</h1>
   </div>
   <div class="body">
-    <div class="menu">
+    <div class="menu" v-if="pageWidth >= 750">
       <div class="flow">
-        <div class="text">無料相談</div>
+        <div class="text --1">無料相談</div>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">ご入会手続き</div>
+        <div class="text --2">ご入会手続き</div>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">プロフィール作成</div>
+        <div class="text --3">プロフィール作成</div>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">お相手探し</div>
+        <div class="text --4">お相手探し</div>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">お見合い</div>
+        <div class="text --5">お見合い</div>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">プレ交際</div>
+        <div class="text --6">プレ交際</div>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">真剣交際</div>
+        <div class="text --7">真剣交際</div>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">プロポーズ</div>
+        <div class="text --8">プロポーズ</div>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">成婚</div>
+        <div class="text --9">成婚</div>
       </div>
     </div>
     <div class="body_wrap">
@@ -103,7 +103,7 @@
       </div>
       <div class="section --1">
         <h1 class="title">お相手探しから成婚まで</h1>
-        <div class="section_content --1">
+        <div class="section_content --4">
           <h2 class="section_title" data-number="01">お相手探し</h2>
           <div class="section_body">
             <div class="body_img">
@@ -120,7 +120,7 @@
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
-        <div class="section_content --2">
+        <div class="section_content --5">
           <h2 class="section_title" data-number="02">お見合い</h2>
           <div class="section_body">
             <div class="body_img">
@@ -136,7 +136,7 @@
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
-        <div class="section_content --3">
+        <div class="section_content --6">
           <h2 class="section_title" data-number="03">プレ交際（～交際2か月頃まで）</h2>
           <div class="section_body">
             <div class="body_img">
@@ -152,7 +152,7 @@
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
-        <div class="section_content --4">
+        <div class="section_content --7">
           <h2 class="section_title" data-number="04">真剣交際（交際２カ月頃～）</h2>
           <div class="section_body">
             <div class="body_img">
@@ -168,7 +168,7 @@
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
-        <div class="section_content --5">
+        <div class="section_content --8">
           <h2 class="section_title" data-number="05">プロポーズ</h2>
           <div class="section_body">
             <div class="body_img">
@@ -184,7 +184,7 @@
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
-        <div class="section_content --6">
+        <div class="section_content --9">
           <h2 class="section_title" data-number="06">ご成婚</h2>
           <div class="section_body">
             <div class="body_img">
@@ -204,12 +204,69 @@
 </template>
 
 <script setup lang="ts">
+import gsap from "gsap"
+import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
 import Arrow from '~/assets/images/arrow.svg'
 import nextArrow from '~/assets/images/next-arrow.svg'
 components: {
   Arrow
   nextArrow
 }
+
+const { app, store } = useContext()
+
+let pageWidth = computed<number>(() => store.getters['pageWidth'])
+
+const trigger = [
+  {trigger: '.section_content.--1', action: '.text.--1'},
+  {trigger: '.section_content.--2', action: '.text.--2'},
+  {trigger: '.section_content.--3', action: '.text.--3'},
+  {trigger: '.section_content.--4', action: '.text.--4'},
+  {trigger: '.section_content.--5', action: '.text.--5'},
+  {trigger: '.section_content.--6', action: '.text.--6'},
+  {trigger: '.section_content.--7', action: '.text.--7'},
+  {trigger: '.section_content.--8', action: '.text.--8'},
+  {trigger: '.section_content.--9', action: '.text.--9'},
+]
+
+let flowBarAnim: gsap.core.Tween
+let barAnim: gsap.core.Tween[] = []
+
+onMounted(() => {
+  flowBarAnim = gsap.to(".menu",{
+    scrollTrigger: {
+      trigger: '.flow',
+      start: 'top 90px',
+      toggleActions: 'play none none reverse',
+    },
+    duration: .3,
+    transform: 'scale(0.8)'
+  })
+
+  trigger.forEach((value) => {
+    let array: gsap.core.Tween = gsap.to(value.action, 
+    {
+      scrollTrigger: {
+        trigger: value.trigger,
+        start: 'top 60%',
+        end: 'bottom 60%',
+        toggleActions: 'play reverse play reverse',
+      },
+      duration: .3, 
+      transform: 'scale(1.1)',
+      'background-image': 'linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%)',
+      color: '#eff4f4',
+    })
+    barAnim.push(array)
+  })
+})
+
+onBeforeUnmount(() => {
+  flowBarAnim.scrollTrigger?.disable()
+  barAnim.forEach(value => {
+    value.scrollTrigger?.disable()
+  })
+})
 </script>
 
 
@@ -240,24 +297,24 @@ components: {
     background-size: 50px 50px
     position: sticky
     top: 90px
+    z-index: 5
 
     > .flow
       display: flex
       justify-content: space-around
-      // gap: 20px
       > .text
-        +text-subtitle(16px)
+        +text-title(18px)
         color: var(--white-1)
         flex: 0 0 40px
-        height: 150px
+        height: 160px
         writing-mode: vertical-rl
         text-align: center
         display: flex
         align-items: center
         justify-content: center
         border-radius: 20px
-        // background-color: var(--main)
-        background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
+        // background-color: var(--sub)
+        background-image: linear-gradient(135deg, #000875 0%, #000875 100%, )
 
       > .nextArrow_wrap
         text-align: center
@@ -286,6 +343,9 @@ components: {
         text-align: center
         margin: 0 0 20px
 
+        +sp-view
+          +text-subtitle(32px)
+
         &::before 
           position: absolute
           bottom: -10px
@@ -299,14 +359,17 @@ components: {
       > .section_content
         padding: 32px
 
+        +sp-view
+          padding: 20px
+
         > .section_title
           +text-title(32px)
           position: relative
-          // background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
-          // background-clip: text
-          // -webkit-text-fill-color: transparent
           margin: 0 0 20px
           display: inline-block
+
+          +sp-view
+            +text-subtitle(24px)
 
           &::before 
             content: attr(data-number)
@@ -315,47 +378,23 @@ components: {
             +text-title(44px)
             border-bottom: 1px solid var(--main)
 
+            +sp-view
+              +text-subtitle(36px)
+              margin-right: 100%
+              margin-bottom: 10px
+
           +sp-view
             &::after
               margin: 3% 0 5%
 
-          // &::before
-          //   content: "Step"
-          //   +text-subtitle(36px)
-          //   margin-right: 10px
-
-          //   +sp-view
-          //     font-size: 20px
-
-          // &::after
-          //   content: ""
-          //   width: 50px
-          //   height: 4px
-          //   position: absolute
-          //   bottom: -16px
-          //   left: 0
-          //   border-radius: 3px
-          //   background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
-
-          //   +sp-view
-          //     margin: 0% 0 8%
-
-        // > .section_title
-        //   margin: 16px 0 
-        //   display: inline-block
-        //   +text-title(36px)
-        //   line-height: 1.4em
-        //   background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
-        //   background-clip: text
-        //   -webkit-text-fill-color: transparent
-        //   // color: var(--main)
-
-        //   +sp-view
-        //     +text-title(30px)
-
         > .section_body
           display: flex
           flex-direction: row-reverse
+
+          +sp-view
+            flex-direction: column
+            gap: 20px
+
           > .body_img
             flex: 0 0 45%
             > .img
@@ -364,10 +403,16 @@ components: {
 
           > .body_block
             padding: 20px 
+
+            +sp-view
+              padding: 0
             > .text
               +text-body(18px)
               color: var(--main)
               padding: 0 0 40px
+              +sp-view
+                +text-body(16px)
+
             > .about
               > .ul
                 list-style-type: none
@@ -375,6 +420,9 @@ components: {
                   +text-subtitle(24px)
                   padding: 10px 0
                   transition-duration: .3s
+
+                  +sp-view
+                    +text-subtitle(20px)
 
                   &:hover
                     transform: scale(1.1)
