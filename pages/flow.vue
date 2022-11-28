@@ -4,7 +4,7 @@
     <h1 class="title">ご入会からご結婚まで</h1>
   </div>
   <div class="body">
-    <div class="menu" v-if="pageWidth >= 750">
+    <div class="menu anim" v-if="isDisplay">
       <div class="flow">
         <div class="text --1">無料相談</div>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
@@ -215,7 +215,9 @@ components: {
 
 const { app, store } = useContext()
 
-let pageWidth = computed<number>(() => store.getters['pageWidth'])
+let isDisplay = computed(() => {
+  return store.getters['pageWidth'] >= 750
+})
 
 const trigger = [
   {trigger: '.section_content.--1', action: '.text.--1'},
@@ -233,7 +235,7 @@ let flowBarAnim: gsap.core.Tween
 let barAnim: gsap.core.Tween[] = []
 
 onMounted(() => {
-  flowBarAnim = gsap.to(".menu",{
+  flowBarAnim = gsap.to(".menu.anim",{
     scrollTrigger: {
       trigger: '.flow',
       start: 'top 90px',
