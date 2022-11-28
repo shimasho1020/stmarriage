@@ -51,8 +51,7 @@
                 :to="`/interview/${item.num}`"
                 :key="index"
             >
-              <div 
-                class="case-card">
+              <div class="case-card">
                 <div class="case-item__image_block">
                   <img class="case-item__image" :src="item.img" alt="case-image">
                 </div>

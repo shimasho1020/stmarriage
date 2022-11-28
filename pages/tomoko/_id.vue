@@ -121,7 +121,7 @@
                   label="この方の簡単な説明や結婚までの経緯"
                   v-model="aboutText"
                 ></v-textarea>
-                <div style="white-space: pre-wrap;" v-text="aboutText"></div>
+                <div style="white-space: pre-wrap;">当社の{{caseList.age}}歳{{caseList.sex}}会員様がご成婚されました。お相手は{{caseList.partnerAge}}歳の{{changeSex(caseList.sex)}}会員様です。<br>{{aboutText}}</div>
               </div>
               <div class="about">
                 <h1 class="title">ご成婚者様の声</h1>
@@ -252,7 +252,9 @@ const itemsTerm:number[] = []
 for(let i=1;i<=60;i++){
   itemsTerm.push(i)
 }
-
+const changeSex = (sex: '' | '男性' | '女性') => {
+  return sex === '男性' ? '女性' : '男性'
+}
 
 const activeButton = computed(() => {
   return !!caseList.value.name && 
@@ -296,7 +298,7 @@ const onSubmit = async() => {
     isSending.value = false;
     setTimeout(() => {
       completeMessage.value = ''
-    }, 4000)
+    }, 3000)
   }
 }
 
@@ -485,11 +487,24 @@ const uploadImageFile = async(file: FileList, id: string) => {
         z-index: -1
 
   > .section_img
-    flex: 60px
-    width: 60%
+    position: relative
+    width: 400px
     margin: auto
+    overflow: hidden
+    border-radius: 20px
+
+    &::before
+      content:""
+      display: block
+      padding-top: 100%
+
     > .img
+      display: block
+      position: absolute
+      height: 100%
       width: 100%
+      object-fit: cover
+      top: 0
 
   > .section_block
     > .text
