@@ -429,7 +429,7 @@ onBeforeUnmount(() => {
 
     +sp-view
       +text-subtitle(27px)
-      color: var(--white-1)
+      color: var(--sub)
 
     > .page-title__block
       display: flex

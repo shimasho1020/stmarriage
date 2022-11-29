@@ -12,6 +12,7 @@ export const state = () => ({
   pageWidth: 0,
   headerScrollTrigger: false,
   formDisplay:false,
+  isScrollActive: true,
 })
 
 export const actions = {
@@ -79,6 +80,12 @@ export const mutations = {
   changeFormToNone(state){
     state.formDisplay = false
   },
+  scrollActiveOn(state){
+    state.isScrollActive = true
+  },
+  scrollActiveOff(state){
+    state.isScrollActive = false
+  },
 };
 
 export const getters = {
@@ -99,5 +106,8 @@ export const getters = {
   },
   formDisplayActive(state){
     return state.formDisplay
+  },
+  isScrollActive(state) {
+    return state.isScrollActive
   }
 };

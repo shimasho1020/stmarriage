@@ -3,8 +3,7 @@
     <div class="header_wrap" :class="{'top-page': $route.name === 'index'}">
     <header class="header active"
             ref="pageHeader"
-            id="header"
-            :class="{'side-active': false}">
+            id="header">
       <nuxt-link @click.native.prevent="nuxtLinkTrigger" to="/" class="logo" :class="{'top-page': $route.name === 'index'}">
         <div class="logo-sub">日本結婚所連盟（ＩＢＪ）　正規加盟店</div>
         <div class="logo-main">セントマリアージュ青山</div>
@@ -30,6 +29,7 @@
       <div
           class="menu sp"
           @click="toggleMenu"
+          :class="{'top-page': $route.name === 'index'}"
       >
         <span></span>
       </div>
@@ -37,11 +37,11 @@
     </div>
     <div class="sp-menu" ref="sideMenu">
       <div class="sp-menu-wrap">
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/price">Media sheet</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/price">Ads calendar</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/price">News</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/price">Case study</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="//price">FAQ/Contact</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/">ホーム</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/price">コース案内</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/flow">入会から結婚まで</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/interview">ご成婚事例</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/contact">相談フォーム</nuxt-link>
       </div>
     </div>  
     <div class="flow_block" v-if="$route.name !== 'contact'" :class="{'top-page': $route.name === 'index'}">
@@ -49,7 +49,7 @@
       <nuxt-link to="/contact" class="circle_form woman"><span class="inline-block">無料相談<br>女性用</span></nuxt-link>
     </div>
 
-    <div class="Body" :class="{'not-top-page': $route.name !== 'index'}">
+    <div class="BODY" :class="{'not-top-page': $route.name !== 'index'}">
       <nuxt/>
     </div>
 
@@ -75,6 +75,22 @@ const router = useRouter()
 const route = useRoute()
 const { app, store } = useContext()
 
+const isScrollActive = computed<boolean>(() => store.getters['isScrollActive'])
+watch(isScrollActive,(val) => {
+  function handle(event: any) {
+    event.preventDefault();
+  }
+  if(val){
+    console.log('SCROLL_ON')
+    document.removeEventListener('touchmove', handle, false);
+    document.removeEventListener('mousewheel', handle, false);
+  } else {
+    console.log('SCROLL_OFF')
+    document.addEventListener('touchmove', handle, false);
+    document.addEventListener('mousewheel', handle, false);
+  }
+})
+
 let sideActive= ref<boolean>(false)
 let pageWidth = ref<number>(900)
 const sideMenu = ref()
@@ -91,6 +107,10 @@ const toggleMenu = () => {
   const classList = sideMenu.value.classList
   const headerClassList = pageHeader.value.classList
   if (sideActive.value) {
+    if(route.value.name == 'index') {
+      store.commit('changeHeaderToTrans')
+    }
+    store.commit('scrollActiveOn')
     sideActive.value = false
     gsap.to('.sp-menu-wrap', {
       duration: .7,
@@ -101,6 +121,10 @@ const toggleMenu = () => {
     })
     headerClassList.remove('side-active')
   } else {
+    if(headerColor){
+      store.commit('changeHeaderToBlue')
+    }
+    store.commit('scrollActiveOff')
     sideActive.value = true
     headerClassList.add('side-active')
     classList.add('active')
@@ -244,7 +268,8 @@ onUnmounted(() => {
 
       +sp-view
         +text-title(28px)
-        color: var(--white-1)
+        color: currentColor
+
 
   > .menu
     max-width: 640px
@@ -290,16 +315,6 @@ onUnmounted(() => {
           border-radius: 3px
           background-image: linear-gradient(135deg, #17aaee 0%, #176dee 50%,  #17aaee 100%, )
 
-      // &::after 
-      //   position: absolute
-      //   bottom: -10px
-      //   left: calc(50% - 15px)
-      //   width: 30px
-      //   height: 3px
-      //   content: ''
-      //   border-radius: 3px
-      //   background-color: var(--main)
-
       > .link-wrap
         overflow: hidden
         display: flex
@@ -326,10 +341,10 @@ onUnmounted(() => {
         height: 1px
         padding: 20px 0
         cursor: pointer
-        color: var(--main)
+        color: var(--white-1)
 
-        &.white
-          color: var(--white-1)
+        &.top-page
+          color: var(--main)
 
         > span, span:before, span:after
           position: absolute
@@ -349,9 +364,7 @@ onUnmounted(() => {
           transform: translateY(7px)
 
   &.side-active
-    border-bottom: 1px solid var(--main) !important
-
-    > .sp
+    .sp
       > span
         background: rgba(255, 255, 255, 0)
 
@@ -427,7 +440,7 @@ onUnmounted(() => {
     &.woman
       background: linear-gradient(to bottom, #e051bc, rgb(195, 242, 248))
 
-.Body
+.BODY
   &.not-top-page
     padding: 120px 0 0
     background-image: url("/images/luxury-2.jpg")
