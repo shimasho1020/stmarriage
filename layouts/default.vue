@@ -75,21 +75,17 @@ const router = useRouter()
 const route = useRoute()
 const { app, store } = useContext()
 
-const isScrollActive = computed<boolean>(() => store.getters['isScrollActive'])
-watch(isScrollActive,(val) => {
-  function handle(event: any) {
-    event.preventDefault();
-  }
-  if(val){
-    console.log('SCROLL_ON')
-    document.removeEventListener('touchmove', handle, false);
-    document.removeEventListener('mousewheel', handle, false);
-  } else {
-    console.log('SCROLL_OFF')
-    document.addEventListener('touchmove', handle, false);
-    document.addEventListener('mousewheel', handle, false);
-  }
-})
+// const isScrollActive = computed<boolean>(() => store.getters['isScrollActive'])
+// watch(isScrollActive,(val) => {
+//   function handle(event: any) {
+//     event.preventDefault();
+//   }
+//   if(val){
+//     console.log('SCROLL_ON')
+//   } else {
+//     console.log('SCROLL_OFF')
+//   }
+// })
 
 let sideActive= ref<boolean>(false)
 let pageWidth = ref<number>(900)
@@ -110,7 +106,6 @@ const toggleMenu = () => {
     if(route.value.name == 'index') {
       store.commit('changeHeaderToTrans')
     }
-    store.commit('scrollActiveOn')
     sideActive.value = false
     gsap.to('.sp-menu-wrap', {
       duration: .7,
@@ -124,7 +119,6 @@ const toggleMenu = () => {
     if(headerColor){
       store.commit('changeHeaderToBlue')
     }
-    store.commit('scrollActiveOff')
     sideActive.value = true
     headerClassList.add('side-active')
     classList.add('active')

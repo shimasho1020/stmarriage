@@ -23,5 +23,5 @@ export type Interviewer = {
 }
 export type DisplayInterviewer = Interviewer & {
   id: string
-  url: string
+  url?: string
 }

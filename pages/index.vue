@@ -1,5 +1,5 @@
 <template>
-  <div class="top_page_body">
+  <div class="top_page_body" ref="pageObserver">
     <div class="hero" >
       <h1 class="page-title">
         <div class="page-title__block">
@@ -48,16 +48,16 @@
             <nuxt-link
                 class="case-item case-wrap"
                 v-for="(item, index) of displayCaseList"
-                :to="`/interview/${item.num}`"
+                :to="`/interview/${item}`"
                 :key="index"
             >
               <div class="case-card">
                 <div class="case-item__image_block">
-                  <img class="case-item__image" :src="item.img" alt="case-image">
+                  <img class="case-item__image" :src="item.url" alt="case-image">
                 </div>
                 <div class="card">
                   <div class="__link">
-                    <p class="__title">Interview.{{ item.num }}</p>
+                    <p class="__title">Interview.{{ index + 1 }}</p>
                     <ArrowImage class="right-arrow" direction="right"></ArrowImage>
                   </div>
                   <p class="__title">
@@ -255,19 +255,21 @@
 <script setup lang="ts">
 import gsap from "gsap"
 // import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
-// import { createStore, Store as baseUseStore } from "vuex";
+import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where, limit } from "firebase/firestore"
+import { firestore, storage } from '~/plugins/firebase.js'
+import { CaseList,Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 
 
 interface Table {
   title: string,cont: string
 }
-interface CaseList {
-  num: number,
-  name: string,
-  img: string,
-  url?: string,
-}
+// interface CaseList {
+//   num: number,
+//   name: string,
+//   img: string,
+//   url?: string,
+// }
 
 const tables: Table[] = [
   {title:'ご年齢',cont:'20代後半〜50代前半'},
@@ -294,43 +296,70 @@ const trigger: string[] = [
   '.access-comment',
   '.access-map',
 ]
-const displayCaseList: CaseList[] = [
-  {
-    num: 1,
-    name:'xxx xxxx',
-    img:'/images/marriage-gate.webp',
-  },
-  {
-    num: 2,
-    name:'yyy yyyy',
-    img:'/images/marriage-gate.webp',
-    url:'/flow',
-  },
-  {
-    num: 3,
-    name:'zzz zzzz',
-    img:'/images/marriage-gate.webp',
-    url:'/voice',
-  },
-]
 
 const { app, store } = useContext()
 
-let circleAnim: gsap.core.Tween
+const interviewer = ref([] as DisplayInterviewer[])
+const displayCaseList = computed(() => {
+  return interviewer.value.map((val, index) => {
+      return {
+        id: val.id,
+        url: selectImg(index),
+        ...val.caseList
+      }
+    })
+})
+const selectImg = (index: number):string => {
+  if(index == 0) {return '/images/marriage-gate.webp'}
+  else if(index == 1) {return '/images/marriage-gate.webp'}
+  else {return '/images/marriage-gate.webp'}
+}
+
+watch(displayCaseList,(val) => {
+  console.log(val)
+})
+
+useAsync(async () => {
+  const q = query(collection(firestore, "interviewer"), where("isPublic", "==", true), limit(3))
+  const querySnapshot = await getDocs(q)
+
+  interviewer.value = querySnapshot.docs.map((doc) => {
+  return {
+      id: doc.id,
+      ...doc.data() as Interviewer
+    }
+  })
+})
+
+let circleAnim: gsap.core.Tween 
 let circleManAnim: gsap.core.Tween
 let circleWomanAnim: gsap.core.Tween
 let headerAnim: gsap.core.Tween
-let fuwaAnim: gsap.core.Tween[] = []
+let fuwaAnim = ref<gsap.core.Tween[]>([])
 
-let pageWidth = computed<number>(() => store.getters['pageWidth'])
+const pageWidth = computed<number>(() => { return store.getters['pageWidth'] ?? 900})
 
-watch(pageWidth, (newVal, oldVal) => {
-  circleManAnim.scrollTrigger?.refresh()
-})
+// watch(pageWidth, (newVal, oldVal) => {
+//   circleManAnim.scrollTrigger?.refresh()
+// })
 
 let isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled'])
 
+  const myObserver = ref<ResizeObserver>({} as ResizeObserver)
+  const pageObserver = ref()
+
 onMounted(() => {
+  const resizeObserver = new ResizeObserver(entries => {
+    for (const entry of entries) {
+      console.log('RESIZE')
+      fuwaAnim.value.forEach((val) => {
+        val.scrollTrigger?.refresh()
+      })
+    }
+  })
+  myObserver.value = resizeObserver
+  myObserver.value.observe(pageObserver.value)
+
   if(isLoadingEnabled.value) {
     store.dispatch('startLoading')
   }
@@ -348,26 +377,26 @@ onMounted(() => {
   })
   
   const width: number = window.innerWidth
-  circleManAnim = gsap.to(".circle_form.man",{
-    scrollTrigger: {
-      trigger: '.body',
-      start: 'top bottom',
-      end: 'bottom bottom',
-      scrub: 1,
-    },
-    x: -(width * 0.9 - 250),
-    duration: .3, 
-  })
-  circleWomanAnim = gsap.to(".circle_form.woman",{
-    scrollTrigger: {
-      trigger: '.body',
-      start: 'top bottom',
-      end: 'bottom bottom',
-      scrub: 3,
-    },
-    x: -(width * 0.9 - 250),
-    duration: .3, 
-  })
+  // circleManAnim = gsap.to(".circle_form.man",{
+  //   scrollTrigger: {
+  //     trigger: '.body',
+  //     start: 'top bottom',
+  //     end: 'bottom bottom',
+  //     scrub: 1,
+  //   },
+  //   x: -(width * 0.9 - 250),
+  //   duration: .3, 
+  // })
+  // circleWomanAnim = gsap.to(".circle_form.woman",{
+  //   scrollTrigger: {
+  //     trigger: '.body',
+  //     start: 'top bottom',
+  //     end: 'bottom bottom',
+  //     scrub: 3,
+  //   },
+  //   x: -(width * 0.9 - 250),
+  //   duration: .3, 
+  // })
 
   headerAnim = gsap.to(".header_wrap",{
     scrollTrigger: {
@@ -389,21 +418,25 @@ onMounted(() => {
         trigger: value,
         start: 'top 70%',
         toggleActions: 'play none none reverse',
+        invalidateOnRefresh: true,
+        markers: true,
       },
       opacity: 1,
       transform: 'translateY(0)',
       duration: 1, 
     })
-    fuwaAnim.push(array)
+    fuwaAnim.value.push(array)
   })
 })
 
 onBeforeUnmount(() => {
+  myObserver.value.unobserve(pageObserver.value)
+
   circleAnim.scrollTrigger?.disable()
-  circleManAnim.scrollTrigger?.disable()
-  circleWomanAnim.scrollTrigger?.disable()
+  // circleManAnim.scrollTrigger?.disable()
+  // circleWomanAnim.scrollTrigger?.disable()
   headerAnim.scrollTrigger?.disable()
-  fuwaAnim.forEach(value => {
+  fuwaAnim.value.forEach(value => {
     value.scrollTrigger?.disable()
   })
 })
@@ -639,6 +672,11 @@ onBeforeUnmount(() => {
 
             +sp-view
               min-width: 240px
+              
+              // &:nth-child(2)
+              //   display: none
+              // &:nth-child(3)
+              //   display: none
 
             > .case-card
               width: 100%
