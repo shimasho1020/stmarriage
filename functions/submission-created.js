@@ -15,7 +15,7 @@ exports.handler = function(event, context, callback, $config) {
     });
 
     const mailContents = {
-      from: process.env.EMAIL_KEY,
+      from: 'セントマリアージュ青山',
       to: `${useremail}`,
       subject: '【セントマリアージュ青山】お問い合わせありがとうございます',
       text: `${username} 様\n\nお問い合わせありがとうございます。\n以下の内容でフォームを送信いたしました。\n数日中に追って連絡いたします。\n今しばらくお待ちください。\n\n------ 送信内容 ------\n【性別】\n${sex}\n\n【お名前】\n${username}\n\n【フリガナ】\n${katakana}\n\n【メールアドレス】\n${useremail}\n\n【電話番号】\n${number}\n\n【年齢】\n${age}\n\n【年収】\n${salary}\n\n【質問・その他】\n${message}\n\n--------------------\nby セントマリアージュ青山\n`,

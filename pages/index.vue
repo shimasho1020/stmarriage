@@ -48,7 +48,7 @@
             <nuxt-link
                 class="case-item case-wrap"
                 v-for="(item, index) of displayCaseList"
-                :to="`/interview/${item}`"
+                :to="`/interview/${item.id}`"
                 :key="index"
             >
               <div class="case-card">
@@ -301,7 +301,7 @@ watch(displayCaseList,(val) => {
 })
 
 useAsync(async () => {
-  const q = query(collection(firestore, "interviewer"), where("isPublic", "==", true), limit(3))
+  const q = query(collection(firestore, "interviewer"), where("isPublic", "==", true),where("caseList.isInterview", "==", true), limit(3))
   const querySnapshot = await getDocs(q)
 
   interviewer.value = querySnapshot.docs.map((doc) => {
@@ -712,7 +712,7 @@ onBeforeUnmount(() => {
                     +text-title(24px)
 
                     +sp-view
-                      +text-title(18px)
+                      +text-title(24px)
 
                   > .right-arrow
                     color: var(--main)

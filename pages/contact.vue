@@ -194,6 +194,9 @@ const resetForm = () => {
         &::placeholder
           color: #aaa
 
+        +sp-view
+          width: 100%
+
       > textarea
         border: 1px solid var(--sub)
         border-radius: 10px
