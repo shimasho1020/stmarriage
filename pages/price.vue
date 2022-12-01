@@ -118,12 +118,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
+import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
 
 
 const { app, store } = useContext()
 let isDisplay = computed(() => {
-  return store.getters['pageWidth'] >= 850
+  return store.getters['pageWidth'] ? store.getters['pageWidth'] >= 850 : true
 })
 
 const courses = [
@@ -146,12 +146,7 @@ const courses = [
     href:'#counseling',
   },
 ]
-const list = [
-      { title: 'ホーム', icon: 'mdi-web', url: '/' },
-      { title: 'コース案内、料金', icon: 'mdi-information-variant', url: '/price' },
-      { title: 'ご入会からご結婚まで', icon: 'mdi-information-variant', url: '/flow' },
-      { title: 'ご成婚者様の声', icon: 'mdi-web', url: '/voice' },
-]
+
 const fullTables = [
   {title:'入会金',price:'33,000円'},
   {title:'登録料',price:'33,000円'},

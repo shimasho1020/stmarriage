@@ -70,7 +70,7 @@
 
 <script setup lang="ts">
 import gsap from "gsap"
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
+import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
 import mail from '~/assets/images/mail_icon.svg'
 components: {
   mail
@@ -80,18 +80,6 @@ components: {
 const router = useRouter()
 const route = useRoute()
 const { app, store } = useContext()
-
-// const isScrollActive = computed<boolean>(() => store.getters['isScrollActive'])
-// watch(isScrollActive,(val) => {
-//   function handle(event: any) {
-//     event.preventDefault();
-//   }
-//   if(val){
-//     console.log('SCROLL_ON')
-//   } else {
-//     console.log('SCROLL_OFF')
-//   }
-// })
 
 let sideActive= ref<boolean>(false)
 let pageWidth = ref<number>(900)

@@ -105,14 +105,6 @@
                 <div class="self-comment 2">入会1カ月以内の交際成立率93%</div>
                 <div class="self-table">
                   <div class="text">※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
-                  <!-- <table class="table">
-                    <tbody>
-                      <tr v-for="(value, index) in tables" v-bind:key="index">
-                        <th>{{value.title}}</th>
-                        <td>{{value.cont}}</td>
-                      </tr>
-                    </tbody>
-                  </table> -->
                   <div class="table">
                     <h4 class="table_title">職業一覧</h4>
                     <ul class="table_list">
@@ -243,21 +235,6 @@ import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList,Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 
 
-interface Table {
-  title: string,cont: string
-}
-// interface CaseList {
-//   num: number,
-//   name: string,
-//   img: string,
-//   url?: string,
-// }
-
-const tables: Table[] = [
-  {title:'ご年齢',cont:'20代後半〜50代前半'},
-  {title:'男女比',cont:'(約) 7 対 3'},
-  {title:'ご職業',cont:'三菱グループ各社、大手通信事業社、大手広告代理店、大手建設会社、大手金融機関、他'},
-]
 const trigger: string[] = [
   '.intro',
   '.section_title_block.--1',
@@ -309,8 +286,6 @@ useAsync(async () => {
 })
 
 let circleAnim: gsap.core.Tween 
-let circleManAnim: gsap.core.Tween
-let circleWomanAnim: gsap.core.Tween
 let headerAnim: gsap.core.Tween
 let fuwaAnim = ref<gsap.core.Tween[]>([])
 
@@ -418,12 +393,6 @@ onBeforeUnmount(() => {
           > .page-title__child
             transform: translateY(32px)
             display: block
-            // opacity: 0
-            // background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
-            // background-clip: text
-            // -webkit-text-fill-color: transparent
-
-
 
   > .img_block
     width: 100vw
@@ -469,9 +438,6 @@ onBeforeUnmount(() => {
         text-align: center
         margin-bottom: 10px
         padding: 0 17%
-        // background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
-        // background-clip: text
-        // -webkit-text-fill-color: transparent
 
         +sp-view
           font-size: 24px
@@ -726,7 +692,6 @@ onBeforeUnmount(() => {
                   +text-title(32px)
 
     &.--3
-      // background-color: var(--white-1)
       background-color: var(--main)
       > .section-wrap
         border-bottom: 1px solid black
@@ -892,18 +857,6 @@ onBeforeUnmount(() => {
                       border-radius: 5px
                       background: #efecdd
                       margin-bottom: 5px
-                // table
-                //   border-collapse:  collapse
-              
-                // th, td
-                //   border: solid 1px
-                //   padding: 10px
-              
-                // th
-                //   width: 30%
-              
-                // td
-                //   width: 70%
 
             > .award_wrap
               > .award-title
@@ -1013,18 +966,6 @@ onBeforeUnmount(() => {
               display: flex
               flex-wrap: wrap-reverse
               gap: 10px
-
-            &:nth-child(1)
-              // margin-top: 0
-
-              +sp-view
-                // margin-top: 8%
-
-            &:nth-child(2)
-              // margin-top: 10%
-
-              +sp-view
-                // margin-top: 8%
 
             > .top-our_strengths__container--body
               > .top-our_strengths__container--point
