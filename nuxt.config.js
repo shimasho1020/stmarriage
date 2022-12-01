@@ -8,19 +8,37 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - stmarriage',
-    title: 'stmarriage',
+    titleTemplate: '%s - セントマリアージュ青山',
+    title: 'セントマリアージュ青山',
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: '大手結婚相談所(ダイヤモンドファミリークラブ)にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。'
+      },
+      {hid: 'og:site_name', property: 'og:site_name', content: 'セントマリアージュ青山'},
+      {hid: 'og:type', property: 'og:type', content: 'website'},
+      // {hid: 'og:url', property: 'og:url', content: 'https://tokyo-grand.jp/'},
+      {hid: 'og:title', property: 'og:title', content: 'セントマリアージュ青山'},
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: '大手結婚相談所(ダイヤモンドファミリークラブ)にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。'
+      },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'セントマリアージュ青山' },
+      { name: 'twitter:description', content: '大手結婚相談所(ダイヤモンドファミリークラブ)にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/png', href: '/images/ring_logo__16.png', size: "16x16"},
+      { rel: 'icon', type: 'image/png', href: '/images/ring_logo__32.png', size: "32x32"},
+      { rel: 'apple-touch-icon', href: '/images/ring_logo_32.jpeg'},
     ]
   },
 
