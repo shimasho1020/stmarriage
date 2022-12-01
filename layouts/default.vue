@@ -45,8 +45,10 @@
       </div>
     </div>  
     <div class="flow_block" v-if="$route.name !== 'contact'" :class="{'top-page': $route.name === 'index'}">
-      <nuxt-link to="/contact" class="circle_form man"><span class="inline-block">無料相談<br>男性用</span></nuxt-link>
-      <nuxt-link to="/contact" class="circle_form woman"><span class="inline-block">無料相談<br>女性用</span></nuxt-link>
+      <nuxt-link to="/contact" class="circle_form">
+        <span class="inline-block">無料相談<br>フォーム<br></span>
+        <div class="mail_icon_wrap"><mail class="mail_icon"></mail></div>
+      </nuxt-link>
     </div>
 
     <div class="BODY" :class="{'not-top-page': $route.name !== 'index'}">
@@ -69,6 +71,10 @@
 <script setup lang="ts">
 import gsap from "gsap"
 import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
+import mail from '~/assets/images/mail_icon.svg'
+components: {
+  mail
+}
 
 
 const router = useRouter()
@@ -426,13 +432,24 @@ onUnmounted(() => {
     align-items: center
     justify-content: center
     text-align: center
-    +text-subtitle(20px)
+    flex-direction: column
+    +text-title(18px)
     color: var(--white-1)
-    
-    &.man
-      background: linear-gradient(to bottom, #5f51e0, rgb(195, 242, 248))
-    &.woman
-      background: linear-gradient(to bottom, #e051bc, rgb(195, 242, 248))
+    padding: 10px 0 0
+    // background: linear-gradient(to bottom, #e051bc, rgb(195, 242, 248))
+    background: linear-gradient(to bottom, #5f51e0, rgb(195, 242, 248))
+
+    +sp-view
+      height: 100px
+      width: 100px
+      +text-title(16px)
+      color: var(--white-1)
+
+    > .mail_icon_wrap
+      width: 35%
+      margin: 0
+      path
+        fill: var(--white-1)
 
 .BODY
   &.not-top-page

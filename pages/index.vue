@@ -82,56 +82,9 @@
           </div>
         </div>
       </div>
-      <div class="section --2">
-        <div class="section-wrap">
-          <div class="section_title_block --2">
-            <h1 class="title">Award</h1>
-            <div class="title__border"></div>
-            <p class="title__sub">獲得賞</p>
-          </div>
-          <div class="award-title">
-            <span class="inline-block">セントマリアージュ青山が</span>
-            <span class="inline-block">IBJ AWARD 2021年下期</span>
-            <span class="inline-block">を受賞しました！</span>
-          </div>
-          <div class="content_wrap --2">
-            <div class="content_body img">
-              <div class="top-service__img">
-                <div class="c-img">
-                  <!-- <div class="c-img__border"></div> -->
-                  <img src="~/assets/images/IBJ-award.png" class="c-img__img" alt="ibjアワード">
-                </div>	
-              </div> 
-              <div class="top-service__img">
-                <div class="c-img">
-                  <!-- <div class="c-img__border"></div> -->
-                  <img src="~/assets/images/IBJ-award.png" class="c-img__img" alt="ibjアワード">
-                </div>	
-              </div> 
-            </div>
-            <div class="content_body text">
-              <p>生活をしていれば誰もが必ず足を運ぶ場所、<br>
-                エレベーター。<br>
-                &nbsp;<br>
-                皆が必ず使う場所のはずなのに、<br>
-                自転車や車、飛行機と同じ「乗り物」なのに、<br>
-                そこにはどことなく静けさを感じる。<br>
-                &nbsp;<br>
-                今まで、エレベーターは安全に移動する手段として、<br>
-                私たちの生活を支えてくれた。<br>
-                &nbsp;<br>
-                そんなエレベーターを私たちは変えたい。<br>
-                &nbsp;<br>
-                「誰とも話せない」を「誰かと話せる」空間に。<br>
-                「ちょっと寂しい」を「ちょっと楽しい」空間に。<br>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="section --3">
         <div class="section-wrap">
-          <div class="section_title_block --4">
+          <div class="section_title_block --3">
             <h1 class="title">Self Introduction</h1>
             <div class="title__border"></div>
             <p class="title__sub">カウンセラーからのご挨拶</p>
@@ -185,13 +138,43 @@
                   </div>
                 </div>
               </div>
+              <div class="award_wrap">
+                <div class="award-title">
+                  <span class="inline-block">セントマリアージュ青山が</span>
+                  <span class="inline-block">IBJ AWARD 2021年下期</span>
+                  <span class="inline-block">を受賞しました！</span>
+                </div>
+                <div class="content_wrap --2">
+                  <div class="content_body img">
+                    <div class="top-service__img">
+                      <div class="c-img">
+                        <!-- <div class="c-img__border"></div> -->
+                        <img src="~/assets/images/IBJ-award.png" class="c-img__img" alt="ibjアワード">
+                      </div>	
+                    </div> 
+                    <div class="top-service__img">
+                      <div class="c-img">
+                        <!-- <div class="c-img__border"></div> -->
+                        <img src="~/assets/images/IBJ-award.png" class="c-img__img" alt="ibjアワード">
+                      </div>	
+                    </div> 
+                  </div>
+                  <div class="content_body text">
+                    <p>IBJ AWARD とは、日本結婚相談所連盟（IBJ)の加盟店3,362社の中で、過去６か月間で特に顕著な実績を残した結婚相談所に贈られる賞です。<br>
+                      選定基準は、「入会数、成婚数」「地域への貢献度」「ガイドライン、法令の遵守」「クレームやトラブルがない事」等になります。<br>
+                      これらの厳しい選定基準をクリアし、日本結婚相談所連盟(IBJ)がお勧めできる優良結婚相談所としてお墨付きをいただいたことになります。<br>
+                      これからも、お一人でも多くの方々に幸せになっていただくために、心のこもったサポートをさせていただきたいと思っております。<br>
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="section --4">
         <div class="section-wrap">
-          <div class="section_title_block --3">
+          <div class="section_title_block --4">
             <h1 class="title">Strangth</h1>
             <div class="title__border"></div>
             <p class="title__sub">選ばれる理由</p>
@@ -281,17 +264,16 @@ const trigger: string[] = [
   '.section_title_block.--1',
   '.case_list',
   '.link-block',
-  '.section_title_block.--2',
-  '.award-title',
-  '.content_body.img',
-  '.content_body.text',
   '.section_title_block.--3',
-  '.content_body.---1',
-  '.content_body.---2',
-  '.section_title_block.--4',
   '.self-pic',
   '.self-p',
   '.self-body',
+  '.award-title',
+  '.content_body.img',
+  '.content_body.text',
+  '.section_title_block.--4',
+  '.content_body.---1',
+  '.content_body.---2',
   '.section_title_block.--5',
   '.access-comment',
   '.access-map',
@@ -409,17 +391,12 @@ onMounted(() => {
   })
 
   trigger.forEach(value => {
-    let array: gsap.core.Tween = gsap.fromTo(value, {
-      opacity: 0,
-      transform: 'translateY(40px)'
-    },
-    {
+    let array: gsap.core.Tween = gsap.to(value, {
       scrollTrigger: {
         trigger: value,
         start: 'top 70%',
         toggleActions: 'play none none reverse',
         invalidateOnRefresh: true,
-        markers: true,
       },
       opacity: 1,
       transform: 'translateY(0)',
@@ -498,6 +475,8 @@ onBeforeUnmount(() => {
 
   > .intro
     padding: 240px 0 160px
+    opacity: 0,
+    transform: translateY(40px)
 
     +sp-view
       padding: 100px 0 80px
@@ -616,6 +595,8 @@ onBeforeUnmount(() => {
         width:100%
         margin: 60px 0 60px
         text-align: center
+        opacity: 0,
+        transform: translateY(40px)
 
         > .title
           +text-title(64px)
@@ -652,6 +633,8 @@ onBeforeUnmount(() => {
           flex-wrap: wrap
           justify-content: space-between
           gap: 0 5px
+          opacity: 0,
+          transform: translateY(40px)
 
           +sp-view
             width: 100%
@@ -673,10 +656,10 @@ onBeforeUnmount(() => {
             +sp-view
               min-width: 240px
               
-              // &:nth-child(2)
-              //   display: none
-              // &:nth-child(3)
-              //   display: none
+              &:nth-child(2)
+                display: none
+              &:nth-child(3)
+                display: none
 
             > .case-card
               width: 100%
@@ -745,6 +728,8 @@ onBeforeUnmount(() => {
 
         > .link-block
           text-align: right
+          opacity: 0,
+          transform: translateY(40px)
 
           > .link-wrap
             display: inline-block
@@ -787,9 +772,11 @@ onBeforeUnmount(() => {
                 +sp-view
                   +text-title(32px)
 
-    &.--2
+    &.--3
+      // background-color: var(--white-1)
       background-color: var(--main)
       > .section-wrap
+        border-bottom: 1px solid black
         > .section_title_block
           > .title
             color: var(--white-1)
@@ -797,89 +784,6 @@ onBeforeUnmount(() => {
             background: var(--white-1)
           > .title__sub
             color: var(--white-1)
-
-        > .award-title
-          text-align: center
-          width: 100%
-          +text-title(40px)
-          margin-bottom: 10px
-          background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%)
-          background-clip: text
-          -webkit-text-fill-color: transparent
-          margin: 0 0 80px
-
-          +sp-view
-            font-size: 28px
-
-        > .content_wrap
-          display: flex
-          justify-content: space-between
-          flex-wrap: wrap-reverse
-
-          > .content_body
-            width: calc(50% - 30px)
-
-            +sp-view
-              width: 100%
-
-            > .top-service__img
-              width: 40%
-              margin: auto
-
-              +sp-view
-                width: 300px
-                margin: auto
-
-              > .c-img
-                position: relative
-                width: 100%
-
-                &::before
-                  content:""
-                  display: block
-                  padding-top: 100%
-
-                > .c-img__border
-                  width: 100%
-                  height: 100%
-                  border: 1px solid #c1c1c1
-                  position: absolute
-                  top: 0
-                  left: 0
-
-                > .c-img__img
-                  display: block
-                  position: absolute
-                  height: 100%
-                  width: 100%
-                  object-fit: cover
-                  top: 0
-                  box-shadow: 3px 3px 6px rgba(0,0,0,.6)
-                  // margin: 5% 0 0 5%
-                  z-index: 2
-                  border-radius: 40px
-
-            &.img
-              display: flex
-              flex-direction: column
-              gap: 40px
-            &.text
-              text-align: center
-              +text-body(16px)
-              color: var(--white-1)
-              letter-spacing: .1em
-              line-height: 1.8em
-              // margin: 5% 0 0
-
-              +sp-view
-                +text-body(16px)
-                color: var(--white-1)
-                margin-bottom: 20%
-
-    &.--3
-      background-color: var(--white-1)
-      > .section-wrap
-        border-bottom: 1px solid black
         > .self
           > .self-cont
             display: flex
@@ -889,8 +793,13 @@ onBeforeUnmount(() => {
             margin: 20px 0 0
             padding: 20px
 
+            +sp-view
+              padding: 0
+
             > .self-pic
               flex: 0 0 30%
+              opacity: 0,
+              transform: translateY(40px)
 
               +sp-view
                 flex: 0 0 100%
@@ -898,6 +807,12 @@ onBeforeUnmount(() => {
               > .img_block
                 position: relative
                 width: 100%
+                border-radius: 20px
+                overflow: hidden
+
+                +sp-view
+                  width: 80%
+                  margin: auto
 
                 &::before
                   content:""
@@ -914,7 +829,8 @@ onBeforeUnmount(() => {
                   left: 0
                   width: 100%
                   height: 100%
-                  background-image: linear-gradient(90deg, transparent 0 80%, var(--white-1) 100%), linear-gradient(0deg, transparent 0 80%, var(--white-1) 100%), linear-gradient(180deg, transparent 0 80%, var(--white-1) 100%), linear-gradient(270deg, transparent 0 80%, var(--white-1) 100%)
+                  background-image: linear-gradient(90deg, transparent 0 95%, var(--main) 100%), linear-gradient(0deg, transparent 0 95%, var(--main) 100%), linear-gradient(180deg, transparent 0 95%, var(--main) 100%), linear-gradient(270deg, transparent 0 95%, var(--main) 100%)
+                  // background-image: linear-gradient(90deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(0deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(180deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(270deg, transparent 0 95%, white 95%, transparent 100%)
 
                 > .img
                   display: block
@@ -926,15 +842,19 @@ onBeforeUnmount(() => {
 
             > .self-p
               +text-body(16px)
+              color: var(--white-1)
               position: relative
               line-height: 2
               flex: 0 0 60%
+              opacity: 0,
+              transform: translateY(40px)
 
               +sp-view
                 flex: 0 0 100%
 
               > .self-p_wrap
-                padding: 4% 5%
+                // padding: 4% 5%
+                // background-color: var(--white-1)
 
                 &::after
                   content: ''
@@ -943,15 +863,18 @@ onBeforeUnmount(() => {
                   left: 0
                   width: 100%
                   height: 100%
-                  background-image: linear-gradient(90deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(0deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(180deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(270deg, transparent 0 95%, white 95%, transparent 100%)
+                  // background-image: linear-gradient(90deg, transparent 0 95%, var(--main) 100%), linear-gradient(0deg, transparent 0 95%, var(--main) 100%), linear-gradient(180deg, transparent 0 95%, var(--main) 100%), linear-gradient(270deg, transparent 0 95%, var(--main) 100%)
+                  // background-image: linear-gradient(90deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(0deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(180deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(270deg, transparent 0 95%, white 95%, transparent 100%)
 
 
                 > .inline-block
-                  background-color: white
-                  padding: 20px 0
+                  // background-color: var(--white-1)
+                  // padding: 20px 0
 
             > .self-body
               flex: 70%
+              opacity: 0
+              transform: translateY(40px)
 
               > .self-comment
                 text-align: center
@@ -978,6 +901,7 @@ onBeforeUnmount(() => {
                 > .text
                   width: 100%
                   text-align: center
+                  color: var(--white-1)
 
                 > .table
                   border-radius: 10px
@@ -987,6 +911,10 @@ onBeforeUnmount(() => {
                   margin: auto
                   border: 1px solid var(--white-1)
                   background-color: white
+
+                  +sp-view
+                    width: 100%
+                    margin: 0 0 20px
 
                   > .table_title
                     +text-title(24px)
@@ -1024,6 +952,84 @@ onBeforeUnmount(() => {
                 // td
                 //   width: 70%
 
+            > .award_wrap
+              > .award-title
+                text-align: center
+                width: 100%
+                +text-title(40px)
+                margin-bottom: 10px
+                background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%)
+                background-clip: text
+                -webkit-text-fill-color: transparent
+                margin: 0 0 80px
+                opacity: 0,
+                transform: translateY(40px)
+
+                +sp-view
+                  font-size: 28px
+
+              > .content_wrap
+                display: flex
+                // flex-direction: column
+                justify-content: space-between
+                flex-wrap: wrap
+                row-gap: 40px
+
+                > .content_body
+                  width: calc(50% - 30px)
+                  opacity: 0,
+                  transform: translateY(40px)
+
+                  +sp-view
+                    width: 100%
+
+                  > .top-service__img
+                    width: 40%
+                    margin: auto
+
+                    +sp-view
+                      // width: 300px
+                      // margin: auto
+
+                    > .c-img
+                      position: relative
+                      width: 100%
+                      border-radius: 20px
+                      overflow: hidden
+
+                      &::before
+                        content:""
+                        display: block
+                        padding-top: 100%
+
+                      > .c-img__img
+                        display: block
+                        position: absolute
+                        height: 100%
+                        width: 100%
+                        object-fit: cover
+                        top: 0
+                        box-shadow: 3px 3px 6px rgba(0,0,0,.6)
+                        // margin: 5% 0 0 5%
+                        z-index: 2
+
+                  &.img
+                    display: flex
+                    // flex-direction: column
+                    gap: 40px
+                  &.text
+                    text-align: center
+                    +text-body(16px)
+                    color: var(--white-1)
+                    letter-spacing: .1em
+                    line-height: 1.8em
+                    // margin: 5% 0 0
+
+                    +sp-view
+                      +text-body(16px)
+                      color: var(--white-1)
+                      margin-bottom: 20%
+
     &.--4
       background-color: var(--white-1)
       > .section-wrap
@@ -1037,6 +1043,7 @@ onBeforeUnmount(() => {
 
           +sp-view
             gap: 40px
+            padding: 0
 
           > .content_body
             width: 45%
@@ -1045,7 +1052,8 @@ onBeforeUnmount(() => {
             color: #707070
             text-align: left
             padding: 10px
-            // background-color: var(--white-1)
+            opacity: 0
+            transform: translateY(40px)
 
             +sp-view
               width: 100%
@@ -1168,9 +1176,14 @@ onBeforeUnmount(() => {
           text-align: center
           margin: 40px 0 40px
           +text-body(16px)
+          opacity: 0,
+          transform: translateY(40px)
+          
         > .access-map
           width: 100%
           height: 400px
           object-fit: cover
+          opacity: 0,
+          transform: translateY(40px)
 
 </style>
