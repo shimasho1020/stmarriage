@@ -51,7 +51,7 @@
       </nuxt-link>
     </div>
 
-    <div class="BODY" :class="{'not-top-page': $route.name !== 'index'}">
+    <div class="BODY" :class="{'not-top-page': $route.name !== 'index', 'interview-page': $route.name === 'interview'}">
       <nuxt/>
     </div>
 
@@ -476,6 +476,10 @@ onUnmounted(() => {
     background-size: 25%
     background-repeat: repeat
     background-color: var(--white-1)
+
+  &.interview-page
+    background-color: var(--main)
+    background-image: none
 
 .footer
   background-color: var(--white-1)

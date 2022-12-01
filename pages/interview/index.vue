@@ -96,6 +96,10 @@ const changeSex = (sex: '' | '男性' | '女性') => {
   circle
     fill: var(--main)
 
+.title_block
+  > .title
+    background-color: var(--white-1)
+
 .body
   padding: 64px 0
 
