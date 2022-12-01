@@ -434,7 +434,7 @@ onUnmounted(() => {
   position: fixed
   bottom: 20px
   right: min(80px, 5vw)
-  z-index: 100
+  z-index: 40
   opacity: 1
 
   &.top-page
