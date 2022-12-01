@@ -296,10 +296,6 @@ const selectImg = (index: number):string => {
   else {return '/images/marriage-gate.webp'}
 }
 
-watch(displayCaseList,(val) => {
-  console.log(val)
-})
-
 useAsync(async () => {
   const q = query(collection(firestore, "interviewer"), where("isPublic", "==", true),where("caseList.isInterview", "==", true), limit(3))
   const querySnapshot = await getDocs(q)
@@ -318,12 +314,6 @@ let circleWomanAnim: gsap.core.Tween
 let headerAnim: gsap.core.Tween
 let fuwaAnim = ref<gsap.core.Tween[]>([])
 
-const pageWidth = computed<number>(() => { return store.getters['pageWidth'] ?? 900})
-
-// watch(pageWidth, (newVal, oldVal) => {
-//   circleManAnim.scrollTrigger?.refresh()
-// })
-
 let isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled'])
 
   const myObserver = ref<ResizeObserver>({} as ResizeObserver)
@@ -332,7 +322,6 @@ let isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled']
 onMounted(() => {
   const resizeObserver = new ResizeObserver(entries => {
     for (const entry of entries) {
-      console.log('RESIZE')
       fuwaAnim.value.forEach((val) => {
         val.scrollTrigger?.refresh()
       })
@@ -357,28 +346,6 @@ onMounted(() => {
     duration: .3, 
   })
   
-  const width: number = window.innerWidth
-  // circleManAnim = gsap.to(".circle_form.man",{
-  //   scrollTrigger: {
-  //     trigger: '.body',
-  //     start: 'top bottom',
-  //     end: 'bottom bottom',
-  //     scrub: 1,
-  //   },
-  //   x: -(width * 0.9 - 250),
-  //   duration: .3, 
-  // })
-  // circleWomanAnim = gsap.to(".circle_form.woman",{
-  //   scrollTrigger: {
-  //     trigger: '.body',
-  //     start: 'top bottom',
-  //     end: 'bottom bottom',
-  //     scrub: 3,
-  //   },
-  //   x: -(width * 0.9 - 250),
-  //   duration: .3, 
-  // })
-
   headerAnim = gsap.to(".header_wrap",{
     scrollTrigger: {
       trigger: '.intro',
@@ -409,8 +376,6 @@ onBeforeUnmount(() => {
   myObserver.value.unobserve(pageObserver.value)
 
   circleAnim.scrollTrigger?.disable()
-  // circleManAnim.scrollTrigger?.disable()
-  // circleWomanAnim.scrollTrigger?.disable()
   headerAnim.scrollTrigger?.disable()
   fuwaAnim.value.forEach(value => {
     value.scrollTrigger?.disable()
