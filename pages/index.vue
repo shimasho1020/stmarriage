@@ -57,12 +57,11 @@
                 </div>
                 <div class="card">
                   <div class="__link">
-                    <p class="__title">Interview.{{ index + 1 }}</p>
+                    <p class="__title"><span class="inline-block">{{item.age}}歳の{{item.sex}}会員様が</span><span class="inline-block">ご成婚されました！</span></p>
                     <ArrowImage class="right-arrow" direction="right"></ArrowImage>
                   </div>
                   <p class="__title">
-                    <span class="inline-block">{{ item.name }}</span>
-                    <span class="inline-block">にインタビュー</span>
+                    <span class="inline-block">インタビュー内容はこちら</span>
                   </p>
                 </div>
               </div>
@@ -74,7 +73,7 @@
             <div class="link-wrap">
               <nuxt-link class="list-link" to="/interview">
                 <div class="list-link-wrap" ref="linkPos3">
-                  <span class="list-link-text inline-block">More Interview</span>
+                  <span class="list-link-text inline-block">インタービューを全て見る</span>
                 </div>
                 <ArrowImage class="right-arrow" direction="right"></ArrowImage>
               </nuxt-link>
@@ -394,7 +393,7 @@ onMounted(() => {
     let array: gsap.core.Tween = gsap.to(value, {
       scrollTrigger: {
         trigger: value,
-        start: 'top 70%',
+        start: 'top 80%',
         toggleActions: 'play none none reverse',
         invalidateOnRefresh: true,
       },
@@ -710,10 +709,10 @@ onBeforeUnmount(() => {
                   justify-content: space-between
 
                   > .__title
-                    +text-title(32px)
+                    +text-title(24px)
 
                     +sp-view
-                      +text-title(28px)
+                      +text-title(18px)
 
                   > .right-arrow
                     color: var(--main)
@@ -740,29 +739,18 @@ onBeforeUnmount(() => {
               gap: 15px
 
               > .list-link-wrap
-                +text-title(40px)
                 overflow: hidden
                 display: flex
                 align-items: center
-                width: 240px
-
-                +sp-view
-                +text-title(32px)
 
                 >.list-link-text
+                  +text-title(32px)
                   display: inline-block
-                  padding-right: 23px
+                  // padding-right: 24px
                   white-space: nowrap
 
-                &::after
-                  content: 'More Interview'
-                  display: inline-block
-                  padding-right: 23px
-                  white-space: nowrap
-
-                &:hover
-                  > .list-link-text, &::after
-                    animation: text-roll-animation 1.6s infinite linear
+                  +sp-view
+                    +text-title(24px)
 
               > .right-arrow
                 height: 11px

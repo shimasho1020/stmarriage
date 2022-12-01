@@ -216,7 +216,7 @@ components: {
 const { app, store } = useContext()
 
 let isDisplay = computed(() => {
-  return store.getters['pageWidth'] >= 750
+  return store.getters['pageWidth'] ? store.getters['pageWidth'] >= 750 : true
 })
 
 const trigger = [

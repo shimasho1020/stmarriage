@@ -37,11 +37,11 @@
     </div>
     <div class="sp-menu" ref="sideMenu">
       <div class="sp-menu-wrap">
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/">ホーム</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/price">コース案内</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/flow">入会から結婚まで</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/interview">ご成婚事例</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/contact">相談フォーム</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/">ホーム</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/price">コース案内</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/flow">入会から結婚まで</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/interview">ご成婚事例</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/contact">相談フォーム</nuxt-link>
       </div>
     </div>  
     <div class="flow_block" v-if="$route.name !== 'contact'" :class="{'top-page': $route.name === 'index'}">
@@ -113,6 +113,13 @@ const toggleMenu = () => {
       store.commit('changeHeaderToTrans')
     }
     sideActive.value = false
+    gsap.to('.menu--link.sp', {
+      opacity: 0,
+      transform: 'translateY(40px)',
+      stagger: {
+        each: .1,
+      }
+    })
     gsap.to('.sp-menu-wrap', {
       duration: .7,
       autoAlpha: 0,
@@ -131,6 +138,13 @@ const toggleMenu = () => {
     gsap.to('.sp-menu-wrap', {
       duration: .7,
       autoAlpha: 1,
+    })
+    gsap.to('.menu--link.sp', {
+      opacity: 1,
+      transform: 'translateY(0)',
+      stagger: {
+        each: .1,
+      }
     })
   }
 }
@@ -399,16 +413,20 @@ onUnmounted(() => {
       height: 100%
       width: 100%
       padding: 0 20px
-      +text-title(40px)
+      +text-title(24px)
       line-height: 1.5
       color: var(--white-1)
       background-color: var(--main)
       display: flex
       flex-direction: column
       justify-content: center
+      gap: 40px
+      text-align: center
 
       > .menu--link
         color: currentColor
+        opacity: 0,
+        transform: translateY(40px)
 
 .flow_block
   display: flex
@@ -423,26 +441,26 @@ onUnmounted(() => {
     opacity: 0
 
   > .circle_form
-    height: 120px
-    width: 120px
+    height: 140px
+    width: 140px
     margin-left: 10px
     box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%)
-    border-radius: 60px
+    border-radius: 80px
     display: flex
     align-items: center
     justify-content: center
     text-align: center
     flex-direction: column
-    +text-title(18px)
+    +text-title(21px)
     color: var(--white-1)
     padding: 10px 0 0
     // background: linear-gradient(to bottom, #e051bc, rgb(195, 242, 248))
     background: linear-gradient(to bottom, #5f51e0, rgb(195, 242, 248))
 
     +sp-view
-      height: 100px
-      width: 100px
-      +text-title(16px)
+      height: 120px
+      width: 120px
+      +text-title(18px)
       color: var(--white-1)
 
     > .mail_icon_wrap
