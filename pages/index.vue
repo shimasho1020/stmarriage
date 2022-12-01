@@ -23,15 +23,15 @@
         </div>
       </h1>
       <div class="img_block" >
-        <img class="hero_img" src="~/assets/images/jewelry_hero.jpg" alt="メイン写真">
+        <img class="hero_img" src="~/assets/images/jewelry_hero.webp" alt="メイン写真">
       </div>
       <div class="intro">
         <div class="intro-card">
           <h1 class="intro-title">セントマリアージュ青山について</h1>
           <div class="intro-cont">
-            <div class="img_block left"><img class="img" src="/images/marriage-gate.webp"></div>
+            <div class="img_block left"><img class="img" src="/images/marriage-gate.webp" alt="ダイヤモンドファミリークラブ"></div>
             <div class="text">東京青山の結婚相談所エクセレンス青山の婚活は、ご成婚第一主義。一人ひとりにあったお相手探しで、お客様の個性にあわせたオンリーワンの婚活をご提案いたします。当社が掲げる「オンリーワンのご成婚」は、お客様一人ひとりの個性にあわせて最適なパートナーをご紹介いたします。</div>
-            <div class="img_block right"><img class="img" src="/images/marriage-bouquet.jpeg"></div>
+            <div class="img_block right"><img class="img" src="/images/marriage-bouquet.jpeg" alt="ダイヤモンドファミリークラブ"></div>
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@
             >
               <div class="case-card">
                 <div class="case-item__image_block">
-                  <img class="case-item__image" :src="item.url" alt="case-image">
+                  <img class="case-item__image" :src="item.url" alt="インタビュー">
                 </div>
                 <div class="card">
                   <div class="__link">
@@ -92,7 +92,7 @@
             <div class="self-cont">
               <div class="self-pic">
                 <div class="img_block">
-                  <img src="~/assets/images/ShimadaTomoko.jpg" class="img" alt="カウンセラーの写真">
+                  <img src="~/assets/images/ShimadaTomoko.webp" class="img" alt="カウンセラーの写真">
                 </div>	
               </div>
               <div class="self-p">
@@ -148,13 +148,13 @@
                     <div class="top-service__img">
                       <div class="c-img">
                         <!-- <div class="c-img__border"></div> -->
-                        <img src="~/assets/images/IBJ-award.png" class="c-img__img" alt="ibjアワード">
+                        <img src="~/assets/images/IBJ-award.webp" class="c-img__img" alt="ibjアワード">
                       </div>	
                     </div> 
                     <div class="top-service__img">
                       <div class="c-img">
                         <!-- <div class="c-img__border"></div> -->
-                        <img src="~/assets/images/IBJ-award.png" class="c-img__img" alt="ibjアワード">
+                        <img src="~/assets/images/IBJ-award.webp" class="c-img__img" alt="ibjアワード">
                       </div>	
                     </div> 
                   </div>
@@ -189,7 +189,7 @@
               </div>
               <div class="top-our_strengths__container--img">
                 <div class="img_block">
-                  <img src="/images/marriage-gate.webp" class="img" alt="プロジェクター">
+                  <img src="/images/marriage-gate.webp" class="img" alt="丁寧なサポート">
                 </div>	
               </div> 
             </li>
@@ -203,7 +203,7 @@
               </div>
               <div class="top-our_strengths__container--img">
                 <div class="img_block">
-                  <img src="/images/marriage-gate.webp" class="img" alt="安定したコンテンツ配信技術">
+                  <img src="/images/marriage-gate.webp" class="img" alt="満足度">
                 </div>	
               </div> 
             </li>

@@ -13,7 +13,7 @@
           <a class="cards_wrap" v-bind:href="value.href">
             <h2 class="cards_title">{{value.name}}</h2>
             <div class="cards_pic">
-              <img class="img" :src="value.img">
+              <img class="img" :src="value.img" alt="コース案内">
             </div>
             <div class="cards_note">
               {{value.note}}
@@ -30,7 +30,7 @@
           <div class="subtitle">当社のほとんど会員様が、こちらのコースで活動されています。</div>
           <div class="content">
             <div class="content_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="/images/marriage-gate.webp" alt="フルサポートコース">
             </div>
             <table class="table">
               <tr v-for="(value, index) in fullTables" v-bind:key="index">
@@ -65,7 +65,7 @@
           <div class="subtitle">活動に迷いがある方、とりあえずお試ししたい方におすすめのコースです。</div>
           <div class="content">
             <div class="content_img">
-              <img src="/images/marriage-gate.webp">
+              <img src="/images/marriage-gate.webp" alt="カジュアルコース">
             </div>
             <table class="table">
               <tr v-for="(value, index) in casualTables" v-bind:key="index">
@@ -99,7 +99,7 @@
           <div class="subtitle">活動に迷いがある方、とりあえずお試ししたい方におすすめのコースです。</div>
           <div class="content">
             <div class="content_img">
-              <img src="/images/marriage-gate.webp">
+              <img src="/images/marriage-gate.webp" alt="カウンセリングコース">
             </div>
             <table class="table">
               <div><span>電話でのご相談</span></div>

@@ -14,7 +14,7 @@
             :key="index"
           >
             <div class="img_wrap">
-              <img class="img" :src="item.url">
+              <img class="img" :src="item.url" alt="本人写真">
             </div>
             <div class="case_block">
               <h1 class="case_title"><span class="inline-block">{{item.age}}歳の{{item.sex}}会員様が</span><span class="inline-block">ご成婚されました！</span></h1>

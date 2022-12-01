@@ -32,7 +32,7 @@
           <h2 class="section_title" data-number="01">無料カウンセリング</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="/images/marriage-gate.webp" alt="ステップ1">
             </div>
             <div class="body_block">
               <div class="text">
@@ -62,7 +62,7 @@
           <h2 class="section_title" data-number="02">ご入会手続き</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="/images/marriage-gate.webp" alt="ステップ2">
             </div>
             <div class="body_block">
               <div class="text">
@@ -91,7 +91,7 @@
           <h2 class="section_title" data-number="03">プロフィール作成、写真撮影</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="/images/marriage-gate.webp" alt="ステップ3">
             </div>
             <div class="body_block">
               <div class="text">
@@ -107,7 +107,7 @@
           <h2 class="section_title" data-number="01">お相手探し</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="/images/marriage-gate.webp" alt="ステップ4">
             </div>
             <div class="body_block">
               <div class="text">
@@ -124,7 +124,7 @@
           <h2 class="section_title" data-number="02">お見合い</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="/images/marriage-gate.webp" alt="ステップ5">
             </div>
             <div class="body_block">
               <div class="text">
@@ -140,7 +140,7 @@
           <h2 class="section_title" data-number="03">プレ交際（～交際2か月頃まで）</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="/images/marriage-gate.webp" alt="ステップ6">
             </div>
             <div class="body_block">
               <div class="text">
@@ -156,7 +156,7 @@
           <h2 class="section_title" data-number="04">真剣交際（交際２カ月頃～）</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="/images/marriage-gate.webp" alt="ステップ7">
             </div>
             <div class="body_block">
               <div class="text">
@@ -172,7 +172,7 @@
           <h2 class="section_title" data-number="05">プロポーズ</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="/images/marriage-gate.webp" alt="ステップ8">
             </div>
             <div class="body_block">
               <div class="text">
@@ -188,7 +188,7 @@
           <h2 class="section_title" data-number="06">ご成婚</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="/images/marriage-gate.webp" alt="ステップ9">
             </div>
             <div class="body_block">
               <div class="text">

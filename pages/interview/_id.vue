@@ -7,7 +7,7 @@
           <h1 class="section_title"><span class="inline-block">{{displayCaseList.age}}歳の{{displayCaseList.sex}}会員様が</span><span class="inline-block">ご成婚されました！</span></h1>
         </div>
         <div class="section_img">
-          <img class="img" :src="imageURL">
+          <img class="img" :src="imageURL" alt="本人写真">
         </div>
         <div class="section_block">
           <div class="text">
