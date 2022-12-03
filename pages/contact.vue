@@ -46,7 +46,7 @@
       </div>
       <div class="p-contact__item">
         <label for="date">面談希望日付<span class="necessary">(必須)</span></label><br>
-        <date-picker class="date_input" id="date" name="date" v-model="date" format='yyyy-MM-dd' placeholder="日付を選択してください"></date-picker>
+        <date-picker class="date_input" id="date" name="date" v-model="date" :value="date" format='yyyy-MM-dd' placeholder="日付を選択してください"></date-picker>
       </div>
       <div class="p-contact__item">
         <label for="message">質問・その他</label><br>
@@ -80,7 +80,7 @@ let salary = ref('')
 let number = ref('')
 let useremail = ref('')
 let method = ref('')
-let date = ref('')
+let date = ref()
 let message = ref('')
 let botField = ref('')
 let isSubmit = ref(false)
@@ -88,7 +88,7 @@ let isSending = ref(false)
 let isError = ref(false)
 let completeMessage = ref('')
 
-const  getStringFromDate = (date: Date) => {
+const  getStringFromDate = (date: any) => {
   let year_str = date.getFullYear().toString()
   //月だけ+1すること
   let month_str = (1 + date.getMonth()).toString()
@@ -98,14 +98,15 @@ const  getStringFromDate = (date: Date) => {
   format_str = format_str.replace(/MM/g, month_str);
   format_str = format_str.replace(/DD/g, day_str);
   return format_str;
- };
-// const formatDate = computed(() => {
-//   if(!date.value) return ''
-//   return getStringFromDate(date.value)
-// })
-// watch(formatDate,(val) => {
-//   console.log(val)
-// })
+};
+const formatDate = computed(() => {
+  if(!date.value) return ''
+  return getStringFromDate(date.value)
+})
+watch(formatDate,(val) => {
+  console.log(val)
+  console.log(typeof val)
+})
 
 
 let activeButton = computed(() => {
@@ -148,7 +149,7 @@ const onSubmit = () => {
   params.append('number', number.value);
   params.append('useremail', useremail.value);
   params.append('method', method.value);
-  params.append('date', date.value);
+  params.append('date', formatDate.value);
   params.append('message', message.value);
   if(botField.value){
     params.append('bot-field', botField.value);
