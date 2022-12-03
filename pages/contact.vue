@@ -46,7 +46,8 @@
       </div>
       <div class="p-contact__item">
         <label for="date">面談希望日付<span class="necessary">(必須)</span></label><br>
-        <date-picker class="date_input" id="date" name="date" v-model="date" :value="date" format='yyyy-MM-dd' placeholder="日付を選択してください"></date-picker>
+        <date-picker class="date_input" id="date" name="date" v-model="date" format='yyyy-MM-dd' placeholder="日付を選択してください"></date-picker>
+        <input type="hidden" name="formatDate" v-model="formatDate">
       </div>
       <div class="p-contact__item">
         <label for="message">質問・その他</label><br>
@@ -89,6 +90,7 @@ let isError = ref(false)
 let completeMessage = ref('')
 
 const  getStringFromDate = (date: any) => {
+  if(!date) return ''
   let year_str = date.getFullYear().toString()
   //月だけ+1すること
   let month_str = (1 + date.getMonth()).toString()
@@ -100,7 +102,6 @@ const  getStringFromDate = (date: any) => {
   return format_str;
 };
 const formatDate = computed(() => {
-  if(!date.value) return ''
   return getStringFromDate(date.value)
 })
 watch(formatDate,(val) => {
@@ -149,7 +150,7 @@ const onSubmit = () => {
   params.append('number', number.value);
   params.append('useremail', useremail.value);
   params.append('method', method.value);
-  params.append('date', formatDate.value);
+  params.append('formatDate', formatDate.value);
   params.append('message', message.value);
   if(botField.value){
     params.append('bot-field', botField.value);
