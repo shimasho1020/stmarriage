@@ -29,9 +29,9 @@
         <div class="intro-card">
           <h1 class="intro-title">セントマリアージュ青山について</h1>
           <div class="intro-cont">
-            <div class="img_block left"><img class="img" src="/images/marriage-gate.webp" alt="ダイヤモンドファミリークラブ"></div>
+            <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="ダイヤモンドファミリークラブ"></div>
             <div class="text">東京青山の結婚相談所エクセレンス青山の婚活は、ご成婚第一主義。一人ひとりにあったお相手探しで、お客様の個性にあわせたオンリーワンの婚活をご提案いたします。当社が掲げる「オンリーワンのご成婚」は、お客様一人ひとりの個性にあわせて最適なパートナーをご紹介いたします。</div>
-            <div class="img_block right"><img class="img" src="/images/marriage-bouquet.jpeg" alt="ダイヤモンドファミリークラブ"></div>
+            <div class="img_block right"><img class="img" src="~/assets/images/clean_bouquet.webp" alt="ダイヤモンドファミリークラブ"></div>
           </div>
         </div>
       </div>
@@ -105,18 +105,18 @@
                 <div class="self-comment 2">入会1カ月以内の交際成立率93%</div>
                 <div class="self-table">
                   <div class="text">※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
-                  <div class="table">
+                  <div class="table --1">
                     <h4 class="table_title">職業一覧</h4>
                     <ul class="table_list">
-                      <li class="list_item">弁護士</li>
-                      <li class="list_item">サラリーマン</li>
-                      <li class="list_item">医師</li>
-                      <li class="list_item">公認会計士</li>
-                      <li class="list_item">金融</li>
-                      <li class="list_item">商社</li>
+                      <li class="list_item th">会員数</li>
+                      <li class="list_item">80852名</li>
+                      <li class="list_item th">最も多い会員層</li>
+                      <li class="list_item">35才～39才</li>
+                      <li class="list_item th">男性平均年収</li>
+                      <li class="list_item">500～699万</li>
                     </ul>
                   </div>
-                  <div class="table">
+                  <div class="table --2">
                     <h4 class="table_title">職業一覧</h4>
                     <ul class="table_list">
                       <li class="list_item">弁護士</li>
@@ -181,7 +181,7 @@
               </div>
               <div class="top-our_strengths__container--img">
                 <div class="img_block">
-                  <img src="/images/marriage-gate.webp" class="img" alt="丁寧なサポート">
+                  <img src="~/assets/images/black_wedding.webp" class="img" alt="丁寧なサポート">
                 </div>	
               </div> 
             </li>
@@ -195,7 +195,7 @@
               </div>
               <div class="top-our_strengths__container--img">
                 <div class="img_block">
-                  <img src="/images/marriage-gate.webp" class="img" alt="満足度">
+                  <img src="~/assets/images/wedding_hall.webp" class="img" alt="満足度">
                 </div>	
               </div> 
             </li>
@@ -268,9 +268,9 @@ const displayCaseList = computed(() => {
     })
 })
 const selectImg = (index: number):string => {
-  if(index == 0) {return '/images/marriage-gate.webp'}
-  else if(index == 1) {return '/images/marriage-gate.webp'}
-  else {return '/images/marriage-gate.webp'}
+  if(index == 0) {return '/_nuxt/assets/images/sample_couple_1.webp'}
+  else if(index == 1) {return '/_nuxt/assets/images/sample_couple_2.webp'}
+  else {return '/_nuxt/assets/images/sample_couple_3.webp'}
 }
 
 useAsync(async () => {
@@ -405,6 +405,9 @@ onBeforeUnmount(() => {
       width: 100%
       height: 100%
       object-fit: cover
+
+      +sp-view
+        object-position: 80% center
 
   > .intro
     padding: 240px 0 160px
@@ -857,6 +860,14 @@ onBeforeUnmount(() => {
                       border-radius: 5px
                       background: #efecdd
                       margin-bottom: 5px
+                  
+                  &.--1
+                    > .table_list
+                      > .list_item
+                        background: var(--skyBlue)
+                        &.th
+                          background: var(--main)
+                          color: var(--white-1)
 
             > .award_wrap
               > .award-title

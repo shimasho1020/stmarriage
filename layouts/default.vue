@@ -13,7 +13,7 @@
           <div class="link-wrap"><span class="link-text">ホーム</span></div>
         </nuxt-link>
         <nuxt-link class="menu--link" to="/price" :class="{'highlight': $route.name === 'price'}">
-          <div class="link-wrap"><span class="link-text">コース案内</span></div>
+          <div class="link-wrap"><span class="link-text">コース案内・料金</span></div>
         </nuxt-link>
         <nuxt-link class="menu--link" to="/flow" :class="{'highlight': $route.name === 'flow'}">
           <div class="link-wrap"><span class="link-text">入会から結婚まで</span></div>
@@ -38,7 +38,7 @@
     <div class="sp-menu" ref="sideMenu">
       <div class="sp-menu-wrap">
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/">ホーム</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/price">コース案内</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/price">コース案内・料金</nuxt-link>
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/flow">入会から結婚まで</nuxt-link>
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/interview">ご成婚事例</nuxt-link>
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/contact">相談フォーム</nuxt-link>

@@ -30,7 +30,7 @@
           <div class="subtitle">当社のほとんど会員様が、こちらのコースで活動されています。</div>
           <div class="content">
             <div class="content_img">
-              <img class="img" src="/images/marriage-gate.webp" alt="フルサポートコース">
+              <img class="img" src="~/assets/images/black_wedding.webp" alt="フルサポートコース">
             </div>
             <table class="table">
               <tr v-for="(value, index) in fullTables" v-bind:key="index">
@@ -65,7 +65,7 @@
           <div class="subtitle">活動に迷いがある方、とりあえずお試ししたい方におすすめのコースです。</div>
           <div class="content">
             <div class="content_img">
-              <img src="/images/marriage-gate.webp" alt="カジュアルコース">
+              <img src="~/assets/images/wedding-table-desserts.webp" alt="カジュアルコース">
             </div>
             <table class="table">
               <tr v-for="(value, index) in casualTables" v-bind:key="index">
@@ -99,7 +99,7 @@
           <div class="subtitle">活動に迷いがある方、とりあえずお試ししたい方におすすめのコースです。</div>
           <div class="content">
             <div class="content_img">
-              <img src="/images/marriage-gate.webp" alt="カウンセリングコース">
+              <img src="~assets/images/counseling.webp" alt="カウンセリングコース">
             </div>
             <table class="table">
               <div><span>電話でのご相談</span></div>
@@ -129,19 +129,20 @@ let isDisplay = computed(() => {
 const courses = [
   {
     name:'フルサポートコース',
-    img:'/images/marriage-gate.webp',
+    img:'/_nuxt/assets/images/black_wedding.webp',
     note:'充実したサポート内容のおススメコースです。当社の多くの会員様がこちらのコースで活動されています。',
     href:'#full',
   },
   {
     name:'カジュアルコース',
-    img:'/images/marriage-gate.webp',
+    img:'/_nuxt/assets/images/wedding-table-desserts.webp',
+    // img:'/images/marriage-gate.webp',
     note:'婚活にまだ迷いのある方、とりあえずお試しした方におすすめのコースです。追加料金でフルサポートコースに変更可能です。',
     href:'#casual',
   },
   {
     name:'カウンセリングコース',
-    img:'/images/marriage-gate.webp',
+    img: "/_nuxt/assets/images/counseling.webp",
     note:'他社で婚活中の方、プライベートな恋愛でお悩みの方が気軽に電話で相談できるコースです。一人で悩んでいないでご相談ください。',
     href:'#counseling',
   },
@@ -210,7 +211,7 @@ const counselingTables = [
             +text-subtitle(24px)
 
           > .cards_pic
-            height: 10vw
+            height: 180px
             position: relative
 
             &::after
@@ -226,6 +227,7 @@ const counselingTables = [
               width: 100%
               height: 100%
               object-fit: cover
+              object-position: 50% 10%
                 
           > .cards_note
             +text-body(16px)
