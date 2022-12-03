@@ -188,7 +188,7 @@
           <h2 class="section_title" data-number="06">ご成婚</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="~/assets/images/marriage-gate.webp" alt="ステップ9">
+              <img class="img" src="~/assets/images/happy_wedding.webp" alt="ステップ9">
             </div>
             <div class="body_block">
               <div class="text">

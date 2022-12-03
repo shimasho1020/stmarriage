@@ -176,6 +176,7 @@ const counselingTables = [
   // background-color: var(--main)
   font-size: 20px
   color: yellow
+  color: orange
 
 .body
   > .menu
