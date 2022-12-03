@@ -46,7 +46,7 @@
       </div>
       <div class="p-contact__item">
         <label for="date">面談希望日付<span class="necessary">(必須)</span></label><br>
-        <date-picker class="date_input" id="date" name="formatDate" v-model="date" format='yyyy-MM-dd' placeholder="日付を選択してください"></date-picker>
+        <date-picker class="date_input" id="date" name="date" v-model="date" format='yyyy-MM-dd' placeholder="日付を選択してください"></date-picker>
       </div>
       <div class="p-contact__item">
         <label for="message">質問・その他</label><br>
@@ -80,7 +80,7 @@ let salary = ref('')
 let number = ref('')
 let useremail = ref('')
 let method = ref('')
-let date = ref<Date>()
+let date = ref('')
 let message = ref('')
 let botField = ref('')
 let isSubmit = ref(false)
@@ -99,13 +99,13 @@ const  getStringFromDate = (date: Date) => {
   format_str = format_str.replace(/DD/g, day_str);
   return format_str;
  };
-const formatDate = computed(() => {
-  if(!date.value) return ''
-  return getStringFromDate(date.value)
-})
-watch(formatDate,(val) => {
-  console.log(val)
-})
+// const formatDate = computed(() => {
+//   if(!date.value) return ''
+//   return getStringFromDate(date.value)
+// })
+// watch(formatDate,(val) => {
+//   console.log(val)
+// })
 
 
 let activeButton = computed(() => {
@@ -114,7 +114,7 @@ let activeButton = computed(() => {
   && katakana.value.length > 0 &&  katakana.value.length < 30
   && age.value.length > 0 &&  age.value.length < 30
   && method.value.length > 0
-  && formatDate.value.length > 0
+  && !!date.value
   && message.value.length < 500
   && checkEmailString(useremail.value)
 })
@@ -148,7 +148,7 @@ const onSubmit = () => {
   params.append('number', number.value);
   params.append('useremail', useremail.value);
   params.append('method', method.value);
-  params.append('formatDate', formatDate.value);
+  params.append('date', date.value);
   params.append('message', message.value);
   if(botField.value){
     params.append('bot-field', botField.value);
@@ -181,7 +181,7 @@ const resetForm = () => {
   number.value        = '';
   useremail.value       = '';
   method.value       = '';
-  date.value         = undefined;
+  date.value         = '';
   message.value         = '';
   isError.value         = false;
 }
