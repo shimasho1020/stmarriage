@@ -13,6 +13,7 @@ export const state = () => ({
   headerScrollTrigger: false,
   formDisplay:false,
   isScrollActive: true,
+  imagePosition: 0,
 })
 
 export const actions = {
@@ -86,6 +87,18 @@ export const mutations = {
   scrollActiveOff(state){
     state.isScrollActive = false
   },
+  add (state) {
+    state.imagePosition += 5
+  },
+  subtract (state) {
+    state.imagePosition -= 5
+  },
+  clear (state) {
+    state.imagePosition = 0
+  },
+  insertCount(state, count) {
+    state.imagePosition = count
+  },
 };
 
 export const getters = {
@@ -109,5 +122,8 @@ export const getters = {
   },
   isScrollActive(state) {
     return state.isScrollActive
-  }
+  },
+  imagePosition(state) {
+    return state.imagePosition
+  },
 };

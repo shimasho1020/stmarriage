@@ -7,7 +7,7 @@
           <h1 class="section_title"><span class="inline-block">{{displayCaseList.age}}歳の{{displayCaseList.sex}}会員様が</span><span class="inline-block">ご成婚されました！</span></h1>
         </div>
         <div class="section_img">
-          <img class="img" :src="imageURL" alt="本人写真">
+          <img class="img" :src="imageURL" alt="本人写真" :style="{objectPosition: `center calc(50% - ${imagePosition}px)`}">
         </div>
         <div class="section_block">
           <div class="text">
@@ -46,12 +46,16 @@ import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayR
 import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 
+const { app, store } = useContext()
 
 const router = useRouter()
 const route = useRoute()
 const displayInterview = ref({} as Interview)
 const displayCaseList = ref({} as CaseList)
 const imageURL = ref()
+const imagePosition = computed(() => {
+  return store.getters['imagePosition'] ?? 0
+})
 
 useAsync(async () => {
   const thisPageId = route.value.params.id
@@ -62,6 +66,7 @@ useAsync(async () => {
     const result = docSnap.data() as Interviewer
     displayInterview.value = result.interview
     displayCaseList.value = result.caseList
+    store.commit('insertCount', result.imagePosition ?? 0)
   } else {
     // doc.data() will be undefined in this case
     console.log("No such document!");

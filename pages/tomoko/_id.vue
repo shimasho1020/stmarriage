@@ -112,7 +112,13 @@
               <h1 class="section_title">{{caseList.age}}歳の{{caseList.sex}}会員様がご成婚されました！</h1>
             </div>
             <div class="section_img">
-              <img class="img" :src="imageURL">
+              <img class="img profImg" :src="imageURL">
+            </div>
+            {{imagePosition}}
+            <div class="d-flex flex-column" style="gap:10px;">
+              <v-btn @click="addCount">アップ</v-btn>
+              <v-btn @click="subtractCount">ダウン</v-btn>
+              <v-btn @click="clearCount">クリア</v-btn>
             </div>
             <div class="section_block">
               <div class="text">
@@ -179,7 +185,7 @@ import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 
 
-const { app, store, $config } = useContext()
+const { app, store } = useContext()
 const router = useRouter()
 const route = useRoute()
 
@@ -224,6 +230,7 @@ useAsync(async () => {
     isPublic.value = result.isPublic
     caseList.value = result.caseList
     aboutText.value = result.interview.aboutText
+    store.commit('insertCount', result.imagePosition ?? 0)
     result.interview.interviewContents.forEach((val) => {
       questionTitle.value.push(val.title)
       questionText.value.push(val.text)
@@ -256,6 +263,29 @@ const changeSex = (sex: '' | '男性' | '女性') => {
   return sex === '男性' ? '女性' : '男性'
 }
 
+const imagePosition = computed(() => {
+  return store.getters['imagePosition'] ?? 0
+})
+watch(imagePosition,(val) => {
+  moveImg(val)
+})
+const moveImg = (count:number) => {
+  document.querySelectorAll('.profImg').forEach((element:any) => {
+    // console.log(element.style)
+    element.style.objectPosition = `center calc(50% - ${count}px)`;
+  })
+}
+
+const addCount = () => {
+  store.commit('add')
+}
+const subtractCount = () => {
+  store.commit('subtract')
+}
+const clearCount = () => {
+  store.commit('clear')
+}
+
 const activeButton = computed(() => {
   return !!caseList.value.name && 
           !!caseList.value.age && 
@@ -275,6 +305,7 @@ const onSubmit = async() => {
     isPublic: isPublic.value,
     caseList: caseList.value,
     interview: interview.value,
+    imagePosition: imagePosition.value,
   }
   const exampleRef = isNew.value ?
   doc(collection(firestore, "interviewer")) : doc(firestore, "interviewer", thisPageId.value)
@@ -367,6 +398,10 @@ const uploadImageFile = async(file: FileList, id: string) => {
     });
   })
 }
+
+onMounted(() => {
+  moveImg(imagePosition.value)
+})
 
 </script>
 

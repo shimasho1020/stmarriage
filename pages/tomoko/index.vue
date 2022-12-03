@@ -37,7 +37,7 @@
             </div>
             <div class="case_img">
               <div class="img_wrap">
-                <img class="img" :src="item.url">
+                <img class="img" :src="item.url" :style="{objectPosition: `center calc(50% - ${item.imagePosition}px)`}">
               </div>
             </div>
           </nuxt-link>
@@ -70,6 +70,7 @@ const displayCaseList = computed(() => {
       id: val.id,
       isPublic: val.isPublic,
       url: val.url,
+      imagePosition: val.imagePosition,
       ...val.caseList
     }
   })
