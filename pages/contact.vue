@@ -88,13 +88,33 @@ let isSending = ref(false)
 let isError = ref(false)
 let completeMessage = ref('')
 
+const  getStringFromDate = (date: Date) => {
+  let year_str = date.getFullYear().toString()
+  //月だけ+1すること
+  let month_str = (1 + date.getMonth()).toString()
+  let day_str = date.getDate().toString()
+  let format_str = 'YYYY-MM-DD';
+  format_str = format_str.replace(/YYYY/g, year_str);
+  format_str = format_str.replace(/MM/g, month_str);
+  format_str = format_str.replace(/DD/g, day_str);
+  return format_str;
+ };
+const formatDate = computed(() => {
+  if(!date.value) return ''
+  return getStringFromDate(date.value)
+})
+watch(formatDate,(val) => {
+  console.log(val)
+})
+
+
 let activeButton = computed(() => {
   return sex.value.length > 0
   && username.value.length > 0 &&  username.value.length < 30
   && katakana.value.length > 0 &&  katakana.value.length < 30
   && age.value.length > 0 &&  age.value.length < 30
   && method.value.length > 0
-  && !!date.value
+  && formatDate.value.length > 0
   && message.value.length < 500
   && checkEmailString(useremail.value)
 })
@@ -128,7 +148,7 @@ const onSubmit = () => {
   params.append('number', number.value);
   params.append('useremail', useremail.value);
   params.append('method', method.value);
-  params.append('date', getStringFromDate(date.value as Date));
+  params.append('date', formatDate.value);
   params.append('message', message.value);
   if(botField.value){
     params.append('bot-field', botField.value);
@@ -165,18 +185,6 @@ const resetForm = () => {
   message.value         = '';
   isError.value         = false;
 }
-
-const  getStringFromDate = (date: Date) => {
-  let year_str = date.getFullYear().toString()
-  //月だけ+1すること
-  let month_str = (1 + date.getMonth()).toString()
-  let day_str = date.getDate().toString()
-  let format_str = 'YYYY-MM-DD';
-  format_str = format_str.replace(/YYYY/g, year_str);
-  format_str = format_str.replace(/MM/g, month_str);
-  format_str = format_str.replace(/DD/g, day_str);
-  return format_str;
- };
 
 </script>
 
