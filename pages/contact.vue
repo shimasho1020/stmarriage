@@ -46,7 +46,7 @@
       </div>
       <div class="p-contact__item">
         <label for="date">面談希望日付<span class="necessary">(必須)</span></label><br>
-        <date-picker class="date_input" id="date" input-class="date_input" v-model="date" format='yyyy-MM-dd' placeholder="日付を選択してください"></date-picker>
+        <date-picker class="date_input" id="date" name="date" input-class="date_input" v-model="date" format='yyyy-MM-dd' placeholder="日付を選択してください"></date-picker>
       </div>
       <div class="p-contact__item">
         <label for="message">質問・その他</label><br>
@@ -148,7 +148,7 @@ const onSubmit = () => {
   params.append('number', number.value);
   params.append('useremail', useremail.value);
   params.append('method', method.value);
-  params.append('formatDate', formatDate.value);
+  params.append('date', formatDate.value);
   params.append('message', message.value);
   if(botField.value){
     params.append('bot-field', botField.value);
