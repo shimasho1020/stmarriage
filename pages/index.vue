@@ -268,9 +268,9 @@ const displayCaseList = computed(() => {
     })
 })
 const selectImg = (index: number):string => {
-  if(index == 0) {return '/_nuxt/assets/images/sample_couple_1.webp'}
-  else if(index == 1) {return '/_nuxt/assets/images/sample_couple_2.webp'}
-  else {return '/_nuxt/assets/images/sample_couple_3.webp'}
+  if(index == 0) {return '~/assets/images/sample_couple_1.webp'}
+  else if(index == 1) {return '~/assets/images/sample_couple_2.webp'}
+  else {return '~/assets/images/sample_couple_3.webp'}
 }
 
 useAsync(async () => {

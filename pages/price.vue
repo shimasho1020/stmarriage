@@ -129,20 +129,20 @@ let isDisplay = computed(() => {
 const courses = [
   {
     name:'フルサポートコース',
-    img:'/_nuxt/assets/images/black_wedding.webp',
+    img:'~/assets/images/black_wedding.webp',
     note:'充実したサポート内容のおススメコースです。当社の多くの会員様がこちらのコースで活動されています。',
     href:'#full',
   },
   {
     name:'カジュアルコース',
-    img:'/_nuxt/assets/images/wedding-table-desserts.webp',
+    img:'~/assets/images/wedding-table-desserts.webp',
     // img:'/images/marriage-gate.webp',
     note:'婚活にまだ迷いのある方、とりあえずお試しした方におすすめのコースです。追加料金でフルサポートコースに変更可能です。',
     href:'#casual',
   },
   {
     name:'カウンセリングコース',
-    img: "/_nuxt/assets/images/counseling.webp",
+    img: "~/assets/images/counseling.webp",
     note:'他社で婚活中の方、プライベートな恋愛でお悩みの方が気軽に電話で相談できるコースです。一人で悩んでいないでご相談ください。',
     href:'#counseling',
   },
