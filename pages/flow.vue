@@ -205,7 +205,7 @@
 
 <script setup lang="ts">
 import gsap from "gsap"
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
+import { computed,  onMounted, onBeforeUnmount, useContext } from '@nuxtjs/composition-api'
 import Arrow from '~/assets/images/arrow.svg'
 import nextArrow from '~/assets/images/next-arrow.svg'
 components: {
@@ -315,8 +315,8 @@ onBeforeUnmount(() => {
         align-items: center
         justify-content: center
         border-radius: 20px
-        // background-color: var(--sub)
-        background-image: linear-gradient(135deg, #000875 0%, #000875 100%, )
+        background-color: #000875
+        // background-image: linear-gradient(135deg, #000875 0%, #000875 100%, )
 
       > .nextArrow_wrap
         text-align: center
