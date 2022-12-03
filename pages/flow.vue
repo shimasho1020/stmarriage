@@ -3,26 +3,26 @@
   <div class="title_block" style="text-align:center">
     <h1 class="title">ご入会からご結婚まで</h1>
   </div>
-  <div class="body">
+  <div class="body" id="href_1">
     <div class="menu anim" v-if="isDisplay">
       <div class="flow">
-        <div class="text --1">無料相談</div>
+        <a href="#href_1" class="text --1">無料相談</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text --2">ご入会手続き</div>
+        <a href="#href_2" class="text --2">ご入会手続き</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text --3">プロフィール作成</div>
+        <a href="#href_3" class="text --3">プロフィール作成</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text --4">お相手探し</div>
+        <a href="#href_4" class="text --4">お相手探し</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text --5">お見合い</div>
+        <a href="#href_5" class="text --5">お見合い</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text --6">プレ交際</div>
+        <a href="#href_6" class="text --6">プレ交際</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text --7">真剣交際</div>
+        <a href="#href_7" class="text --7">真剣交際</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text --8">プロポーズ</div>
+        <a href="#href_8" class="text --8">プロポーズ</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text --9">成婚</div>
+        <a href="#href_9" class="text --9">成婚</a>
       </div>
     </div>
     <div class="body_wrap">
@@ -54,7 +54,7 @@
               </div>
             </div>
           </div>
-          <div class="nextArrow_wrap">
+          <div class="nextArrow_wrap" id="href_2">
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
@@ -83,7 +83,7 @@
               </div>
             </div>
           </div>
-          <div class="nextArrow_wrap">
+          <div class="nextArrow_wrap" id="href_3">
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
@@ -101,7 +101,7 @@
           </div>
         </div>
       </div>
-      <div class="section --1">
+      <div class="section --1" id="href_4">
         <h1 class="title">お相手探しから成婚まで</h1>
         <div class="section_content --4">
           <h2 class="section_title" data-number="01">お相手探し</h2>
@@ -116,7 +116,7 @@
               </div>
             </div>
           </div>
-          <div class="nextArrow_wrap">
+          <div class="nextArrow_wrap" id="href_5">
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
@@ -132,7 +132,7 @@
               </div>
             </div>
           </div>
-          <div class="nextArrow_wrap">
+          <div class="nextArrow_wrap" id="href_6">
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
@@ -148,7 +148,7 @@
               </div>
             </div>
           </div>
-          <div class="nextArrow_wrap">
+          <div class="nextArrow_wrap" id="href_7">
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
@@ -164,7 +164,7 @@
               </div>
             </div>
           </div>
-          <div class="nextArrow_wrap">
+          <div class="nextArrow_wrap" id="href_8">
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
@@ -180,7 +180,7 @@
               </div>
             </div>
           </div>
-          <div class="nextArrow_wrap">
+          <div class="nextArrow_wrap" id="href_9">
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
@@ -293,7 +293,7 @@ onBeforeUnmount(() => {
     margin: auto
     padding: 20px
     border-radius: 20px
-    background-color: #ffffffdd
+    background-color: #ffffff88
     background-image: url("/images/frame-topleft.svg"), url("/images/frame-topright.svg"), url("/images/frame-bottomleft.svg"), url("/images/frame-bottomright.svg")
     background-position:  left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
     background-size: 50px 50px
@@ -359,7 +359,7 @@ onBeforeUnmount(() => {
           background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
         
       > .section_content
-        padding: 32px
+        padding: 50px 32px
 
         +sp-view
           padding: 20px
@@ -441,7 +441,10 @@ onBeforeUnmount(() => {
 
         > .nextArrow_wrap
           text-align: center
-          padding: 60px 0 0
+          padding: 90px 0 0
+
+          +sp-view
+            padding: 40px 0 0
           > .nextArrow
             display: inline-block
             text-align: center
