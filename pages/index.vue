@@ -174,7 +174,7 @@
             <li class="content_body ---1 top-our_strengths__container">
               <div class="top-our_strengths__container--body">
                 <h2 class="top-our_strengths__container--point">1</h2>
-                <p class="top-our_strengths__container--heading">お一人お一人の<br>お気持ちに寄り添った<br>丁寧なサポート</p>
+                <p class="top-our_strengths__container--heading">カウンセラー経験豊富、<br>成婚実績多数<br><br></p>
                 <p class="top-our_strengths__container--about">
                   通信状況が悪い環境でも安定してコンテンツを 配信する技術で、安心してコンテンツを配信、視聴可能です。（特許出願済み）
                 </p>
@@ -1010,7 +1010,7 @@ onBeforeUnmount(() => {
                     margin: 0% 0 8%
 
               > .top-our_strengths__container--heading
-                +text-title(40px)
+                +text-title(36px)
                 line-height: 1.4em
                 background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
                 background-clip: text

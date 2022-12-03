@@ -148,7 +148,7 @@ const onSubmit = () => {
   params.append('number', number.value);
   params.append('useremail', useremail.value);
   params.append('method', method.value);
-  params.append('date', formatDate.value);
+  params.append('formatDate', formatDate.value);
   params.append('message', message.value);
   if(botField.value){
     params.append('bot-field', botField.value);
