@@ -59,7 +59,7 @@
       <div class="footer-wrap">
         <get-in-touch v-if="$route.name !== 'contact'" class="get-in-touch"></get-in-touch>
         <div class="bottom">
-          <div class="bottom-block">Copyright ©️ 2020 St. Marriage Aotama</div>
+          <div class="bottom-block">Copyright ©️ 2022 St. Mariage Aotama</div>
         </div>
       </div>
     </footer>
@@ -97,9 +97,9 @@ const toggleMenu = () => {
   const classList = sideMenu.value.classList
   const headerClassList = pageHeader.value.classList
   if (sideActive.value) {
-    if(route.value.name == 'index') {
-      store.commit('changeHeaderToTrans')
-    }
+    // if(route.value.name == 'index') {
+    //   store.commit('changeHeaderToTrans')
+    // }
     sideActive.value = false
     gsap.to('.menu--link.sp', {
       opacity: 0,
@@ -117,9 +117,9 @@ const toggleMenu = () => {
     })
     headerClassList.remove('side-active')
   } else {
-    if(headerColor){
-      store.commit('changeHeaderToBlue')
-    }
+    // if(!headerColor.value){
+    //   store.commit('changeHeaderToBlue')
+    // }
     sideActive.value = true
     headerClassList.add('side-active')
     classList.add('active')
@@ -371,7 +371,7 @@ onUnmounted(() => {
         background: rgba(255, 255, 255, 0)
 
       > span:before, span:after
-        background: var(--white-1)
+        // background: var(--white-1)
         transform-origin: center center
 
       > span:before
@@ -403,8 +403,11 @@ onUnmounted(() => {
       padding: 0 20px
       +text-title(24px)
       line-height: 1.5
-      color: var(--white-1)
-      background-color: var(--main)
+      color: var(--main)
+      // background-color: var(--main)
+      background-image: url("/images/luxury-2.jpg")
+      background-size: 25%
+      background-repeat: repeat
       display: flex
       flex-direction: column
       justify-content: center

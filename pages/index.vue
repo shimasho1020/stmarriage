@@ -228,8 +228,7 @@
 
 <script setup lang="ts">
 import gsap from "gsap"
-// import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
+import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
 import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where, limit } from "firebase/firestore"
 import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList,Interview, Interviewer, DisplayInterviewer } from '~/types/index'
@@ -286,7 +285,7 @@ useAsync(async () => {
 })
 
 let circleAnim: gsap.core.Tween 
-let headerAnim: gsap.core.Tween
+let headerAnim = ref<gsap.core.Tween>({} as gsap.core.Tween)
 let fuwaAnim = ref<gsap.core.Tween[]>([])
 
 let isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled'])
@@ -300,6 +299,7 @@ onMounted(() => {
       fuwaAnim.value.forEach((val) => {
         val.scrollTrigger?.refresh()
       })
+      headerAnim.value.scrollTrigger?.refresh()
     }
   })
   myObserver.value = resizeObserver
@@ -321,7 +321,7 @@ onMounted(() => {
     duration: .3, 
   })
   
-  headerAnim = gsap.to(".header_wrap",{
+  headerAnim.value = gsap.to(".header_wrap",{
     scrollTrigger: {
       trigger: '.intro',
       start: 'top 40%',
@@ -351,7 +351,7 @@ onBeforeUnmount(() => {
   myObserver.value.unobserve(pageObserver.value)
 
   circleAnim.scrollTrigger?.disable()
-  headerAnim.scrollTrigger?.disable()
+  headerAnim.value.scrollTrigger?.disable()
   fuwaAnim.value.forEach(value => {
     value.scrollTrigger?.disable()
   })

@@ -248,9 +248,6 @@ const counselingTables = [
         border-radius: 30px
         padding: 40px 20px
         background-color: var(--white-1)
-        // background-image: url("/images/frame-topleft.svg"), url("/images/frame-topright.svg"), url("/images/frame-bottomleft.svg"), url("/images/frame-bottomright.svg")
-        // background-position: left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
-        // background-size: 50px 50px
         margin: 20px 0
 
         > .title
