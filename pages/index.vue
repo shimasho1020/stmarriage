@@ -137,6 +137,7 @@
                 <div class="award-title">
                   <span class="inline-block">セントマリアージュ青山が</span>
                   <span class="inline-block">IBJ AWARD 2021年下期</span>
+                  <span class="inline-block">IBJ AWARD 2022年上期</span>
                   <span class="inline-block">を受賞しました！</span>
                 </div>
                 <div class="content_wrap --2">
@@ -144,13 +145,13 @@
                     <div class="top-service__img">
                       <div class="c-img">
                         <!-- <div class="c-img__border"></div> -->
-                        <img src="~/assets/images/IBJ-award.webp" class="c-img__img" alt="ibjアワード">
+                        <img src="~/assets/images/IBJ_award_2021.webp" class="c-img__img" alt="ibjアワード">
                       </div>	
                     </div> 
                     <div class="top-service__img">
                       <div class="c-img">
                         <!-- <div class="c-img__border"></div> -->
-                        <img src="~/assets/images/IBJ-award.webp" class="c-img__img" alt="ibjアワード">
+                        <img src="~/assets/images/IBJ_award_2022_back.webp" class="c-img__img" alt="ibjアワード">
                       </div>	
                     </div> 
                   </div>
