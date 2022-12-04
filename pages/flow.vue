@@ -1,5 +1,5 @@
 <template>
-<div class="">
+<div class="" ref="pageObserver">
   <div class="title_block" style="text-align:center">
     <h1 class="title">ご入会からご結婚まで</h1>
   </div>
@@ -205,7 +205,7 @@
 
 <script setup lang="ts">
 import gsap from "gsap"
-import { computed,  onMounted, onBeforeUnmount, useContext } from '@nuxtjs/composition-api'
+import { ref, computed,  onMounted, onBeforeUnmount, useContext } from '@nuxtjs/composition-api'
 import Arrow from '~/assets/images/arrow.svg'
 import nextArrow from '~/assets/images/next-arrow.svg'
 components: {
@@ -231,11 +231,25 @@ const trigger = [
   {trigger: '.section_content.--9', action: '.text.--9'},
 ]
 
-let flowBarAnim: gsap.core.Tween
-let barAnim: gsap.core.Tween[] = []
+let flowBarAnim = ref<gsap.core.Tween>({} as gsap.core.Tween)
+let barAnim = ref<gsap.core.Tween[]>([])
+
+const myObserver = ref<ResizeObserver>({} as ResizeObserver)
+const pageObserver = ref()
 
 onMounted(() => {
-  flowBarAnim = gsap.to(".menu.anim",{
+  const resizeObserver = new ResizeObserver(entries => {
+    for (const entry of entries) {
+      barAnim.value.forEach((val) => {
+        val.scrollTrigger?.refresh()
+      })
+      flowBarAnim.value.scrollTrigger?.refresh()
+    }
+  })
+  myObserver.value = resizeObserver
+  myObserver.value.observe(pageObserver.value)
+  
+  flowBarAnim.value = gsap.to(".menu.anim",{
     scrollTrigger: {
       trigger: '.flow',
       start: 'top 90px',
@@ -259,13 +273,15 @@ onMounted(() => {
       'background-image': 'linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%)',
       color: '#eff4f4',
     })
-    barAnim.push(array)
+    barAnim.value.push(array)
   })
 })
 
 onBeforeUnmount(() => {
-  flowBarAnim.scrollTrigger?.disable()
-  barAnim.forEach(value => {
+  myObserver.value.unobserve(pageObserver.value)
+  
+  flowBarAnim.value.scrollTrigger?.disable()
+  barAnim.value.forEach(value => {
     value.scrollTrigger?.disable()
   })
 })

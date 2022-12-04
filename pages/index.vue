@@ -299,8 +299,8 @@ let fuwaAnim = ref<gsap.core.Tween[]>([])
 
 let isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled'])
 
-  const myObserver = ref<ResizeObserver>({} as ResizeObserver)
-  const pageObserver = ref()
+const myObserver = ref<ResizeObserver>({} as ResizeObserver)
+const pageObserver = ref()
 
 onMounted(() => {
   const resizeObserver = new ResizeObserver(entries => {
