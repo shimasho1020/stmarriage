@@ -1,7 +1,16 @@
 <template>
-<div>
+<div v-if="user.login">
   <div style="position:relative;">
+    <div class="button_wrap">
+      <v-btn
+        width="100"
+        @click="logout"
+        class="button"
+        >ログアウト</v-btn
+      >
+    </div>
     <div class="body">
+      <h1 class="text-center pa-5">ご成婚事例編集ページ</h1>
       <div class="body_wrap pb-10">
         <div class="pa-5" style="text-align: center;">
           <nuxt-link to="/tomoko/0" style="display: inline-block;">
@@ -51,7 +60,7 @@
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api'
 export default defineComponent({
- layout: "sub"
+ layout: "signin"
 });
 </script>
 
@@ -62,6 +71,12 @@ import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayR
 import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 
+const { app, store } = useContext()
+
+let user = computed(() => store.getters['user'])
+const logout = () => {
+  store.dispatch('logout')
+}
 
 const interviewer = ref([] as DisplayInterviewer[])
 const displayCaseList = computed(() => {
@@ -108,6 +123,10 @@ const changeSex = (sex: '' | '男性' | '女性') => {
 </script>
 
 <style lang="sass" scoped>
+.button_wrap
+  position: fixed
+  top: 50px
+  left: 100px
 .moya
   opacity: 0.3
 .body

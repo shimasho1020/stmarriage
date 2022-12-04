@@ -68,7 +68,7 @@
 
 
 <script setup lang="ts">
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
+import { computed, ref,  useContext} from '@nuxtjs/composition-api'
 import axios from 'axios'
 
 
@@ -104,11 +104,6 @@ const  getStringFromDate = (date: any) => {
 const formatDate = computed(() => {
   return getStringFromDate(date.value)
 })
-watch(formatDate,(val) => {
-  console.log(val)
-  console.log(typeof val)
-})
-
 
 let activeButton = computed(() => {
   return sex.value.length > 0

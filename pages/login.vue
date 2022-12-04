@@ -9,7 +9,7 @@
       width="100"
       @click="logout"
       class="button"
-      >戻る</v-btn
+      >ログアウト</v-btn
     >
   </div>
 </div>

@@ -2,50 +2,25 @@
 <div class="body login" v-if="!(user.login)">
   <div class="wrap">
     <h3 class="title">Log In</h3>
-    <v-form>
-      <v-text-field
-        v-model="text"
-        placeholder="名"
-      ></v-text-field>
-    </v-form>
+    <v-text-field
+      v-model="email"
+      placeholder="email"
+    ></v-text-field>
+    <v-text-field
+      type="password"
+      v-model="password"
+      placeholder="password"
+    ></v-text-field>
   </div>
   <div class="button_block">
     <div class="button_wrap">
       <v-btn
         width="100"
-        @click="submit"
+        @click="login"
         class="button"
-        >登録</v-btn
+        >ログイン</v-btn
       >
     </div>
-  </div>
-  <div>
-    <label class="label">
-      <span class="label">
-        email
-      </span>
-      <input
-        class="input"
-        type="text"
-        v-model="email"
-      />
-    </label>
-    <label class="label">
-      <span class="label">
-        password
-      </span>
-      <input
-        class="input"
-        type="password"
-        v-model="password"
-      />
-    </label>
-    <v-btn
-      width="100"
-      @click="login"
-      class="button"
-      >login</v-btn
-    >
   </div>
 </div>
 </template>

@@ -1,12 +1,13 @@
 <template>
-<div>
+<div v-if="user.login">
+  <h1 class="text-center pa-5">ご成婚事例編集ページ</h1>
   <div style="position:relative;" class="py-10">
     <div v-if="completeMessage" class="message">{{completeMessage}}</div>
     <div class="backButoon">
       <v-btn 
         class="white--text indigo darken-4" 
         x-large
-        @click="router.go(-1)"
+        @click="router.push({path: '/tomoko'})"
       >戻る</v-btn>
     </div>
     <div class="saveButoon">
@@ -172,7 +173,7 @@
 import { defineComponent } from '@nuxtjs/composition-api'
 import { resolve } from 'path';
 export default defineComponent({
- layout: "sub",
+ layout: "signin",
  name: "editInterview",
 });
 </script>
@@ -188,6 +189,8 @@ import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/in
 const { app, store } = useContext()
 const router = useRouter()
 const route = useRoute()
+
+let user = computed(() => store.getters['user'])
 
 const isPublic = ref(false)
 const caseList = ref({isInterview: false} as CaseList)
