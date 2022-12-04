@@ -30,7 +30,11 @@
           <h1 class="intro-title">セントマリアージュ青山について</h1>
           <div class="intro-cont">
             <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="ダイヤモンドファミリークラブ"></div>
-            <div class="text">東京青山の結婚相談所エクセレンス青山の婚活は、ご成婚第一主義。一人ひとりにあったお相手探しで、お客様の個性にあわせたオンリーワンの婚活をご提案いたします。当社が掲げる「オンリーワンのご成婚」は、お客様一人ひとりの個性にあわせて最適なパートナーをご紹介いたします。</div>
+            <div class="text">
+              <span v-if="isDisplay">大手結婚相談所にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。
+              20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。</span>
+              「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？少しだけ勇気を出して始めてみたら、あなたの未来が変わります！オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。
+            </div>
             <div class="img_block right"><img class="img" src="~/assets/images/clean_bouquet.webp" alt="ダイヤモンドファミリークラブ"></div>
           </div>
         </div>
@@ -106,7 +110,7 @@
                 <div class="self-table">
                   <div class="text">※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
                   <div class="table --1">
-                    <h4 class="table_title">職業一覧</h4>
+                    <h4 class="table_title">データ</h4>
                     <ul class="table_list">
                       <li class="list_item th">会員数</li>
                       <li class="list_item">80852名</li>
@@ -176,7 +180,7 @@
                 <h2 class="top-our_strengths__container--point">1</h2>
                 <p class="top-our_strengths__container--heading">カウンセラー経験豊富、<br>成婚実績多数<br><br></p>
                 <p class="top-our_strengths__container--about">
-                  通信状況が悪い環境でも安定してコンテンツを 配信する技術で、安心してコンテンツを配信、視聴可能です。（特許出願済み）
+                  大手結婚相談所で約10年間勤務し、1000人以上の会員様の担当カウンセラーとして婚活サポートを行ってきました。20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。豊富な経験に基づく的確なアドバイスをさせていただき、ご成婚までしっかりサポートいたします。
                 </p>
               </div>
               <div class="top-our_strengths__container--img">
@@ -190,7 +194,7 @@
                 <h2 class="top-our_strengths__container--point">2</h2>
                 <p class="top-our_strengths__container--heading">お一人お一人の<br>お気持ちに寄り添った<br>丁寧なサポート</p>
                 <p class="top-our_strengths__container--about">
-                  通信状況が悪い環境でも安定してコンテンツを 配信する技術で、安心してコンテンツを配信、視聴可能です。（特許出願済み）
+                  お見合い後の振り返りや、交際中のデートの状況などを確認しながら、活動状況に応じてアドバイスをさせていただきます。婚活中は誰にも相談できず孤独に陥りがちですが、メール、Line、電話等で、いつでもご相談いただける体制を整えております。<br><br>
                 </p>
               </div>
               <div class="top-our_strengths__container--img">
@@ -255,6 +259,10 @@ const trigger: string[] = [
 ]
 
 const { app, store } = useContext()
+
+let isDisplay = computed(() => {
+  return store.getters['pageWidth'] ? store.getters['pageWidth'] >= 750 : true
+})
 
 const interviewer = ref([] as DisplayInterviewer[])
 const displayCaseList = computed(() => {

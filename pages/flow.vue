@@ -298,7 +298,7 @@ onBeforeUnmount(() => {
     background-position:  left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
     background-size: 50px 50px
     position: sticky
-    top: 90px
+    top: 75px
     z-index: 5
 
     > .flow
