@@ -49,20 +49,25 @@ const submit = async() => {
 let email = ref('')
 let password = ref('')
 
-const createAccount = async() => {
-  try {
-    await app.$fire.auth
-      .createUserWithEmailAndPassword( email.value, password.value)
-      .then(() => {
-        console.log('done!')
-      })
-  } catch (e) {
-    console.log(e)
-  }
-}
+// const createAccount = async() => {
+//   try {
+//     await app.$fire.auth
+//       .createUserWithEmailAndPassword( email.value, password.value)
+//       .then(() => {
+//         console.log('done!')
+//       })
+//   } catch (e) {
+//     console.log(e)
+//   }
+// }
 
-const login = () => {
-  store.dispatch('login', {email: 'shimasho1020@gmail.com', password: 'Damashi991020'})
+const login = async() => {
+  await store.dispatch('login', {email: email.value, password: password.value})
+  reset()
+}
+const reset = () => {
+  email.value = ''
+  password.value = ''
 }
 
 </script>

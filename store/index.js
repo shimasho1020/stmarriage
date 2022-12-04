@@ -21,11 +21,11 @@ export const actions = {
     signInWithEmailAndPassword(auth, payload.email, payload.password)
       .then(userCredential => {
         console.log(userCredential.user)
-          console.log('ログインしました')
-          dispatch('checkLogin')
-        }).catch((error) => {
-          alert(error)
-        })
+        console.log('ログインしました')
+        dispatch('checkLogin')
+      }).catch((error) => {
+        alert('メールアドレスかパスワードが間違っています')
+      })
   },
   checkLogin ({ commit }) {
     onAuthStateChanged(auth, (user) => {
