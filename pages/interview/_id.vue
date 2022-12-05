@@ -13,7 +13,7 @@
           <div class="text">
             <div style="white-space: pre-wrap;">当社の{{displayCaseList.age}}歳{{displayCaseList.sex}}会員様がご成婚されました。お相手は{{displayCaseList.partnerAge}}歳の{{changeSex(displayCaseList.sex)}}会員様です。<br>{{displayInterview.aboutText}}</div>
           </div>
-          <div class="about">
+          <div class="about" v-if="isDisply">
             <h1 class="title">ご成婚者様の声</h1>
             <div class="list">
               <div class="list_item" v-for="(item, index) in displayInterview.interviewContents" :key="index">
@@ -85,6 +85,12 @@ useAsync(async () => {
 const changeSex = (sex: '' | '男性' | '女性') => {
   return sex === '男性' ? '女性' : '男性'
 }
+
+const isDisply = computed(() => {
+  return Array.isArray(displayInterview.value.interviewContents) ?
+        displayInterview.value.interviewContents.length > 0 :
+        false
+})
 
 </script>
 
