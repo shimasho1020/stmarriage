@@ -1,7 +1,16 @@
 <template>
-<div>
+<div v-if="user.login">
   <div style="position:relative;">
+    <div class="button_wrap">
+      <v-btn
+        width="100"
+        @click="logout"
+        class="button"
+        >ログアウト</v-btn
+      >
+    </div>
     <div class="body">
+      <h1 class="text-center pa-5">ご成婚事例編集ページ</h1>
       <div class="body_wrap pb-10">
         <div class="pa-5" style="text-align: center;">
           <nuxt-link to="/tomoko/0" style="display: inline-block;">
@@ -37,7 +46,7 @@
             </div>
             <div class="case_img">
               <div class="img_wrap">
-                <img class="img" :src="item.url">
+                <img class="img" :src="item.url" :style="{objectPosition: `center calc(50% - ${item.imagePosition}px)`}">
               </div>
             </div>
           </nuxt-link>
@@ -51,7 +60,7 @@
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api'
 export default defineComponent({
- layout: "sub"
+ layout: "signin"
 });
 </script>
 
@@ -62,6 +71,12 @@ import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayR
 import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 
+const { app, store } = useContext()
+
+let user = computed(() => store.getters['user'])
+const logout = () => {
+  store.dispatch('logout')
+}
 
 const interviewer = ref([] as DisplayInterviewer[])
 const displayCaseList = computed(() => {
@@ -70,6 +85,7 @@ const displayCaseList = computed(() => {
       id: val.id,
       isPublic: val.isPublic,
       url: val.url,
+      imagePosition: val.imagePosition,
       ...val.caseList
     }
   })
@@ -107,6 +123,10 @@ const changeSex = (sex: '' | '男性' | '女性') => {
 </script>
 
 <style lang="sass" scoped>
+.button_wrap
+  position: fixed
+  top: 50px
+  left: 100px
 .moya
   opacity: 0.3
 .body

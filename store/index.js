@@ -12,6 +12,8 @@ export const state = () => ({
   pageWidth: 0,
   headerScrollTrigger: false,
   formDisplay:false,
+  isScrollActive: true,
+  imagePosition: 0,
 })
 
 export const actions = {
@@ -19,11 +21,11 @@ export const actions = {
     signInWithEmailAndPassword(auth, payload.email, payload.password)
       .then(userCredential => {
         console.log(userCredential.user)
-          console.log('ログインしました')
-          dispatch('checkLogin')
-        }).catch((error) => {
-          alert(error)
-        })
+        console.log('ログインしました')
+        dispatch('checkLogin')
+      }).catch((error) => {
+        alert('メールアドレスかパスワードが間違っています')
+      })
   },
   checkLogin ({ commit }) {
     onAuthStateChanged(auth, (user) => {
@@ -79,6 +81,24 @@ export const mutations = {
   changeFormToNone(state){
     state.formDisplay = false
   },
+  scrollActiveOn(state){
+    state.isScrollActive = true
+  },
+  scrollActiveOff(state){
+    state.isScrollActive = false
+  },
+  add (state) {
+    state.imagePosition += 5
+  },
+  subtract (state) {
+    state.imagePosition -= 5
+  },
+  clear (state) {
+    state.imagePosition = 0
+  },
+  insertCount(state, count) {
+    state.imagePosition = count
+  },
 };
 
 export const getters = {
@@ -99,5 +119,11 @@ export const getters = {
   },
   formDisplayActive(state){
     return state.formDisplay
-  }
+  },
+  isScrollActive(state) {
+    return state.isScrollActive
+  },
+  imagePosition(state) {
+    return state.imagePosition
+  },
 };

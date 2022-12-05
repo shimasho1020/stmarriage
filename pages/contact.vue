@@ -39,6 +39,16 @@
         <p class="necessary" v-if="salary.length >= 30">※30文字以下で書いてください</p>
         <input type="text" id="salary" name="salary" v-model="salary" placeholder="400万円">
       </div>
+      <div class="p-contact__item radio">
+        <label for="method">面談方法<span class="necessary">(必須)</span></label><br>
+        <input type="radio" id="method" name="method" value="対面" v-model="method"> 対面
+        <input type="radio" id="method" name="method" value="オンライン" v-model="method"> オンライン
+      </div>
+      <div class="p-contact__item">
+        <label for="date">面談希望日付<span class="necessary">(必須)</span></label><br>
+        <date-picker class="date_input" id="date" v-model="date" format='yyyy-MM-dd' placeholder="日付を選択してください"></date-picker>
+        <input type="hidden" name="date" v-model="formatDate">
+      </div>
       <div class="p-contact__item">
         <label for="message">質問・その他</label><br>
         <p class="necessary" v-if="message.length >= 500">※500文字以下で書いてください</p>
@@ -58,11 +68,11 @@
 
 
 <script setup lang="ts">
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
-// import { userApi } from '@/api/user'
+import { computed, ref,  useContext} from '@nuxtjs/composition-api'
 import axios from 'axios'
 
-const { app, store, $config } = useContext()
+
+const { app, store } = useContext()
 let sex = ref('')
 let username = ref('')
 let katakana = ref('')
@@ -70,6 +80,8 @@ let age = ref('')
 let salary = ref('')
 let number = ref('')
 let useremail = ref('')
+let method = ref('')
+let date = ref()
 let message = ref('')
 let botField = ref('')
 let isSubmit = ref(false)
@@ -77,11 +89,29 @@ let isSending = ref(false)
 let isError = ref(false)
 let completeMessage = ref('')
 
+const  getStringFromDate = (date: any) => {
+  if(!date) return ''
+  let year_str = date.getFullYear().toString()
+  //月だけ+1すること
+  let month_str = (1 + date.getMonth()).toString()
+  let day_str = date.getDate().toString()
+  let format_str = 'YYYY-MM-DD';
+  format_str = format_str.replace(/YYYY/g, year_str);
+  format_str = format_str.replace(/MM/g, month_str);
+  format_str = format_str.replace(/DD/g, day_str);
+  return format_str;
+};
+const formatDate = computed(() => {
+  return getStringFromDate(date.value)
+})
+
 let activeButton = computed(() => {
   return sex.value.length > 0
   && username.value.length > 0 &&  username.value.length < 30
   && katakana.value.length > 0 &&  katakana.value.length < 30
   && age.value.length > 0 &&  age.value.length < 30
+  && method.value.length > 0
+  && !!date.value
   && message.value.length < 500
   && checkEmailString(useremail.value)
 })
@@ -114,6 +144,8 @@ const onSubmit = () => {
   params.append('salary', salary.value);
   params.append('number', number.value);
   params.append('useremail', useremail.value);
+  params.append('method', method.value);
+  params.append('date', formatDate.value);
   params.append('message', message.value);
   if(botField.value){
     params.append('bot-field', botField.value);
@@ -145,6 +177,8 @@ const resetForm = () => {
   salary.value        = '';
   number.value        = '';
   useremail.value       = '';
+  method.value       = '';
+  date.value         = '';
   message.value         = '';
   isError.value         = false;
 }
@@ -152,6 +186,12 @@ const resetForm = () => {
 </script>
 
 <style lang="sass" scoped>
+.date_input
+  background-color: white !important
+  border: 1px solid var(--sub)
+  border-radius: 5px
+  width: 180px
+
 .necessary
   color: #ff0000a0
 .p-contact
@@ -193,6 +233,9 @@ const resetForm = () => {
         outline: none
         &::placeholder
           color: #aaa
+
+        +sp-view
+          width: 100%
 
       > textarea
         border: 1px solid var(--sub)

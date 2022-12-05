@@ -2,50 +2,25 @@
 <div class="body login" v-if="!(user.login)">
   <div class="wrap">
     <h3 class="title">Log In</h3>
-    <v-form>
-      <v-text-field
-        v-model="text"
-        placeholder="名"
-      ></v-text-field>
-    </v-form>
+    <v-text-field
+      v-model="email"
+      placeholder="email"
+    ></v-text-field>
+    <v-text-field
+      type="password"
+      v-model="password"
+      placeholder="password"
+    ></v-text-field>
   </div>
   <div class="button_block">
     <div class="button_wrap">
       <v-btn
         width="100"
-        @click="submit"
+        @click="login"
         class="button"
-        >登録</v-btn
+        >ログイン</v-btn
       >
     </div>
-  </div>
-  <div>
-    <label class="label">
-      <span class="label">
-        email
-      </span>
-      <input
-        class="input"
-        type="text"
-        v-model="email"
-      />
-    </label>
-    <label class="label">
-      <span class="label">
-        password
-      </span>
-      <input
-        class="input"
-        type="password"
-        v-model="password"
-      />
-    </label>
-    <v-btn
-      width="100"
-      @click="login"
-      class="button"
-      >login</v-btn
-    >
   </div>
 </div>
 </template>
@@ -74,20 +49,25 @@ const submit = async() => {
 let email = ref('')
 let password = ref('')
 
-const createAccount = async() => {
-  try {
-    await app.$fire.auth
-      .createUserWithEmailAndPassword( email.value, password.value)
-      .then(() => {
-        console.log('done!')
-      })
-  } catch (e) {
-    console.log(e)
-  }
-}
+// const createAccount = async() => {
+//   try {
+//     await app.$fire.auth
+//       .createUserWithEmailAndPassword( email.value, password.value)
+//       .then(() => {
+//         console.log('done!')
+//       })
+//   } catch (e) {
+//     console.log(e)
+//   }
+// }
 
-const login = () => {
-  store.dispatch('login', {email: 'shimasho1020@gmail.com', password: 'Damashi991020'})
+const login = async() => {
+  await store.dispatch('login', {email: email.value, password: password.value})
+  reset()
+}
+const reset = () => {
+  email.value = ''
+  password.value = ''
 }
 
 </script>

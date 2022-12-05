@@ -1,28 +1,28 @@
 <template>
-<div class="">
+<div class="" ref="pageObserver">
   <div class="title_block" style="text-align:center">
     <h1 class="title">ご入会からご結婚まで</h1>
   </div>
-  <div class="body">
-    <div class="menu">
+  <div class="body" id="href_1">
+    <div class="menu anim" v-if="isDisplay">
       <div class="flow">
-        <div class="text">無料相談</div>
+        <a href="#href_1" class="text --1">無料相談</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">ご入会手続き</div>
+        <a href="#href_2" class="text --2">ご入会手続き</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">プロフィール作成</div>
+        <a href="#href_3" class="text --3">プロフィール作成</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">お相手探し</div>
+        <a href="#href_4" class="text --4">お相手探し</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">お見合い</div>
+        <a href="#href_5" class="text --5">お見合い</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">プレ交際</div>
+        <a href="#href_6" class="text --6">プレ交際</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">真剣交際</div>
+        <a href="#href_7" class="text --7">真剣交際</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">プロポーズ</div>
+        <a href="#href_8" class="text --8">プロポーズ</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
-        <div class="text">成婚</div>
+        <a href="#href_9" class="text --9">成婚</a>
       </div>
     </div>
     <div class="body_wrap">
@@ -32,7 +32,7 @@
           <h2 class="section_title" data-number="01">無料カウンセリング</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="~/assets/images/counseling.webp" alt="ステップ1">
             </div>
             <div class="body_block">
               <div class="text">
@@ -54,7 +54,7 @@
               </div>
             </div>
           </div>
-          <div class="nextArrow_wrap">
+          <div class="nextArrow_wrap" id="href_2">
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
@@ -62,7 +62,7 @@
           <h2 class="section_title" data-number="02">ご入会手続き</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="~/assets/images/marriage-gate.webp" alt="ステップ2">
             </div>
             <div class="body_block">
               <div class="text">
@@ -83,7 +83,7 @@
               </div>
             </div>
           </div>
-          <div class="nextArrow_wrap">
+          <div class="nextArrow_wrap" id="href_3">
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
@@ -91,7 +91,7 @@
           <h2 class="section_title" data-number="03">プロフィール作成、写真撮影</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="~/assets/images/flow_phone.webp" alt="ステップ3">
             </div>
             <div class="body_block">
               <div class="text">
@@ -101,13 +101,13 @@
           </div>
         </div>
       </div>
-      <div class="section --1">
+      <div class="section --1" id="href_4">
         <h1 class="title">お相手探しから成婚まで</h1>
-        <div class="section_content --1">
+        <div class="section_content --4">
           <h2 class="section_title" data-number="01">お相手探し</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="~/assets/images/flow_desktop.webp" alt="ステップ4">
             </div>
             <div class="body_block">
               <div class="text">
@@ -116,15 +116,15 @@
               </div>
             </div>
           </div>
-          <div class="nextArrow_wrap">
+          <div class="nextArrow_wrap" id="href_5">
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
-        <div class="section_content --2">
+        <div class="section_content --5">
           <h2 class="section_title" data-number="02">お見合い</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="~/assets/images/flow_matching.webp" alt="ステップ5">
             </div>
             <div class="body_block">
               <div class="text">
@@ -132,15 +132,15 @@
               </div>
             </div>
           </div>
-          <div class="nextArrow_wrap">
+          <div class="nextArrow_wrap" id="href_6">
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
-        <div class="section_content --3">
+        <div class="section_content --6">
           <h2 class="section_title" data-number="03">プレ交際（～交際2か月頃まで）</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="~/assets/images/flow_pre.webp" alt="ステップ6">
             </div>
             <div class="body_block">
               <div class="text">
@@ -148,15 +148,15 @@
               </div>
             </div>
           </div>
-          <div class="nextArrow_wrap">
+          <div class="nextArrow_wrap" id="href_7">
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
-        <div class="section_content --4">
+        <div class="section_content --7">
           <h2 class="section_title" data-number="04">真剣交際（交際２カ月頃～）</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="~/assets/images/flow_dating.webp" alt="ステップ7">
             </div>
             <div class="body_block">
               <div class="text">
@@ -164,15 +164,15 @@
               </div>
             </div>
           </div>
-          <div class="nextArrow_wrap">
+          <div class="nextArrow_wrap" id="href_8">
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
-        <div class="section_content --5">
+        <div class="section_content --8">
           <h2 class="section_title" data-number="05">プロポーズ</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="~/assets/images/propose.webp" alt="ステップ8">
             </div>
             <div class="body_block">
               <div class="text">
@@ -180,15 +180,15 @@
               </div>
             </div>
           </div>
-          <div class="nextArrow_wrap">
+          <div class="nextArrow_wrap" id="href_9">
             <nextArrow class="nextArrow"></nextArrow>
           </div>
         </div>
-        <div class="section_content --6">
+        <div class="section_content --9">
           <h2 class="section_title" data-number="06">ご成婚</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="/images/marriage-gate.webp">
+              <img class="img" src="~/assets/images/happy_wedding.webp" alt="ステップ9">
             </div>
             <div class="body_block">
               <div class="text">
@@ -204,12 +204,87 @@
 </template>
 
 <script setup lang="ts">
+import gsap from "gsap"
+import { ref, computed,  onMounted, onBeforeUnmount, useContext } from '@nuxtjs/composition-api'
 import Arrow from '~/assets/images/arrow.svg'
 import nextArrow from '~/assets/images/next-arrow.svg'
 components: {
   Arrow
   nextArrow
 }
+
+const { app, store } = useContext()
+
+let isDisplay = computed(() => {
+  return store.getters['pageWidth'] ? store.getters['pageWidth'] >= 750 : true
+})
+
+const trigger = [
+  {trigger: '.section_content.--1', action: '.text.--1'},
+  {trigger: '.section_content.--2', action: '.text.--2'},
+  {trigger: '.section_content.--3', action: '.text.--3'},
+  {trigger: '.section_content.--4', action: '.text.--4'},
+  {trigger: '.section_content.--5', action: '.text.--5'},
+  {trigger: '.section_content.--6', action: '.text.--6'},
+  {trigger: '.section_content.--7', action: '.text.--7'},
+  {trigger: '.section_content.--8', action: '.text.--8'},
+  {trigger: '.section_content.--9', action: '.text.--9'},
+]
+
+let flowBarAnim = ref<gsap.core.Tween>({} as gsap.core.Tween)
+let barAnim = ref<gsap.core.Tween[]>([])
+
+const myObserver = ref<ResizeObserver>({} as ResizeObserver)
+const pageObserver = ref()
+
+onMounted(() => {
+  const resizeObserver = new ResizeObserver(entries => {
+    for (const entry of entries) {
+      barAnim.value.forEach((val) => {
+        val.scrollTrigger?.refresh()
+      })
+      flowBarAnim.value.scrollTrigger?.refresh()
+    }
+  })
+  myObserver.value = resizeObserver
+  myObserver.value.observe(pageObserver.value)
+  
+  flowBarAnim.value = gsap.to(".menu.anim",{
+    scrollTrigger: {
+      trigger: '.flow',
+      start: 'top 90px',
+      toggleActions: 'play none none reverse',
+    },
+    duration: .3,
+    transform: 'scale(0.8)'
+  })
+
+  trigger.forEach((value) => {
+    let array: gsap.core.Tween = gsap.to(value.action, 
+    {
+      scrollTrigger: {
+        trigger: value.trigger,
+        start: 'top 60%',
+        end: 'bottom 60%',
+        toggleActions: 'play reverse play reverse',
+      },
+      duration: .3, 
+      transform: 'scale(1.1)',
+      'background-image': 'linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%)',
+      color: '#eff4f4',
+    })
+    barAnim.value.push(array)
+  })
+})
+
+onBeforeUnmount(() => {
+  myObserver.value.unobserve(pageObserver.value)
+  
+  flowBarAnim.value.scrollTrigger?.disable()
+  barAnim.value.forEach(value => {
+    value.scrollTrigger?.disable()
+  })
+})
 </script>
 
 
@@ -234,30 +309,30 @@ components: {
     margin: auto
     padding: 20px
     border-radius: 20px
-    background-color: #ffffffdd
+    background-color: #ffffff88
     background-image: url("/images/frame-topleft.svg"), url("/images/frame-topright.svg"), url("/images/frame-bottomleft.svg"), url("/images/frame-bottomright.svg")
     background-position:  left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
     background-size: 50px 50px
     position: sticky
-    top: 90px
+    top: 75px
+    z-index: 5
 
     > .flow
       display: flex
       justify-content: space-around
-      // gap: 20px
       > .text
-        +text-subtitle(16px)
+        +text-title(18px)
         color: var(--white-1)
         flex: 0 0 40px
-        height: 150px
+        height: 160px
         writing-mode: vertical-rl
         text-align: center
         display: flex
         align-items: center
         justify-content: center
         border-radius: 20px
-        // background-color: var(--main)
-        background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
+        background-color: #000875
+        // background-image: linear-gradient(135deg, #000875 0%, #000875 100%, )
 
       > .nextArrow_wrap
         text-align: center
@@ -286,6 +361,9 @@ components: {
         text-align: center
         margin: 0 0 20px
 
+        +sp-view
+          +text-subtitle(32px)
+
         &::before 
           position: absolute
           bottom: -10px
@@ -297,16 +375,19 @@ components: {
           background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
         
       > .section_content
-        padding: 32px
+        padding: 50px 32px
+
+        +sp-view
+          padding: 20px
 
         > .section_title
           +text-title(32px)
           position: relative
-          // background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
-          // background-clip: text
-          // -webkit-text-fill-color: transparent
           margin: 0 0 20px
           display: inline-block
+
+          +sp-view
+            +text-subtitle(24px)
 
           &::before 
             content: attr(data-number)
@@ -315,47 +396,23 @@ components: {
             +text-title(44px)
             border-bottom: 1px solid var(--main)
 
+            +sp-view
+              +text-subtitle(36px)
+              margin-right: 100%
+              margin-bottom: 10px
+
           +sp-view
             &::after
               margin: 3% 0 5%
 
-          // &::before
-          //   content: "Step"
-          //   +text-subtitle(36px)
-          //   margin-right: 10px
-
-          //   +sp-view
-          //     font-size: 20px
-
-          // &::after
-          //   content: ""
-          //   width: 50px
-          //   height: 4px
-          //   position: absolute
-          //   bottom: -16px
-          //   left: 0
-          //   border-radius: 3px
-          //   background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
-
-          //   +sp-view
-          //     margin: 0% 0 8%
-
-        // > .section_title
-        //   margin: 16px 0 
-        //   display: inline-block
-        //   +text-title(36px)
-        //   line-height: 1.4em
-        //   background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
-        //   background-clip: text
-        //   -webkit-text-fill-color: transparent
-        //   // color: var(--main)
-
-        //   +sp-view
-        //     +text-title(30px)
-
         > .section_body
           display: flex
           flex-direction: row-reverse
+
+          +sp-view
+            flex-direction: column
+            gap: 20px
+
           > .body_img
             flex: 0 0 45%
             > .img
@@ -364,10 +421,16 @@ components: {
 
           > .body_block
             padding: 20px 
+
+            +sp-view
+              padding: 0
             > .text
               +text-body(18px)
               color: var(--main)
               padding: 0 0 40px
+              +sp-view
+                +text-body(16px)
+
             > .about
               > .ul
                 list-style-type: none
@@ -375,6 +438,9 @@ components: {
                   +text-subtitle(24px)
                   padding: 10px 0
                   transition-duration: .3s
+
+                  +sp-view
+                    +text-subtitle(20px)
 
                   &:hover
                     transform: scale(1.1)
@@ -391,7 +457,10 @@ components: {
 
         > .nextArrow_wrap
           text-align: center
-          padding: 60px 0 0
+          padding: 90px 0 0
+
+          +sp-view
+            padding: 40px 0 0
           > .nextArrow
             display: inline-block
             text-align: center

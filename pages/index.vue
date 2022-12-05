@@ -1,5 +1,5 @@
 <template>
-  <div class="top_page_body">
+  <div class="top_page_body" ref="pageObserver">
     <div class="hero" >
       <h1 class="page-title">
         <div class="page-title__block">
@@ -23,15 +23,19 @@
         </div>
       </h1>
       <div class="img_block" >
-        <img class="hero_img" src="~/assets/images/jewelry_hero.jpg" alt="メイン写真">
+        <img class="hero_img" src="~/assets/images/jewelry_hero.webp" alt="メイン写真">
       </div>
       <div class="intro">
         <div class="intro-card">
           <h1 class="intro-title">セントマリアージュ青山について</h1>
           <div class="intro-cont">
-            <div class="img_block left"><img class="img" src="/images/marriage-gate.webp"></div>
-            <div class="text">東京青山の結婚相談所エクセレンス青山の婚活は、ご成婚第一主義。一人ひとりにあったお相手探しで、お客様の個性にあわせたオンリーワンの婚活をご提案いたします。当社が掲げる「オンリーワンのご成婚」は、お客様一人ひとりの個性にあわせて最適なパートナーをご紹介いたします。</div>
-            <div class="img_block right"><img class="img" src="/images/marriage-bouquet.jpeg"></div>
+            <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="ダイヤモンドファミリークラブ"></div>
+            <div class="text">
+              <span v-if="isDisplay">大手結婚相談所にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。
+              20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。</span>
+              「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？少しだけ勇気を出して始めてみたら、あなたの未来が変わります！オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。
+            </div>
+            <div class="img_block right"><img class="img" src="~/assets/images/clean_bouquet.webp" alt="ダイヤモンドファミリークラブ"></div>
           </div>
         </div>
       </div>
@@ -48,22 +52,20 @@
             <nuxt-link
                 class="case-item case-wrap"
                 v-for="(item, index) of displayCaseList"
-                :to="`/interview/${item.num}`"
+                :to="`/interview/${item.id}`"
                 :key="index"
             >
-              <div 
-                class="case-card">
+              <div class="case-card">
                 <div class="case-item__image_block">
-                  <img class="case-item__image" :src="item.img" alt="case-image">
+                  <img class="case-item__image" :src="item.url" alt="インタビュー">
                 </div>
                 <div class="card">
                   <div class="__link">
-                    <p class="__title">Interview.{{ item.num }}</p>
+                    <p class="__title"><span class="inline-block">{{item.age}}歳の{{item.sex}}会員様が</span><span class="inline-block">ご成婚されました！</span></p>
                     <ArrowImage class="right-arrow" direction="right"></ArrowImage>
                   </div>
                   <p class="__title">
-                    <span class="inline-block">{{ item.name }}</span>
-                    <span class="inline-block">にインタビュー</span>
+                    <span class="inline-block">インタビュー内容はこちら</span>
                   </p>
                 </div>
               </div>
@@ -75,7 +77,7 @@
             <div class="link-wrap">
               <nuxt-link class="list-link" to="/interview">
                 <div class="list-link-wrap" ref="linkPos3">
-                  <span class="list-link-text inline-block">More Interview</span>
+                  <span class="list-link-text inline-block">インタービューを全て見る</span>
                 </div>
                 <ArrowImage class="right-arrow" direction="right"></ArrowImage>
               </nuxt-link>
@@ -83,56 +85,9 @@
           </div>
         </div>
       </div>
-      <div class="section --2">
-        <div class="section-wrap">
-          <div class="section_title_block --2">
-            <h1 class="title">Award</h1>
-            <div class="title__border"></div>
-            <p class="title__sub">獲得賞</p>
-          </div>
-          <div class="award-title">
-            <span class="inline-block">セントマリアージュ青山が</span>
-            <span class="inline-block">IBJ AWARD 2021年下期</span>
-            <span class="inline-block">を受賞しました！</span>
-          </div>
-          <div class="content_wrap --2">
-            <div class="content_body img">
-              <div class="top-service__img">
-                <div class="c-img">
-                  <!-- <div class="c-img__border"></div> -->
-                  <img src="~/assets/images/IBJ-award.png" class="c-img__img" alt="ibjアワード">
-                </div>	
-              </div> 
-              <div class="top-service__img">
-                <div class="c-img">
-                  <!-- <div class="c-img__border"></div> -->
-                  <img src="~/assets/images/IBJ-award.png" class="c-img__img" alt="ibjアワード">
-                </div>	
-              </div> 
-            </div>
-            <div class="content_body text">
-              <p>生活をしていれば誰もが必ず足を運ぶ場所、<br>
-                エレベーター。<br>
-                &nbsp;<br>
-                皆が必ず使う場所のはずなのに、<br>
-                自転車や車、飛行機と同じ「乗り物」なのに、<br>
-                そこにはどことなく静けさを感じる。<br>
-                &nbsp;<br>
-                今まで、エレベーターは安全に移動する手段として、<br>
-                私たちの生活を支えてくれた。<br>
-                &nbsp;<br>
-                そんなエレベーターを私たちは変えたい。<br>
-                &nbsp;<br>
-                「誰とも話せない」を「誰かと話せる」空間に。<br>
-                「ちょっと寂しい」を「ちょっと楽しい」空間に。<br>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="section --3">
         <div class="section-wrap">
-          <div class="section_title_block --4">
+          <div class="section_title_block --3">
             <h1 class="title">Self Introduction</h1>
             <div class="title__border"></div>
             <p class="title__sub">カウンセラーからのご挨拶</p>
@@ -141,7 +96,7 @@
             <div class="self-cont">
               <div class="self-pic">
                 <div class="img_block">
-                  <img src="~/assets/images/ShimadaTomoko.jpg" class="img" alt="カウンセラーの写真">
+                  <img src="~/assets/images/ShimadaTomoko.webp" class="img" alt="カウンセラーの写真">
                 </div>	
               </div>
               <div class="self-p">
@@ -154,26 +109,18 @@
                 <div class="self-comment 2">入会1カ月以内の交際成立率93%</div>
                 <div class="self-table">
                   <div class="text">※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
-                  <!-- <table class="table">
-                    <tbody>
-                      <tr v-for="(value, index) in tables" v-bind:key="index">
-                        <th>{{value.title}}</th>
-                        <td>{{value.cont}}</td>
-                      </tr>
-                    </tbody>
-                  </table> -->
-                  <div class="table">
-                    <h4 class="table_title">職業一覧</h4>
+                  <div class="table --1">
+                    <h4 class="table_title">データ</h4>
                     <ul class="table_list">
-                      <li class="list_item">弁護士</li>
-                      <li class="list_item">サラリーマン</li>
-                      <li class="list_item">医師</li>
-                      <li class="list_item">公認会計士</li>
-                      <li class="list_item">金融</li>
-                      <li class="list_item">商社</li>
+                      <li class="list_item th">会員数</li>
+                      <li class="list_item">80852名</li>
+                      <li class="list_item th">最も多い会員層</li>
+                      <li class="list_item">35才～39才</li>
+                      <li class="list_item th">男性平均年収</li>
+                      <li class="list_item">500～699万</li>
                     </ul>
                   </div>
-                  <div class="table">
+                  <div class="table --2">
                     <h4 class="table_title">職業一覧</h4>
                     <ul class="table_list">
                       <li class="list_item">弁護士</li>
@@ -186,13 +133,44 @@
                   </div>
                 </div>
               </div>
+              <div class="award_wrap">
+                <div class="award-title">
+                  <span class="inline-block">セントマリアージュ青山が</span>
+                  <span class="inline-block">IBJ AWARD 2021年下期</span>
+                  <span class="inline-block">IBJ AWARD 2022年上期</span>
+                  <span class="inline-block">を受賞しました！</span>
+                </div>
+                <div class="content_wrap --2">
+                  <div class="content_body img">
+                    <div class="top-service__img">
+                      <div class="c-img">
+                        <!-- <div class="c-img__border"></div> -->
+                        <img src="~/assets/images/IBJ_award_2021.webp" class="c-img__img" alt="ibjアワード">
+                      </div>	
+                    </div> 
+                    <div class="top-service__img">
+                      <div class="c-img">
+                        <!-- <div class="c-img__border"></div> -->
+                        <img src="~/assets/images/IBJ_award_2022_back.webp" class="c-img__img" alt="ibjアワード">
+                      </div>	
+                    </div> 
+                  </div>
+                  <div class="content_body text">
+                    <p>IBJ AWARD とは、日本結婚相談所連盟（IBJ)の加盟店3,362社の中で、過去６か月間で特に顕著な実績を残した結婚相談所に贈られる賞です。<br>
+                      選定基準は、「入会数、成婚数」「地域への貢献度」「ガイドライン、法令の遵守」「クレームやトラブルがない事」等になります。<br>
+                      これらの厳しい選定基準をクリアし、日本結婚相談所連盟(IBJ)がお勧めできる優良結婚相談所としてお墨付きをいただいたことになります。<br>
+                      これからも、お一人でも多くの方々に幸せになっていただくために、心のこもったサポートをさせていただきたいと思っております。<br>
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="section --4">
         <div class="section-wrap">
-          <div class="section_title_block --3">
+          <div class="section_title_block --4">
             <h1 class="title">Strangth</h1>
             <div class="title__border"></div>
             <p class="title__sub">選ばれる理由</p>
@@ -201,14 +179,14 @@
             <li class="content_body ---1 top-our_strengths__container">
               <div class="top-our_strengths__container--body">
                 <h2 class="top-our_strengths__container--point">1</h2>
-                <p class="top-our_strengths__container--heading">お一人お一人の<br>お気持ちに寄り添った<br>丁寧なサポート</p>
+                <p class="top-our_strengths__container--heading">カウンセラー経験豊富、<br>成婚実績多数<br><br></p>
                 <p class="top-our_strengths__container--about">
-                  通信状況が悪い環境でも安定してコンテンツを 配信する技術で、安心してコンテンツを配信、視聴可能です。（特許出願済み）
+                  大手結婚相談所で約10年間勤務し、1000人以上の会員様の担当カウンセラーとして婚活サポートを行ってきました。20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。豊富な経験に基づく的確なアドバイスをさせていただき、ご成婚までしっかりサポートいたします。
                 </p>
               </div>
               <div class="top-our_strengths__container--img">
                 <div class="img_block">
-                  <img src="/images/marriage-gate.webp" class="img" alt="プロジェクター">
+                  <img src="~/assets/images/black_wedding.webp" class="img" alt="丁寧なサポート">
                 </div>	
               </div> 
             </li>
@@ -217,12 +195,12 @@
                 <h2 class="top-our_strengths__container--point">2</h2>
                 <p class="top-our_strengths__container--heading">お一人お一人の<br>お気持ちに寄り添った<br>丁寧なサポート</p>
                 <p class="top-our_strengths__container--about">
-                  通信状況が悪い環境でも安定してコンテンツを 配信する技術で、安心してコンテンツを配信、視聴可能です。（特許出願済み）
+                  お見合い後の振り返りや、交際中のデートの状況などを確認しながら、活動状況に応じてアドバイスをさせていただきます。婚活中は誰にも相談できず孤独に陥りがちですが、メール、Line、電話等で、いつでもご相談いただける体制を整えております。<br><br>
                 </p>
               </div>
               <div class="top-our_strengths__container--img">
                 <div class="img_block">
-                  <img src="/images/marriage-gate.webp" class="img" alt="安定したコンテンツ配信技術">
+                  <img src="~/assets/images/wedding_hall.webp" class="img" alt="満足度">
                 </div>	
               </div> 
             </li>
@@ -255,84 +233,87 @@
 
 <script setup lang="ts">
 import gsap from "gsap"
-// import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
-// import { createStore, Store as baseUseStore } from "vuex";
+import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where, limit } from "firebase/firestore"
+import { firestore, storage } from '~/plugins/firebase.js'
+import { CaseList,Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 
 
-interface Table {
-  title: string,cont: string
-}
-interface CaseList {
-  num: number,
-  name: string,
-  img: string,
-  url?: string,
-}
-
-const tables: Table[] = [
-  {title:'ご年齢',cont:'20代後半〜50代前半'},
-  {title:'男女比',cont:'(約) 7 対 3'},
-  {title:'ご職業',cont:'三菱グループ各社、大手通信事業社、大手広告代理店、大手建設会社、大手金融機関、他'},
-]
 const trigger: string[] = [
   '.intro',
   '.section_title_block.--1',
   '.case_list',
   '.link-block',
-  '.section_title_block.--2',
-  '.award-title',
-  '.content_body.img',
-  '.content_body.text',
   '.section_title_block.--3',
-  '.content_body.---1',
-  '.content_body.---2',
-  '.section_title_block.--4',
   '.self-pic',
   '.self-p',
   '.self-body',
+  '.award-title',
+  '.content_body.img',
+  '.content_body.text',
+  '.section_title_block.--4',
+  '.content_body.---1',
+  '.content_body.---2',
   '.section_title_block.--5',
   '.access-comment',
   '.access-map',
 ]
-const displayCaseList: CaseList[] = [
-  {
-    num: 1,
-    name:'xxx xxxx',
-    img:'/images/marriage-gate.webp',
-  },
-  {
-    num: 2,
-    name:'yyy yyyy',
-    img:'/images/marriage-gate.webp',
-    url:'/flow',
-  },
-  {
-    num: 3,
-    name:'zzz zzzz',
-    img:'/images/marriage-gate.webp',
-    url:'/voice',
-  },
-]
 
 const { app, store } = useContext()
 
-let circleAnim: gsap.core.Tween
-let circleManAnim: gsap.core.Tween
-let circleWomanAnim: gsap.core.Tween
-let headerAnim: gsap.core.Tween
-let fuwaAnim: gsap.core.Tween[] = []
-
-let pageWidth = computed<number>(() => store.getters['pageWidth'])
-
-watch(pageWidth, (newVal, oldVal) => {
-  console.log(newVal)
-  circleManAnim.scrollTrigger?.refresh()
+let isDisplay = computed(() => {
+  return store.getters['pageWidth'] ? store.getters['pageWidth'] >= 750 : true
 })
+
+const interviewer = ref([] as DisplayInterviewer[])
+const displayCaseList = computed(() => {
+  return interviewer.value.map((val, index) => {
+      return {
+        id: val.id,
+        url: selectImg(index),
+        ...val.caseList
+      }
+    })
+})
+const selectImg = (index: number):string => {
+  if(index == 0) {return '/images/sample_couple_1.webp'}
+  else if(index == 1) {return '/images/sample_couple_2.webp'}
+  else {return '/images/sample_couple_3.webp'}
+}
+
+useAsync(async () => {
+  const q = query(collection(firestore, "interviewer"), where("isPublic", "==", true),where("caseList.isInterview", "==", true), limit(3))
+  const querySnapshot = await getDocs(q)
+
+  interviewer.value = querySnapshot.docs.map((doc) => {
+  return {
+      id: doc.id,
+      ...doc.data() as Interviewer
+    }
+  })
+})
+
+let circleAnim: gsap.core.Tween 
+let headerAnim = ref<gsap.core.Tween>({} as gsap.core.Tween)
+let fuwaAnim = ref<gsap.core.Tween[]>([])
 
 let isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled'])
 
+const myObserver = ref<ResizeObserver>({} as ResizeObserver)
+const pageObserver = ref()
+
 onMounted(() => {
+  const resizeObserver = new ResizeObserver(entries => {
+    for (const entry of entries) {
+      fuwaAnim.value.forEach((val) => {
+        val.scrollTrigger?.refresh()
+      })
+      headerAnim.value.scrollTrigger?.refresh()
+    }
+  })
+  myObserver.value = resizeObserver
+  myObserver.value.observe(pageObserver.value)
+
   if(isLoadingEnabled.value) {
     store.dispatch('startLoading')
   }
@@ -349,29 +330,7 @@ onMounted(() => {
     duration: .3, 
   })
   
-  const width: number = window.innerWidth
-  circleManAnim = gsap.to(".circle_form.man",{
-    scrollTrigger: {
-      trigger: '.body',
-      start: 'top bottom',
-      end: 'bottom bottom',
-      scrub: 1,
-    },
-    x: -(width * 0.9 - 250),
-    duration: .3, 
-  })
-  circleWomanAnim = gsap.to(".circle_form.woman",{
-    scrollTrigger: {
-      trigger: '.body',
-      start: 'top bottom',
-      end: 'bottom bottom',
-      scrub: 3,
-    },
-    x: -(width * 0.9 - 250),
-    duration: .3, 
-  })
-
-  headerAnim = gsap.to(".header_wrap",{
+  headerAnim.value = gsap.to(".header_wrap",{
     scrollTrigger: {
       trigger: '.intro',
       start: 'top 40%',
@@ -382,30 +341,27 @@ onMounted(() => {
   })
 
   trigger.forEach(value => {
-    let array: gsap.core.Tween = gsap.fromTo(value, {
-      opacity: 0,
-      transform: 'translateY(40px)'
-    },
-    {
+    let array: gsap.core.Tween = gsap.to(value, {
       scrollTrigger: {
         trigger: value,
-        start: 'top 70%',
+        start: 'top 80%',
         toggleActions: 'play none none reverse',
+        invalidateOnRefresh: true,
       },
       opacity: 1,
       transform: 'translateY(0)',
       duration: 1, 
     })
-    fuwaAnim.push(array)
+    fuwaAnim.value.push(array)
   })
 })
 
 onBeforeUnmount(() => {
+  myObserver.value.unobserve(pageObserver.value)
+
   circleAnim.scrollTrigger?.disable()
-  circleManAnim.scrollTrigger?.disable()
-  circleWomanAnim.scrollTrigger?.disable()
-  headerAnim.scrollTrigger?.disable()
-  fuwaAnim.forEach(value => {
+  headerAnim.value.scrollTrigger?.disable()
+  fuwaAnim.value.forEach(value => {
     value.scrollTrigger?.disable()
   })
 })
@@ -431,7 +387,7 @@ onBeforeUnmount(() => {
 
     +sp-view
       +text-subtitle(27px)
-      color: var(--white-1)
+      color: var(--sub)
 
     > .page-title__block
       display: flex
@@ -446,12 +402,6 @@ onBeforeUnmount(() => {
           > .page-title__child
             transform: translateY(32px)
             display: block
-            // opacity: 0
-            // background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
-            // background-clip: text
-            // -webkit-text-fill-color: transparent
-
-
 
   > .img_block
     width: 100vw
@@ -465,8 +415,13 @@ onBeforeUnmount(() => {
       height: 100%
       object-fit: cover
 
+      +sp-view
+        object-position: 80% center
+
   > .intro
     padding: 240px 0 160px
+    opacity: 0,
+    transform: translateY(40px)
 
     +sp-view
       padding: 100px 0 80px
@@ -495,9 +450,6 @@ onBeforeUnmount(() => {
         text-align: center
         margin-bottom: 10px
         padding: 0 17%
-        // background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
-        // background-clip: text
-        // -webkit-text-fill-color: transparent
 
         +sp-view
           font-size: 24px
@@ -585,6 +537,8 @@ onBeforeUnmount(() => {
         width:100%
         margin: 60px 0 60px
         text-align: center
+        opacity: 0,
+        transform: translateY(40px)
 
         > .title
           +text-title(64px)
@@ -621,6 +575,8 @@ onBeforeUnmount(() => {
           flex-wrap: wrap
           justify-content: space-between
           gap: 0 5px
+          opacity: 0,
+          transform: translateY(40px)
 
           +sp-view
             width: 100%
@@ -641,6 +597,11 @@ onBeforeUnmount(() => {
 
             +sp-view
               min-width: 240px
+              
+              &:nth-child(2)
+                display: none
+              &:nth-child(3)
+                display: none
 
             > .case-card
               width: 100%
@@ -691,10 +652,10 @@ onBeforeUnmount(() => {
                   justify-content: space-between
 
                   > .__title
-                    +text-title(32px)
+                    +text-title(24px)
 
                     +sp-view
-                      +text-title(28px)
+                      +text-title(24px)
 
                   > .right-arrow
                     color: var(--main)
@@ -709,6 +670,8 @@ onBeforeUnmount(() => {
 
         > .link-block
           text-align: right
+          opacity: 0,
+          transform: translateY(40px)
 
           > .link-wrap
             display: inline-block
@@ -719,29 +682,18 @@ onBeforeUnmount(() => {
               gap: 15px
 
               > .list-link-wrap
-                +text-title(40px)
                 overflow: hidden
                 display: flex
                 align-items: center
-                width: 240px
-
-                +sp-view
-                +text-title(32px)
 
                 >.list-link-text
+                  +text-title(32px)
                   display: inline-block
-                  padding-right: 23px
+                  // padding-right: 24px
                   white-space: nowrap
 
-                &::after
-                  content: 'More Interview'
-                  display: inline-block
-                  padding-right: 23px
-                  white-space: nowrap
-
-                &:hover
-                  > .list-link-text, &::after
-                    animation: text-roll-animation 1.6s infinite linear
+                  +sp-view
+                    +text-title(24px)
 
               > .right-arrow
                 height: 11px
@@ -751,9 +703,10 @@ onBeforeUnmount(() => {
                 +sp-view
                   +text-title(32px)
 
-    &.--2
+    &.--3
       background-color: var(--main)
       > .section-wrap
+        border-bottom: 1px solid black
         > .section_title_block
           > .title
             color: var(--white-1)
@@ -761,89 +714,6 @@ onBeforeUnmount(() => {
             background: var(--white-1)
           > .title__sub
             color: var(--white-1)
-
-        > .award-title
-          text-align: center
-          width: 100%
-          +text-title(40px)
-          margin-bottom: 10px
-          background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%)
-          background-clip: text
-          -webkit-text-fill-color: transparent
-          margin: 0 0 80px
-
-          +sp-view
-            font-size: 28px
-
-        > .content_wrap
-          display: flex
-          justify-content: space-between
-          flex-wrap: wrap-reverse
-
-          > .content_body
-            width: calc(50% - 30px)
-
-            +sp-view
-              width: 100%
-
-            > .top-service__img
-              width: 40%
-              margin: auto
-
-              +sp-view
-                width: 300px
-                margin: auto
-
-              > .c-img
-                position: relative
-                width: 100%
-
-                &::before
-                  content:""
-                  display: block
-                  padding-top: 100%
-
-                > .c-img__border
-                  width: 100%
-                  height: 100%
-                  border: 1px solid #c1c1c1
-                  position: absolute
-                  top: 0
-                  left: 0
-
-                > .c-img__img
-                  display: block
-                  position: absolute
-                  height: 100%
-                  width: 100%
-                  object-fit: cover
-                  top: 0
-                  box-shadow: 3px 3px 6px rgba(0,0,0,.6)
-                  // margin: 5% 0 0 5%
-                  z-index: 2
-                  border-radius: 40px
-
-            &.img
-              display: flex
-              flex-direction: column
-              gap: 40px
-            &.text
-              text-align: center
-              +text-body(16px)
-              color: var(--white-1)
-              letter-spacing: .1em
-              line-height: 1.8em
-              // margin: 5% 0 0
-
-              +sp-view
-                +text-body(16px)
-                color: var(--white-1)
-                margin-bottom: 20%
-
-    &.--3
-      background-color: var(--white-1)
-      > .section-wrap
-        border-bottom: 1px solid black
         > .self
           > .self-cont
             display: flex
@@ -853,8 +723,13 @@ onBeforeUnmount(() => {
             margin: 20px 0 0
             padding: 20px
 
+            +sp-view
+              padding: 0
+
             > .self-pic
               flex: 0 0 30%
+              opacity: 0,
+              transform: translateY(40px)
 
               +sp-view
                 flex: 0 0 100%
@@ -862,6 +737,12 @@ onBeforeUnmount(() => {
               > .img_block
                 position: relative
                 width: 100%
+                border-radius: 20px
+                overflow: hidden
+
+                +sp-view
+                  width: 80%
+                  margin: auto
 
                 &::before
                   content:""
@@ -878,7 +759,8 @@ onBeforeUnmount(() => {
                   left: 0
                   width: 100%
                   height: 100%
-                  background-image: linear-gradient(90deg, transparent 0 80%, var(--white-1) 100%), linear-gradient(0deg, transparent 0 80%, var(--white-1) 100%), linear-gradient(180deg, transparent 0 80%, var(--white-1) 100%), linear-gradient(270deg, transparent 0 80%, var(--white-1) 100%)
+                  background-image: linear-gradient(90deg, transparent 0 95%, var(--main) 100%), linear-gradient(0deg, transparent 0 95%, var(--main) 100%), linear-gradient(180deg, transparent 0 95%, var(--main) 100%), linear-gradient(270deg, transparent 0 95%, var(--main) 100%)
+                  // background-image: linear-gradient(90deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(0deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(180deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(270deg, transparent 0 95%, white 95%, transparent 100%)
 
                 > .img
                   display: block
@@ -890,15 +772,19 @@ onBeforeUnmount(() => {
 
             > .self-p
               +text-body(16px)
+              color: var(--white-1)
               position: relative
               line-height: 2
               flex: 0 0 60%
+              opacity: 0,
+              transform: translateY(40px)
 
               +sp-view
                 flex: 0 0 100%
 
               > .self-p_wrap
-                padding: 4% 5%
+                // padding: 4% 5%
+                // background-color: var(--white-1)
 
                 &::after
                   content: ''
@@ -907,15 +793,18 @@ onBeforeUnmount(() => {
                   left: 0
                   width: 100%
                   height: 100%
-                  background-image: linear-gradient(90deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(0deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(180deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(270deg, transparent 0 95%, white 95%, transparent 100%)
+                  // background-image: linear-gradient(90deg, transparent 0 95%, var(--main) 100%), linear-gradient(0deg, transparent 0 95%, var(--main) 100%), linear-gradient(180deg, transparent 0 95%, var(--main) 100%), linear-gradient(270deg, transparent 0 95%, var(--main) 100%)
+                  // background-image: linear-gradient(90deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(0deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(180deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(270deg, transparent 0 95%, white 95%, transparent 100%)
 
 
                 > .inline-block
-                  background-color: white
-                  padding: 20px 0
+                  // background-color: var(--white-1)
+                  // padding: 20px 0
 
             > .self-body
               flex: 70%
+              opacity: 0
+              transform: translateY(40px)
 
               > .self-comment
                 text-align: center
@@ -942,6 +831,7 @@ onBeforeUnmount(() => {
                 > .text
                   width: 100%
                   text-align: center
+                  color: var(--white-1)
 
                 > .table
                   border-radius: 10px
@@ -951,6 +841,10 @@ onBeforeUnmount(() => {
                   margin: auto
                   border: 1px solid var(--white-1)
                   background-color: white
+
+                  +sp-view
+                    width: 100%
+                    margin: 0 0 20px
 
                   > .table_title
                     +text-title(24px)
@@ -975,18 +869,92 @@ onBeforeUnmount(() => {
                       border-radius: 5px
                       background: #efecdd
                       margin-bottom: 5px
-                // table
-                //   border-collapse:  collapse
-              
-                // th, td
-                //   border: solid 1px
-                //   padding: 10px
-              
-                // th
-                //   width: 30%
-              
-                // td
-                //   width: 70%
+                  
+                  &.--1
+                    > .table_list
+                      > .list_item
+                        background: var(--skyBlue)
+                        &.th
+                          background: var(--main)
+                          color: var(--white-1)
+
+            > .award_wrap
+              > .award-title
+                text-align: center
+                width: 100%
+                +text-title(40px)
+                margin-bottom: 10px
+                background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%)
+                background-clip: text
+                -webkit-text-fill-color: transparent
+                margin: 0 0 80px
+                opacity: 0,
+                transform: translateY(40px)
+
+                +sp-view
+                  font-size: 28px
+
+              > .content_wrap
+                display: flex
+                // flex-direction: column
+                justify-content: space-between
+                flex-wrap: wrap
+                row-gap: 40px
+
+                > .content_body
+                  width: calc(50% - 30px)
+                  opacity: 0,
+                  transform: translateY(40px)
+
+                  +sp-view
+                    width: 100%
+
+                  > .top-service__img
+                    width: 40%
+                    margin: auto
+
+                    +sp-view
+                      // width: 300px
+                      // margin: auto
+
+                    > .c-img
+                      position: relative
+                      width: 100%
+                      border-radius: 20px
+                      overflow: hidden
+
+                      &::before
+                        content:""
+                        display: block
+                        padding-top: 100%
+
+                      > .c-img__img
+                        display: block
+                        position: absolute
+                        height: 100%
+                        width: 100%
+                        object-fit: cover
+                        top: 0
+                        box-shadow: 3px 3px 6px rgba(0,0,0,.6)
+                        // margin: 5% 0 0 5%
+                        z-index: 2
+
+                  &.img
+                    display: flex
+                    // flex-direction: column
+                    gap: 40px
+                  &.text
+                    text-align: center
+                    +text-body(16px)
+                    color: var(--white-1)
+                    letter-spacing: .1em
+                    line-height: 1.8em
+                    // margin: 5% 0 0
+
+                    +sp-view
+                      +text-body(16px)
+                      color: var(--white-1)
+                      margin-bottom: 20%
 
     &.--4
       background-color: var(--white-1)
@@ -1001,6 +969,7 @@ onBeforeUnmount(() => {
 
           +sp-view
             gap: 40px
+            padding: 0
 
           > .content_body
             width: 45%
@@ -1009,25 +978,14 @@ onBeforeUnmount(() => {
             color: #707070
             text-align: left
             padding: 10px
-            // background-color: var(--white-1)
+            opacity: 0
+            transform: translateY(40px)
 
             +sp-view
               width: 100%
               display: flex
               flex-wrap: wrap-reverse
               gap: 10px
-
-            &:nth-child(1)
-              // margin-top: 0
-
-              +sp-view
-                // margin-top: 8%
-
-            &:nth-child(2)
-              // margin-top: 10%
-
-              +sp-view
-                // margin-top: 8%
 
             > .top-our_strengths__container--body
               > .top-our_strengths__container--point
@@ -1061,7 +1019,7 @@ onBeforeUnmount(() => {
                     margin: 0% 0 8%
 
               > .top-our_strengths__container--heading
-                +text-title(40px)
+                +text-title(36px)
                 line-height: 1.4em
                 background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
                 background-clip: text
@@ -1132,9 +1090,14 @@ onBeforeUnmount(() => {
           text-align: center
           margin: 40px 0 40px
           +text-body(16px)
+          opacity: 0,
+          transform: translateY(40px)
+          
         > .access-map
           width: 100%
           height: 400px
           object-fit: cover
+          opacity: 0,
+          transform: translateY(40px)
 
 </style>

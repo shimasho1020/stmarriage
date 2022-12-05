@@ -20,8 +20,9 @@ export type Interviewer = {
   isPublic: boolean
   caseList: CaseList
   interview: Interview
+  imagePosition?: number
 }
 export type DisplayInterviewer = Interviewer & {
   id: string
-  url: string
+  url?: string
 }

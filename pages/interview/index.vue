@@ -13,13 +13,11 @@
             :to=" item.isInterview ? `/interview/${item.id}` : ''"
             :key="index"
           >
-            <div class="case_img">
-              <div class="img_wrap">
-                <img class="img" :src="item.url">
-              </div>
+            <div class="img_wrap">
+              <img class="img" :src="item.url" alt="本人写真" :style="{objectPosition: `center calc(50% - ${item.imagePosition}px)`}">
             </div>
             <div class="case_block">
-              <h1 class="case_title">{{item.age}}歳の{{item.sex}}会員様がご成婚されました！</h1>
+              <h1 class="case_title"><span class="inline-block">{{item.age}}歳の{{item.sex}}会員様が</span><span class="inline-block">ご成婚されました！</span></h1>
               <div class="about">
                 <ol class="special_list">
                 <li>{{item.age}}歳{{item.sex}}</li>
@@ -61,6 +59,7 @@ const displayCaseList = computed(() => {
       id: val.id,
       url: val.url,
       isPublic: val.isPublic,
+      imagePosition: val.imagePosition,
       ...val.caseList
     }
   })
@@ -98,8 +97,15 @@ const changeSex = (sex: '' | '男性' | '女性') => {
   circle
     fill: var(--main)
 
+.title_block
+  > .title
+    background-color: var(--white-1)
+
 .body
   padding: 64px 0
+
+  +sp-view
+    background-color: var(--main)
   > .body_wrap
     margin: auto
     width: 1080px
@@ -109,6 +115,11 @@ const changeSex = (sex: '' | '男性' | '女性') => {
       display: flex
       flex-direction: column
       gap: 40px
+      
+      +sp-view
+        flex-wrap: wrap
+        width: 100%
+
       > .case_item
         padding: 30px
         border-radius: 20px
@@ -121,18 +132,53 @@ const changeSex = (sex: '' | '男性' | '女性') => {
         flex-direction: row-reverse
 
         +sp-view
+          padding: 0
           display: block
+          border-radius: 20px
+          background-image: none
+
+        > .img_wrap
+          position: relative
+          flex: 0 0 35%
+          overflow: hidden
+          border-radius: 20px
+
+
+          +sp-view
+            width: 100%
+            border-radius: 20px 20px 0px 0px
+
+          &::before
+            content:""
+            display: block
+            padding-top: 100%
+
+          > .img
+            display: block
+            position: absolute
+            height: 100%
+            width: 100%
+            object-fit: cover
+            top: 0
 
         > .case_block
+          padding: 20px
           > .case_title
             +text-title(24px)
             position: relative
             margin-left: 40px
+
+            +sp-view
+              margin-left: 0
+              text-align: center
             
             &::after,&::before
               content: ""
               position: absolute
               border-radius: 50%
+
+              +sp-view
+                display: none
 
             &::before
               left: -32px
@@ -156,6 +202,9 @@ const changeSex = (sex: '' | '男性' | '女性') => {
           > .about
             padding: 32px
 
+            +sp-view
+              padding: 20px 0
+
             > .ol.original_list
               >li
                 background-color: rgba(0, 0, 0, 0)
@@ -173,25 +222,5 @@ const changeSex = (sex: '' | '男性' | '女性') => {
                 +text-body(16px)
           
 
-        > .case_img
-          flex: 0 0 35%
-
-          > .img_wrap
-            position: relative
-            width: 100%
-
-            &::before
-              content:""
-              display: block
-              padding-top: 100%
-
-            > .img
-              display: block
-              position: absolute
-              height: 100%
-              width: 100%
-              object-fit: cover
-              top: 0
-              border-radius: 20px
 
 </style>

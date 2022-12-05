@@ -1,12 +1,13 @@
 <template>
-<div>
+<div v-if="user.login">
+  <h1 class="text-center pa-5">ご成婚事例編集ページ</h1>
   <div style="position:relative;" class="py-10">
     <div v-if="completeMessage" class="message">{{completeMessage}}</div>
     <div class="backButoon">
       <v-btn 
         class="white--text indigo darken-4" 
         x-large
-        @click="router.go(-1)"
+        @click="router.push({path: '/tomoko'})"
       >戻る</v-btn>
     </div>
     <div class="saveButoon">
@@ -112,7 +113,13 @@
               <h1 class="section_title">{{caseList.age}}歳の{{caseList.sex}}会員様がご成婚されました！</h1>
             </div>
             <div class="section_img">
-              <img class="img" :src="imageURL">
+              <img class="img profImg" :src="imageURL">
+            </div>
+            {{imagePosition}}
+            <div class="d-flex flex-column" style="gap:10px;">
+              <v-btn @click="addCount">アップ</v-btn>
+              <v-btn @click="subtractCount">ダウン</v-btn>
+              <v-btn @click="clearCount">クリア</v-btn>
             </div>
             <div class="section_block">
               <div class="text">
@@ -121,7 +128,7 @@
                   label="この方の簡単な説明や結婚までの経緯"
                   v-model="aboutText"
                 ></v-textarea>
-                <div style="white-space: pre-wrap;" v-text="aboutText"></div>
+                <div style="white-space: pre-wrap;">当社の{{caseList.age}}歳{{caseList.sex}}会員様がご成婚されました。お相手は{{caseList.partnerAge}}歳の{{changeSex(caseList.sex)}}会員様です。<br>{{aboutText}}</div>
               </div>
               <div class="about">
                 <h1 class="title">ご成婚者様の声</h1>
@@ -166,7 +173,7 @@
 import { defineComponent } from '@nuxtjs/composition-api'
 import { resolve } from 'path';
 export default defineComponent({
- layout: "sub",
+ layout: "signin",
  name: "editInterview",
 });
 </script>
@@ -179,9 +186,11 @@ import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 
 
-const { app, store, $config } = useContext()
+const { app, store } = useContext()
 const router = useRouter()
 const route = useRoute()
+
+let user = computed(() => store.getters['user'])
 
 const isPublic = ref(false)
 const caseList = ref({isInterview: false} as CaseList)
@@ -224,6 +233,7 @@ useAsync(async () => {
     isPublic.value = result.isPublic
     caseList.value = result.caseList
     aboutText.value = result.interview.aboutText
+    store.commit('insertCount', result.imagePosition ?? 0)
     result.interview.interviewContents.forEach((val) => {
       questionTitle.value.push(val.title)
       questionText.value.push(val.text)
@@ -252,7 +262,32 @@ const itemsTerm:number[] = []
 for(let i=1;i<=60;i++){
   itemsTerm.push(i)
 }
+const changeSex = (sex: '' | '男性' | '女性') => {
+  return sex === '男性' ? '女性' : '男性'
+}
 
+const imagePosition = computed(() => {
+  return store.getters['imagePosition'] ?? 0
+})
+watch(imagePosition,(val) => {
+  moveImg(val)
+})
+const moveImg = (count:number) => {
+  document.querySelectorAll('.profImg').forEach((element:any) => {
+    // console.log(element.style)
+    element.style.objectPosition = `center calc(50% - ${count}px)`;
+  })
+}
+
+const addCount = () => {
+  store.commit('add')
+}
+const subtractCount = () => {
+  store.commit('subtract')
+}
+const clearCount = () => {
+  store.commit('clear')
+}
 
 const activeButton = computed(() => {
   return !!caseList.value.name && 
@@ -273,6 +308,7 @@ const onSubmit = async() => {
     isPublic: isPublic.value,
     caseList: caseList.value,
     interview: interview.value,
+    imagePosition: imagePosition.value,
   }
   const exampleRef = isNew.value ?
   doc(collection(firestore, "interviewer")) : doc(firestore, "interviewer", thisPageId.value)
@@ -296,7 +332,7 @@ const onSubmit = async() => {
     isSending.value = false;
     setTimeout(() => {
       completeMessage.value = ''
-    }, 4000)
+    }, 3000)
   }
 }
 
@@ -365,6 +401,10 @@ const uploadImageFile = async(file: FileList, id: string) => {
     });
   })
 }
+
+onMounted(() => {
+  moveImg(imagePosition.value)
+})
 
 </script>
 
@@ -485,11 +525,24 @@ const uploadImageFile = async(file: FileList, id: string) => {
         z-index: -1
 
   > .section_img
-    flex: 60px
-    width: 60%
+    position: relative
+    width: 400px
     margin: auto
+    overflow: hidden
+    border-radius: 20px
+
+    &::before
+      content:""
+      display: block
+      padding-top: 100%
+
     > .img
+      display: block
+      position: absolute
+      height: 100%
       width: 100%
+      object-fit: cover
+      top: 0
 
   > .section_block
     > .text

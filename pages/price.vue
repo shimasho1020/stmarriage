@@ -4,7 +4,7 @@
     <h1 class="title">コース案内、料金</h1>
   </div>
   <div class="body">
-    <div class="menu">
+    <div class="menu" v-if="isDisplay">
       <div
         class="lists"
         v-for="(value, index) in courses" v-bind:key="index"
@@ -13,7 +13,7 @@
           <a class="cards_wrap" v-bind:href="value.href">
             <h2 class="cards_title">{{value.name}}</h2>
             <div class="cards_pic">
-              <img class="img" :src="value.img">
+              <img class="img" :src="value.img" alt="コース案内">
             </div>
             <div class="cards_note">
               {{value.note}}
@@ -29,8 +29,8 @@
           <div class="subtitle">充実したサポート内容をリーズナブルに提供しているおすすめコースです。</div>
           <div class="subtitle">当社のほとんど会員様が、こちらのコースで活動されています。</div>
           <div class="content">
-            <div class="full-img">
-              <img src="/images/marriage-gate.webp">
+            <div class="content_img">
+              <img class="img" src="~/assets/images/black_wedding.webp" alt="フルサポートコース">
             </div>
             <table class="table">
               <tr v-for="(value, index) in fullTables" v-bind:key="index">
@@ -64,15 +64,15 @@
           <h1 class="title"><span>カジュアルコース</span></h1>
           <div class="subtitle">活動に迷いがある方、とりあえずお試ししたい方におすすめのコースです。</div>
           <div class="content">
+            <div class="content_img">
+              <img src="~/assets/images/wedding-table-desserts.webp" alt="カジュアルコース">
+            </div>
             <table class="table">
               <tr v-for="(value, index) in casualTables" v-bind:key="index">
                 <th>{{value.title}}</th>
                 <td>{{value.price}}</td>
               </tr>
             </table>
-            <div class="casual-img">
-              <img src="/images/marriage-gate.webp">
-            </div>
             <div class="list_block">
               <h3 class="list_title">入会時サポート内容</h3>
               <ol class="original_list">
@@ -98,8 +98,8 @@
           <h1 class="title"><span>カウンセリングコース</span></h1>
           <div class="subtitle">活動に迷いがある方、とりあえずお試ししたい方におすすめのコースです。</div>
           <div class="content">
-            <div class="counseling-img">
-              <img src="/images/marriage-gate.webp">
+            <div class="content_img">
+              <img src="~assets/images/counseling.webp" alt="カウンセリングコース">
             </div>
             <table class="table">
               <div><span>電話でのご相談</span></div>
@@ -117,12 +117,66 @@
 </div>
 </template>
 
+<script setup lang="ts">
+import { computed, useContext } from '@nuxtjs/composition-api'
+
+
+const { app, store } = useContext()
+let isDisplay = computed(() => {
+  return store.getters['pageWidth'] ? store.getters['pageWidth'] >= 850 : true
+})
+
+const courses = [
+  {
+    name:'フルサポートコース',
+    img:'/images/black_wedding.webp',
+    note:'充実したサポート内容のおススメコースです。当社の多くの会員様がこちらのコースで活動されています。',
+    href:'#full',
+  },
+  {
+    name:'カジュアルコース',
+    img:'/images/wedding-table-desserts.webp',
+    // img:'/images/marriage-gate.webp',
+    note:'婚活にまだ迷いのある方、とりあえずお試しした方におすすめのコースです。追加料金でフルサポートコースに変更可能です。',
+    href:'#casual',
+  },
+  {
+    name:'カウンセリングコース',
+    img: "/images/counseling.webp",
+    note:'他社で婚活中の方、プライベートな恋愛でお悩みの方が気軽に電話で相談できるコースです。一人で悩んでいないでご相談ください。',
+    href:'#counseling',
+  },
+]
+
+const fullTables = [
+  {title:'入会金',price:'33,000円'},
+  {title:'登録料',price:'33,000円'},
+  {title:'月会費',price:'11,000円'},
+  {title:'お見合い料',price:'0円'},
+  {title:'ご成婚費',price:'165,000円'},
+]
+const casualTables = [
+  {title:'入会金',price:'0円'},
+  {title:'登録料',price:'33,000円'},
+  {title:'月会費',price:'5,500円'},
+  {title:'お見合い料',price:'3,300円'},
+  {title:'ご成婚費',price:'165,000円'},
+]
+const counselingTables = [
+  {title:'30分間',price:'0円'},
+  {title:'1時間',price:'3,300円'},
+  {title:'2時間',price:'5,500円'},
+]
+
+</script>
+
 <style lang="sass" scoped>
 
 .highlight
   // background-color: var(--main)
   font-size: 20px
   color: yellow
+  color: orange
 
 .body
   > .menu
@@ -158,7 +212,7 @@
             +text-subtitle(24px)
 
           > .cards_pic
-            height: 10vw
+            height: 180px
             position: relative
 
             &::after
@@ -174,6 +228,7 @@
               width: 100%
               height: 100%
               object-fit: cover
+              object-position: 50% 10%
                 
           > .cards_note
             +text-body(16px)
@@ -193,9 +248,6 @@
         border-radius: 30px
         padding: 40px 20px
         background-color: var(--white-1)
-        // background-image: url("/images/frame-topleft.svg"), url("/images/frame-topright.svg"), url("/images/frame-bottomleft.svg"), url("/images/frame-bottomright.svg")
-        // background-position: left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
-        // background-size: 50px 50px
         margin: 20px 0
 
         > .title
@@ -203,6 +255,9 @@
           position: relative
           text-align: center
           margin: 0 0 20px
+
+          +sp-view
+            +text-subtitle(32px)
 
           &::before 
             position: absolute
@@ -223,14 +278,30 @@
           display: flex
           flex-wrap: wrap
           justify-content: space-around
-          padding: 20px 20px
+          padding: 20px 
           margin: 20px 0 0
 
-          img
-            border-radius: 15px
+          +sp-view
+            flex-direction: column
+            gap: 20px
+            padding: 0
+
+
+          > .content_img
+            flex: 0 0 47%
+
+            +sp-view
+              width: 100%
+
+            img
+              width: 100%
+              border-radius: 15px
           
           > .table
             width: 400px
+
+            +sp-view
+              width: 100%
 
           > .list_block
             flex: 0 0 60%
@@ -241,6 +312,9 @@
               +text-title(24px)
               position: relative
               margin: 0 0 16px
+
+              +sp-view
+                margin: 0 36px 0
 
               &::after,&::before
                 content: ""
@@ -266,88 +340,8 @@
                 height: 14px
                 background: var(--sub)
 
+            > .original_list
+              padding:  10px 20px
+
 
 </style>
-
-<style lang="scss" scoped>
-.full-img{
-  flex: 0 0 47%;
-}
-.full-img img{
-  width: 100%;
-
-}
-
-.casual-img{
-  flex: 0 0 47%;
-}
-.casual-img img{
-  width: 100%;
-
-}
-
-
-
-.counseling-img{
-  flex: 0 0 47%;
-}
-.counseling-img img{
-  width: 100%;
-}
-</style>
-
-<script>
-export default {
-  data () {
-  return {
-    courses:[
-      {
-        name:'フルサポートコース',
-        img:'/images/marriage-gate.webp',
-        note:'充実したサポート内容のおススメコースです。当社の多くの会員様がこちらのコースで活動されています。',
-        href:'#full',
-      },
-      {
-        name:'カジュアルコース',
-        img:'/images/marriage-gate.webp',
-        note:'婚活にまだ迷いのある方、とりあえずお試しした方におすすめのコースです。追加料金でフルサポートコースに変更可能です。',
-        href:'#casual',
-      },
-      {
-        name:'カウンセリングコース',
-        img:'/images/marriage-gate.webp',
-        note:'他社で婚活中の方、プライベートな恋愛でお悩みの方が気軽に電話で相談できるコースです。一人で悩んでいないでご相談ください。',
-        href:'#counseling',
-      },
-    ],
-    list: [
-          { title: 'ホーム', icon: 'mdi-web', url: '/' },
-          { title: 'コース案内、料金', icon: 'mdi-information-variant', url: '/price' },
-          { title: 'ご入会からご結婚まで', icon: 'mdi-information-variant', url: '/flow' },
-          { title: 'ご成婚者様の声', icon: 'mdi-web', url: '/voice' },
-    ],
-    fullTables:[
-      {title:'入会金',price:'33,000円'},
-      {title:'登録料',price:'33,000円'},
-      {title:'月会費',price:'11,000円'},
-      {title:'お見合い料',price:'0円'},
-      {title:'ご成婚費',price:'165,000円'},
-    ],
-    casualTables:[
-      {title:'入会金',price:'0円'},
-      {title:'登録料',price:'33,000円'},
-      {title:'月会費',price:'5,500円'},
-      {title:'お見合い料',price:'3,300円'},
-      {title:'ご成婚費',price:'165,000円'},
-    ],
-    counselingTables:[
-      {title:'30分間',price:'0円'},
-      {title:'1時間',price:'3,300円'},
-      {title:'2時間',price:'5,500円'},
-    ],
-  }
-  },
-  mounted() {
-  },
-}
-</script>

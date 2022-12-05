@@ -4,14 +4,14 @@
     <div class="body_wrap">
       <div class="section">
         <div class="section_title_block">
-          <h1 class="section_title">31歳の男性会員様がご成婚されました!</h1>
+          <h1 class="section_title"><span class="inline-block">{{displayCaseList.age}}歳の{{displayCaseList.sex}}会員様が</span><span class="inline-block">ご成婚されました！</span></h1>
         </div>
         <div class="section_img">
-          <img class="img" :src="imageURL">
+          <img class="img" :src="imageURL" alt="本人写真" :style="{objectPosition: `center calc(50% - ${imagePosition}px)`}">
         </div>
         <div class="section_block">
           <div class="text">
-            <div style="white-space: pre-wrap;" v-text="displayInterview.aboutText"></div>
+            <div style="white-space: pre-wrap;">当社の{{displayCaseList.age}}歳{{displayCaseList.sex}}会員様がご成婚されました。お相手は{{displayCaseList.partnerAge}}歳の{{changeSex(displayCaseList.sex)}}会員様です。<br>{{displayInterview.aboutText}}</div>
           </div>
           <div class="about">
             <h1 class="title">ご成婚者様の声</h1>
@@ -46,11 +46,16 @@ import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayR
 import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 
+const { app, store } = useContext()
 
 const router = useRouter()
 const route = useRoute()
 const displayInterview = ref({} as Interview)
+const displayCaseList = ref({} as CaseList)
 const imageURL = ref()
+const imagePosition = computed(() => {
+  return store.getters['imagePosition'] ?? 0
+})
 
 useAsync(async () => {
   const thisPageId = route.value.params.id
@@ -60,6 +65,8 @@ useAsync(async () => {
     console.log("Document data:", docSnap.data())
     const result = docSnap.data() as Interviewer
     displayInterview.value = result.interview
+    displayCaseList.value = result.caseList
+    store.commit('insertCount', result.imagePosition ?? 0)
   } else {
     // doc.data() will be undefined in this case
     console.log("No such document!");
@@ -75,11 +82,15 @@ useAsync(async () => {
   })
 })
 
+const changeSex = (sex: '' | '男性' | '女性') => {
+  return sex === '男性' ? '女性' : '男性'
+}
+
 </script>
 
 <style lang="sass" scoped>
 .backButoon
-  width: 20%
+  width: 150px
   margin: auto
   > button
     width: 100%
@@ -93,9 +104,11 @@ useAsync(async () => {
 
 .body
   padding: 64px 0
+  +sp-view
+    padding: 20px 0 64px
   > .body_wrap
     margin: auto
-    width: 1080px
+    width: 820px
     max-width: calc(100% - 10vw)
     > .section
       padding: 30px
@@ -110,18 +123,24 @@ useAsync(async () => {
       // justify-content: center
 
       > .section_title_block
+        +sp-view
+          text-align: center
         > .section_title
           +text-title(32px)
           position: relative
           margin-left: 40px
           padding-right: 10px
           display: inline-block
-          background: linear-gradient(transparent 70%, #a7d6ff 70%)
-          // color: var(--white-1)
-          text-shadow: 0 0 2px white
-          // background: var(--w)
           z-index: 1
-          border-radius: 0 10px 10px
+
+          > .inline-block
+            background: linear-gradient(transparent 70%, #a7d6ff 70%)
+            text-shadow: 0 0 2px white
+
+          +sp-view
+            margin-left: 0
+            +text-title(28px)
+            text-align: center
 
           &::before 
             content: ""
@@ -136,26 +155,53 @@ useAsync(async () => {
             transform: translateY(-50%)
             z-index: -1
 
+            +sp-view
+              display: none
+
       > .section_img
-        flex: 60px
-        width: 60%
+        position: relative
+        width: 400px
         margin: auto
+        overflow: hidden
+        border-radius: 20px
+
+        +sp-view
+          width: 90%
+          max-width: 400px
+
+        &::before
+          content:""
+          display: block
+          padding-top: 100%
+
         > .img
+          display: block
+          position: absolute
+          height: 100%
           width: 100%
+          object-fit: cover
+          top: 0
 
       > .section_block
         > .text
-          padding: 0 10% 40px
+          padding: 0 8% 40px
           +text-body(18px)
+
+          +sp-view
+            padding: 0 0 40px
 
         > .about
           > .title
             +text-title(28px)
             position: relative
-            margin: 0 0 20px  7%
+            margin: 0 0 20px 7%
             // padding: 0 0 20px
             background: linear-gradient(transparent 70%, #a7d6ff 70%)
             display: inline-block
+
+            +sp-view
+              margin: 0 0 20px 0
+              +text-title(24px)
             
           > .list
             margin-left: 10%

@@ -3,8 +3,7 @@
     <div class="header_wrap" :class="{'top-page': $route.name === 'index'}">
     <header class="header active"
             ref="pageHeader"
-            id="header"
-            :class="{'side-active': false}">
+            id="header">
       <nuxt-link @click.native.prevent="nuxtLinkTrigger" to="/" class="logo" :class="{'top-page': $route.name === 'index'}">
         <div class="logo-sub">日本結婚所連盟（ＩＢＪ）　正規加盟店</div>
         <div class="logo-main">セントマリアージュ青山</div>
@@ -14,7 +13,7 @@
           <div class="link-wrap"><span class="link-text">ホーム</span></div>
         </nuxt-link>
         <nuxt-link class="menu--link" to="/price" :class="{'highlight': $route.name === 'price'}">
-          <div class="link-wrap"><span class="link-text">コース案内</span></div>
+          <div class="link-wrap"><span class="link-text">コース案内・料金</span></div>
         </nuxt-link>
         <nuxt-link class="menu--link" to="/flow" :class="{'highlight': $route.name === 'flow'}">
           <div class="link-wrap"><span class="link-text">入会から結婚まで</span></div>
@@ -30,6 +29,7 @@
       <div
           class="menu sp"
           @click="toggleMenu"
+          :class="{'top-page': $route.name === 'index'}"
       >
         <span></span>
       </div>
@@ -37,19 +37,21 @@
     </div>
     <div class="sp-menu" ref="sideMenu">
       <div class="sp-menu-wrap">
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/price">Media sheet</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/price">Ads calendar</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/price">News</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="/price">Case study</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link" to="//price">FAQ/Contact</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/">ホーム</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/price">コース案内・料金</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/flow">入会から結婚まで</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/interview">ご成婚事例</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/contact">相談フォーム</nuxt-link>
       </div>
     </div>  
     <div class="flow_block" v-if="$route.name !== 'contact'" :class="{'top-page': $route.name === 'index'}">
-      <nuxt-link to="/contact" class="circle_form man"><span class="inline-block">無料相談<br>男性用</span></nuxt-link>
-      <nuxt-link to="/contact" class="circle_form woman"><span class="inline-block">無料相談<br>女性用</span></nuxt-link>
+      <nuxt-link to="/contact" class="circle_form">
+        <span class="inline-block">無料相談<br>フォーム<br></span>
+        <div class="mail_icon_wrap"><mail class="mail_icon"></mail></div>
+      </nuxt-link>
     </div>
 
-    <div class="Body" :class="{'not-top-page': $route.name !== 'index'}">
+    <div class="BODY" :class="{'not-top-page': $route.name !== 'index', 'interview-page': $route.name === 'interview'}">
       <nuxt/>
     </div>
 
@@ -68,7 +70,11 @@
 
 <script setup lang="ts">
 import gsap from "gsap"
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
+import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
+import mail from '~/assets/images/mail_icon.svg'
+components: {
+  mail
+}
 
 
 const router = useRouter()
@@ -91,7 +97,17 @@ const toggleMenu = () => {
   const classList = sideMenu.value.classList
   const headerClassList = pageHeader.value.classList
   if (sideActive.value) {
+    // if(route.value.name == 'index') {
+    //   store.commit('changeHeaderToTrans')
+    // }
     sideActive.value = false
+    gsap.to('.menu--link.sp', {
+      opacity: 0,
+      transform: 'translateY(40px)',
+      stagger: {
+        each: .1,
+      }
+    })
     gsap.to('.sp-menu-wrap', {
       duration: .7,
       autoAlpha: 0,
@@ -101,12 +117,22 @@ const toggleMenu = () => {
     })
     headerClassList.remove('side-active')
   } else {
+    if(!headerColor.value){
+      store.commit('changeHeaderToBlue')
+    }
     sideActive.value = true
     headerClassList.add('side-active')
     classList.add('active')
     gsap.to('.sp-menu-wrap', {
       duration: .7,
       autoAlpha: 1,
+    })
+    gsap.to('.menu--link.sp', {
+      opacity: 1,
+      transform: 'translateY(0)',
+      stagger: {
+        each: .1,
+      }
     })
   }
 }
@@ -244,7 +270,8 @@ onUnmounted(() => {
 
       +sp-view
         +text-title(28px)
-        color: var(--white-1)
+        color: currentColor
+
 
   > .menu
     max-width: 640px
@@ -290,16 +317,6 @@ onUnmounted(() => {
           border-radius: 3px
           background-image: linear-gradient(135deg, #17aaee 0%, #176dee 50%,  #17aaee 100%, )
 
-      // &::after 
-      //   position: absolute
-      //   bottom: -10px
-      //   left: calc(50% - 15px)
-      //   width: 30px
-      //   height: 3px
-      //   content: ''
-      //   border-radius: 3px
-      //   background-color: var(--main)
-
       > .link-wrap
         overflow: hidden
         display: flex
@@ -326,10 +343,10 @@ onUnmounted(() => {
         height: 1px
         padding: 20px 0
         cursor: pointer
-        color: var(--main)
+        color: var(--white-1)
 
-        &.white
-          color: var(--white-1)
+        &.top-page
+          color: var(--main)
 
         > span, span:before, span:after
           position: absolute
@@ -349,9 +366,7 @@ onUnmounted(() => {
           transform: translateY(7px)
 
   &.side-active
-    border-bottom: 1px solid var(--main) !important
-
-    > .sp
+    .sp
       > span
         background: rgba(255, 255, 255, 0)
 
@@ -386,16 +401,20 @@ onUnmounted(() => {
       height: 100%
       width: 100%
       padding: 0 20px
-      +text-title(40px)
+      +text-title(24px)
       line-height: 1.5
       color: var(--white-1)
       background-color: var(--main)
       display: flex
       flex-direction: column
       justify-content: center
+      gap: 40px
+      text-align: center
 
       > .menu--link
         color: currentColor
+        opacity: 0,
+        transform: translateY(40px)
 
 .flow_block
   display: flex
@@ -403,37 +422,52 @@ onUnmounted(() => {
   position: fixed
   bottom: 20px
   right: min(80px, 5vw)
-  z-index: 100
+  z-index: 40
   opacity: 1
 
   &.top-page
     opacity: 0
 
   > .circle_form
-    height: 120px
-    width: 120px
+    height: 140px
+    width: 140px
     margin-left: 10px
     box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 10%)
-    border-radius: 60px
+    border-radius: 80px
     display: flex
     align-items: center
     justify-content: center
     text-align: center
-    +text-subtitle(20px)
+    flex-direction: column
+    +text-title(21px)
     color: var(--white-1)
-    
-    &.man
-      background: linear-gradient(to bottom, #5f51e0, rgb(195, 242, 248))
-    &.woman
-      background: linear-gradient(to bottom, #e051bc, rgb(195, 242, 248))
+    padding: 10px 0 0
+    // background: linear-gradient(to bottom, #e051bc, rgb(195, 242, 248))
+    background: linear-gradient(to bottom, #5f51e0, rgb(195, 242, 248))
 
-.Body
+    +sp-view
+      height: 120px
+      width: 120px
+      +text-title(18px)
+      color: var(--white-1)
+
+    > .mail_icon_wrap
+      width: 35%
+      margin: 0
+      path
+        fill: var(--white-1)
+
+.BODY
   &.not-top-page
     padding: 120px 0 0
     background-image: url("/images/luxury-2.jpg")
     background-size: 25%
     background-repeat: repeat
     background-color: var(--white-1)
+
+  &.interview-page
+    background-color: var(--main)
+    background-image: none
 
 .footer
   background-color: var(--white-1)
