@@ -80,6 +80,16 @@
             <span>ヶ月</span>
           </div>
           <div class="pa-5">
+            <h1 class="subtitle">交際期間</h1>
+            <v-autocomplete
+              v-model="caseList.datingTerm"
+              :items="itemsTerm"
+              placeholder="期間"
+              style="width:100px;display: inline-block"
+            ></v-autocomplete>
+            <span>ヶ月</span>
+          </div>
+          <div class="pa-5">
             <h1 class="subtitle">相手の年齢<span class="necessary">(必須)</span></h1>
             <v-autocomplete
               v-model="caseList.partnerAge"

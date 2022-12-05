@@ -1,12 +1,13 @@
 export type CaseList = {
-  age: number,
-  term?: number,
-  partnerAge?: number,
+  age: number
+  term?: number
+  datingTerm?: number
+  partnerAge?: number
   sex: '男性' | '女性' | ''
-  name?: string,
-  job?: string,
-  img?: string,
-  isInterview: boolean,
+  name?: string
+  job?: string
+  img?: string
+  isInterview: boolean
 }
 export type InterviewContent = {
   title: string
