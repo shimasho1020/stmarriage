@@ -63,7 +63,7 @@
             <span>歳</span>
           </div>
           <div class="pa-5">
-            <h1 class="subtitle">職業<span class="necessary">(必須)</span></h1>
+            <h1 class="subtitle">職業</h1>
             <v-text-field
               v-model="caseList.job"
               placeholder="職業"
@@ -293,7 +293,6 @@ const activeButton = computed(() => {
   return !!caseList.value.name && 
           !!caseList.value.age && 
           !!caseList.value.sex &&
-          !!caseList.value.job &&
           !!caseList.value.term &&
           !!caseList.value.partnerAge &&
           !!imageURL
