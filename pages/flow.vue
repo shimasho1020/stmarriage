@@ -172,7 +172,7 @@
           <h2 class="section_title" data-number="05">プロポーズ</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="~/assets/images/propose.webp" alt="ステップ8">
+              <img class="img" src="~/assets/images/flow_propose.webp" alt="ステップ8">
             </div>
             <div class="body_block">
               <div class="text">
@@ -414,10 +414,30 @@ onBeforeUnmount(() => {
             gap: 20px
 
           > .body_img
-            flex: 0 0 45%
-            > .img
+            position: relative
+            flex: 0 0 40%
+            overflow: hidden
+            border-radius: 20px
+            height: fit-content
+
+
+            +sp-view
               width: 100%
-              border-radius: 15px
+              border-radius: 20px 
+
+            &::before
+              content:""
+              display: block
+              padding-top: 70%
+
+            > .img
+              display: block
+              position: absolute
+              height: 100%
+              width: 100%
+              object-fit: cover
+              top: 0
+              bottom: 0
 
           > .body_block
             padding: 20px 

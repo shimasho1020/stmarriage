@@ -4,23 +4,23 @@
       <h1 class="page-title">
         <div class="page-title__block">
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('お客様の個性にあわせた')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('あなたの真剣な想い')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('最高の婚活を')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('サポートします')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
         </div>
-        <div class="page-title__block">
+        <!-- <div class="page-title__block">
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('全力でサポートします')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('サポートします')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
-        </div>
+        </div> -->
       </h1>
       <div class="img_block" >
         <img class="hero_img" src="~/assets/images/jewelry_hero.webp" alt="メイン写真">
@@ -31,7 +31,7 @@
           <div class="intro-cont">
             <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="ダイヤモンドファミリークラブ"></div>
             <div class="text">
-              <span v-if="isDisplay">大手結婚相談所にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。
+              <span v-if="isDisplay">三菱の結婚相談所「ダイヤモンドファミリークラブ」にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。
               20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。</span>
               「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？少しだけ勇気を出して始めてみたら、あなたの未来が変わります！オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。
             </div>

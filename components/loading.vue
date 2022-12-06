@@ -17,23 +17,23 @@
       <h1 class="page-title">
         <div class="page-title__block">
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('お客様の個性にあわせた')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('あなたの真剣な想い')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('最高の婚活を')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('サポートします')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
         </div>
-        <div class="page-title__block">
+        <!-- <div class="page-title__block">
           <div class="page-title__block--sp">
             <span class="page-title__character" v-for="text in Array.from('全力でサポートします')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
-        </div>
+        </div> -->
       </h1>
     </div>
   </div>

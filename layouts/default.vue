@@ -260,8 +260,8 @@ onUnmounted(() => {
       +text-subtitle(10px)
       color: currentColor
       
-      +sp-view
-        display: none
+      // +sp-view
+      //   display: none
 
     > .logo-main
       +text-logo(36px)
