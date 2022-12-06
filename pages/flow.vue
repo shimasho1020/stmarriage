@@ -277,7 +277,6 @@ onMounted(() => {
   })
 })
 
-
 onBeforeUnmount(() => {
   myObserver.value.unobserve(pageObserver.value)
   
