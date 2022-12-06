@@ -31,9 +31,9 @@
           <div class="intro-cont">
             <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="ダイヤモンドファミリークラブ"></div>
             <div class="text">
-              <span v-if="isDisplay">三菱の結婚相談所「ダイヤモンドファミリークラブ」にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。
-              20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。</span>
-              「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？少しだけ勇気を出して始めてみたら、あなたの未来が変わります！オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。
+              三菱の結婚相談所「ダイヤモンドファミリークラブ」にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。
+              20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。
+              <span v-if="isDisplay">「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？少しだけ勇気を出して始めてみたら、あなたの未来が変わります！オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。</span>
             </div>
             <div class="img_block right"><img class="img" src="~/assets/images/clean_bouquet.webp" alt="ダイヤモンドファミリークラブ"></div>
           </div>
@@ -74,14 +74,12 @@
             <div class="case-item empty"></div>
           </div>
           <div class="link-block">
-            <div class="link-wrap">
-              <nuxt-link class="list-link" to="/interview">
-                <div class="list-link-wrap" ref="linkPos3">
-                  <span class="list-link-text inline-block">インタービューを全て見る</span>
-                </div>
-                <ArrowImage class="right-arrow" direction="right"></ArrowImage>
-              </nuxt-link>
-            </div>
+            <nuxt-link class="list-link" to="/interview">
+              <div class="list-link-wrap" ref="linkPos3">
+                <span class="list-link-text inline-block">インタービューを全て見る</span>
+              </div>
+              <ArrowImage class="right-arrow" direction="right"></ArrowImage>
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -540,6 +538,9 @@ onBeforeUnmount(() => {
         opacity: 0,
         transform: translateY(40px)
 
+        +sp-view
+          margin: 0 0 20px
+
         > .title
           +text-title(64px)
 
@@ -669,39 +670,46 @@ onBeforeUnmount(() => {
                   +text-subtitle(16px)
 
         > .link-block
-          text-align: right
+          text-align: center
           opacity: 0,
           transform: translateY(40px)
+          border-radius: 25px
+          background-color: var(--main)
+          width: 70%
+          margin: auto
 
-          > .link-wrap
-            display: inline-block
+          +sp-view
+            width: 100%
 
-            > .list-link
+          > .list-link
+            display: flex
+            align-items: center
+            justify-content: center
+            gap: 8px
+
+            > .list-link-wrap
+              overflow: hidden
               display: flex
               align-items: center
-              gap: 15px
+              height: 40px
 
-              > .list-link-wrap
-                overflow: hidden
-                display: flex
-                align-items: center
 
-                >.list-link-text
-                  +text-title(32px)
-                  display: inline-block
-                  // padding-right: 24px
-                  white-space: nowrap
-
-                  +sp-view
-                    +text-title(24px)
-
-              > .right-arrow
-                height: 11px
-                width: 27px
-                color: var(--main)
+              >.list-link-text
+                +text-title(24px)
+                color: var(--white-1)
+                display: inline-block
+                // padding-right: 24px
+                white-space: nowrap
+                // line-height: 1.5
 
                 +sp-view
-                  +text-title(32px)
+                  +text-title(18px)
+                  color: var(--white-1)
+
+            > .right-arrow
+              height: 11px
+              width: 27px
+              color: var(--white-1)
 
     &.--3
       background-color: var(--main)
@@ -815,7 +823,8 @@ onBeforeUnmount(() => {
                 margin-bottom: 20px
 
                 +sp-view
-                  font-size: 24px
+                  font-size: 18px
+                  line-height: 1.5
 
               > .self-table
                 width: 100%
@@ -827,6 +836,7 @@ onBeforeUnmount(() => {
 
                 +sp-view
                   width: 100%
+                  margin: 0 
                 
                 > .text
                   width: 100%
@@ -890,9 +900,11 @@ onBeforeUnmount(() => {
                 margin: 0 0 80px
                 opacity: 0,
                 transform: translateY(40px)
+                line-height: 1.5
 
                 +sp-view
-                  font-size: 28px
+                  font-size: 24px
+                  margin: 0 0 40px
 
               > .content_wrap
                 display: flex
@@ -1026,7 +1038,7 @@ onBeforeUnmount(() => {
                 -webkit-text-fill-color: transparent
 
                 +sp-view
-                  +text-title(30px)
+                  +text-title(28px)
 
               > .top-our_strengths__container--about
                 +text-body(20px)
