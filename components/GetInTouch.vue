@@ -4,7 +4,7 @@
       <nuxt-link to="/contact" class="contact-link">
         <p class="contact-link__text">
           <span class="inline-block big">Contact Form</span>
-          <span class="inline-block small">無料相談フォーム</span>
+          <span class="inline-block small">無料相談フォームはこちら</span>
         </p>
       </nuxt-link>
     </div>
@@ -14,7 +14,7 @@
       <nuxt-link to="/contact" class="contact-link">
         <p class="contact-link__text">
           <span class="inline-block big">Contact Form</span>
-          <span class="inline-block small">無料相談フォーム</span>
+          <span class="inline-block small">無料相談フォームはこちら</span>
         </p>
       </nuxt-link>
     </div>
