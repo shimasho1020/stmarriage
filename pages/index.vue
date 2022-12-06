@@ -4,7 +4,7 @@
       <h1 class="page-title">
         <div class="page-title__block">
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('あなたの真剣な想い')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('あなたの真剣な想いを')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
