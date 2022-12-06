@@ -302,7 +302,6 @@ onBeforeUnmount(() => {
 
 .body
   padding: 64px 0
-
   > .menu
     width: calc(100% - 160px)
     min-width: calc(100% - 10vw)
