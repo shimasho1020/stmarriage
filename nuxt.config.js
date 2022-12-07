@@ -56,6 +56,7 @@ export default {
     '@/plugins/routerOptions.js',
     '@/plugins/firebase.js',
     { src: '~/plugins/vuejs-datepicker.js', mode: 'client', ssr: false },
+    { src: '~/plugins/VueAwesomeSwiper.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

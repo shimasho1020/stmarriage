@@ -49,7 +49,20 @@
             <p class="title__sub">ご成婚者様からの声</p>
           </div>
           <div class="case_list">
-            <nuxt-link
+            <div class="slide_wrap">
+              <VueSlickCarousel class="slide" v-bind="settings">
+                <div class="hero-background" v-for="n of 3" :key="n">
+                  <img src="~/assets/images/wedding_hall.webp" class="img" alt="満足度">
+                </div>
+                <!-- <div class="hero-background image2">
+                  <img src="~/assets/images/wedding_hall.webp" class="img" alt="満足度">
+                </div>
+                <div class="hero-background image3">
+                  <img src="~/assets/images/ShimadaTomoko.webp" class="img" alt="満足度">
+                </div> -->
+              </VueSlickCarousel>
+            </div>
+            <!-- <nuxt-link
                 class="case-item case-wrap"
                 v-for="(item, index) of displayCaseList"
                 :to="`/interview/${item.id}`"
@@ -69,7 +82,7 @@
                   </p>
                 </div>
               </div>
-            </nuxt-link>
+            </nuxt-link> -->
             <div class="case-item empty"></div>
             <div class="case-item empty"></div>
           </div>
@@ -235,6 +248,11 @@ import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount
 import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where, limit } from "firebase/firestore"
 import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList,Interview, Interviewer, DisplayInterviewer } from '~/types/index'
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+// optional style for arrows & dots
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+
 const trigger: string[] = [
   '.intro',
   '.section_title_block.--1',
@@ -254,6 +272,22 @@ const trigger: string[] = [
   '.access-comment',
   '.access-map',
 ]
+const settings = {
+  "fade": true,
+  "arrows": false,
+  "dots": false,
+  "infinite": true,
+  "slidesToShow": 1,
+  "slidesToScroll": 1,
+  "autoplay": true,
+  "speed": 1000,
+  "autoplaySpeed": 3000,
+  // "cssEase": "linear",
+  "swipe": false,
+  "pauseOnHover": false
+}
+
+
 const { app, store } = useContext()
 let isDisplay = computed(() => {
   return store.getters['pageWidth'] ? store.getters['pageWidth'] >= 750 : true
@@ -353,6 +387,28 @@ onBeforeUnmount(() => {
 
 
 <style lang="sass" scoped>
+.slide_wrap
+  width: 100%
+  display: none
+  +sp-view
+    display: block
+.slide
+  width: 100%
+  height: 400px
+.hero-background
+  width: 100%
+  height: 400px
+  background-size: cover
+  // &.image1
+  //   background-image: url("/images/sample_couple_1.webp")
+  // &.image2
+  //   background-image: url("/images/sample_couple_2.webp")
+  // &.image3
+  //   background-image: url("/images/sample_couple_3.webp")
+  > .img
+    width: 100%
+    height: 400px
+    object-fit: cover
 .hero
   position: relative
   > .page-title
@@ -554,7 +610,7 @@ onBeforeUnmount(() => {
           +sp-view
             width: 100%
             flex-direction: column
-          > .case-item
+          .case-item
             min-width: 280px
             flex: 1
             margin-bottom: 40px
@@ -568,10 +624,10 @@ onBeforeUnmount(() => {
             +sp-view
               min-width: 240px
               
-              &:nth-child(2)
-                display: none
-              &:nth-child(3)
-                display: none
+              // &:nth-child(2)
+              //   display: none
+              // &:nth-child(3)
+              //   display: none
             > .case-card
               width: 100%
               
