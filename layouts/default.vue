@@ -5,7 +5,7 @@
             ref="pageHeader"
             id="header">
       <nuxt-link @click.native.prevent="nuxtLinkTrigger" to="/" class="logo" :class="{'top-page': $route.name === 'index'}">
-        <div class="logo-sub">日本結婚所連盟（ＩＢＪ）　正規加盟店</div>
+        <div class="logo-sub">日本結婚所連盟（ＩＢＪ）正規加盟店</div>
         <div class="logo-main">セントマリアージュ青山</div>
       </nuxt-link>
       <div class="menu pc pc-header" id="header-menu-pc" :class="{'top-page': $route.name === 'index'}">
@@ -257,19 +257,19 @@ onUnmounted(() => {
       color: var(--main)
 
     > .logo-sub
-      +text-subtitle(10px)
+      +text-subtitle(12px)
       color: currentColor
       
-      +sp-view
-        display: none
+      // +sp-view
+      //   display: none
 
     > .logo-main
-      +text-logo(36px)
+      +text-logo(40px)
       color: currentColor
       // text-shadow: 1px 1px 1px rgb(255, 255, 255),-1px -1px 1px rgb(255, 255, 255)
 
       +sp-view
-        +text-title(28px)
+        +text-title(24px)
         color: currentColor
 
 
@@ -339,9 +339,9 @@ onUnmounted(() => {
       +sp-view
         display: block
         position: relative
-        width: 20px
-        height: 1px
-        padding: 20px 0
+        width: 24px
+        height: 2px
+        padding: 24px 0
         cursor: pointer
         color: var(--white-1)
 
@@ -353,7 +353,7 @@ onUnmounted(() => {
           content: ''
           width: 100%
           display: block
-          height: 1px
+          height: 2px
           background: currentColor
           transform: rotate(0deg)
 

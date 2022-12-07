@@ -62,7 +62,7 @@
           <h2 class="section_title" data-number="02">ご入会手続き</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="~/assets/images/marriage-gate.webp" alt="ステップ2">
+              <img class="img" src="~/assets/images/flow_consulting.webp" alt="ステップ2">
             </div>
             <div class="body_block">
               <div class="text">
@@ -91,7 +91,7 @@
           <h2 class="section_title" data-number="03">プロフィール作成、写真撮影</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="~/assets/images/flow_phone.webp" alt="ステップ3">
+              <img class="img" src="~/assets/images/flow_photo_studio.webp" alt="ステップ3">
             </div>
             <div class="body_block">
               <div class="text">
@@ -107,7 +107,7 @@
           <h2 class="section_title" data-number="01">お相手探し</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="~/assets/images/flow_desktop.webp" alt="ステップ4">
+              <img class="img" src="~/assets/images/flow_matching.webp" alt="ステップ4">
             </div>
             <div class="body_block">
               <div class="text">
@@ -124,7 +124,7 @@
           <h2 class="section_title" data-number="02">お見合い</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="~/assets/images/flow_matching.webp" alt="ステップ5">
+              <img class="img" src="~/assets/images/flow_first_contact.webp" alt="ステップ5">
             </div>
             <div class="body_block">
               <div class="text">
@@ -140,7 +140,7 @@
           <h2 class="section_title" data-number="03">プレ交際（～交際2か月頃まで）</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="~/assets/images/flow_pre.webp" alt="ステップ6">
+              <img class="img" src="~/assets/images/flow_pre_dating.webp" alt="ステップ6">
             </div>
             <div class="body_block">
               <div class="text">
@@ -156,7 +156,7 @@
           <h2 class="section_title" data-number="04">真剣交際（交際２カ月頃～）</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="~/assets/images/flow_dating.webp" alt="ステップ7">
+              <img class="img" src="~/assets/images/flow_pre.webp" alt="ステップ7">
             </div>
             <div class="body_block">
               <div class="text">
@@ -172,7 +172,7 @@
           <h2 class="section_title" data-number="05">プロポーズ</h2>
           <div class="section_body">
             <div class="body_img">
-              <img class="img" src="~/assets/images/propose.webp" alt="ステップ8">
+              <img class="img" src="~/assets/images/flow_propose.webp" alt="ステップ8">
             </div>
             <div class="body_block">
               <div class="text">
@@ -414,10 +414,30 @@ onBeforeUnmount(() => {
             gap: 20px
 
           > .body_img
-            flex: 0 0 45%
-            > .img
+            position: relative
+            flex: 0 0 40%
+            overflow: hidden
+            border-radius: 20px
+            height: fit-content
+
+
+            +sp-view
               width: 100%
-              border-radius: 15px
+              border-radius: 20px 
+
+            &::before
+              content:""
+              display: block
+              padding-top: 70%
+
+            > .img
+              display: block
+              position: absolute
+              height: 100%
+              width: 100%
+              object-fit: cover
+              top: 0
+              bottom: 0
 
           > .body_block
             padding: 20px 

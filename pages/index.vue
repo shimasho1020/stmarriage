@@ -4,23 +4,23 @@
       <h1 class="page-title">
         <div class="page-title__block">
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('お客様の個性にあわせた')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('あなたの真剣な想いを')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('最高の婚活を')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('サポートします')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
         </div>
-        <div class="page-title__block">
+        <!-- <div class="page-title__block">
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('全力でサポートします')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('サポートします')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
-        </div>
+        </div> -->
       </h1>
       <div class="img_block" >
         <img class="hero_img" src="~/assets/images/jewelry_hero.webp" alt="メイン写真">
@@ -31,9 +31,9 @@
           <div class="intro-cont">
             <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="ダイヤモンドファミリークラブ"></div>
             <div class="text">
-              <span v-if="isDisplay">三菱の結婚相談所「ダイヤモンドファミリークラブ」にて、多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。
-              20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。</span>
-              「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？少しだけ勇気を出して始めてみたら、あなたの未来が変わります！オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。
+              三菱の結婚相談所「ダイヤモンドファミリークラブ」にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。
+              20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。
+              <span v-if="isDisplay">「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？少しだけ勇気を出して始めてみたら、あなたの未来が変わります！オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。</span>
             </div>
             <div class="img_block right"><img class="img" src="~/assets/images/clean_bouquet.webp" alt="ダイヤモンドファミリークラブ"></div>
           </div>
@@ -44,7 +44,7 @@
       <div class="section --1">
         <div class="section-wrap">
           <div class="section_title_block --1">
-            <h1 class="title">Interview</h1>
+            <h1 class="title">ご成婚者様からの声</h1>
             <div class="title__border"></div>
             <p class="title__sub">ご成婚者様からの声</p>
           </div>
@@ -74,21 +74,19 @@
             <div class="case-item empty"></div>
           </div>
           <div class="link-block">
-            <div class="link-wrap">
-              <nuxt-link class="list-link" to="/interview">
-                <div class="list-link-wrap" ref="linkPos3">
-                  <span class="list-link-text inline-block">インタービューを全て見る</span>
-                </div>
-                <ArrowImage class="right-arrow" direction="right"></ArrowImage>
-              </nuxt-link>
-            </div>
+            <nuxt-link class="list-link" to="/interview">
+              <div class="list-link-wrap" ref="linkPos3">
+                <span class="list-link-text inline-block">インタービューを全て見る</span>
+              </div>
+              <ArrowImage class="right-arrow" direction="right"></ArrowImage>
+            </nuxt-link>
           </div>
         </div>
       </div>
       <div class="section --3">
         <div class="section-wrap">
           <div class="section_title_block --3">
-            <h1 class="title">Self Introduction</h1>
+            <h1 class="title"><span class="inline-block">カウンセラーからの</span><span class="inline-block">ご挨拶</span></h1>
             <div class="title__border"></div>
             <p class="title__sub">カウンセラーからのご挨拶</p>
           </div>
@@ -105,8 +103,8 @@
                 </div>
               </div>
               <div class="self-body">
-                <div class="self-comment 1">入会1ヵ月以内のお見合い成立率100%</div>
-                <div class="self-comment 2">入会1カ月以内の交際成立率93%</div>
+                <div class="self-comment 1"><span class="inline-block">入会1ヵ月以内のお見合い成立率</span><span class="big_font inline-block">100%</span></div>
+                <div class="self-comment 2"><span class="inline-block">入会1カ月以内の交際成立率</span><span class="big_font inline-block">93%</span></div>
                 <div class="self-table">
                   <div class="text">※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
                   <div class="table --1">
@@ -171,7 +169,7 @@
       <div class="section --4">
         <div class="section-wrap">
           <div class="section_title_block --4">
-            <h1 class="title">Strangth</h1>
+            <h1 class="title">選ばれる理由</h1>
             <div class="title__border"></div>
             <p class="title__sub">選ばれる理由</p>
           </div>
@@ -210,7 +208,7 @@
       <div class="section --5">
         <div class="section-wrap">
           <div class="section_title_block --5">
-            <h1 class="title">Access</h1>
+            <h1 class="title">アクセス</h1>
             <div class="title__border"></div>
             <p class="title__sub">アクセス</p>
           </div>
@@ -528,7 +526,7 @@ onBeforeUnmount(() => {
       padding: 40px 0 80px
 
       +sp-view
-        padding: 80px 0 80px
+        padding: 60px 0 60px
 
       > .section_title_block
         display: flex
@@ -540,12 +538,33 @@ onBeforeUnmount(() => {
         opacity: 0,
         transform: translateY(40px)
 
+        +sp-view
+          margin: 0 0 20px
+
+        // > .title
+        //   +text-title(64px)
+
+        //   +sp-view
+        //     width: 100%
+        //     +text-title(48px)
         > .title
-          +text-title(64px)
+          +text-subtitle(40px)
+          position: relative
+          text-align: center
+          margin: 0 0 20px
 
           +sp-view
-            width: 100%
-            +text-title(48px)
+            +text-subtitle(32px)
+
+          &::before 
+            position: absolute
+            bottom: -10px
+            left: calc(50% - 50px)
+            width: 100px
+            height: 5px
+            content: ''
+            border-radius: 3px
+            background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
 
         > .title__border
           width: 70px
@@ -553,6 +572,7 @@ onBeforeUnmount(() => {
           background: var(--main)
           transform: rotate(-33deg)
           margin: 50px 20px 0
+          display: none
 
           +sp-view
             transform: rotate(0)
@@ -561,6 +581,7 @@ onBeforeUnmount(() => {
         > .title__sub
           +text-subtitle(20px)
           margin-top: 60px
+          display: none
 
           +sp-view
             +text-subtitle(16px)
@@ -669,39 +690,46 @@ onBeforeUnmount(() => {
                   +text-subtitle(16px)
 
         > .link-block
-          text-align: right
+          text-align: center
           opacity: 0,
           transform: translateY(40px)
+          border-radius: 25px
+          background-color: var(--main)
+          width: 70%
+          margin: auto
 
-          > .link-wrap
-            display: inline-block
+          +sp-view
+            width: 100%
 
-            > .list-link
+          > .list-link
+            display: flex
+            align-items: center
+            justify-content: center
+            gap: 8px
+
+            > .list-link-wrap
+              overflow: hidden
               display: flex
               align-items: center
-              gap: 15px
+              height: 40px
 
-              > .list-link-wrap
-                overflow: hidden
-                display: flex
-                align-items: center
 
-                >.list-link-text
-                  +text-title(32px)
-                  display: inline-block
-                  // padding-right: 24px
-                  white-space: nowrap
-
-                  +sp-view
-                    +text-title(24px)
-
-              > .right-arrow
-                height: 11px
-                width: 27px
-                color: var(--main)
+              >.list-link-text
+                +text-title(24px)
+                color: var(--white-1)
+                display: inline-block
+                // padding-right: 24px
+                white-space: nowrap
+                // line-height: 1.5
 
                 +sp-view
-                  +text-title(32px)
+                  +text-title(18px)
+                  color: var(--white-1)
+
+            > .right-arrow
+              height: 11px
+              width: 27px
+              color: var(--white-1)
 
     &.--3
       background-color: var(--main)
@@ -815,7 +843,12 @@ onBeforeUnmount(() => {
                 margin-bottom: 20px
 
                 +sp-view
-                  font-size: 24px
+                  font-size: 22px
+                  line-height: 1.5
+                
+                > .big_font
+                  font-size: 30px
+                  display: inline-block
 
               > .self-table
                 width: 100%
@@ -827,6 +860,7 @@ onBeforeUnmount(() => {
 
                 +sp-view
                   width: 100%
+                  margin: 0 
                 
                 > .text
                   width: 100%
@@ -890,9 +924,11 @@ onBeforeUnmount(() => {
                 margin: 0 0 80px
                 opacity: 0,
                 transform: translateY(40px)
+                line-height: 1.5
 
                 +sp-view
-                  font-size: 28px
+                  font-size: 24px
+                  margin: 0 0 40px
 
               > .content_wrap
                 display: flex
@@ -1026,7 +1062,7 @@ onBeforeUnmount(() => {
                 -webkit-text-fill-color: transparent
 
                 +sp-view
-                  +text-title(30px)
+                  +text-title(28px)
 
               > .top-our_strengths__container--about
                 +text-body(20px)
