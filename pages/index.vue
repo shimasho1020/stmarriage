@@ -992,6 +992,7 @@ onBeforeUnmount(() => {
                       color: var(--white-1)
                       margin-bottom: 20%
 
+  
     &.--4
       background-color: var(--white-1)
       > .section-wrap
