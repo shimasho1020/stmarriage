@@ -111,7 +111,7 @@
             </div>
             <div class="body_block">
               <div class="text">
-                約8,000名の会員の中からプロフィールやお見合い写真などで気になる相手を探し、お見合い申込をしましょう。<br>
+                約8,0000名の会員様の中からプロフィールやお見合い写真などで気になる相手を探し、お見合い申込をしましょう。<br>
                 パソコンやスマートフォンのアプリから、いつでもどこでもお相手を検索できるので効率的に出会えます。検索以外に、カウンセラーからの紹介も受けられるサービスもあります。
               </div>
             </div>
@@ -279,7 +279,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   myObserver.value.unobserve(pageObserver.value)
-  
+
   flowBarAnim.value.scrollTrigger?.disable()
   barAnim.value.forEach(value => {
     value.scrollTrigger?.disable()
