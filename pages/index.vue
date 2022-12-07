@@ -4,23 +4,23 @@
       <h1 class="page-title">
         <div class="page-title__block">
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('お客様の個性にあわせた')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('あなたの真剣な想いを')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('最高の婚活を')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('サポートします')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
         </div>
-        <div class="page-title__block">
+        <!-- <div class="page-title__block">
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('全力でサポートします')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('サポートします')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
-        </div>
+        </div> -->
       </h1>
       <div class="img_block" >
         <img class="hero_img" src="~/assets/images/jewelry_hero.webp" alt="メイン写真">
@@ -31,9 +31,9 @@
           <div class="intro-cont">
             <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="ダイヤモンドファミリークラブ"></div>
             <div class="text">
-              <span v-if="isDisplay">大手結婚相談所にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。
-              20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。</span>
-              「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？少しだけ勇気を出して始めてみたら、あなたの未来が変わります！オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。
+              三菱の結婚相談所「ダイヤモンドファミリークラブ」にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。
+              20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。
+              <span v-if="isDisplay">「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？少しだけ勇気を出して始めてみたら、あなたの未来が変わります！オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。</span>
             </div>
             <div class="img_block right"><img class="img" src="~/assets/images/clean_bouquet.webp" alt="ダイヤモンドファミリークラブ"></div>
           </div>
@@ -44,7 +44,7 @@
       <div class="section --1">
         <div class="section-wrap">
           <div class="section_title_block --1">
-            <h1 class="title">Interview</h1>
+            <h1 class="title">ご成婚者様からの声</h1>
             <div class="title__border"></div>
             <p class="title__sub">ご成婚者様からの声</p>
           </div>
@@ -74,21 +74,19 @@
             <div class="case-item empty"></div>
           </div>
           <div class="link-block">
-            <div class="link-wrap">
-              <nuxt-link class="list-link" to="/interview">
-                <div class="list-link-wrap" ref="linkPos3">
-                  <span class="list-link-text inline-block">インタービューを全て見る</span>
-                </div>
-                <ArrowImage class="right-arrow" direction="right"></ArrowImage>
-              </nuxt-link>
-            </div>
+            <nuxt-link class="list-link" to="/interview">
+              <div class="list-link-wrap" ref="linkPos3">
+                <span class="list-link-text inline-block">インタービューを全て見る</span>
+              </div>
+              <ArrowImage class="right-arrow" direction="right"></ArrowImage>
+            </nuxt-link>
           </div>
         </div>
       </div>
       <div class="section --3">
         <div class="section-wrap">
           <div class="section_title_block --3">
-            <h1 class="title">Self Introduction</h1>
+            <h1 class="title"><span class="inline-block">カウンセラーからの</span><span class="inline-block">ご挨拶</span></h1>
             <div class="title__border"></div>
             <p class="title__sub">カウンセラーからのご挨拶</p>
           </div>
@@ -105,8 +103,8 @@
                 </div>
               </div>
               <div class="self-body">
-                <div class="self-comment 1">入会1ヵ月以内のお見合い成立率100%</div>
-                <div class="self-comment 2">入会1カ月以内の交際成立率93%</div>
+                <div class="self-comment 1"><span class="inline-block">入会1ヵ月以内のお見合い成立率</span><span class="big_font inline-block">100%</span></div>
+                <div class="self-comment 2"><span class="inline-block">入会1カ月以内の交際成立率</span><span class="big_font inline-block">93%</span></div>
                 <div class="self-table">
                   <div class="text">※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
                   <div class="table --1">
@@ -171,7 +169,7 @@
       <div class="section --4">
         <div class="section-wrap">
           <div class="section_title_block --4">
-            <h1 class="title">Strangth</h1>
+            <h1 class="title">選ばれる理由</h1>
             <div class="title__border"></div>
             <p class="title__sub">選ばれる理由</p>
           </div>
@@ -210,7 +208,7 @@
       <div class="section --5">
         <div class="section-wrap">
           <div class="section_title_block --5">
-            <h1 class="title">Access</h1>
+            <h1 class="title">アクセス</h1>
             <div class="title__border"></div>
             <p class="title__sub">アクセス</p>
           </div>
@@ -237,8 +235,6 @@ import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount
 import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where, limit } from "firebase/firestore"
 import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList,Interview, Interviewer, DisplayInterviewer } from '~/types/index'
-
-
 const trigger: string[] = [
   '.intro',
   '.section_title_block.--1',
@@ -258,13 +254,10 @@ const trigger: string[] = [
   '.access-comment',
   '.access-map',
 ]
-
 const { app, store } = useContext()
-
 let isDisplay = computed(() => {
   return store.getters['pageWidth'] ? store.getters['pageWidth'] >= 750 : true
 })
-
 const interviewer = ref([] as DisplayInterviewer[])
 const displayCaseList = computed(() => {
   return interviewer.value.map((val, index) => {
@@ -280,11 +273,9 @@ const selectImg = (index: number):string => {
   else if(index == 1) {return '/images/sample_couple_2.webp'}
   else {return '/images/sample_couple_3.webp'}
 }
-
 useAsync(async () => {
   const q = query(collection(firestore, "interviewer"), where("isPublic", "==", true),where("caseList.isInterview", "==", true), limit(3))
   const querySnapshot = await getDocs(q)
-
   interviewer.value = querySnapshot.docs.map((doc) => {
   return {
       id: doc.id,
@@ -292,16 +283,12 @@ useAsync(async () => {
     }
   })
 })
-
 let circleAnim: gsap.core.Tween 
 let headerAnim = ref<gsap.core.Tween>({} as gsap.core.Tween)
 let fuwaAnim = ref<gsap.core.Tween[]>([])
-
 let isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled'])
-
 const myObserver = ref<ResizeObserver>({} as ResizeObserver)
 const pageObserver = ref()
-
 onMounted(() => {
   const resizeObserver = new ResizeObserver(entries => {
     for (const entry of entries) {
@@ -313,7 +300,6 @@ onMounted(() => {
   })
   myObserver.value = resizeObserver
   myObserver.value.observe(pageObserver.value)
-
   if(isLoadingEnabled.value) {
     store.dispatch('startLoading')
   }
@@ -339,7 +325,6 @@ onMounted(() => {
     onStart: () => store.commit('changeHeaderToBlue'),
     onReverseComplete: () => store.commit('changeHeaderToTrans'),
   })
-
   trigger.forEach(value => {
     let array: gsap.core.Tween = gsap.to(value, {
       scrollTrigger: {
@@ -355,10 +340,8 @@ onMounted(() => {
     fuwaAnim.value.push(array)
   })
 })
-
 onBeforeUnmount(() => {
   myObserver.value.unobserve(pageObserver.value)
-
   circleAnim.scrollTrigger?.disable()
   headerAnim.value.scrollTrigger?.disable()
   fuwaAnim.value.forEach(value => {
@@ -372,7 +355,6 @@ onBeforeUnmount(() => {
 <style lang="sass" scoped>
 .hero
   position: relative
-
   > .page-title
     position: absolute
     top: 50vh
@@ -384,11 +366,9 @@ onBeforeUnmount(() => {
     max-width: calc(100% - 10vw)
     +text-subtitle(54px)
     color: var(--sub)
-
     +sp-view
       +text-subtitle(27px)
       color: var(--sub)
-
     > .page-title__block
       display: flex
       flex-wrap: wrap
@@ -402,30 +382,24 @@ onBeforeUnmount(() => {
           > .page-title__child
             transform: translateY(32px)
             display: block
-
   > .img_block
     width: 100vw
     height: 100vh
     z-index: -50
     position: sticky
     top: 0
-
     > .hero_img
       width: 100%
       height: 100%
       object-fit: cover
-
       +sp-view
         object-position: 80% center
-
   > .intro
     padding: 240px 0 160px
     opacity: 0,
     transform: translateY(40px)
-
     +sp-view
       padding: 100px 0 80px
-
     > .intro-card
       width: 1080px
       max-width: calc(100% - 10vw)
@@ -438,10 +412,8 @@ onBeforeUnmount(() => {
       background-image: url("/images/frame-topleft.svg"), url("/images/frame-topright.svg"), url("/images/frame-bottomleft.svg"), url("/images/frame-bottomright.svg")
       background-position: left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
       background-size: 66px 66px
-
       +sp-view
         padding: 30px 30px 40px
-
       > .intro-title
         +text-title(36px)
         color: var(--sub)
@@ -450,11 +422,9 @@ onBeforeUnmount(() => {
         text-align: center
         margin-bottom: 10px
         padding: 0 17%
-
         +sp-view
           font-size: 24px
           padding: 0
-
         &::before,&::after 
           content: ''
           position: absolute
@@ -463,7 +433,6 @@ onBeforeUnmount(() => {
           width: 15%
           height: 2px
           background-color: #000875
-
           +sp-view
             display: none
           
@@ -473,23 +442,18 @@ onBeforeUnmount(() => {
         &::after 
           right: 0
           background: linear-gradient(-45deg, transparent, #000875 70%, #000875 90%, transparent)
-
       > .intro-cont
         display: flex
         justify-content: space-between
         align-items: center
-
         > .text
           +text-body(16px)
           padding: 0 20px
-
         > .img_block
           flex: 0 0 25%
           position: relative
-
           +sp-view
             display: none
-
           &::after
             content: ''
             position: absolute
@@ -497,7 +461,6 @@ onBeforeUnmount(() => {
             left: 0
             width: 100%
             height: 100%
-
           &.left
             &::after
               background-image: linear-gradient(90deg, transparent 0 60%, #FFF 100%), linear-gradient(0deg, transparent 0 60%, #FFF 100%)
@@ -510,7 +473,6 @@ onBeforeUnmount(() => {
             width: 100%
             height: 20vw
             object-fit: cover
-
 .body
   height: auto
   position: relative
@@ -526,10 +488,8 @@ onBeforeUnmount(() => {
       max-width: calc(100% - 10vw)
       position: relative
       padding: 40px 0 80px
-
       +sp-view
-        padding: 80px 0 80px
-
+        padding: 60px 0 60px
       > .section_title_block
         display: flex
         justify-content: center
@@ -539,29 +499,43 @@ onBeforeUnmount(() => {
         text-align: center
         opacity: 0,
         transform: translateY(40px)
-
+        +sp-view
+          margin: 0 0 20px
+        // > .title
+        //   +text-title(64px)
+        //   +sp-view
+        //     width: 100%
+        //     +text-title(48px)
         > .title
-          +text-title(64px)
-
+          +text-subtitle(40px)
+          position: relative
+          text-align: center
+          margin: 0 0 20px
           +sp-view
-            width: 100%
-            +text-title(48px)
-
+            +text-subtitle(32px)
+          &::before 
+            position: absolute
+            bottom: -10px
+            left: calc(50% - 50px)
+            width: 100px
+            height: 5px
+            content: ''
+            border-radius: 3px
+            background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
         > .title__border
           width: 70px
           height: 2px
           background: var(--main)
           transform: rotate(-33deg)
           margin: 50px 20px 0
-
+          display: none
           +sp-view
             transform: rotate(0)
             margin: 3% 0
-
         > .title__sub
           +text-subtitle(20px)
           margin-top: 60px
-
+          display: none
           +sp-view
             +text-subtitle(16px)
             width: 100%
@@ -577,24 +551,20 @@ onBeforeUnmount(() => {
           gap: 0 5px
           opacity: 0,
           transform: translateY(40px)
-
           +sp-view
             width: 100%
             flex-direction: column
-
           > .case-item
             min-width: 280px
             flex: 1
             margin-bottom: 40px
             border-radius: 8px
-
             &.empty
               width: 100%
               height: 0
               margin-bottom: 0px
               padding: 0px
               border-top: 0
-
             +sp-view
               min-width: 240px
               
@@ -602,7 +572,6 @@ onBeforeUnmount(() => {
                 display: none
               &:nth-child(3)
                 display: none
-
             > .case-card
               width: 100%
               
@@ -611,15 +580,12 @@ onBeforeUnmount(() => {
                 width: 100%
                 overflow: hidden
                 border-radius: 8px 8px 0px 0px
-
                 &::before
                   content:""
                   display: block
                   padding-top: 63%    // (縦220px / 横350px)より
-
                   +sp-view
                     display: none
-
                 > .case-item__image
                   display: block
                   position: absolute
@@ -627,12 +593,10 @@ onBeforeUnmount(() => {
                   width: 100%
                   top: 0
                   object-fit: cover
-
                   +sp-view
                     position: relative
                     height: auto
                     width: 100%
-
               > .card
                 display: block
                 background-color: white
@@ -641,68 +605,60 @@ onBeforeUnmount(() => {
                 width: 100%
                 border-radius: 0 0 8px 8px
                 padding: 30px
-
                 +sp-view
                   padding: 24px 5vw
-
                 > .__link
                   padding: 8px 0
                   display: flex
                   align-items: center
                   justify-content: space-between
-
                   > .__title
                     +text-title(24px)
-
                     +sp-view
                       +text-title(24px)
-
                   > .right-arrow
                     color: var(--main)
                 > .__logo
                   height: 32px
                   width: auto
                   margin-top: 12px
-
                 > .__title
                   margin-top: 12px
                   +text-subtitle(16px)
-
         > .link-block
-          text-align: right
+          text-align: center
           opacity: 0,
           transform: translateY(40px)
-
-          > .link-wrap
-            display: inline-block
-
-            > .list-link
+          border-radius: 25px
+          background-color: var(--main)
+          width: 70%
+          margin: auto
+          +sp-view
+            width: 100%
+          > .list-link
+            display: flex
+            align-items: center
+            justify-content: center
+            gap: 8px
+            > .list-link-wrap
+              overflow: hidden
               display: flex
               align-items: center
-              gap: 15px
-
-              > .list-link-wrap
-                overflow: hidden
-                display: flex
-                align-items: center
-
-                >.list-link-text
-                  +text-title(32px)
-                  display: inline-block
-                  // padding-right: 24px
-                  white-space: nowrap
-
-                  +sp-view
-                    +text-title(24px)
-
-              > .right-arrow
-                height: 11px
-                width: 27px
-                color: var(--main)
-
+              height: 40px
+              >.list-link-text
+                +text-title(24px)
+                color: var(--white-1)
+                display: inline-block
+                // padding-right: 24px
+                white-space: nowrap
+                // line-height: 1.5
                 +sp-view
-                  +text-title(32px)
-
+                  +text-title(18px)
+                  color: var(--white-1)
+            > .right-arrow
+              height: 11px
+              width: 27px
+              color: var(--white-1)
     &.--3
       background-color: var(--main)
       > .section-wrap
@@ -722,36 +678,28 @@ onBeforeUnmount(() => {
             gap: 60px
             margin: 20px 0 0
             padding: 20px
-
             +sp-view
               padding: 0
-
             > .self-pic
               flex: 0 0 30%
               opacity: 0,
               transform: translateY(40px)
-
               +sp-view
                 flex: 0 0 100%
-
               > .img_block
                 position: relative
                 width: 100%
                 border-radius: 20px
                 overflow: hidden
-
                 +sp-view
                   width: 80%
                   margin: auto
-
                 &::before
                   content:""
                   display: block
                   padding-top: 160%
-
                   +sp-view
                   padding-top: 140%
-
                 &::after
                   content: ''
                   position: absolute
@@ -761,7 +709,6 @@ onBeforeUnmount(() => {
                   height: 100%
                   background-image: linear-gradient(90deg, transparent 0 95%, var(--main) 100%), linear-gradient(0deg, transparent 0 95%, var(--main) 100%), linear-gradient(180deg, transparent 0 95%, var(--main) 100%), linear-gradient(270deg, transparent 0 95%, var(--main) 100%)
                   // background-image: linear-gradient(90deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(0deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(180deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(270deg, transparent 0 95%, white 95%, transparent 100%)
-
                 > .img
                   display: block
                   position: absolute
@@ -769,7 +716,6 @@ onBeforeUnmount(() => {
                   width: 100%
                   top: 0
                   object-fit: cover
-
             > .self-p
               +text-body(16px)
               color: var(--white-1)
@@ -778,14 +724,11 @@ onBeforeUnmount(() => {
               flex: 0 0 60%
               opacity: 0,
               transform: translateY(40px)
-
               +sp-view
                 flex: 0 0 100%
-
               > .self-p_wrap
                 // padding: 4% 5%
                 // background-color: var(--white-1)
-
                 &::after
                   content: ''
                   position: absolute
@@ -795,17 +738,13 @@ onBeforeUnmount(() => {
                   height: 100%
                   // background-image: linear-gradient(90deg, transparent 0 95%, var(--main) 100%), linear-gradient(0deg, transparent 0 95%, var(--main) 100%), linear-gradient(180deg, transparent 0 95%, var(--main) 100%), linear-gradient(270deg, transparent 0 95%, var(--main) 100%)
                   // background-image: linear-gradient(90deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(0deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(180deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(270deg, transparent 0 95%, white 95%, transparent 100%)
-
-
                 > .inline-block
                   // background-color: var(--white-1)
                   // padding: 20px 0
-
             > .self-body
               flex: 70%
               opacity: 0
               transform: translateY(40px)
-
               > .self-comment
                 text-align: center
                 +text-title(40px)
@@ -813,10 +752,13 @@ onBeforeUnmount(() => {
                 background-clip: text
                 -webkit-text-fill-color: transparent
                 margin-bottom: 20px
-
                 +sp-view
-                  font-size: 24px
-
+                  font-size: 22px
+                  line-height: 1.5
+                
+                > .big_font
+                  font-size: 30px
+                  display: inline-block
               > .self-table
                 width: 100%
                 margin: 40px auto
@@ -824,15 +766,14 @@ onBeforeUnmount(() => {
                 display: flex
                 justify-content: space-between
                 flex-wrap: wrap
-
                 +sp-view
                   width: 100%
+                  margin: 0 
                 
                 > .text
                   width: 100%
                   text-align: center
                   color: var(--white-1)
-
                 > .table
                   border-radius: 10px
                   padding: 20px
@@ -841,11 +782,9 @@ onBeforeUnmount(() => {
                   margin: auto
                   border: 1px solid var(--white-1)
                   background-color: white
-
                   +sp-view
                     width: 100%
                     margin: 0 0 20px
-
                   > .table_title
                     +text-title(24px)
                     color: var(--main)
@@ -877,7 +816,6 @@ onBeforeUnmount(() => {
                         &.th
                           background: var(--main)
                           color: var(--white-1)
-
             > .award_wrap
               > .award-title
                 text-align: center
@@ -890,44 +828,37 @@ onBeforeUnmount(() => {
                 margin: 0 0 80px
                 opacity: 0,
                 transform: translateY(40px)
-
+                line-height: 1.5
                 +sp-view
-                  font-size: 28px
-
+                  font-size: 24px
+                  margin: 0 0 40px
               > .content_wrap
                 display: flex
                 // flex-direction: column
                 justify-content: space-between
                 flex-wrap: wrap
                 row-gap: 40px
-
                 > .content_body
                   width: calc(50% - 30px)
                   opacity: 0,
                   transform: translateY(40px)
-
                   +sp-view
                     width: 100%
-
                   > .top-service__img
                     width: 40%
                     margin: auto
-
                     +sp-view
                       // width: 300px
                       // margin: auto
-
                     > .c-img
                       position: relative
                       width: 100%
                       border-radius: 20px
                       overflow: hidden
-
                       &::before
                         content:""
                         display: block
                         padding-top: 100%
-
                       > .c-img__img
                         display: block
                         position: absolute
@@ -938,7 +869,6 @@ onBeforeUnmount(() => {
                         box-shadow: 3px 3px 6px rgba(0,0,0,.6)
                         // margin: 5% 0 0 5%
                         z-index: 2
-
                   &.img
                     display: flex
                     // flex-direction: column
@@ -950,12 +880,10 @@ onBeforeUnmount(() => {
                     letter-spacing: .1em
                     line-height: 1.8em
                     // margin: 5% 0 0
-
                     +sp-view
                       +text-body(16px)
                       color: var(--white-1)
                       margin-bottom: 20%
-
     &.--4
       background-color: var(--white-1)
       > .section-wrap
@@ -966,11 +894,9 @@ onBeforeUnmount(() => {
           justify-content: space-between
           flex-wrap: wrap
           padding: 40px 0 0
-
           +sp-view
             gap: 40px
             padding: 0
-
           > .content_body
             width: 45%
             // transform: translateY(60px)
@@ -980,33 +906,27 @@ onBeforeUnmount(() => {
             padding: 10px
             opacity: 0
             transform: translateY(40px)
-
             +sp-view
               width: 100%
               display: flex
               flex-wrap: wrap-reverse
               gap: 10px
-
             > .top-our_strengths__container--body
               > .top-our_strengths__container--point
                 +text-title(40px)
                 background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
                 background-clip: text
                 -webkit-text-fill-color: transparent
-
                 +sp-view
                   &::after
                     margin: 3% 0 5%
-
                 &::before
                   content: "Point"
                   +text-subtitle(30px)
                   color: var(--sub)
                   margin-right: 10px
-
                   +sp-view
                     font-size: 20px
-
                 &::after
                   content: ""
                   width: 50px
@@ -1014,25 +934,20 @@ onBeforeUnmount(() => {
                   background: var(--sub)
                   display: block 
                   margin: 5% 0 8%
-
                   +sp-view
                     margin: 0% 0 8%
-
               > .top-our_strengths__container--heading
                 +text-title(36px)
                 line-height: 1.4em
                 background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
                 background-clip: text
                 -webkit-text-fill-color: transparent
-
                 +sp-view
-                  +text-title(30px)
-
+                  +text-title(28px)
               > .top-our_strengths__container--about
                 +text-body(20px)
                 line-height: 1.4em
                 margin: 8% 0 13%
-
                 +sp-view
                   margin:5% 0 5%
                   +text-body(16px)
@@ -1040,25 +955,20 @@ onBeforeUnmount(() => {
             > .top-our_strengths__container--img
               width: 95%
               // height: 25vw
-
               +sp-view
                 width: 65vw
                 // height: 40vw
                 margin: 0 0 0 auto
                 padding: 0 5% 0 0
-
               > .img_block
                 position: relative
                 width: 100%
-
                 &::before
                   content:""
                   display: block
                   padding-top: 100%
-
                   +sp-view
                   padding-top: 70%
-
                 &::after
                   content: ''
                   position: absolute
@@ -1067,7 +977,6 @@ onBeforeUnmount(() => {
                   width: 100%
                   height: 100%
                   background-image: linear-gradient(90deg, transparent 0 90%, var(--white-1) 100%), linear-gradient(0deg, transparent 0 90%, var(--white-1) 100%), linear-gradient(180deg, transparent 0 90%, var(--white-1) 100%), linear-gradient(270deg, transparent 0 90%, var(--white-1) 100%)
-
                 > .img
                   display: block
                   position: absolute
@@ -1081,11 +990,9 @@ onBeforeUnmount(() => {
       > .section-wrap
         width: 100%
         max-width: 100%
-
         +sp-view
           width: 1080px
           max-width: calc(100% - 10vw)
-
         > .access-comment
           text-align: center
           margin: 40px 0 40px
@@ -1099,5 +1006,4 @@ onBeforeUnmount(() => {
           object-fit: cover
           opacity: 0,
           transform: translateY(40px)
-
 </style>
