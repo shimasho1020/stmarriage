@@ -257,19 +257,16 @@ onUnmounted(() => {
       color: var(--main)
 
     > .logo-sub
-      +text-subtitle(10px)
+      +text-subtitle(12px)
       color: currentColor
-      
-      +sp-view
-        display: none
 
     > .logo-main
-      +text-logo(36px)
+      +text-logo(40px)
       color: currentColor
       // text-shadow: 1px 1px 1px rgb(255, 255, 255),-1px -1px 1px rgb(255, 255, 255)
 
       +sp-view
-        +text-title(28px)
+        +text-title(24px)
         color: currentColor
 
 
@@ -353,7 +350,7 @@ onUnmounted(() => {
           content: ''
           width: 100%
           display: block
-          height: 1px
+          height: 2px
           background: currentColor
           transform: rotate(0deg)
 

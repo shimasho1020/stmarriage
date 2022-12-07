@@ -582,7 +582,7 @@ onBeforeUnmount(() => {
             height: 5px
             content: ''
             border-radius: 3px
-            background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
+            background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
         > .title__border
           width: 70px
           height: 2px
@@ -737,6 +737,8 @@ onBeforeUnmount(() => {
         > .section_title_block
           > .title
             color: var(--white-1)
+            &::before 
+              background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
           > .title__border
             background: var(--white-1)
           > .title__sub
