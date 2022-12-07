@@ -44,7 +44,7 @@
       <div class="section --1">
         <div class="section-wrap">
           <div class="section_title_block --1">
-            <h1 class="title">Interview</h1>
+            <h1 class="title">ご成婚者様からの声</h1>
             <div class="title__border"></div>
             <p class="title__sub">ご成婚者様からの声</p>
           </div>
@@ -86,7 +86,7 @@
       <div class="section --3">
         <div class="section-wrap">
           <div class="section_title_block --3">
-            <h1 class="title">Self Introduction</h1>
+            <h1 class="title"><span class="inline-block">カウンセラーからの</span><span class="inline-block">ご挨拶</span></h1>
             <div class="title__border"></div>
             <p class="title__sub">カウンセラーからのご挨拶</p>
           </div>
@@ -103,8 +103,8 @@
                 </div>
               </div>
               <div class="self-body">
-                <div class="self-comment 1">入会1ヵ月以内のお見合い成立率100%</div>
-                <div class="self-comment 2">入会1カ月以内の交際成立率93%</div>
+                <div class="self-comment 1"><span class="inline-block">入会1ヵ月以内のお見合い成立率</span><span class="big_font inline-block">100%</span></div>
+                <div class="self-comment 2"><span class="inline-block">入会1カ月以内の交際成立率</span><span class="big_font inline-block">93%</span></div>
                 <div class="self-table">
                   <div class="text">※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
                   <div class="table --1">
@@ -169,7 +169,7 @@
       <div class="section --4">
         <div class="section-wrap">
           <div class="section_title_block --4">
-            <h1 class="title">Strangth</h1>
+            <h1 class="title">選ばれる理由</h1>
             <div class="title__border"></div>
             <p class="title__sub">選ばれる理由</p>
           </div>
@@ -208,7 +208,7 @@
       <div class="section --5">
         <div class="section-wrap">
           <div class="section_title_block --5">
-            <h1 class="title">Access</h1>
+            <h1 class="title">アクセス</h1>
             <div class="title__border"></div>
             <p class="title__sub">アクセス</p>
           </div>
@@ -526,7 +526,7 @@ onBeforeUnmount(() => {
       padding: 40px 0 80px
 
       +sp-view
-        padding: 80px 0 80px
+        padding: 60px 0 60px
 
       > .section_title_block
         display: flex
@@ -541,12 +541,30 @@ onBeforeUnmount(() => {
         +sp-view
           margin: 0 0 20px
 
+        // > .title
+        //   +text-title(64px)
+
+        //   +sp-view
+        //     width: 100%
+        //     +text-title(48px)
         > .title
-          +text-title(64px)
+          +text-subtitle(40px)
+          position: relative
+          text-align: center
+          margin: 0 0 20px
 
           +sp-view
-            width: 100%
-            +text-title(48px)
+            +text-subtitle(32px)
+
+          &::before 
+            position: absolute
+            bottom: -10px
+            left: calc(50% - 50px)
+            width: 100px
+            height: 5px
+            content: ''
+            border-radius: 3px
+            background-image: linear-gradient(135deg, #000875 0%, #176dee 50%,  #17aaee 100%, )
 
         > .title__border
           width: 70px
@@ -554,6 +572,7 @@ onBeforeUnmount(() => {
           background: var(--main)
           transform: rotate(-33deg)
           margin: 50px 20px 0
+          display: none
 
           +sp-view
             transform: rotate(0)
@@ -562,6 +581,7 @@ onBeforeUnmount(() => {
         > .title__sub
           +text-subtitle(20px)
           margin-top: 60px
+          display: none
 
           +sp-view
             +text-subtitle(16px)
@@ -823,8 +843,12 @@ onBeforeUnmount(() => {
                 margin-bottom: 20px
 
                 +sp-view
-                  font-size: 18px
+                  font-size: 22px
                   line-height: 1.5
+                
+                > .big_font
+                  font-size: 30px
+                  display: inline-block
 
               > .self-table
                 width: 100%
