@@ -51,18 +51,40 @@
           <div class="case_list">
             <div class="slide_wrap">
               <VueSlickCarousel class="slide" v-bind="settings">
-                <div class="hero-background" v-for="n of 3" :key="n">
-                  <img src="~/assets/images/wedding_hall.webp" class="img" alt="満足度">
+                <template #prevArrow="arrowOption">
+                  <div class="custom-arrow">
+                    {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
+                  </div>
+                </template>
+                <template #nextArrow="arrowOption">
+                  <div class="custom-arrow">
+                    {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
+                  </div>
+                </template>
+                <!-- <template #customPaging="page">
+                  <div class="custom-dot">
+                    {{ page.default }}
+                  </div>
+                </template> -->
+                <div class="case-item" v-for="n of 3" :key="n">
+                  <div class="case-card">
+                    <div class="case-item__image_block">
+                      <img class="case-item__image" :src="displayCaseList[n-1]?.url ?? ''" alt="インタビュー">
+                    </div>
+                    <div class="card">
+                      <div class="__link">
+                        <p class="__title"><span class="inline-block">{{displayCaseList[n-1]?.age ?? ''}}歳の{{displayCaseList[n-1]?.sex ?? ''}}会員様が</span><span class="inline-block">ご成婚されました！</span></p>
+                        <ArrowImage class="right-arrow" direction="right"></ArrowImage>
+                      </div>
+                      <p class="__title">
+                        <span class="inline-block">インタビュー内容はこちら</span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <!-- <div class="hero-background image2">
-                  <img src="~/assets/images/wedding_hall.webp" class="img" alt="満足度">
-                </div>
-                <div class="hero-background image3">
-                  <img src="~/assets/images/ShimadaTomoko.webp" class="img" alt="満足度">
-                </div> -->
               </VueSlickCarousel>
             </div>
-            <!-- <nuxt-link
+            <nuxt-link
                 class="case-item case-wrap"
                 v-for="(item, index) of displayCaseList"
                 :to="`/interview/${item.id}`"
@@ -82,7 +104,7 @@
                   </p>
                 </div>
               </div>
-            </nuxt-link> -->
+            </nuxt-link>
             <div class="case-item empty"></div>
             <div class="case-item empty"></div>
           </div>
@@ -273,9 +295,9 @@ const trigger: string[] = [
   '.access-map',
 ]
 const settings = {
-  "fade": true,
-  "arrows": false,
-  "dots": false,
+  "fade": false,
+  "arrows": true,
+  "dots": true,
   "infinite": true,
   "slidesToShow": 1,
   "slidesToScroll": 1,
@@ -283,8 +305,9 @@ const settings = {
   "speed": 1000,
   "autoplaySpeed": 3000,
   // "cssEase": "linear",
-  "swipe": false,
-  "pauseOnHover": false
+  "swipe": true,
+  "pauseOnHover": false,
+  // "dotsClass": "dots"
 }
 
 
@@ -373,6 +396,11 @@ onMounted(() => {
     })
     fuwaAnim.value.push(array)
   })
+
+  const el = document.getElementsByClassName('slick-dots')[0]  as HTMLElement
+  if(el){
+    el.style.bottom = "20px"
+  }
 })
 onBeforeUnmount(() => {
   myObserver.value.unobserve(pageObserver.value)
@@ -387,24 +415,6 @@ onBeforeUnmount(() => {
 
 
 <style lang="sass" scoped>
-.slide_wrap
-  width: 100%
-  display: none
-  +sp-view
-    display: block
-.slide
-  width: 100%
-  height: 400px
-.hero-background
-  width: 100%
-  height: 400px
-  background-size: cover
-  // &.image1
-  //   background-image: url("/images/sample_couple_1.webp")
-  // &.image2
-  //   background-image: url("/images/sample_couple_2.webp")
-  // &.image3
-  //   background-image: url("/images/sample_couple_3.webp")
   > .img
     width: 100%
     height: 400px
@@ -557,11 +567,6 @@ onBeforeUnmount(() => {
         transform: translateY(40px)
         +sp-view
           margin: 0 0 20px
-        // > .title
-        //   +text-title(64px)
-        //   +sp-view
-        //     width: 100%
-        //     +text-title(48px)
         > .title
           +text-subtitle(40px)
           position: relative
@@ -610,7 +615,23 @@ onBeforeUnmount(() => {
           +sp-view
             width: 100%
             flex-direction: column
-          .case-item
+
+          > .slide_wrap
+            display: none
+            width: 90%
+            margin: auto
+
+            +sp-view
+              display: block
+            > .slide
+              width: 100%
+              height: 400px
+
+            .slick-prev:before,.slick-next:before
+              color: var(--main) !important
+            .slick-dots
+              bottom: 100px !important
+          > .case-item
             min-width: 280px
             flex: 1
             margin-bottom: 40px
@@ -623,64 +644,58 @@ onBeforeUnmount(() => {
               border-top: 0
             +sp-view
               min-width: 240px
+              display: none
               
               // &:nth-child(2)
               //   display: none
               // &:nth-child(3)
               //   display: none
-            > .case-card
+          .case-card
+            width: 100%
+            > .case-item__image_block
+              position: relative
               width: 100%
-              
-              > .case-item__image_block
-                position: relative
-                width: 100%
-                overflow: hidden
-                border-radius: 8px 8px 0px 0px
-                &::before
-                  content:""
-                  display: block
-                  padding-top: 63%    // (縦220px / 横350px)より
-                  +sp-view
-                    display: none
-                > .case-item__image
-                  display: block
-                  position: absolute
-                  height: 100%
-                  width: 100%
-                  top: 0
-                  object-fit: cover
-                  +sp-view
-                    position: relative
-                    height: auto
-                    width: 100%
-              > .card
+              overflow: hidden
+              border-radius: 8px 8px 0px 0px
+              &::before
+                content:""
                 display: block
-                background-color: white
-                height: fit-content
-                flex-shrink: 0
+                padding-top: 63%    // (縦220px / 横350px)より
+              > .case-item__image
+                display: block
+                position: absolute
+                height: 100%
                 width: 100%
-                border-radius: 0 0 8px 8px
-                padding: 30px
-                +sp-view
-                  padding: 24px 5vw
-                > .__link
-                  padding: 8px 0
-                  display: flex
-                  align-items: center
-                  justify-content: space-between
-                  > .__title
-                    +text-title(24px)
-                    +sp-view
-                      +text-title(24px)
-                  > .right-arrow
-                    color: var(--main)
-                > .__logo
-                  height: 32px
-                  width: auto
-                  margin-top: 12px
+                top: 0
+                object-fit: cover
+            > .card
+              display: block
+              background-color: white
+              height: fit-content
+              flex-shrink: 0
+              width: 100%
+              border-radius: 0 0 8px 8px
+              padding: 30px
+              +sp-view
+                padding: 24px 5vw
+              > .__link
+                padding: 8px 0
+                display: flex
+                align-items: center
+                justify-content: space-between
                 > .__title
-                  margin-top: 12px
-                  +text-subtitle(16px)
+                  +text-title(24px)
+                  +sp-view
+                    +text-title(24px)
+                > .right-arrow
+                  color: var(--main)
+              > .__logo
+                height: 32px
+                width: auto
+                margin-top: 12px
+              > .__title
+                margin-top: 12px
+                +text-subtitle(16px)
         > .link-block
           text-align: center
           opacity: 0,

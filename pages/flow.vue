@@ -4,7 +4,7 @@
     <h1 class="title">ご入会からご結婚まで</h1>
   </div>
   <div class="body" id="href_1">
-    <div class="menu anim" v-if="isDisplay">
+    <div class="menu anim">
       <div class="flow">
         <a href="#href_1" class="text --1">無料相談</a>
         <div class="nextArrow_wrap"><nextArrow class="nextArrow"></nextArrow></div>
@@ -316,6 +316,10 @@ onBeforeUnmount(() => {
     position: sticky
     top: 75px
     z-index: 5
+    display: block
+
+    +sp-view
+      display: none
 
     > .flow
       display: flex
