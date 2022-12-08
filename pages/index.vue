@@ -492,7 +492,7 @@ onBeforeUnmount(() => {
       background-position: left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
       background-size: 66px 66px
       +sp-view
-        padding: 30px 18px 40px
+        padding: 30px 16px 40px
       > .intro-title
         +text-title(36px)
         color: var(--sub)
@@ -530,7 +530,7 @@ onBeforeUnmount(() => {
           padding: 0 20px
           text-align: left
           +sp-view
-            padding: 0
+            padding: 0 8px
         > .img_block
           flex: 0 0 25%
           position: relative
