@@ -760,6 +760,7 @@ onBeforeUnmount(() => {
             padding: 20px
             +sp-view
               padding: 0
+              gap: 40px
             > .self-pic
               flex: 0 0 30%
               opacity: 0,
