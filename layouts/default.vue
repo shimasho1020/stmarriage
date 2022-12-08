@@ -336,7 +336,7 @@ onUnmounted(() => {
       +sp-view
         display: block
         position: relative
-        width: 20px
+        width: 24px
         height: 1px
         padding: 20px 0
         cursor: pointer

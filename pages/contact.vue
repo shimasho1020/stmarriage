@@ -196,6 +196,8 @@ const resetForm = () => {
   color: #ff0000a0
 .p-contact
   padding: 40px 0 80px
+  +sp-view
+    padding: 0 0 40px
   > .p-contact__form
     width: 800px
     max-width: calc(100% - 10vw)
@@ -208,6 +210,8 @@ const resetForm = () => {
       text-align: center
       +text-title(40px)
       padding: 0 0 20px
+      +sp-view
+      +text-title(32px)
 
     > .p-contact__item
       padding: 20px 0 20px

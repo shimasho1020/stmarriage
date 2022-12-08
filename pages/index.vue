@@ -138,12 +138,12 @@
                 </div>
               </div>
               <div class="self-body">
-                <div class="self-comment 1"><span class="inline-block">入会1ヵ月以内のお見合い成立率</span><span class="big_font inline-block">100%</span></div>
-                <div class="self-comment 2"><span class="inline-block">入会1カ月以内の交際成立率</span><span class="big_font inline-block">93%</span></div>
+                <div class="self-comment 1"><span class="inline-block">入会1ヵ月以内のお見合い成立率</span><span class="big_font inline-block">&emsp;100%</span></div>
+                <div class="self-comment 2"><span class="inline-block">入会1カ月以内の交際成立率</span><span class="big_font inline-block">&emsp;93%</span></div>
                 <div class="self-table">
-                  <div class="text">※セントマリアージュ青山で活動中の会員様（2022年5月現在）</div>
+                  <div class="text">※IBJ及びセントマリアージュ青山で活動中の会員様（2022年10月現在）</div>
                   <div class="table --1">
-                    <h4 class="table_title">データ</h4>
+                    <h4 class="table_title">IBJの会員データ</h4>
                     <ul class="table_list">
                       <li class="list_item th">会員数</li>
                       <li class="list_item">80852名</li>
@@ -153,15 +153,15 @@
                       <li class="list_item">500～699万</li>
                     </ul>
                   </div>
-                  <div class="table --2">
-                    <h4 class="table_title">職業一覧</h4>
+                  <div class="table --1">
+                    <h4 class="table_title"><span class="inline-block">セントマリアージュ青山の</span><span class="inline-block">会員データ</span></h4>
                     <ul class="table_list">
-                      <li class="list_item">弁護士</li>
-                      <li class="list_item">サラリーマン</li>
-                      <li class="list_item">医師</li>
-                      <li class="list_item">公認会計士</li>
-                      <li class="list_item">金融</li>
-                      <li class="list_item">商社</li>
+                      <li class="list_item th">会員数</li>
+                      <li class="list_item">15人</li>
+                      <li class="list_item th">お見合い成立率</li>
+                      <li class="list_item">100%</li>
+                      <li class="list_item th">交際成立率</li>
+                      <li class="list_item">93%</li>
                     </ul>
                   </div>
                 </div>
@@ -247,7 +247,10 @@
             <div class="title__border"></div>
             <p class="title__sub">アクセス</p>
           </div>
-          <div class="access-comment">住所：〒107-0052東京都港区赤坂8-4-14　青山タワープレイス８F<br>（青山一丁目駅から徒歩3分）</div>
+          <div class="access-comment">
+            <span class="inline-block">住所：〒107-0052東京都港区赤坂8-4-14　青山タワープレイス８F（青山一丁目駅から徒歩3分）</span>
+            <span class="inline-block">電話番号：080-7002-0555</span>
+          </div>
           <div class="access-map">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.175124146428!2d139.72407744999748!3d35.672689687952186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d5e792882ab%3A0xc5ac8cc58a36ceef!2z6Z2S5bGx44K_44Ov44O844OX44Os44Kk44K5!5e0!3m2!1sja!2sjp!4v1657282738557!5m2!1sja!2sjp" 
             width="100%"
@@ -627,8 +630,12 @@ onBeforeUnmount(() => {
               width: 100%
               height: 400px
 
+            .slick-prev,.slick-next
+              width: 30px
+              z-index: 1
             .slick-prev:before,.slick-next:before
               color: var(--main) !important
+              font-size: 30px !important
             .slick-dots
               bottom: 100px !important
           > .case-item
@@ -830,8 +837,10 @@ onBeforeUnmount(() => {
                   line-height: 1.5
                 
                 > .big_font
-                  font-size: 30px
+                  font-size: 48px
                   display: inline-block
+                  +sp-view
+                    font-size: 30px
               > .self-table
                 width: 100%
                 margin: 40px auto
@@ -956,7 +965,6 @@ onBeforeUnmount(() => {
                     +sp-view
                       +text-body(16px)
                       color: var(--white-1)
-                      margin-bottom: 20%
     &.--4
       background-color: var(--white-1)
       > .section-wrap

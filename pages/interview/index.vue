@@ -21,9 +21,9 @@
               <div class="about">
                 <ol class="special_list">
                 <li>{{item.age}}歳{{item.sex}}</li>
-                <li>{{item.job}}</li>
+                <li v-if="item.job">{{item.job}}</li>
                 <li>活動期間{{item.term}}ヶ月</li>
-                <li>お相手は{{item.partnerAge}}歳{{changeSex(item.sex)}}</li>
+                <li v-if="item.partnerAge">お相手は{{item.partnerAge}}歳{{changeSex(item.sex)}}</li>
               </ol>
               </div>
               <div class="link_wrap">
