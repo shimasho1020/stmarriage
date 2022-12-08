@@ -876,6 +876,8 @@ onBeforeUnmount(() => {
                     line-height: 1.3
                     border-bottom: 1px solid var(--main)
                     padding-bottom: 10px
+                    +sp-view
+                      +text-title(20px)
                   > .table_list
                     display: flex
                     justify-content: space-between
@@ -891,6 +893,8 @@ onBeforeUnmount(() => {
                       border-radius: 5px
                       background: #efecdd
                       margin-bottom: 5px
+                      +sp-view
+                        font-size: 14px
                   
                   &.--1
                     > .table_list
