@@ -31,9 +31,11 @@
           <div class="intro-cont">
             <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="ダイヤモンドファミリークラブ"></div>
             <div class="text">
-              三菱の結婚相談所「ダイヤモンドファミリークラブ」にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。
-              20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。
-              <span v-if="isDisplay">「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？少しだけ勇気を出して始めてみたら、あなたの未来が変わります！オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。</span>
+              セントマリアージュ青山のホームページをご覧いただき、ありがとうございます。<br>
+              大手結婚相談所にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。<br>
+              20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。<br>
+              「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？　少しだけ勇気を出して始めてみたら、あなたの未来が変わります！<br>
+              オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。
             </div>
             <div class="img_block right"><img class="img" src="~/assets/images/clean_bouquet.webp" alt="ダイヤモンドファミリークラブ"></div>
           </div>
@@ -141,27 +143,27 @@
                 <div class="self-comment 1"><span class="inline-block">入会1ヵ月以内のお見合い成立率</span><span class="big_font inline-block">&emsp;100%</span></div>
                 <div class="self-comment 2"><span class="inline-block">入会1カ月以内の交際成立率</span><span class="big_font inline-block">&emsp;93%</span></div>
                 <div class="self-table">
-                  <div class="text">※IBJ及びセントマリアージュ青山で活動中の会員様（2022年10月現在）</div>
+                  <div class="text">※セントマリアージュ青山で活動中の会員様（2022年８月現在）</div>
                   <div class="table --1">
-                    <h4 class="table_title">IBJの会員データ</h4>
+                    <h4 class="table_title">会員データ</h4>
                     <ul class="table_list">
-                      <li class="list_item th">会員数</li>
-                      <li class="list_item">80852名</li>
-                      <li class="list_item th">最も多い会員層</li>
-                      <li class="list_item">35才～39才</li>
+                      <li class="list_item th">年齢層</li>
+                      <li class="list_item">20代半ば〜50代前半</li>
+                      <li class="list_item th">男女比</li>
+                      <li class="list_item">(約) 6対4</li>
                       <li class="list_item th">男性平均年収</li>
                       <li class="list_item">500～699万</li>
                     </ul>
                   </div>
-                  <div class="table --1">
-                    <h4 class="table_title"><span class="inline-block">セントマリアージュ青山の</span><span class="inline-block">会員データ</span></h4>
+                  <div class="table --2">
+                    <h4 class="table_title"><span class="inline-block">ご職業</span><span class="inline-block">(一例)</span></h4>
                     <ul class="table_list">
-                      <li class="list_item th">会員数</li>
-                      <li class="list_item">15人</li>
-                      <li class="list_item th">お見合い成立率</li>
-                      <li class="list_item">100%</li>
-                      <li class="list_item th">交際成立率</li>
-                      <li class="list_item">93%</li>
+                      <li class="list_item">三菱グループ各社</li>
+                      <li class="list_item">大手通信事業社</li>
+                      <li class="list_item">大手建設会社</li>
+                      <li class="list_item">大手金融機関</li>
+                      <li class="list_item">弁護士</li>
+                      <li class="list_item">看護師</li>
                     </ul>
                   </div>
                 </div>
@@ -240,7 +242,7 @@
           </ul>
         </div>
       </div>
-      <div class="section --5">
+      <div class="section --5" id="access">
         <div class="section-wrap">
           <div class="section_title_block --5">
             <h1 class="title">アクセス</h1>
@@ -248,11 +250,12 @@
             <p class="title__sub">アクセス</p>
           </div>
           <div class="access-comment">
-            <span class="inline-block">住所：〒107-0052東京都港区赤坂8-4-14　青山タワープレイス８F（青山一丁目駅から徒歩3分）</span>
-            <span class="inline-block">電話番号：080-7002-0555</span>
+            <span class="inline-block"><span style="font-weight: bold">【営業時間】</span> <span class="inline-block">平日 11:00～19:00</span> <span class="inline-block">&nbsp;土日祝11:00～18:00</span>&nbsp;※火曜日を除く</span>
+            <span class="inline-block"><span style="font-weight: bold">【所在地】</span> <span class="inline-block">〒107-0052</span><span class="inline-block">&nbsp;東京都港区赤坂4丁目8番19号</span><span class="inline-block">&nbsp;赤坂フロントタウン3階</span></span>
+            <span class="inline-block"><span style="font-weight: bold">【電話番号】</span> <span class="inline-block">080-7002-0555</span></span>
           </div>
           <div class="access-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.175124146428!2d139.72407744999748!3d35.672689687952186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d5e792882ab%3A0xc5ac8cc58a36ceef!2z6Z2S5bGx44K_44Ov44O844OX44Os44Kk44K5!5e0!3m2!1sja!2sjp!4v1657282738557!5m2!1sja!2sjp" 
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.036612253006!2d139.73172281533948!3d35.67610048019553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c7e44c75e5d%3A0x739a7864f075e711!2z44CSMTA3LTAwNTIg5p2x5Lqs6YO95riv5Yy66LWk5Z2C77yU5LiB55uu77yY4oiS77yR77yZIOi1pOWdguODleODreODs-ODiOOCv-OCpuODsyAz6ZqO!5e0!3m2!1sja!2sjp!4v1670508275711!5m2!1sja!2sjp"
             width="100%"
             height="400" 
             style="border:0;" 
@@ -482,7 +485,7 @@ onBeforeUnmount(() => {
       background-position: left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
       background-size: 66px 66px
       +sp-view
-        padding: 30px 30px 40px
+        padding: 30px 20px 40px
       > .intro-title
         +text-title(36px)
         color: var(--sub)
@@ -518,6 +521,9 @@ onBeforeUnmount(() => {
         > .text
           +text-body(16px)
           padding: 0 20px
+          // text-align: left
+          +sp-view
+            padding: 0
         > .img_block
           flex: 0 0 25%
           position: relative
@@ -894,7 +900,7 @@ onBeforeUnmount(() => {
                       background: #efecdd
                       margin-bottom: 5px
                       +sp-view
-                        font-size: 14px
+                        font-size: 12px
                   
                   &.--1
                     > .table_list
@@ -903,6 +909,10 @@ onBeforeUnmount(() => {
                         &.th
                           background: var(--main)
                           color: var(--white-1)
+                  &.--2
+                    > .table_list
+                      > .list_item
+                        color: var(--main)
             > .award_wrap
               > .award-title
                 text-align: center
@@ -1080,7 +1090,7 @@ onBeforeUnmount(() => {
           width: 1080px
           max-width: calc(100% - 10vw)
         > .access-comment
-          text-align: center
+          // text-align: center
           margin: 40px 0 40px
           +text-body(16px)
           opacity: 0,
