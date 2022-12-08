@@ -97,6 +97,9 @@ onUnmounted(() => {
     height: 550px
     overflow: hidden
 
+    +sp-view
+      height: 320px
+
     &.base
       z-index: 10
 
