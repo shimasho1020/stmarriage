@@ -35,6 +35,7 @@
           :class="{'top-page': $route.name === 'index'}"
       >
         <span></span>
+        <div class="menu_text">メニュー</div>
       </div>
     </header>
     </div>
@@ -348,6 +349,14 @@ onUnmounted(() => {
 
         &.top-page
           color: var(--main)
+
+        > .menu_text
+          +text-title(8px)
+          color: currentColor
+          position: absolute
+          top: 32px
+          right: -6px
+          white-space: nowrap
 
         > span, span:before, span:after
           position: absolute

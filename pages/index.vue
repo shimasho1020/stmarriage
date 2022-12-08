@@ -250,9 +250,9 @@
             <p class="title__sub">アクセス</p>
           </div>
           <div class="access-comment">
-            <span class="inline-block"><span style="font-weight: bold">【営業時間】</span> <span class="inline-block">平日 11:00～19:00</span> <span class="inline-block">&nbsp;土日祝11:00～18:00</span>&nbsp;※火曜日を除く</span>
-            <span class="inline-block"><span style="font-weight: bold">【所在地】</span> <span class="inline-block">〒107-0052</span><span class="inline-block">&nbsp;東京都港区赤坂4丁目8番19号</span><span class="inline-block">&nbsp;赤坂フロントタウン3階</span></span>
-            <span class="inline-block"><span style="font-weight: bold">【電話番号】</span> <span class="inline-block">080-7002-0555</span></span>
+            <span class="inline-block"><span style="font-weight: bold">【営業時間】</span><br><span class="inline-block">&emsp;平日 11:00～19:00</span><span class="inline-block">&emsp;(火曜定休日) </span><br><span class="inline-block">&emsp;土日祝11:00～18:00</span></span><br>
+            <span class="inline-block"><span style="font-weight: bold">【所在地】</span><br><span class="inline-block">&emsp;〒107-0052</span><span class="inline-block">&emsp;東京都港区赤坂4丁目8番19号</span><span class="inline-block">&emsp;赤坂フロントタウン3階</span></span><br>
+            <span class="inline-block"><span style="font-weight: bold">【電話番号】</span><br><span class="inline-block">&emsp;080-7002-0555</span></span><br>
           </div>
           <div class="access-map">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.036612253006!2d139.73172281533948!3d35.67610048019553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c7e44c75e5d%3A0x739a7864f075e711!2z44CSMTA3LTAwNTIg5p2x5Lqs6YO95riv5Yy66LWk5Z2C77yU5LiB55uu77yY4oiS77yR77yZIOi1pOWdguODleODreODs-ODiOOCv-OCpuODsyAz6ZqO!5e0!3m2!1sja!2sjp!4v1670508275711!5m2!1sja!2sjp"
@@ -263,6 +263,13 @@
             referrerpolicy="no-referrer-when-downgrade"
             >
             </iframe>
+          </div>
+          <div class="access-comment small">
+            <span class="inline-block" style="font-weight: bold">【交通】</span><br>
+            <span class="inline-block">&emsp;東京メトロ銀座線・丸の内線「赤坂見付駅」4分</span><br>
+            <span class="inline-block">&emsp;東京メトロ千代田線「赤坂駅」8分</span><br>
+            <span class="inline-block">&emsp;東京メトロ有楽町線・南北線・半蔵門線「永田町駅」9分</span><br>
+            <span class="inline-block">&emsp;東京メトロ銀座線・半蔵門線「青山一丁目駅」12分</span><br>
           </div>
         </div>
       </div>
@@ -485,7 +492,7 @@ onBeforeUnmount(() => {
       background-position: left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
       background-size: 66px 66px
       +sp-view
-        padding: 30px 20px 40px
+        padding: 30px 18px 40px
       > .intro-title
         +text-title(36px)
         color: var(--sub)
@@ -495,7 +502,7 @@ onBeforeUnmount(() => {
         margin-bottom: 10px
         padding: 0 17%
         +sp-view
-          font-size: 24px
+          font-size: 20px
           padding: 0
         &::before,&::after 
           content: ''
@@ -521,7 +528,7 @@ onBeforeUnmount(() => {
         > .text
           +text-body(16px)
           padding: 0 20px
-          // text-align: left
+          text-align: left
           +sp-view
             padding: 0
         > .img_block
@@ -971,12 +978,10 @@ onBeforeUnmount(() => {
                     // flex-direction: column
                     gap: 40px
                   &.text
-                    text-align: center
                     +text-body(16px)
                     color: var(--white-1)
                     letter-spacing: .1em
                     line-height: 1.8em
-                    // margin: 5% 0 0
                     +sp-view
                       +text-body(16px)
                       color: var(--white-1)
@@ -1086,20 +1091,32 @@ onBeforeUnmount(() => {
       > .section-wrap
         width: 100%
         max-width: 100%
+        text-align: center
         +sp-view
           width: 1080px
           max-width: calc(100% - 10vw)
         > .access-comment
-          // text-align: center
-          margin: 40px 0 40px
+          text-align: left
+          display: inline-block
+          margin: 20px auto
           +text-body(16px)
-          opacity: 0,
+          opacity: 0
           transform: translateY(40px)
+
+          +sp-view
+            margin: 20px 0 
+
+          &.small
+            +text-body(16px)
+
+            +sp-view
+              +text-body(12px)
           
         > .access-map
           width: 100%
           height: 400px
           object-fit: cover
-          opacity: 0,
+          opacity: 0
           transform: translateY(40px)
+
 </style>
