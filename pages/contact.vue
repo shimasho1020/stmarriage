@@ -211,7 +211,7 @@ const resetForm = () => {
       +text-title(40px)
       padding: 0 0 20px
       +sp-view
-      +text-title(32px)
+        +text-title(32px)
 
     > .p-contact__item
       padding: 20px 0 20px
