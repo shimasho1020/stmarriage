@@ -919,7 +919,7 @@ onBeforeUnmount(() => {
                   &.--2
                     > .table_list
                       > .list_item
-                        color: var(--main)
+                        color: var(--sub)
             > .award_wrap
               > .award-title
                 text-align: center
