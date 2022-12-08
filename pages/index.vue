@@ -66,7 +66,7 @@
                     {{ page.default }}
                   </div>
                 </template> -->
-                <div class="case-item" v-for="n of 3" :key="n">
+                <nuxt-link class="case-item" v-for="n of 3" :key="n" :to="`/interview/${displayCaseList[n-1]?.id ?? ''}`">
                   <div class="case-card">
                     <div class="case-item__image_block">
                       <img class="case-item__image" :src="displayCaseList[n-1]?.url ?? ''" alt="インタビュー">
@@ -81,7 +81,7 @@
                       </p>
                     </div>
                   </div>
-                </div>
+                </nuxt-link>
               </VueSlickCarousel>
             </div>
             <nuxt-link
@@ -309,7 +309,7 @@ const settings = {
   "autoplaySpeed": 3000,
   // "cssEase": "linear",
   "swipe": true,
-  "pauseOnHover": false,
+  "pauseOnHover": true,
   // "dotsClass": "dots"
 }
 
@@ -631,11 +631,11 @@ onBeforeUnmount(() => {
               height: 400px
 
             .slick-prev,.slick-next
-              width: 30px
+              width: 24px
               z-index: 1
             .slick-prev:before,.slick-next:before
               color: var(--main) !important
-              font-size: 30px !important
+              font-size: 24px !important
             .slick-dots
               bottom: 100px !important
           > .case-item
