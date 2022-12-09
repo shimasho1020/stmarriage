@@ -31,9 +31,8 @@
           <div class="intro-cont">
             <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="ダイヤモンドファミリークラブ"></div>
             <div class="text">
-              セントマリアージュ青山のホームページをご覧いただき、ありがとうございます。<br>
-              大手結婚相談所にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。<br>
-              20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。<br>
+              当社のホームページをご覧いただき、ありがとうございます。<br>
+              三菱結婚相談所「ダイヤモンドファミリークラブ」にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。<br>
               「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？　少しだけ勇気を出して始めてみたら、あなたの未来が変わります！<br>
               オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。
             </div>
@@ -48,7 +47,7 @@
           <div class="section_title_block --1">
             <h1 class="title">ご成婚者様からの声</h1>
             <div class="title__border"></div>
-            <p class="title__sub">ご成婚者様からの声</p>
+            <p class="title__sub point">セントマリアージュ青山でご成婚された方々</p>
           </div>
           <div class="case_list">
             <div class="slide_wrap">
@@ -142,8 +141,10 @@
               <div class="self-body">
                 <div class="self-comment 1"><span class="inline-block">入会1ヵ月以内のお見合い成立率</span><span class="big_font inline-block">&emsp;100%</span></div>
                 <div class="self-comment 2"><span class="inline-block">入会1カ月以内の交際成立率</span><span class="big_font inline-block">&emsp;93%</span></div>
+                <div class="self-comment 3"><span class="inline-block">成婚率</span><span class="big_font inline-block">&emsp;75%</span></div>
+                <div class="mini_comment">※成婚退会者数割る全退会者数</div>
                 <div class="self-table">
-                  <div class="text">※セントマリアージュ青山で活動中の会員様（2022年８月現在）</div>
+                  <div class="text">セントマリアージュ青山で活動中の会員様（2022年８月現在）</div>
                   <div class="table --1">
                     <h4 class="table_title">会員データ</h4>
                     <ul class="table_list">
@@ -152,7 +153,7 @@
                       <li class="list_item th">男女比</li>
                       <li class="list_item">(約) 6対4</li>
                       <li class="list_item th">男性平均年収</li>
-                      <li class="list_item">500～699万</li>
+                      <li class="list_item">約1000万</li>
                     </ul>
                   </div>
                   <div class="table --2">
@@ -192,9 +193,9 @@
                   </div>
                   <div class="content_body text">
                     <p>IBJ AWARD とは、日本結婚相談所連盟（IBJ)の加盟店3,362社の中で、過去６か月間で特に顕著な実績を残した結婚相談所に贈られる賞です。<br>
+                      当社は開業から1年以上の相談所を対象とした「PREMIUM部門」で受賞いたしました。こちらの受賞率は全加盟店の中で約2割となります。<br>
                       選定基準は、「入会数、成婚数」「地域への貢献度」「ガイドライン、法令の遵守」「クレームやトラブルがない事」等になります。<br>
                       これらの厳しい選定基準をクリアし、日本結婚相談所連盟(IBJ)がお勧めできる優良結婚相談所としてお墨付きをいただいたことになります。<br>
-                      これからも、お一人でも多くの方々に幸せになっていただくために、心のこもったサポートをさせていただきたいと思っております。<br>
                     </p>
                   </div>
                 </div>
@@ -230,7 +231,7 @@
                 <h2 class="top-our_strengths__container--point">2</h2>
                 <p class="top-our_strengths__container--heading">お一人お一人の<br>お気持ちに寄り添った<br>丁寧なサポート</p>
                 <p class="top-our_strengths__container--about">
-                  お見合い後の振り返りや、交際中のデートの状況などを確認しながら、活動状況に応じてアドバイスをさせていただきます。婚活中は誰にも相談できず孤独に陥りがちですが、メール、Line、電話等で、いつでもご相談いただける体制を整えております。<br><br>
+                  少人数制にしてきめ細やかな対応を致します。<br>お見合い後の振り返りや、交際中のデートの状況などを確認しながら、活動状況に応じてアドバイスをさせていただきます。婚活中は誰にも相談できず孤独に陥りがちですが、メール、Line、電話等で、いつでもご相談いただける体制を整えております。
                 </p>
               </div>
               <div class="top-our_strengths__container--img">
@@ -610,10 +611,9 @@ onBeforeUnmount(() => {
             transform: rotate(0)
             margin: 3% 0
         > .title__sub
-          +text-subtitle(20px)
-          margin-top: 60px
           display: none
-          +sp-view
+          &.point
+            display: inline-block
             +text-subtitle(16px)
             width: 100%
             margin-top: 0
@@ -839,6 +839,13 @@ onBeforeUnmount(() => {
               flex: 70%
               opacity: 0
               transform: translateY(40px)
+
+              > .mini_comment
+                +text-body(12px)
+                color: var(--white-1)
+                text-align: center
+                position: relative
+                top: -20px
               > .self-comment
                 text-align: center
                 +text-title(40px)
@@ -924,7 +931,7 @@ onBeforeUnmount(() => {
               > .award-title
                 text-align: center
                 width: 100%
-                +text-title(40px)
+                +text-title(32px)
                 margin-bottom: 10px
                 background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%)
                 background-clip: text
@@ -934,7 +941,7 @@ onBeforeUnmount(() => {
                 transform: translateY(40px)
                 line-height: 1.5
                 +sp-view
-                  font-size: 24px
+                  font-size: 20px
                   margin: 0 0 40px
               > .content_wrap
                 display: flex
