@@ -1,3 +1,4 @@
+import { serverTimestamp } from 'firebase/firestore';
 export type CaseList = {
   age: number
   term?: number
@@ -18,6 +19,7 @@ export type Interview = {
   interviewContents: InterviewContent[]
 }
 export type Interviewer = {
+  timeStamp?: any
   isPublic: boolean
   caseList: CaseList
   interview: Interview
