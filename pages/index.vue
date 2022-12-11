@@ -31,7 +31,7 @@
           <div class="intro-cont">
             <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="ダイヤモンドファミリークラブ"></div>
             <div class="text">
-              当社のホームページをご覧いただき、ありがとうございます。<br>
+              セントマリアージュ青山のホームページをご覧いただき、ありがとうございます。<br>
               三菱結婚相談所「ダイヤモンドファミリークラブ」にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。<br>
               「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？　少しだけ勇気を出して始めてみたら、あなたの未来が変わります！<br>
               オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。
@@ -500,6 +500,7 @@ onBeforeUnmount(() => {
         margin-bottom: 10px
         padding: 0 17%
         +sp-view
+          display: none
           font-size: 20px
           padding: 0
         &::before,&::after 

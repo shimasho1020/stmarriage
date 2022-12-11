@@ -39,13 +39,13 @@
                 今までの婚活状況や、いつまでに結婚したいかなどをお話し、不安を解消してから、カウンセラーがお客様ごとにベストな婚活の進め方をご提案します。
               </div>
               <div class="about">
-                <nuxt-link class="ul" to="/">
+                <nuxt-link class="ul" to="/contact">
                   <div class="inline-block li">
                     <arrow class="arrow man"></arrow>
                     <span class="form man">男性無料相談はこちら</span>
                   </div>
                 </nuxt-link>
-                <nuxt-link class="ul" to="/"> 
+                <nuxt-link class="ul" to="/contact"> 
                   <div class="inline-block li">
                     <arrow class="arrow woman"></arrow>
                     <span class="form woman">女性無料相談はこちら</span>

@@ -215,7 +215,7 @@ const isDisply = computed(() => {
 
             > .list_item
               > .subtitle
-                +text-title(24px)
+                +text-title(20px)
                 position: relative
                 padding: 20px 0 10px
 

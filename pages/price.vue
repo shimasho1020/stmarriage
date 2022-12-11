@@ -286,7 +286,6 @@ const counselingTables = [
             gap: 20px
             padding: 0
 
-
           > .content_img
             flex: 0 0 47%
 
@@ -307,6 +306,9 @@ const counselingTables = [
             flex: 0 0 60%
             text-align: left
             margin: 20px 0
+
+            +sp-view
+              margin: 0
 
             > .list_title
               +text-title(24px)
