@@ -46,7 +46,7 @@
             </div>
             <div class="case_img">
               <div class="img_wrap">
-                <img class="img" :src="item.url" :style="{objectPosition: `center calc(50% - ${item.imagePosition}px)`}">
+                <img class="img" :src="item.url" :style="{objectPosition: `center ${50 + (item.imagePosition ?? 0)}%`}">
               </div>
             </div>
           </nuxt-link>

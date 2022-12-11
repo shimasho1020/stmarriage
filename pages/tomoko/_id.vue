@@ -285,7 +285,7 @@ watch(imagePosition,(val) => {
 const moveImg = (count:number) => {
   document.querySelectorAll('.profImg').forEach((element:any) => {
     // console.log(element.style)
-    element.style.objectPosition = `center calc(50% - ${count}px)`;
+    element.style.objectPosition = `center ${50 + count}%`;
   })
 }
 

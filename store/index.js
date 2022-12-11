@@ -88,10 +88,10 @@ export const mutations = {
     state.isScrollActive = false
   },
   add (state) {
-    state.imagePosition += 5
+    state.imagePosition += 1
   },
   subtract (state) {
-    state.imagePosition -= 5
+    state.imagePosition -= 1
   },
   clear (state) {
     state.imagePosition = 0
