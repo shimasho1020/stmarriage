@@ -557,6 +557,7 @@ onMounted(() => {
     > .text
       padding: 0 10% 40px
       +text-body(20px)
+      color: var(--sub2)
 
     > .about
       > .title
@@ -602,4 +603,5 @@ onMounted(() => {
 
           > .text
             +text-body(16px)
+            color: var(--sub2)
 </style>
