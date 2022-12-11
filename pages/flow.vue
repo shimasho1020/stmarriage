@@ -88,7 +88,7 @@
           </div>
         </div>
         <div class="section_content --3">
-          <h2 class="section_title" data-number="03">プロフィール作成、写真撮影</h2>
+          <h2 class="section_title" data-number="03"><span class="inline-block">プロフィール作成、</span><span class="inline-block">写真撮影</span></h2>
           <div class="section_body">
             <div class="body_img">
               <img class="img" src="~/assets/images/flow_photo_studio.webp" alt="ステップ3">
@@ -102,7 +102,7 @@
         </div>
       </div>
       <div class="section --1" id="href_4">
-        <h1 class="title">お相手探しから成婚まで</h1>
+        <h1 class="title"><span class="inline-block">お相手探しから</span><span class="inline-block">成婚まで</span></h1>
         <div class="section_content --4">
           <h2 class="section_title" data-number="01">お相手探し</h2>
           <div class="section_body">
@@ -137,7 +137,7 @@
           </div>
         </div>
         <div class="section_content --6">
-          <h2 class="section_title" data-number="03">プレ交際（～交際2か月頃まで）</h2>
+          <h2 class="section_title" data-number="03"><span class="inline-block">プレ交際</span><span class="inline-block">（～交際2か月頃まで）</span></h2>
           <div class="section_body">
             <div class="body_img">
               <img class="img" src="~/assets/images/flow_pre_dating.webp" alt="ステップ6">
@@ -153,7 +153,7 @@
           </div>
         </div>
         <div class="section_content --7">
-          <h2 class="section_title" data-number="04">真剣交際（交際２カ月頃～）</h2>
+          <h2 class="section_title" data-number="04"><span class="inline-block">真剣交際</span><span class="inline-block">（交際２カ月頃～）</span></h2>
           <div class="section_body">
             <div class="body_img">
               <img class="img" src="~/assets/images/flow_pre.webp" alt="ステップ7">
@@ -362,13 +362,13 @@ onBeforeUnmount(() => {
         margin: 0 0 40px
 
       > .title
-        +text-subtitle(40px)
+        +text-subtitle(36px)
         position: relative
         text-align: center
         margin: 0 0 20px
 
         +sp-view
-          +text-subtitle(32px)
+          +text-subtitle(28px)
 
         &::before 
           position: absolute

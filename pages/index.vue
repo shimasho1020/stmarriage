@@ -238,7 +238,7 @@
           </ul>
         </div>
       </div>
-      <div class="section --5" id="access">
+      <div class="section --5" id="access" name="access">
         <div class="section-wrap">
           <div class="section_title_block --5">
             <h1 class="title">アクセス</h1>

@@ -163,7 +163,7 @@ const casualTables = [
   {title:'ご成婚費',price:'165,000円'},
 ]
 const counselingTables = [
-  {title:'30分間',price:'0円'},
+  {title:'30分間',price:'2,200円'},
   {title:'1時間',price:'3,300円'},
   {title:'2時間',price:'5,500円'},
 ]
@@ -257,7 +257,7 @@ const counselingTables = [
           margin: 0 0 20px
 
           +sp-view
-            +text-subtitle(32px)
+            +text-subtitle(28px)
 
           &::before 
             position: absolute
