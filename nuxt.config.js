@@ -134,13 +134,13 @@ export default {
       '@nuxtjs/firebase',
       {
         config: {
-          // apiKey: process.env.VUE_APP_API_KEY,
-          // authDomain: process.env.VUE_APP_AUTH_DOMAIN,
-          // projectId: process.env.VUE_APP_PROJECT_ID,
-          // storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
-          // messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
-          // appId: process.env.VUE_APP_ID,
-          // measurementId: process.env.VUE_APP_MEASUREMENT_ID,
+          // apiKey: process.env.FB_API_KEY,
+          // authDomain: process.env.FB_AUTH_DOMAIN,
+          // projectId: process.env.FB_PROJECT_ID,
+          // storageBucket: process.env.FB_STORAGE_BUCKET,
+          // messagingSenderId: process.env.FB_MESSAGING_SENDER_ID,
+          // appId: process.env.FB_ID,
+          // measurementId: process.env.FB_MEASUREMENT_ID,
           apiKey: "AIzaSyBlsf86qWsZPIlV6hqEh7J3PIu-aa8hmi0",
           authDomain: "stmarriage-database.firebaseapp.com",
           projectId: "stmarriage-database",
@@ -208,23 +208,5 @@ export default {
         ],
       });
     },
-  },
-
-  publicRuntimeConfig: {
-    firebaseConfig : {
-      apiKey: process.env.VUE_APP_API_KEY,
-      authDomain: process.env.VUE_APP_AUTH_DOMAIN,
-      projectId: process.env.VUE_APP_PROJECT_ID,
-      storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
-      messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
-      appId: process.env.VUE_APP_ID,
-      measurementId: process.env.VUE_APP_MEASUREMENT_ID,
-    }
-  },
-
-  privateRuntimeConfig: {
-    secret: process.env.SECRET_KEY,
-    emailAddress: process.env.EMAIL_KEY,
-    password: process.env.EMAIL_PASSWORD,
   },
 }

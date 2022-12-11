@@ -313,7 +313,7 @@ const isError = ref(false)
 const completeMessage = ref('')
 
 const onSubmit = async() => {
-  const data: Interviewer = isNew.value ? {
+  const data = isNew.value ? {
     timeStamp: serverTimestamp(),
     isPublic: isPublic.value,
     caseList: caseList.value,
