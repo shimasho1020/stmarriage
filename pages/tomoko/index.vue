@@ -67,7 +67,7 @@ export default defineComponent({
 <script setup  lang="ts">
 import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
 import { getStorage, ref as REF, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where } from "firebase/firestore"
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where, orderBy } from "firebase/firestore"
 import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 
@@ -99,7 +99,8 @@ watch(displayCaseList,(val) => {
 })
 
 useAsync(async () => {
-  const querySnapshot = await getDocs(collection(firestore, "interviewer"));
+  const q = query(collection(firestore, "interviewer"), orderBy("timeStamp", "desc"))
+  const querySnapshot = await getDocs(q)
   
   interviewer.value = await Promise.all(
     querySnapshot.docs.map(async(doc) => {

@@ -43,7 +43,7 @@
 <script setup  lang="ts">
 import gsap from "gsap"
 import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
-import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where } from "firebase/firestore"
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where, orderBy } from "firebase/firestore"
 import { getStorage, ref as REF, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
@@ -66,10 +66,10 @@ const displayCaseList = computed(() => {
 })
 
 useAsync(async () => {
-  const q = query(collection(firestore, "interviewer"), where("isPublic", "==", true))
+  const q = query(collection(firestore, "interviewer"), orderBy("timeStamp", "desc"))
   const querySnapshot = await getDocs(q)
 
-  interviewer.value = await Promise.all(
+  const results = await Promise.all(
     querySnapshot.docs.map(async(doc) => {
       const url = await getDownloadURL(REF(storage, `images/${doc.id}`))
       .catch((error) => {
@@ -82,6 +82,9 @@ useAsync(async () => {
       }
     })
   )
+  interviewer.value = results.filter(val => {
+    return val.isPublic
+  })
 })
 
 const changeSex = (sex: '' | '男性' | '女性') => {

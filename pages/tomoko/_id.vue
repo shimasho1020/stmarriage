@@ -191,7 +191,7 @@ export default defineComponent({
 <script setup lang="ts">
 import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
 import { getStorage, ref as REF, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where } from "firebase/firestore"
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc, serverTimestamp, arrayUnion, arrayRemove, runTransaction, getDoc, query, where } from "firebase/firestore"
 import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 
@@ -313,14 +313,18 @@ const isError = ref(false)
 const completeMessage = ref('')
 
 const onSubmit = async() => {
-  const data: Interviewer = {
+  const data: Interviewer = isNew.value ? {
+    timeStamp: serverTimestamp(),
+    isPublic: isPublic.value,
+    caseList: caseList.value,
+    interview: interview.value,
+    imagePosition: imagePosition.value,
+  } : {
     isPublic: isPublic.value,
     caseList: caseList.value,
     interview: interview.value,
     imagePosition: imagePosition.value,
   }
-  const exampleRef = isNew.value ?
-  doc(collection(firestore, "interviewer")) : doc(firestore, "interviewer", thisPageId.value)
 
   if(isSending.value){
     return;
@@ -329,11 +333,22 @@ const onSubmit = async() => {
   completeMessage.value = '処理中…';
 
   try{
-    await setDoc(exampleRef, data)
-    if (uploadImageFileData.value) {
-      await uploadImageFile(uploadImageFileData.value, thisPageId.value)
+    if(isNew.value){
+      const exampleRef = collection(firestore, "interviewer") 
+      const response = await addDoc(exampleRef, data)
+      if (uploadImageFileData.value) {
+        await uploadImageFile(uploadImageFileData.value, response.id)
+      }
+      thisPageId.value = response.id
+    } else {
+      const exampleRef = doc(firestore, "interviewer", thisPageId.value)
+      await setDoc(exampleRef, data, { merge: true })
+      if (uploadImageFileData.value) {
+        await uploadImageFile(uploadImageFileData.value, thisPageId.value)
+      }
     }
     completeMessage.value = '保存しました';
+    isNew.value = false
   } catch(e) {
     completeMessage.value = '失敗しました' + 'ERROR: ' + e;
     isError.value   = true;
@@ -341,7 +356,7 @@ const onSubmit = async() => {
     isSending.value = false;
     setTimeout(() => {
       completeMessage.value = ''
-    }, 3000)
+    }, 2500)
   }
 }
 
