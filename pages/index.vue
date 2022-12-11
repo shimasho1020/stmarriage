@@ -62,11 +62,6 @@
                     {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
                   </div>
                 </template>
-                <!-- <template #customPaging="page">
-                  <div class="custom-dot">
-                    {{ page.default }}
-                  </div>
-                </template> -->
                 <nuxt-link class="case-item" v-for="n of 3" :key="n" :to="`/interview/${displayCaseList[n-1]?.id ?? ''}`">
                   <div class="case-card">
                     <div class="case-item__image_block">
@@ -87,17 +82,17 @@
             </div>
             <nuxt-link
                 class="case-item case-wrap"
-                v-for="(item, index) of displayCaseList"
-                :to="`/interview/${item.id}`"
-                :key="index"
+                v-for="n of 3" 
+                :key="n" 
+                :to="`/interview/${displayCaseList[n-1]?.id ?? ''}`"
             >
               <div class="case-card">
                 <div class="case-item__image_block">
-                  <img class="case-item__image" :src="item.url" alt="インタビュー">
+                  <img class="case-item__image" :src="displayCaseList[n-1]?.url ?? ''" alt="インタビュー">
                 </div>
                 <div class="card">
                   <div class="__link">
-                    <p class="__title"><span class="inline-block">{{item.age}}歳の{{item.sex}}会員様が</span><span class="inline-block">ご成婚されました！</span></p>
+                    <p class="__title"><span class="inline-block">{{displayCaseList[n-1]?.age ?? ''}}歳の{{displayCaseList[n-1]?.sex ?? ''}}会員様が</span><span class="inline-block">ご成婚されました！</span></p>
                     <ArrowImage class="right-arrow" direction="right"></ArrowImage>
                   </div>
                   <p class="__title">
@@ -281,7 +276,7 @@
 <script setup lang="ts">
 import gsap from "gsap"
 import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
-import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where, limit } from "firebase/firestore"
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where, limit, orderBy } from "firebase/firestore"
 import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList,Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 import VueSlickCarousel from 'vue-slick-carousel'
@@ -345,13 +340,15 @@ const selectImg = (index: number):string => {
   else {return '/images/sample_couple_3.webp'}
 }
 useAsync(async () => {
-  const q = query(collection(firestore, "interviewer"), where("isPublic", "==", true),where("caseList.isInterview", "==", true), limit(3))
+  const q = query(collection(firestore, "interviewer"), orderBy("timeStamp", "desc"))
   const querySnapshot = await getDocs(q)
   interviewer.value = querySnapshot.docs.map((doc) => {
   return {
       id: doc.id,
       ...doc.data() as Interviewer
     }
+  }).filter(val => {
+    return val.isPublic && val.caseList.isInterview
   })
 })
 let circleAnim: gsap.core.Tween 
@@ -617,7 +614,6 @@ onBeforeUnmount(() => {
             +text-subtitle(16px)
             width: 100%
             margin-top: 0
-            margin-bottom: 5%
     &.--1
       // background-color: var(--white-1)
       > .section-wrap
