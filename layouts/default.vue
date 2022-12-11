@@ -350,7 +350,7 @@ onUnmounted(() => {
         position: relative
         width: 24px
         height: 1px
-        padding: 20px 0
+        padding: 22px 0
         cursor: pointer
         color: var(--white-1)
 
@@ -361,7 +361,7 @@ onUnmounted(() => {
           +text-title(8px)
           color: currentColor
           position: absolute
-          top: 32px
+          bottom: 0
           right: 50%
           transform: translateX(50%)
           white-space: nowrap
