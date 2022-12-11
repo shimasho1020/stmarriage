@@ -192,6 +192,7 @@ const isDisply = computed(() => {
         > .text
           padding: 0 8% 40px
           +text-body(18px)
+          color: var(--sub2)
 
           +sp-view
             padding: 0 0 40px
@@ -244,6 +245,7 @@ const isDisply = computed(() => {
 
               > .text
                 +text-body(16px)
+                color: var(--sub2)
 
 
 
