@@ -362,7 +362,8 @@ onUnmounted(() => {
           color: currentColor
           position: absolute
           top: 32px
-          right: -6px
+          right: 50%
+          transform: translateX(50%)
           white-space: nowrap
 
         > span, span:before, span:after
