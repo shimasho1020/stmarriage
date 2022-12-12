@@ -137,7 +137,7 @@
                 <div class="self-comment 1"><span class="inline-block">入会1ヵ月以内のお見合い成立率</span><span class="big_font inline-block">&emsp;100%</span></div>
                 <div class="self-comment 2"><span class="inline-block">入会1カ月以内の交際成立率</span><span class="big_font inline-block">&emsp;93%</span></div>
                 <div class="self-comment 3"><span class="inline-block">成婚率</span><span class="big_font inline-block">&emsp;75%</span></div>
-                <div class="mini_comment">※成婚退会者数割る全退会者数</div>
+                <div class="mini_comment">※成婚退会者数÷全退会者数</div>
                 <div class="self-table">
                   <div class="text">セントマリアージュ青山で活動中の会員様（2022年８月現在）</div>
                   <div class="table --1">
@@ -920,10 +920,7 @@ onBeforeUnmount(() => {
                         &.th
                           background: var(--main)
                           color: var(--white-1)
-                  &.--2
-                    > .table_list
-                      > .list_item
-                        color: var(--sub)
+                          
             > .award_wrap
               > .award-title
                 text-align: center

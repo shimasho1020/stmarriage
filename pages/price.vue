@@ -1,7 +1,7 @@
 <template>
 <div class="">
   <div class="title_block" style="text-align:center">
-    <h1 class="title">コース案内、料金</h1>
+    <h1 class="title">料金プラン</h1>
   </div>
   <div class="body">
     <div class="menu" v-if="isDisplay">

@@ -13,7 +13,7 @@
           <div class="link-wrap"><span class="link-text">ホーム</span></div>
         </nuxt-link>
         <nuxt-link class="menu--link" to="/price" :class="{'highlight': $route.name === 'price'}">
-          <div class="link-wrap"><span class="link-text">コース案内・料金</span></div>
+          <div class="link-wrap"><span class="link-text">料金プラン</span></div>
         </nuxt-link>
         <nuxt-link class="menu--link" to="/flow" :class="{'highlight': $route.name === 'flow'}">
           <div class="link-wrap"><span class="link-text">入会から結婚まで</span></div>
@@ -22,12 +22,12 @@
         <nuxt-link class="menu--link" to="/interview" :class="{'highlight': $route.name === 'interview'}">
           <div class="link-wrap"><span class="link-text">ご成婚事例</span></div>
         </nuxt-link>
-        <nuxt-link class="menu--link" to="/contact" :class="{'highlight': $route.name === 'contact'}">
+        <!-- <nuxt-link class="menu--link" to="/contact" :class="{'highlight': $route.name === 'contact'}">
           <div class="link-wrap"><span class="link-text">相談フォーム</span></div>
+        </nuxt-link> -->
+        <nuxt-link class="menu--link" to="/company">
+          <div class="link-wrap"><span class="link-text">会社概要</span></div>
         </nuxt-link>
-        <a class="menu--link access" href="/#access">
-          <div class="link-wrap"><span class="link-text">アクセス</span></div>
-        </a>
       </div>
       <div
           class="menu sp"
@@ -42,11 +42,11 @@
     <div class="sp-menu" ref="sideMenu">
       <div class="sp-menu-wrap" :class="{'top-page': $route.name === 'index'}">
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/">ホーム</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/price">コース案内・料金</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/price">料金プラン</nuxt-link>
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/flow">入会から結婚まで</nuxt-link>
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/interview">ご成婚事例</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/contact">相談フォーム</nuxt-link>
-        <a @click="nuxtLinkTrigger" class="menu--link sp access" href="/#access">アクセス</a>
+        <!-- <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/contact">相談フォーム</nuxt-link> -->
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/company">会社概要</nuxt-link>
       </div>
     </div>  
     <div class="flow_block" v-if="$route.name !== 'contact'" :class="{'top-page': $route.name === 'index'}">
@@ -266,7 +266,7 @@ onUnmounted(() => {
       color: currentColor
 
     > .logo-main
-      +text-logo(40px)
+      +text-logo(36px)
       color: currentColor
       // text-shadow: 1px 1px 1px rgb(255, 255, 255),-1px -1px 1px rgb(255, 255, 255)
 
