@@ -474,7 +474,6 @@ onUnmounted(() => {
 
     &:hover
       transform: scale(1.2)
-      transition-duration: .3s
 
     +sp-view
       height: 120px
