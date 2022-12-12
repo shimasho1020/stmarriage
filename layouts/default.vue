@@ -470,12 +470,20 @@ onUnmounted(() => {
     padding: 10px 0 0
     // background: linear-gradient(to bottom, #e051bc, rgb(195, 242, 248))
     background: linear-gradient(to bottom, #5f51e0, rgb(195, 242, 248))
+    transition-duration: .3s
+
+    &:hover
+      transform: scale(1.2)
+      transition-duration: .3s
 
     +sp-view
       height: 120px
       width: 120px
       +text-title(18px)
       color: var(--white-1)
+
+      &:hover
+        transform: none
 
     > .mail_icon_wrap
       width: 35%

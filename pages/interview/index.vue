@@ -167,7 +167,13 @@ const changeSex = (sex: '' | '男性' | '女性') => {
             top: 0
 
         > .case_block
-          padding: 20px
+          flex: 0 0 60%
+          padding: 20px 0
+          position: relative
+
+          +sp-view
+            padding: 20px
+
           > .case_title
             +text-title(24px)
             position: relative
@@ -217,6 +223,12 @@ const changeSex = (sex: '' | '男性' | '女性') => {
           > .link_wrap
             width: 100%
             text-align: right
+            position: absolute
+            bottom: 20px
+
+            +sp-view
+              position: relative
+              bottom: 0
             > .link
               text-align: right
 
