@@ -64,7 +64,7 @@
       <div class="footer-wrap">
         <get-in-touch v-if="$route.name !== 'contact'" class="get-in-touch"></get-in-touch>
         <div class="bottom">
-          <div class="bottom-block">Copyright ©️ 2020 St. Marriage Aotama</div>
+          <div class="bottom-block">Copyright ©️ 2022 St. Mariage Aoyama</div>
         </div>
       </div>
     </footer>
