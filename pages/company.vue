@@ -57,6 +57,22 @@
     max-width: calc(100% - 10vw)
     margin: auto
 
+.company_table
+  padding: 40px 0
+  white-space: normal
+
+  +sp-view
+    padding: 40px 20px
+
+
+#table01
+  width: 700px
+  margin: auto
+  text-align: left
+
+  +sp-view
+    width: 90%
+
 th
   +text-title(20px)
 
@@ -73,15 +89,6 @@ td
 </style>
 
 <style scoped>
-.company_table{
-  padding: 40px 0;
-}
-#table01{
-  width: 700px;
-  max-width: 90%;
-  margin: auto;
-  text-align: left;
-}
 #table01 tr {
   border-bottom: 1px solid #b5b1b1;
 }
