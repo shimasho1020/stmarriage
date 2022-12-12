@@ -7,7 +7,7 @@
       <v-btn 
         class="white--text indigo darken-4" 
         x-large
-        @click="router.push({path: '/tomoko'})"
+        @click="backEditPage"
       >戻る</v-btn>
     </div>
     <div class="saveButoon">
@@ -349,7 +349,6 @@ const onSubmit = async() => {
     }
     completeMessage.value = '保存しました';
     isNew.value = false
-    clearCount()
   } catch(e) {
     completeMessage.value = '失敗しました' + 'ERROR: ' + e;
     isError.value   = true;
@@ -425,6 +424,11 @@ const uploadImageFile = async(file: FileList, id: string) => {
       resolve('')
     });
   })
+}
+
+const backEditPage = () => {
+  clearCount()
+  router.push({path: '/tomoko'})
 }
 
 onMounted(() => {
