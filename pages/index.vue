@@ -321,9 +321,7 @@ const settings = {
 
 
 const { app, store } = useContext()
-let isDisplay = computed(() => {
-  return store.getters['pageWidth'] ? store.getters['pageWidth'] >= 750 : true
-})
+
 const interviewer = ref([] as DisplayInterviewer[])
 const displayCaseList = computed(() => {
   return interviewer.value.map((val, index) => {

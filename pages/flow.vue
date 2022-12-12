@@ -215,10 +215,6 @@ components: {
 
 const { app, store } = useContext()
 
-let isDisplay = computed(() => {
-  return store.getters['pageWidth'] ? store.getters['pageWidth'] >= 750 : true
-})
-
 const trigger = [
   {trigger: '.section_content.--1', action: '.text.--1'},
   {trigger: '.section_content.--2', action: '.text.--2'},

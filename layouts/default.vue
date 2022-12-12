@@ -284,7 +284,7 @@ onUnmounted(() => {
     padding: 5px 0 0
 
     +pc-sm-view
-      max-width: 400px
+      max-width: 350px
       flex-wrap: wrap
       justify-content: flex-end
       row-gap: 10px

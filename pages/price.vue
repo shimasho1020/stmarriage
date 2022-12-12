@@ -4,7 +4,7 @@
     <h1 class="title">料金プラン</h1>
   </div>
   <div class="body">
-    <div class="menu" v-if="isDisplay">
+    <div class="menu">
       <div
         class="lists"
         v-for="(value, index) in courses" v-bind:key="index"
@@ -122,9 +122,6 @@ import { computed, useContext } from '@nuxtjs/composition-api'
 
 
 const { app, store } = useContext()
-let isDisplay = computed(() => {
-  return store.getters['pageWidth'] ? store.getters['pageWidth'] >= 850 : true
-})
 
 const courses = [
   {
@@ -184,6 +181,9 @@ const counselingTables = [
     display: flex
     width: 100%
     justify-content: center
+
+    +pc-sm-view
+      display: none
 
     > .lists
       flex: 0 0 30%
