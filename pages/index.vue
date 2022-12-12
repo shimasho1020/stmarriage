@@ -134,10 +134,12 @@
                 </div>
               </div>
               <div class="self-body">
-                <div class="self-comment 1"><span class="inline-block">入会1ヵ月以内のお見合い成立率</span><span class="big_font inline-block">&emsp;100%</span></div>
-                <div class="self-comment 2"><span class="inline-block">入会1カ月以内の交際成立率</span><span class="big_font inline-block">&emsp;93%</span></div>
-                <div class="self-comment 3"><span class="inline-block">成婚率</span><span class="big_font inline-block">&emsp;75%</span></div>
-                <div class="mini_comment">※成婚退会者数÷全退会者数</div>
+                <div class="self-comments">
+                  <div class="self-comment 1"><span class="inline-block">入会1ヵ月以内のお見合い成立率</span><span class="big_font inline-block">&emsp;100%</span></div>
+                  <div class="self-comment 2"><span class="inline-block">入会1カ月以内の交際成立率</span><span class="big_font inline-block">&emsp;93%</span></div>
+                  <div class="self-comment 3"><span class="inline-block">成婚率</span><span class="big_font inline-block">&emsp;75%</span></div>
+                  <div class="mini_comment">※成婚退会者数÷全退会者数</div>
+                </div>
                 <div class="self-table">
                   <div class="text">セントマリアージュ青山で活動中の会員様（2022年８月現在）</div>
                   <div class="table --1">
@@ -210,28 +212,28 @@
             <li class="content_body ---1 top-our_strengths__container">
               <div class="top-our_strengths__container--body">
                 <h2 class="top-our_strengths__container--point">1</h2>
-                <p class="top-our_strengths__container--heading">カウンセラー経験豊富、<br>成婚実績多数<br><br></p>
+                <p class="top-our_strengths__container--heading">日本結婚相談所連盟<br>(IBJ)正規加盟店</p>
                 <p class="top-our_strengths__container--about">
-                  大手結婚相談所で約10年間勤務し、1000人以上の会員様の担当カウンセラーとして婚活サポートを行ってきました。20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。豊富な経験に基づく的確なアドバイスをさせていただき、ご成婚までしっかりサポートいたします。
+                  セントマリアージュ青山は、会員数・成婚数業界ナンバー１の「日本結婚相談所連盟（IBJ）」の正規加盟店です。<br>全国約80,000人の登録者を対象に、ご自身のスマホやパソコンを使ってスムーズなお相手探しができます。毎月4,200名以上の新規会員の方が入会していますので、常に新たな出会いが期待できます。お見合いのセッティング、交際から成婚まで、カウンセラーがきめ細かくサポートさせていただきます。
                 </p>
               </div>
               <div class="top-our_strengths__container--img">
-                <div class="img_block">
-                  <img src="~/assets/images/black_wedding.webp" class="img" alt="丁寧なサポート">
+                <div class="img_block --1">
+                  <img src="~/assets/images/ibj_certificate.webp" class="img" alt="丁寧なサポート">
                 </div>	
               </div> 
             </li>
             <li class="content_body ---2 top-our_strengths__container">
               <div class="top-our_strengths__container--body">
                 <h2 class="top-our_strengths__container--point">2</h2>
-                <p class="top-our_strengths__container--heading">お一人お一人の<br>お気持ちに寄り添った<br>丁寧なサポート</p>
+                <p class="top-our_strengths__container--heading">経験に基づく<br>きめ細やかなサポート</p>
                 <p class="top-our_strengths__container--about">
-                  少人数制にしてきめ細やかな対応を致します。<br>お見合い後の振り返りや、交際中のデートの状況などを確認しながら、活動状況に応じてアドバイスをさせていただきます。婚活中は誰にも相談できず孤独に陥りがちですが、メール、Line、電話等で、いつでもご相談いただける体制を整えております。
+                  大手結婚相談所で約10年間勤務し、延べ1000人以上の会員様の担当カウンセラーとして婚活サポートを行ってきました。<br>幅広い年齢層の成婚実績が多数ございますので、経験に基づく的確なアドバイスをいたします。<br>お見合い後の振り返りや、交際中の状況を確認しながら活動状況に応じてアドバイスをさせていただきます。<br><br>
                 </p>
               </div>
               <div class="top-our_strengths__container--img">
                 <div class="img_block">
-                  <img src="~/assets/images/wedding_hall.webp" class="img" alt="満足度">
+                  <img src="~/assets/images/black_wedding.webp" class="img" alt="満足度">
                 </div>	
               </div> 
             </li>
@@ -292,7 +294,8 @@ const trigger: string[] = [
   '.section_title_block.--3',
   '.self-pic',
   '.self-p',
-  '.self-body',
+  '.self-comments',
+  '.self-table',
   '.award-title',
   '.content_body.img',
   '.content_body.text',
@@ -832,31 +835,33 @@ onBeforeUnmount(() => {
                   // padding: 20px 0
             > .self-body
               flex: 70%
-              opacity: 0
-              transform: translateY(40px)
 
-              > .mini_comment
-                +text-body(12px)
-                color: var(--white-1)
-                text-align: center
-                position: relative
-                top: -20px
-              > .self-comment
-                text-align: center
-                +text-title(40px)
-                background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%)
-                background-clip: text
-                -webkit-text-fill-color: transparent
-                margin-bottom: 20px
-                +sp-view
-                  font-size: 22px
-                  line-height: 1.5
-                
-                > .big_font
-                  font-size: 48px
-                  display: inline-block
+              > .self-comments
+                opacity: 0
+                transform: translateY(40px)
+                > .mini_comment
+                  +text-body(12px)
+                  color: var(--white-1)
+                  text-align: center
+                  position: relative
+                  top: -20px
+                > .self-comment
+                  text-align: center
+                  +text-title(40px)
+                  background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%,  #e1ce08 63%, #b8751e 100%)
+                  background-clip: text
+                  -webkit-text-fill-color: transparent
+                  margin-bottom: 20px
+
                   +sp-view
-                    font-size: 30px
+                    font-size: 22px
+                    line-height: 1.5
+                  
+                  > .big_font
+                    font-size: 48px
+                    display: inline-block
+                    +sp-view
+                      font-size: 30px
               > .self-table
                 width: 100%
                 margin: 40px auto
@@ -864,6 +869,9 @@ onBeforeUnmount(() => {
                 display: flex
                 justify-content: space-between
                 flex-wrap: wrap
+                opacity: 0
+                transform: translateY(40px)
+
                 +sp-view
                   width: 100%
                   margin: 0 
@@ -1042,6 +1050,7 @@ onBeforeUnmount(() => {
                 background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
                 background-clip: text
                 -webkit-text-fill-color: transparent
+                padding: 0 0 4px
                 +sp-view
                   +text-title(28px)
               > .top-our_strengths__container--about
@@ -1068,7 +1077,7 @@ onBeforeUnmount(() => {
                   display: block
                   padding-top: 100%
                   +sp-view
-                  padding-top: 70%
+                    padding-top: 100%
                 &::after
                   content: ''
                   position: absolute
@@ -1076,7 +1085,7 @@ onBeforeUnmount(() => {
                   left: 0
                   width: 100%
                   height: 100%
-                  background-image: linear-gradient(90deg, transparent 0 90%, var(--white-1) 100%), linear-gradient(0deg, transparent 0 90%, var(--white-1) 100%), linear-gradient(180deg, transparent 0 90%, var(--white-1) 100%), linear-gradient(270deg, transparent 0 90%, var(--white-1) 100%)
+                  background-image: linear-gradient(90deg, transparent 0 95%, var(--white-1) 100%), linear-gradient(0deg, transparent 0 95%, var(--white-1) 100%), linear-gradient(180deg, transparent 0 95%, var(--white-1) 100%), linear-gradient(270deg, transparent 0 95%, var(--white-1) 100%)
                 > .img
                   display: block
                   position: absolute
