@@ -349,6 +349,7 @@ const onSubmit = async() => {
     }
     completeMessage.value = '保存しました';
     isNew.value = false
+    clearCount()
   } catch(e) {
     completeMessage.value = '失敗しました' + 'ERROR: ' + e;
     isError.value   = true;
