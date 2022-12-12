@@ -25,7 +25,7 @@
         <!-- <nuxt-link class="menu--link" to="/contact" :class="{'highlight': $route.name === 'contact'}">
           <div class="link-wrap"><span class="link-text">相談フォーム</span></div>
         </nuxt-link> -->
-        <nuxt-link class="menu--link" to="/company">
+        <nuxt-link class="menu--link" to="/company" :class="{'highlight': $route.name === 'company'}">
           <div class="link-wrap"><span class="link-text">会社概要</span></div>
         </nuxt-link>
       </div>
@@ -56,7 +56,7 @@
       </nuxt-link>
     </div>
 
-    <div class="BODY" :class="{'not-top-page': $route.name !== 'index', 'interview-page': $route.name === 'interview'}">
+    <div class="BODY" :class="{'not-top-page': $route.name !== 'index', 'interview-page': $route.name === 'interview', 'company-page': $route.name === 'company'}">
       <nuxt/>
     </div>
 
@@ -493,6 +493,10 @@ onUnmounted(() => {
 
   &.interview-page
     background-color: var(--main)
+    background-image: none
+
+  &.company-page
+    background-color: var(--white-1)
     background-image: none
 
 .footer

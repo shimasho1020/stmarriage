@@ -32,7 +32,7 @@
             <div class="content_img">
               <img class="img" src="~/assets/images/black_wedding.webp" alt="フルサポートコース">
             </div>
-            <table class="table">
+            <table class="color_table">
               <tr v-for="(value, index) in fullTables" v-bind:key="index">
                 <th>{{value.title}}</th>
                 <td>{{value.price}}</td>
@@ -67,7 +67,7 @@
             <div class="content_img">
               <img src="~/assets/images/wedding-table-desserts.webp" alt="カジュアルコース">
             </div>
-            <table class="table">
+            <table class="color_table">
               <tr v-for="(value, index) in casualTables" v-bind:key="index">
                 <th>{{value.title}}</th>
                 <td>{{value.price}}</td>
@@ -101,7 +101,7 @@
             <div class="content_img">
               <img src="~assets/images/counseling.webp" alt="カウンセリングコース">
             </div>
-            <table class="table">
+            <table class="color_table">
               <div><span>電話でのご相談</span></div>
               <tr v-for="(value, index) in counselingTables" v-bind:key="index">
                 <th>{{value.title}}</th>
@@ -296,7 +296,7 @@ const counselingTables = [
               width: 100%
               border-radius: 15px
           
-          > .table
+          > .color_table
             width: 400px
 
             +sp-view
