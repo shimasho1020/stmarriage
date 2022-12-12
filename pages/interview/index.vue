@@ -142,14 +142,16 @@ const changeSex = (sex: '' | '男性' | '女性') => {
 
         > .img_wrap
           position: relative
-          flex: 0 0 35%
+          flex: 0 0 30%
           overflow: hidden
           border-radius: 20px
+          margin: 20px
 
 
           +sp-view
             width: 100%
             border-radius: 20px 20px 0px 0px
+            margin: 0
 
           &::before
             content:""
