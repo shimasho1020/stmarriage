@@ -138,7 +138,7 @@
                   label="この方の簡単な説明や結婚までの経緯"
                   v-model="aboutText"
                 ></v-textarea>
-                <div style="white-space: pre-wrap;">当社の{{caseList.age}}歳{{caseList.sex}}会員様がご成婚されました。お相手は{{caseList.partnerAge}}歳の{{changeSex(caseList.sex)}}会員様です。<br>{{aboutText}}</div>
+                <div style="white-space: pre-wrap;">当社の{{caseList.age}}歳{{caseList.sex}}会員様がご成婚されました。お相手は{{caseList.partnerAge}}歳の{{changeSex(caseList.sex)}}会員様です。<br><br>{{aboutText}}</div>
               </div>
               <div class="about">
                 <h1 class="title">ご成婚者様の声</h1>

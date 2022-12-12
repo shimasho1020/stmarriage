@@ -256,7 +256,7 @@ onMounted(() => {
       toggleActions: 'play none none reverse',
     },
     duration: .3,
-    transform: 'scale(0.8)'
+    transform: 'scale(0.7)'
   })
 
   trigger.forEach((value) => {
