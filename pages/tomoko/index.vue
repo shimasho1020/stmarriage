@@ -34,8 +34,8 @@
                 <ol class="special_list">
                 <li>{{item.age}}歳{{item.sex}}</li>
                 <li v-if="!!item.job">{{item.job}}</li>
+                <li>交際期間{{item.datingTerm}}ヶ月</li>
                 <li>活動期間{{item.term}}ヶ月</li>
-                <li v-if="!!item.datingTerm">交際期間{{item.datingTerm}}ヶ月</li>
               </ol>
               <div v-if="item.isPublic" class="green--text text-h4">現在公開中です</div>
               <div v-if="!item.isPublic" class="red--text text-h4">現在非公開中です</div>

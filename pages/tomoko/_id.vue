@@ -80,7 +80,7 @@
             <span>ヶ月</span>
           </div>
           <div class="pa-5">
-            <h1 class="subtitle">交際期間</h1>
+            <h1 class="subtitle">交際期間<span class="necessary">(必須)</span></h1>
             <v-autocomplete
               v-model="caseList.datingTerm"
               :items="itemsTerm"
@@ -304,6 +304,7 @@ const activeButton = computed(() => {
           !!caseList.value.age && 
           !!caseList.value.sex &&
           !!caseList.value.term &&
+          !!caseList.value.datingTerm &&
           !!caseList.value.partnerAge &&
           !!imageURL
 })

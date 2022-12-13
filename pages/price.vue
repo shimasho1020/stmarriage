@@ -50,6 +50,7 @@
               <ol class="original_list">
                 <li>お申し込み：月 <span class="highlight">50件</span>まで無料</li>
                 <li>お申し受け：無制限</li>
+                <li>カウンセラーからの紹介：月数名</li>
                 <li>お見合い料：<span class="highlight">無料</span>（月８回まで）</li>
                 <li>お見合いセッティング（お店の代行予約等）</li>
                 <li>電話、メールでのご相談：無制限</li>
