@@ -74,13 +74,14 @@
     width: 90%
 
 th
-  +text-title(20px)
+  +text-title(18px)
 
   +sp-view
-    +text-title(18px)
+    +text-title(16px)
 
 td
   +text-body(18px)
+  font-weight: bold
 
   +sp-view
     +text-body(16px)

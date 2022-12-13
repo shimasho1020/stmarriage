@@ -96,7 +96,7 @@
       <div class="section_wrap" id="counseling">
         <div class="section counseling">
           <h1 class="title"><span>カウンセリングコース</span></h1>
-          <div class="subtitle">活動に迷いがある方、とりあえずお試ししたい方におすすめのコースです。</div>
+          <div class="subtitle">他社で活動している方、プライベートな恋愛、結婚でお悩みを抱えている方、<br>お気軽にご相談ください。</div>
           <div class="content">
             <div class="content_img">
               <img src="~assets/images/counseling.webp" alt="カウンセリングコース">

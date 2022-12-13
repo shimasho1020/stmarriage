@@ -130,7 +130,7 @@
               </div>
               <div class="self-p">
                 <div class="self-p_wrap">
-                  <span class="inline-block">はじめまして。代表カウンセラーの島田智子です。<br>三菱系の結婚相談所「ダイヤモンドファミリークラブ」のカウンセラーとして、約10年勤務しておりました。<br>延べ1000人以上の会員様を担当し、20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。　豊富な経験・知識を生かして、年齢、性別を問わず、お一人お一人に寄り添ったサポートをいたします。<br>「お見合いを成功させる秘訣」「異性に好かれる身だしなみ、行動、会話」「仮交際から真剣交際への進め方」「ご成婚への最後の一押し」等、幅広く丁寧にアドバイスいたします。<br>過去のご成婚者の方々から近況報告をいただいたり、元会員様から恋愛相談を受けたりと、現在でも長くお付き合いを続けさせていただいています。結婚後（成婚退会後）も何か悩みを抱えた時、いつでもご相談いただけるような身近な存在でありたいと思っております。<br>随時、無料相談（電話、zoom）を行っておりますので、お気軽にお問い合わせください。</span>
+                  <span class="inline-block">代表カウンセラーの島田智子です。<br>三菱系の結婚相談所「ダイヤモンドファミリークラブ」のカウンセラーとして、約10年勤務しておりました。<br>延べ1000人以上の会員様を担当し、20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。　豊富な経験・知識を生かして、年齢、性別を問わず、お一人お一人に寄り添ったサポートをいたします。<br>「お見合いを成功させる秘訣」「異性に好かれる身だしなみ、行動、会話」「仮交際から真剣交際への進め方」「ご成婚への最後の一押し」等、幅広く丁寧にアドバイスいたします。<br>過去のご成婚者の方々から近況報告をいただいたり、元会員様から恋愛相談を受けたりと、現在でも長くお付き合いを続けさせていただいています。結婚後（成婚退会後）も何か悩みを抱えた時、いつでもご相談いただけるような身近な存在でありたいと思っております。<br>随時、無料相談（電話、zoom）を行っておりますので、お気軽にお問い合わせください。</span>
                 </div>
               </div>
               <div class="self-body">
@@ -212,14 +212,17 @@
             <li class="content_body ---1 top-our_strengths__container">
               <div class="top-our_strengths__container--body">
                 <h2 class="top-our_strengths__container--point">1</h2>
-                <p class="top-our_strengths__container--heading">日本結婚相談所連盟<br>(IBJ)正規加盟店</p>
+                <p class="top-our_strengths__container--heading">全国約80,000人を対象に<br>お相手探し</p>
                 <p class="top-our_strengths__container--about">
-                  セントマリアージュ青山は、会員数・成婚数業界ナンバー１の「日本結婚相談所連盟（IBJ）」の正規加盟店です。<br>全国約80,000人の登録者を対象に、ご自身のスマホやパソコンを使ってスムーズなお相手探しができます。毎月4,200名以上の新規会員の方が入会していますので、常に新たな出会いが期待できます。お見合いのセッティング、交際から成婚まで、カウンセラーがきめ細かくサポートさせていただきます。
+                  セントマリアージュ青山は、会員数・成婚数業界ナンバー１の「日本結婚相談所連盟(IBJ)」の正規加盟店です。<br>
+                  IBJに加盟している相談所の<span class="big_font">全国約80,000人</span>の会員様を対象に、ご自身のスマホやパソコンを使ってスムーズなお相手探しができます。<br>
+                  また、毎月4,200名以上の新規会員の方が入会していますので、常に新たな出会いが期待できます。<br>
+                  お見合いのセッティング、交際から成婚まで、カウンセラーがきめ細かくサポートさせていただきます。
                 </p>
               </div>
               <div class="top-our_strengths__container--img">
                 <div class="img_block --1">
-                  <img src="~/assets/images/ibj_certificate.webp" class="img" alt="丁寧なサポート">
+                  <img src="~/assets/images/black_wedding.webp" class="img" alt="丁寧なサポート">
                 </div>	
               </div> 
             </li>
@@ -228,12 +231,15 @@
                 <h2 class="top-our_strengths__container--point">2</h2>
                 <p class="top-our_strengths__container--heading">経験に基づく<br>きめ細やかなサポート</p>
                 <p class="top-our_strengths__container--about">
-                  大手結婚相談所で約10年間勤務し、延べ1000人以上の会員様の担当カウンセラーとして婚活サポートを行ってきました。<br>幅広い年齢層の成婚実績が多数ございますので、経験に基づく的確なアドバイスをいたします。<br>お見合い後の振り返りや、交際中の状況を確認しながら活動状況に応じてアドバイスをさせていただきます。<br><br>
+                  大手結婚相談所で約10年間勤務し、延べ1000人以上の会員様の担当カウンセラーとして婚活サポートを行ってきました。<br>
+                  幅広い年齢層の成婚実績が多数ございますので、経験に基づく的確なアドバイスをいたします。<br>
+                  お見合い後の振り返りや、交際中の状況を確認しながら活動状況に応じてアドバイスをさせていただきます。<br>
+                  婚活中は誰にも相談できず孤独に陥りがちですが、いつでもメールや電話で相談いただける体制を整えています。
                 </p>
               </div>
               <div class="top-our_strengths__container--img">
                 <div class="img_block">
-                  <img src="~/assets/images/black_wedding.webp" class="img" alt="満足度">
+                  <img src="~/assets/images/wedding_hall.webp" class="img" alt="満足度">
                 </div>	
               </div> 
             </li>
@@ -1057,9 +1063,15 @@ onBeforeUnmount(() => {
                 +text-body(20px)
                 line-height: 1.4em
                 margin: 8% 0 13%
+
                 +sp-view
                   margin:5% 0 5%
                   +text-body(16px)
+
+                > .big_font
+                  font-weight: bold
+                  +sp-view
+
             
             > .top-our_strengths__container--img
               width: 95%
@@ -1075,9 +1087,9 @@ onBeforeUnmount(() => {
                 &::before
                   content:""
                   display: block
-                  padding-top: 100%
-                  +sp-view
-                    padding-top: 100%
+                  padding-top: 70%
+                  // +sp-view
+                  //   padding-top: 100%
                 &::after
                   content: ''
                   position: absolute
