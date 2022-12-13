@@ -214,7 +214,7 @@
                 <h2 class="top-our_strengths__container--point">1</h2>
                 <p class="top-our_strengths__container--heading">全国約80,000人を対象に<br>お相手探し</p>
                 <p class="top-our_strengths__container--about">
-                  セントマリアージュ青山は、会員数・成婚数業界ナンバー１の「日本結婚相談所連盟(IBJ)」の正規加盟店です。<br>
+                  セントマリアージュ青山は、会員数・成婚数業界ナンバー１の<span class="big_font">日本結婚相談所連盟(IBJ)</span>の正規加盟店です。<br>
                   IBJに加盟している相談所の全国<span class="big_font">約80,000人</span>の会員様を対象に、ご自身のスマホやパソコンを使ってスムーズなお相手探しができます。<br>
                   また、毎月4,200名以上の新規会員の方が入会していますので、常に新たな出会いが期待できます。<br>
                   お見合いのセッティング、交際から成婚まで、カウンセラーがきめ細かくサポートさせていただきます。
