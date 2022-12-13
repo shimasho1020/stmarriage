@@ -1,7 +1,7 @@
 <template>
 <div class="" ref="pageObserver">
   <div class="title_block" style="text-align:center">
-    <h1 class="title">ご入会からご結婚まで</h1>
+    <h1 class="title">ご入会からご成婚まで</h1>
   </div>
   <div class="body" id="href_1">
     <div class="menu anim">

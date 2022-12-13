@@ -316,6 +316,7 @@ const counselingTables = [
               margin: 0 0 16px
 
               +sp-view
+                +text-title(20px)
                 margin: 0 36px 0
 
               &::after,&::before

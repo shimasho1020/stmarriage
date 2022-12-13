@@ -16,7 +16,7 @@
           <div class="link-wrap"><span class="link-text">料金プラン</span></div>
         </nuxt-link>
         <nuxt-link class="menu--link" to="/flow" :class="{'highlight': $route.name === 'flow'}">
-          <div class="link-wrap"><span class="link-text">入会から結婚まで</span></div>
+          <div class="link-wrap"><span class="link-text">入会から成婚まで</span></div>
         </nuxt-link>
         <div class="spacer"></div>
         <nuxt-link class="menu--link" to="/interview" :class="{'highlight': $route.name === 'interview'}">
@@ -43,7 +43,7 @@
       <div class="sp-menu-wrap" :class="{'top-page': $route.name === 'index'}">
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/">ホーム</nuxt-link>
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/price">料金プラン</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/flow">入会から結婚まで</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/flow">入会から成婚まで</nuxt-link>
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/interview">ご成婚事例</nuxt-link>
         <!-- <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/contact">相談フォーム</nuxt-link> -->
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/company">会社概要</nuxt-link>
