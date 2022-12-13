@@ -46,7 +46,7 @@
       </div>
       <div class="p-contact__item">
         <label for="date">面談希望日付<span class="necessary">(必須)</span></label><br>
-        <date-picker class="date_input" id="date" v-model="date" format='yyyy-MM-dd' placeholder="日付を選択してください"></date-picker>
+        <date-picker class="date_input" id="date" v-model="date" format='yyyy-MM-dd' placeholder="日付を選択"></date-picker>
         <input type="hidden" name="date" v-model="formatDate">
       </div>
       <div class="p-contact__item">
