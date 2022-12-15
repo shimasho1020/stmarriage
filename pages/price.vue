@@ -30,7 +30,7 @@
           <div class="subtitle">当社のほとんど会員様が、こちらのコースで活動されています。</div>
           <div class="content">
             <div class="content_img">
-              <img class="img" src="~/assets/images/black_wedding.webp" alt="フルサポートコース">
+              <img class="img" src="~/assets/images/wedding-table-desserts.webp" alt="フルサポートコース">
             </div>
             <table class="color_table">
               <tr v-for="(value, index) in fullTables" v-bind:key="index">
@@ -66,7 +66,7 @@
           <div class="subtitle">活動に迷いがある方、とりあえずお試ししたい方におすすめのコースです。</div>
           <div class="content">
             <div class="content_img">
-              <img src="~/assets/images/wedding-table-desserts.webp" alt="カジュアルコース">
+              <img src="~/assets/images/casual.webp" alt="カジュアルコース">
             </div>
             <table class="color_table">
               <tr v-for="(value, index) in casualTables" v-bind:key="index">
@@ -127,13 +127,13 @@ const { app, store } = useContext()
 const courses = [
   {
     name:'フルサポートコース',
-    img:'/images/black_wedding.webp',
+    img:'/images/wedding-table-desserts.webp',
     note:'充実したサポート内容のおススメコースです。当社の多くの会員様がこちらのコースで活動されています。',
     href:'#full',
   },
   {
     name:'カジュアルコース',
-    img:'/images/wedding-table-desserts.webp',
+    img:'/images/casual.webp',
     // img:'/images/marriage-gate.webp',
     note:'婚活にまだ迷いのある方、とりあえずお試しした方におすすめのコースです。追加料金でフルサポートコースに変更可能です。',
     href:'#casual',
