@@ -1,7 +1,7 @@
 # セントマリアージュ青山
 
-## Deploy Previewはこちら
-https://deploy-preview-4--remarkable-tapioca-4b7299.netlify.app/
+## URLはこちら
+https://st-mariage.com/
 
 ## Build Setup
 
