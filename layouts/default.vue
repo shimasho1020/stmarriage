@@ -455,6 +455,7 @@ onUnmounted(() => {
     opacity: 0
 
   > .circle_form
+    position: relative
     height: 140px
     width: 140px
     margin-left: 10px
@@ -468,7 +469,6 @@ onUnmounted(() => {
     +text-title(21px)
     color: var(--white-1)
     padding: 10px 0 0
-    // background: linear-gradient(to bottom, #e051bc, rgb(195, 242, 248))
     background: linear-gradient(to bottom, #5f51e0, rgb(195, 242, 248))
     transition-duration: .3s
 
@@ -489,6 +489,35 @@ onUnmounted(() => {
       margin: 0
       path
         fill: var(--white-1)
+    
+    &::before 
+      position: absolute
+      content: ""
+      display: block
+      top: -1px
+      left: -1px
+      z-index: -1
+      width: 140px
+      height: 140px
+      // border: 1px solid #5f51e0
+      // background: linear-gradient(#5f51e0,var(--white-1))
+      border-radius: 50%
+      animation: pulseMotion 1.4s linear infinite
+      transition: opacity linear 0.4s
+
+      +sp-view
+        height: 120px
+        width: 120px
+
+@keyframes pulseMotion 
+  0% 
+    transform: scale(1, 1)
+    background-color: #5f51e080
+
+  100% 
+    transform: scale(1.4, 1.4)
+    background-color: #5f51e000
+
 
 .BODY
   &.not-top-page

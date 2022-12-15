@@ -208,7 +208,7 @@
           </div>
           <ul class="content_wrap">
             <li class="content_body ---1 top-our_strengths__container">
-              <div class="top-our_strengths__container--body">
+              <div class="top-our_strengths__container--body ---1">
                 <h2 class="top-our_strengths__container--point">1</h2>
                 <p class="top-our_strengths__container--heading">全国約80,000人を対象に<br>お相手探し</p>
                 <p class="top-our_strengths__container--about">
@@ -218,14 +218,14 @@
                   お見合いのセッティング、交際から成婚まで、カウンセラーがきめ細かくサポートさせていただきます。
                 </p>
               </div>
-              <div class="top-our_strengths__container--img">
+              <div class="top-our_strengths__container--img ---1">
                 <div class="img_block --1">
                   <img src="~/assets/images/black_wedding.webp" class="img" alt="丁寧なサポート">
                 </div>	
               </div> 
             </li>
             <li class="content_body ---2 top-our_strengths__container">
-              <div class="top-our_strengths__container--body">
+              <div class="top-our_strengths__container--body ---2">
                 <h2 class="top-our_strengths__container--point">2</h2>
                 <p class="top-our_strengths__container--heading">経験に基づく<br>きめ細やかなサポート</p>
                 <p class="top-our_strengths__container--about">
@@ -235,7 +235,7 @@
                   婚活中は誰にも相談できず孤独に陥りがちですが、いつでもメールや電話で相談いただける体制を整えています。
                 </p>
               </div>
-              <div class="top-our_strengths__container--img">
+              <div class="top-our_strengths__container--img ---2">
                 <div class="img_block">
                   <img src="~/assets/images/wedding_hall.webp" class="img" alt="満足度">
                 </div>	
@@ -251,7 +251,7 @@
             <div class="title__border"></div>
             <p class="title__sub">アクセス</p>
           </div>
-          <div class="access-comment">
+          <div class="access-comment big">
             <span class="inline-block"><span style="font-weight: bold">【営業時間】</span><br><span class="inline-block">&emsp;平日 11:00～19:00</span><span class="inline-block">&emsp;(火曜定休日) </span><br><span class="inline-block">&emsp;土日祝11:00～18:00</span></span><br>
             <span class="inline-block"><span style="font-weight: bold">【所在地】</span><br><span class="inline-block">&emsp;〒107-0052</span><span class="inline-block">&emsp;東京都港区赤坂4丁目8番19号</span><span class="inline-block">&emsp;赤坂フロントタウン3階</span></span><br>
             <span class="inline-block"><span style="font-weight: bold">【電話番号】</span><br><span class="inline-block">&emsp;080-7002-0555</span></span><br>
@@ -303,11 +303,14 @@ const trigger: string[] = [
   '.content_body.img',
   '.content_body.text',
   '.section_title_block.--4',
-  '.content_body.---1',
-  '.content_body.---2',
+  '.top-our_strengths__container--img.---1',
+  '.top-our_strengths__container--img.---2',
+  '.top-our_strengths__container--body.---1',
+  '.top-our_strengths__container--body.---2',
   '.section_title_block.--5',
-  '.access-comment',
+  '.access-comment.big',
   '.access-map',
+  '.access-comment.small',
 ]
 const settings = {
   "fade": false,
@@ -947,7 +950,7 @@ onBeforeUnmount(() => {
                 row-gap: 40px
                 > .content_body
                   width: calc(50% - 30px)
-                  opacity: 0,
+                  opacity: 0
                   transform: translateY(40px)
                   +sp-view
                     width: 100%
@@ -990,7 +993,6 @@ onBeforeUnmount(() => {
       background-color: var(--white-1)
       > .section-wrap
         border-bottom: 1px solid black
-        // padding: 0 0 300px
         > .content_wrap
           display: flex
           justify-content: space-between
@@ -1005,14 +1007,16 @@ onBeforeUnmount(() => {
             color: #707070
             text-align: left
             padding: 10px
-            opacity: 0
-            transform: translateY(40px)
+
             +sp-view
               width: 100%
               display: flex
               flex-wrap: wrap-reverse
               gap: 10px
             > .top-our_strengths__container--body
+              opacity: 0
+              transform: translateY(40px)
+
               > .top-our_strengths__container--point
                 +text-title(40px)
                 background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
@@ -1061,6 +1065,8 @@ onBeforeUnmount(() => {
 
             
             > .top-our_strengths__container--img
+              opacity: 0
+              transform: translateY(40px)
               width: 95%
               // height: 25vw
               +sp-view
