@@ -23,7 +23,7 @@
         </div> -->
       </h1>
       <div class="img_block" >
-        <img class="hero_img" src="~/assets/images/jewelry_hero.webp" alt="メイン写真">
+        <img class="hero_img" src="/images/jewelry_hero.webp" alt="メイン写真">
       </div>
       <div class="intro">
         <div class="intro-card">
@@ -73,7 +73,7 @@
                         <ArrowImage class="right-arrow" direction="right"></ArrowImage>
                       </div>
                       <p class="__title">
-                        <span class="inline-block">インタビュー内容はこちら</span>
+                        <span class="inline-block">ご成婚事例を全て見る</span>
                       </p>
                     </div>
                   </div>
