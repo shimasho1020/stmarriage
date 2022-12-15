@@ -6,14 +6,14 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - セントマリアージュ青山',
-    title: 'セントマリアージュ青山',
+    title: '結婚相談所 セントマリアージュ青山',
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
       { name: 'format-detection', content: 'telephone=no' },
       {
         hid: 'description',
@@ -22,7 +22,7 @@ export default {
       },
       {hid: 'og:site_name', property: 'og:site_name', content: 'セントマリアージュ青山'},
       {hid: 'og:type', property: 'og:type', content: 'website'},
-      // {hid: 'og:url', property: 'og:url', content: 'https://tokyo-grand.jp/'},
+      {hid: 'og:url', property: 'og:url', content: 'https://st-mariage.com/'},
       {hid: 'og:title', property: 'og:title', content: 'セントマリアージュ青山'},
       {
         hid: 'og:description',
