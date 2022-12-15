@@ -177,13 +177,11 @@
                   <div class="content_body img">
                     <div class="top-service__img">
                       <div class="c-img">
-                        <!-- <div class="c-img__border"></div> -->
                         <img src="~/assets/images/IBJ_award_2021.webp" class="c-img__img" alt="ibjアワード">
                       </div>	
                     </div> 
                     <div class="top-service__img">
                       <div class="c-img">
-                        <!-- <div class="c-img__border"></div> -->
                         <img src="~/assets/images/IBJ_award_2022_back.webp" class="c-img__img" alt="ibjアワード">
                       </div>	
                     </div> 
@@ -289,7 +287,6 @@ import { firestore, storage } from '~/plugins/firebase.js'
 import { CaseList,Interview, Interviewer, DisplayInterviewer } from '~/types/index'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
-// optional style for arrows & dots
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
 const trigger: string[] = [
@@ -623,7 +620,6 @@ onBeforeUnmount(() => {
             width: 100%
             margin-top: 0
     &.--1
-      // background-color: var(--white-1)
       > .section-wrap
         > .case_list
           display: flex
@@ -744,9 +740,7 @@ onBeforeUnmount(() => {
                 +text-title(24px)
                 color: var(--white-1)
                 display: inline-block
-                // padding-right: 24px
                 white-space: nowrap
-                // line-height: 1.5
                 +sp-view
                   +text-title(18px)
                   color: var(--white-1)
@@ -834,11 +828,7 @@ onBeforeUnmount(() => {
                   left: 0
                   width: 100%
                   height: 100%
-                  // background-image: linear-gradient(90deg, transparent 0 95%, var(--main) 100%), linear-gradient(0deg, transparent 0 95%, var(--main) 100%), linear-gradient(180deg, transparent 0 95%, var(--main) 100%), linear-gradient(270deg, transparent 0 95%, var(--main) 100%)
-                  // background-image: linear-gradient(90deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(0deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(180deg, transparent 0 95%, white 95%, transparent 100%), linear-gradient(270deg, transparent 0 95%, white 95%, transparent 100%)
-                > .inline-block
-                  // background-color: var(--white-1)
-                  // padding: 20px 0
+                  
             > .self-body
               flex: 70%
 
@@ -964,9 +954,7 @@ onBeforeUnmount(() => {
                   > .top-service__img
                     width: 40%
                     margin: auto
-                    +sp-view
-                      // width: 300px
-                      // margin: auto
+
                     > .c-img
                       position: relative
                       width: 100%
@@ -1013,7 +1001,6 @@ onBeforeUnmount(() => {
             padding: 0
           > .content_body
             width: 45%
-            // transform: translateY(60px)
             list-style: none
             color: #707070
             text-align: left
