@@ -24,6 +24,7 @@ export default {
       {hid: 'og:type', property: 'og:type', content: 'website'},
       {hid: 'og:url', property: 'og:url', content: 'https://st-mariage.com/'},
       {hid: 'og:title', property: 'og:title', content: 'セントマリアージュ青山'},
+      {hid: 'og:image', property: 'og:image', content: '/images/jewelry_hero.webp'},
       {
         hid: 'og:description',
         property: 'og:description',
