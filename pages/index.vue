@@ -73,7 +73,7 @@
                         <ArrowImage class="right-arrow" direction="right"></ArrowImage>
                       </div>
                       <p class="__title">
-                        <span class="inline-block">ご成婚事例を全て見る</span>
+                        <span class="inline-block">インタビュー内容はこちら</span>
                       </p>
                     </div>
                   </div>
@@ -107,7 +107,7 @@
           <div class="link-block">
             <nuxt-link class="list-link" to="/interview">
               <div class="list-link-wrap" ref="linkPos3">
-                <span class="list-link-text inline-block">インタービューを全て見る</span>
+                <span class="list-link-text inline-block">ご成婚事例を全て見る</span>
               </div>
               <ArrowImage class="right-arrow" direction="right"></ArrowImage>
             </nuxt-link>
