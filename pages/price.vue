@@ -156,7 +156,7 @@ const fullTables = [
 const casualTables = [
   {title:'入会金',price:'0円'},
   {title:'登録料',price:'33,000円'},
-  {title:'月会費',price:'5,500円'},
+  {title:'月会費',price:'6,600円'},
   {title:'お見合い料',price:'3,300円'},
   {title:'ご成婚費',price:'165,000円'},
 ]
