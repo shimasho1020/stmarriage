@@ -1,8 +1,3 @@
-<template>
-  <v-app dark>
-  </v-app>
-</template>
-
 <script>
 export default {
   asyncData({ redirect }) {
@@ -10,6 +5,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-</style>
