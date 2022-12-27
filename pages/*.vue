@@ -1,12 +1,12 @@
 <template>
   <div>
-    
+
   </div>
 </template>
 <script>
 export default {
-  asyncData({ redirect }) {
-    return redirect('/')
+  asyncData() {
+    this.$router.push('/')
   }
 }
 </script>
