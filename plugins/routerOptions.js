@@ -13,7 +13,6 @@ export default ({ store, app }) => {
     }
     if (from.name == null && to.name == '*') {
       console.log('TEST')
-      app.router.push('/')
       store.commit('setLoadingEnable', false)
     }
     next();

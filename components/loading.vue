@@ -107,7 +107,11 @@ const titleAnimation = () => {
 }
 
 onMounted(() => {
-  titleAnimation()
+  if(isLoadingEnabled.value) {
+    console.log("ANIMATUION")
+    titleAnimation()
+  }
+  // titleAnimation()
 }) 
 
 </script>
