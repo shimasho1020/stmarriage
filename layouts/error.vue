@@ -5,9 +5,9 @@
 
 <script>
 export default {
-  asyncData({ redirect }) {
-    return redirect('/')
-  }
+  // asyncData({ redirect }) {
+  //   return redirect('/')
+  // }
 }
 </script>
 
