@@ -45,13 +45,17 @@ export default {
     scrollBehavior: function (to, from, savedPosition) {
       return { x: 0, y: 0 }
     },
-    extendRoutes(routes, resolve) {
-      routes.push({
-        name: 'notFound',
-        path: '*',
-        component: resolve(__dirname, 'pages/index.vue')
-      })
-    }
+    // extendRoutes(routes, resolve) {
+    //   routes.push({
+    //     name: 'notFound',
+    //     path: '*',
+    //     component: resolve(__dirname, 'pages/index.vue')
+    //   })
+    // }
+  },
+
+  generate: {
+    fallback: true,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
