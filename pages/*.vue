@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <v-app dark>
   </v-app>
 </template>
@@ -15,4 +15,4 @@ export default {
 </script>
 
 <style scoped>
-</style> -->
+</style>
