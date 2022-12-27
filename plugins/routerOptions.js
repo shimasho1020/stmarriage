@@ -1,6 +1,6 @@
 export default ({ store, app }) => {
   app.router.beforeEach((to, from, next) => {
-    console.log('TEAT_ROUTER',from.name)
+    console.log('FROM: ' + from.name + 'TO: ' + to.name) 
     if (to.name === 'index') {
       store.commit('changeHeaderToTrans')
       store.commit('changeFormToNone')
@@ -9,6 +9,9 @@ export default ({ store, app }) => {
       store.commit('changeFormToDis')
     }
     if (from.name !== null && to.name == 'index') {
+      store.commit('setLoadingEnable', false)
+    }
+    if (to.name == '*') {
       store.commit('setLoadingEnable', false)
     }
     next();
