@@ -1,5 +1,5 @@
 <template>
-  <div class="loading-page active" v-if="route.name === 'index' && isLoadingEnabled === true" ref="loadingBD">
+  <div class="loading-page active" v-if="(route.name === 'index' || route.name === '*') && isLoadingEnabled" ref="loadingBD">
     <hanabira id="kaze" class="hanabira --1"></hanabira>
     <hanabira id="kaze" class="hanabira --2"></hanabira>
     <hanabira id="kaze" class="hanabira --3"></hanabira>
@@ -109,13 +109,14 @@ const titleAnimation = () => {
 }
 
 onMounted(() => {
-  if(isLoadingEnabled.value) {
-    console.log("ANIMATUION")
-    titleAnimation()
-  } else {
-    console.log("CHECK",route.value.name === 'index' && isLoadingEnabled.value)
-    store.dispatch('finishLoading')
-  }
+  // if(isLoadingEnabled.value) {
+  //   console.log("ANIMATUION")
+  //   titleAnimation()
+  // } else {
+  //   console.log("CHECK",route.value.name === 'index' && isLoadingEnabled.value)
+  //   store.dispatch('finishLoading')
+  // }
+  titleAnimation()
 }) 
 
 </script>

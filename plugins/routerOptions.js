@@ -14,7 +14,7 @@ export default ({ store, app }) => {
     if (from.name == null && to.name == '*') {
       console.log('TEST')
       store.dispatch('startLoading')
-      store.commit('setLoadingEnable', false)
+      // store.commit('setLoadingEnable', false)
     }
     next();
   });

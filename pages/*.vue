@@ -12,14 +12,11 @@ const { app, store } = useContext()
 
 const isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled'])
 
-// useAsync(async () => {
-//   router.push({path: '/'})
-// })
+useAsync(async () => {
+  router.push({path: '/'})
+})
 
 onMounted(() => {
-  if(isLoadingEnabled.value) {
-    store.dispatch('startLoading')
-  }
   router.push({path: '/'})
 })
 
