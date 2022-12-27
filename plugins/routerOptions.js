@@ -11,10 +11,10 @@ export default ({ store, app }) => {
     if (from.name !== null && to.name == 'index') {
       store.commit('setLoadingEnable', false)
     }
-    if (from.name == null && to.name == '*') {
-      console.log('TEST')
-      store.commit('setLoadingEnable', false)
-    }
+    // if (from.name == null && to.name == '*') {
+    //   console.log('TEST')
+    //   store.commit('setLoadingEnable', false)
+    // }
     next();
   });
 };
