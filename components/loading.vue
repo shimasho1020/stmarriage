@@ -1,5 +1,5 @@
 <template>
-  <div class="loading-page active" v-if="$route.name === 'index' && isLoadingEnabled === true" ref="loadingBD">
+  <div class="loading-page active" v-if="route.name === 'index' && isLoadingEnabled === true" ref="loadingBD">
     <hanabira id="kaze" class="hanabira --1"></hanabira>
     <hanabira id="kaze" class="hanabira --2"></hanabira>
     <hanabira id="kaze" class="hanabira --3"></hanabira>
@@ -48,6 +48,8 @@ components: {
   hanabira
 }
 
+const router = useRouter()
+const route = useRoute()
 const { app, store } = useContext()
 
 let loading = ref(true)
@@ -111,6 +113,7 @@ onMounted(() => {
     console.log("ANIMATUION")
     titleAnimation()
   } else {
+    console.log("CHECK",route.value.name === 'index' && isLoadingEnabled)
     store.dispatch('finishLoading')
   }
 }) 
