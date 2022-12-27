@@ -113,7 +113,7 @@ onMounted(() => {
     console.log("ANIMATUION")
     titleAnimation()
   } else {
-    console.log("CHECK",route.value.name === 'index' && isLoadingEnabled)
+    console.log("CHECK",route.value.name === 'index' && isLoadingEnabled.value)
     store.dispatch('finishLoading')
   }
 }) 
