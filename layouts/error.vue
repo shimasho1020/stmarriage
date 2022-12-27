@@ -6,7 +6,11 @@
 <script>
 export default {
   asyncData({ redirect }) {
+    this.$router.push('/')
     return redirect('/')
+  },
+  mounted() {
+    this.$router.push('/')
   }
 }
 </script>
