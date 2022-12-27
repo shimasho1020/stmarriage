@@ -13,7 +13,7 @@ export default ({ store, app }) => {
     }
     if (from.name == null && to.name == '*') {
       console.log('TEST')
-      this.$router.push('/')
+      app.router.push('/')
       store.commit('setLoadingEnable', false)
     }
     next();
