@@ -110,8 +110,9 @@ onMounted(() => {
   if(isLoadingEnabled.value) {
     console.log("ANIMATUION")
     titleAnimation()
+  } else {
+    store.dispatch('finishLoading')
   }
-  // titleAnimation()
 }) 
 
 </script>
