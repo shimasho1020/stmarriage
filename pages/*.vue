@@ -3,15 +3,16 @@
   </v-app>
 </template>
 
-<script>
-export default {
-  asyncData() {
-    this.$router.push('/')
-  },
-  mounted() {
-    this.$router.push('/')
-  }
-}
+<script setup lang="ts">
+import { computed, ref, watch, reactive, onMounted, useAsync, useRoute, useRouter } from '@nuxtjs/composition-api'
+
+const router = useRouter()
+const route = useRoute()
+
+useAsync(async () => {
+  router.push({path: '/'})
+})
+
 </script>
 
 <style scoped>
