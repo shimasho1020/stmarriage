@@ -91,20 +91,19 @@ watch(isPageLoading, (newVal, oldVal) => {
 })
 
 const titleAnimation = () => {
-  return new Promise((resolve) => {
-    gsap.to(".page-title__child", {
-      y: 0,
-      opacity: 1,
-      // duration: 3,
-      // ease: "expo.out",
-      stagger: {
-        amount: 2,
-        ease: "none"
-      },
-      onComplete: () => {
-        store.dispatch('finishLoading')
-      },
-    })
+  console.log("ANIMATUION")
+  gsap.to(".page-title__child", {
+    y: 0,
+    opacity: 1,
+    // duration: 3,
+    // ease: "expo.out",
+    stagger: {
+      amount: 2,
+      ease: "none"
+    },
+    onComplete: () => {
+      store.dispatch('finishLoading')
+    },
   })
 }
 
