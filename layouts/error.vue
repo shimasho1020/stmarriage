@@ -37,9 +37,9 @@ useAsync(async () => {
   router.push({path: '/'})
 })
 
-onMounted(() => {
-  router.push({path: '/'})
-})
+// onMounted(() => {
+//   router.push({path: '/'})
+// })
 
 </script>
 
