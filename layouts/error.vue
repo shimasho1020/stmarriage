@@ -49,6 +49,8 @@ onMounted(() => {
   width: 100vw
   height: 100vh
   background-color: var(--main)
+  top: 0px
+  left: 0
   z-index: 110
 .error-page
   padding: 120px 0 80px
