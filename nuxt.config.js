@@ -20,10 +20,10 @@ export default {
         name: 'description',
         content: '大手結婚相談所(ダイヤモンドファミリークラブ)にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。'
       },
-      {hid: 'og:site_name', property: 'og:site_name', content: 'セントマリアージュ青山'},
+      {hid: 'og:site_name', property: 'og:site_name', content: '結婚相談所 セントマリアージュ青山'},
       {hid: 'og:type', property: 'og:type', content: 'website'},
       {hid: 'og:url', property: 'og:url', content: 'https://st-mariage.com/'},
-      {hid: 'og:title', property: 'og:title', content: 'セントマリアージュ青山'},
+      {hid: 'og:title', property: 'og:title', content: '結婚相談所 セントマリアージュ青山'},
       {hid: 'og:image', property: 'og:image', content: '/images/jewelry_hero.webp'},
       {
         hid: 'og:description',
@@ -31,7 +31,7 @@ export default {
         content: '大手結婚相談所(ダイヤモンドファミリークラブ)にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。'
       },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'セントマリアージュ青山' },
+      { name: 'twitter:title', content: '結婚相談所 セントマリアージュ青山' },
       { name: 'twitter:description', content: '大手結婚相談所(ダイヤモンドファミリークラブ)にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。20代～50代までの幅広い年齢層の方々のご成婚実績が多数ございますので、経験豊かなカウンセラーに安心してお任せください。' },
     ],
     link: [
