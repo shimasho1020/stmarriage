@@ -96,8 +96,6 @@ const titleAnimation = () => {
   gsap.to(".page-title__child", {
     y: 0,
     opacity: 1,
-    // duration: 3,
-    // ease: "expo.out",
     stagger: {
       amount: 2,
       ease: "none"
@@ -109,13 +107,6 @@ const titleAnimation = () => {
 }
 
 onMounted(() => {
-  // if(isLoadingEnabled.value) {
-  //   console.log("ANIMATUION")
-  //   titleAnimation()
-  // } else {
-  //   console.log("CHECK",route.value.name === 'index' && isLoadingEnabled.value)
-  //   store.dispatch('finishLoading')
-  // }
   // titleAnimation()
 }) 
 

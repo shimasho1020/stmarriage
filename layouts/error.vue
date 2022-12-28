@@ -19,26 +19,27 @@
   </div>
 </template>
 
-<script>
-import {mapGetters} from 'vuex';
+<script setup lang="ts">
+import { computed, ref, watch, reactive, onMounted, useContext, useAsync, useRoute, useRouter } from '@nuxtjs/composition-api'
 
-export default {
-  name: "error",
-  components: {},
-  props: ['error'],
-  data() {
-    return {}
-  },
-  computed: {
-    ...mapGetters([])
-  },
-  watch: {},
-  async fetch({store, error}) {
-  },
-  mounted() {
-  },
-  methods: {}
-}
+const router = useRouter()
+const route = useRoute()
+const { app, store } = useContext()
+
+defineProps<{
+  error: any;
+}>();
+
+const isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled'])
+
+useAsync(async () => {
+  router.push({path: '/'})
+})
+
+onMounted(() => {
+  router.push({path: '/'})
+})
+
 </script>
 
 <style scoped lang="sass">
