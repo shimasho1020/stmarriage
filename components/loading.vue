@@ -58,6 +58,7 @@ let isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled']
 
 const startLoading = () => {
   setTimeout(() => loading.value = true, 100)
+  titleAnimation()
 }
 const finishLoading = () => {
   gsap.to('.loading-page', {
@@ -115,7 +116,7 @@ onMounted(() => {
   //   console.log("CHECK",route.value.name === 'index' && isLoadingEnabled.value)
   //   store.dispatch('finishLoading')
   // }
-  titleAnimation()
+  // titleAnimation()
 }) 
 
 </script>
