@@ -1,5 +1,6 @@
 <template>
   <div class="error-page">
+    <div class="over_wrap"></div>
     <div class="detail">
       <h1 class="detail__title">{{ error.statusCode }}</h1>
       <h1 class="detail__subtitle" v-if="error.statusCode === 404">Page not found</h1>
@@ -43,6 +44,12 @@ onMounted(() => {
 </script>
 
 <style scoped lang="sass">
+.over_wrap
+  position: fixed
+  width: 100vw
+  height: 100vh
+  background-color: var(--main)
+  z-index: 110
 .error-page
   padding: 120px 0 80px
   width: 1060px

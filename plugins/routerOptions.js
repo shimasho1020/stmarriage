@@ -1,6 +1,6 @@
 export default ({ store, app }) => {
   app.router.beforeEach((to, from, next) => {
-    // console.log('FROM: ' + from.name + ', TO: ' + to.name) 
+    console.log('FROM: ' + from.name + ', TO: ' + to.name) 
     if (to.name === 'index') {
       store.commit('changeHeaderToTrans')
       store.commit('changeFormToNone')
