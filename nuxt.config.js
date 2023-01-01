@@ -91,7 +91,12 @@ export default {
     'nuxt-gsap-module',
     '@nuxtjs/google-fonts',
     '@nuxtjs/dotenv',
+    '@nuxtjs/google-analytics',
   ],
+
+  googleAnalytics: {
+    id: 'UA-252948030-1'
+  },
 
   googleFonts: {
     families: {
