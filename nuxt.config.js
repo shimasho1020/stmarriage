@@ -91,7 +91,13 @@ export default {
     'nuxt-gsap-module',
     '@nuxtjs/google-fonts',
     '@nuxtjs/dotenv',
+    "@nuxtjs/google-gtag",
   ],
+
+  "google-gtag": {
+    id: "G-XXXX",
+    debug: true
+  },
 
   googleFonts: {
     families: {

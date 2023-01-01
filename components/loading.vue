@@ -76,14 +76,12 @@ let isPageLoading = computed<boolean>(() => store.getters['isPageLoading'])
 watch(isPageLoading, (newVal, oldVal) => {
   if(newVal) {
     nextTick(() => {
-      console.log('start')
       gsap.to(".top_page_body", {
         position: 'fixed'
       })
       startLoading()
     })
   } else {
-    console.log('finish')
     gsap.to(".top_page_body", {
       position: 'relative'
     })
@@ -92,7 +90,6 @@ watch(isPageLoading, (newVal, oldVal) => {
 })
 
 const titleAnimation = () => {
-  console.log("ANIMATUION")
   gsap.to(".page-title__child", {
     y: 0,
     opacity: 1,
