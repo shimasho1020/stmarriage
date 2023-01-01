@@ -172,6 +172,13 @@ export default {
         }
       }
     ],
+    [
+      '@nuxtjs/google-gtag', 
+      {
+        id: 'G-LVM1BSG65Q',
+        debug: true,
+      }
+    ],
     '@nuxtjs/axios',
   ],
 
