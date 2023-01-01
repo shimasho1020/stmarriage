@@ -91,7 +91,13 @@ export default {
     'nuxt-gsap-module',
     '@nuxtjs/google-fonts',
     '@nuxtjs/dotenv',
+    "@nuxtjs/google-gtag",
   ],
+
+  "google-gtag": {
+    id: "G-XXXX",
+    debug: true
+  },
 
   googleFonts: {
     families: {
@@ -170,13 +176,6 @@ export default {
           firestore: true,
           storage: true
         }
-      }
-    ],
-    [
-      '@nuxtjs/google-gtag', 
-      {
-        id: 'G-LVM1BSG65Q',
-        debug: true,
       }
     ],
     '@nuxtjs/axios',
