@@ -1,3 +1,6 @@
+const GAID = 'G-LVM1BSG65Q'
+const GAcode = `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${GAID}');`
+
 export default {
   loading: '~/components/loading.vue',
 
@@ -38,7 +41,21 @@ export default {
       { rel: 'icon', type: 'image/png', href: '/images/ring_logo__16.png', size: "16x16"},
       { rel: 'icon', type: 'image/png', href: '/images/ring_logo__32.png', size: "32x32"},
       { rel: 'apple-touch-icon', href: '/images/ring_logo_32.jpeg'},
-    ]
+    ],
+    script: [
+      {
+        hid: 'GAsrc',
+        src: 'https://www.googletagmanager.com/gtag/js?id=' + GAID
+      },
+      {
+        hid: 'GAcode',
+        innerHTML: GAcode
+      }
+    ],
+    __dangerouslyDisableSanitizersByTagID: {
+      'GAsrc': ['innerHTML'],
+      'GAcode': ['innerHTML']
+    },
   },
 
   router: {
@@ -91,13 +108,13 @@ export default {
     'nuxt-gsap-module',
     '@nuxtjs/google-fonts',
     '@nuxtjs/dotenv',
-    "@nuxtjs/google-gtag",
+    // "@nuxtjs/google-gtag",
   ],
 
-  "google-gtag": {
-    id: "G-XXXX",
-    debug: true
-  },
+  // "google-gtag": {
+  //   id: "G-LVM1BSG65Q",
+  //   debug: true
+  // },
 
   googleFonts: {
     families: {
