@@ -205,15 +205,13 @@
 
 <script setup lang="ts">
 import gsap from "gsap"
-import { ref, computed,  onMounted, onBeforeUnmount, useContext } from '@nuxtjs/composition-api'
+import { ref, computed,  onMounted, onBeforeUnmount } from '@nuxtjs/composition-api'
 import Arrow from '~/assets/images/arrow.svg'
 import nextArrow from '~/assets/images/next-arrow.svg'
 components: {
   Arrow
   nextArrow
 }
-
-const { app, store } = useContext()
 
 const trigger = [
   {trigger: '.section_content.--1', action: '.text.--1'},

@@ -75,7 +75,7 @@
 
 <script setup lang="ts">
 import gsap from "gsap"
-import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
+import { computed, ref, watch, onMounted, onUnmounted, useContext, useRoute, useRouter } from '@nuxtjs/composition-api'
 import mail from '~/assets/images/mail_icon.svg'
 components: {
   mail
@@ -159,28 +159,22 @@ watch(headerColor, (newVal, oldVal) => {
   if(newVal){
     gsap.to(".header_wrap", {
       'background-color': color,
-      // duration: .3, 
     })
     gsap.to(".logo", {
       color: '#eff4f4',
-      // duration: .3, 
     })
     gsap.to(".menu", {
       color: '#eff4f4',
-      // duration: .3, 
     })
   } else {
     gsap.to(".header_wrap", {
       'background-color': '#00000000',
-      // duration: .3, 
     })
     gsap.to(".logo", {
       color: color,
-      // duration: .3, 
     })
     gsap.to(".menu", {
       color: color,
-      // duration: .3, 
     })
   }
 })

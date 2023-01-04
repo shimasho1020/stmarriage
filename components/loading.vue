@@ -27,13 +27,6 @@
             </span>
           </div>
         </div>
-        <!-- <div class="page-title__block">
-          <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('全力でサポートします')" :key="text">
-              <span class="page-title__child">{{ text }}</span>
-            </span>
-          </div>
-        </div> -->
       </h1>
     </div>
   </div>
@@ -41,7 +34,7 @@
 
 <script setup lang="ts">
 import gsap from "gsap"
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, nextTick } from '@nuxtjs/composition-api'
+import { computed, ref, watch, useContext, useRoute, useRouter, nextTick } from '@nuxtjs/composition-api'
 import hanabira from '~/assets/images/hanabira.svg'
 
 components: {
@@ -102,10 +95,6 @@ const titleAnimation = () => {
     },
   })
 }
-
-onMounted(() => {
-  // titleAnimation()
-}) 
 
 </script>
 

@@ -281,10 +281,10 @@
 
 <script setup lang="ts">
 import gsap from "gsap"
-import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
-import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where, limit, orderBy } from "firebase/firestore"
+import { computed, ref, onMounted, onBeforeUnmount, useContext, useAsync } from '@nuxtjs/composition-api'
+import { collection, addDoc, getDocs,  query,  orderBy } from "firebase/firestore"
 import { firestore, storage } from '~/plugins/firebase.js'
-import { CaseList,Interview, Interviewer, DisplayInterviewer } from '~/types/index'
+import { Interviewer, DisplayInterviewer } from '~/types/index'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
@@ -669,10 +669,6 @@ onBeforeUnmount(() => {
               min-width: 240px
               display: none
               
-              // &:nth-child(2)
-              //   display: none
-              // &:nth-child(3)
-              //   display: none
           .case-card
             width: 100%
             > .case-item__image_block
@@ -822,8 +818,6 @@ onBeforeUnmount(() => {
               +sp-view
                 flex: 0 0 100%
               > .self-p_wrap
-                // padding: 4% 5%
-                // background-color: var(--white-1)
                 &::after
                   content: ''
                   position: absolute
@@ -1081,8 +1075,6 @@ onBeforeUnmount(() => {
                   content:""
                   display: block
                   padding-top: 70%
-                  // +sp-view
-                  //   padding-top: 100%
                 &::after
                   content: ''
                   position: absolute

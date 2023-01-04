@@ -111,11 +111,6 @@ export default {
     // "@nuxtjs/google-gtag",
   ],
 
-  // "google-gtag": {
-  //   id: "G-LVM1BSG65Q",
-  //   debug: true
-  // },
-
   googleFonts: {
     families: {
       'Noto+Serif+JP': true,
@@ -178,17 +173,6 @@ export default {
           measurementId: "G-84XCX1D1F6"
         },
         services: {
-          // auth: {
-          //   persistence: 'local', // default
-          //   initialize: {
-          //     onAuthStateChangedMutation: 'ON_AUTH_STATE_CHANGED_MUTATION',
-          //     onAuthStateChangedAction: 'onAuthStateChangedAction',
-          //     subscribeManually: false
-          //   },
-          //   ssr: false, // default
-          //   emulatorPort: 3000,
-          //   emulatorHost: 'http://localhost',
-          // },
           auth: true,
           firestore: true,
           storage: true
@@ -201,25 +185,6 @@ export default {
   axios: {
     // proxy: true
   },
-
-  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
-  // vuetify: {
-  //   customVariables: ['~/assets/variables.scss'],
-  //   theme: {
-  //     dark: true,
-  //     themes: {
-  //       dark: {
-  //         primary: colors.blue.darken2,
-  //         accent: colors.grey.darken3,
-  //         secondary: colors.amber.darken3,
-  //         info: colors.teal.lighten1,
-  //         warning: colors.amber.base,
-  //         error: colors.deepOrange.accent4,
-  //         success: colors.green.accent3
-  //       }
-  //     }
-  //   }
-  // },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
