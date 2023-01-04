@@ -22,23 +22,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from "gsap"
-import { useLocalStorage, useMouse } from '@vueuse/core'
-
-const CustomStateKey = 'CUSTOM_STATE_KEY'
-type CustomState = { name: string; age: number }
-
-// const store = useLocalStorage<CustomState>(CustomStateKey, {
-//   name: 'keisuke',
-//   age: 24,
-// })
-
-// 値の取得
-// console.log(store.value.name)
-// 値の更新
-// store.value.name = 'taniguchi'
-// xとyの値を獲得
 
 const footerTarget = ref()
 const mouseOutFooter = (event: MouseEvent) => {
@@ -68,11 +53,6 @@ const watchFooterCursor = (event: MouseEvent) => {
     })
   }
 }
-
-// const { x, y } = useMouse()
-// watch([x,y], () => {
-
-// })
 
 onMounted(() => {
   document.addEventListener('mousemove', watchFooterCursor)
