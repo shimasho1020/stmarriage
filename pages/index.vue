@@ -23,7 +23,7 @@
         </div> -->
       </h1>
       <div class="img_block" >
-        <img class="hero_img" src="/images/jewelry_hero.webp" alt="メイン写真">
+        <img class="hero_img" src="~/assets/images/jewelry_hero.webp" alt="メイン写真">
       </div>
       <div class="intro">
         <div class="intro-card">

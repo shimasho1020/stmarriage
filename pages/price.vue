@@ -134,7 +134,6 @@ const courses = [
   {
     name:'カジュアルコース',
     img:'/images/casual.webp',
-    // img:'/images/marriage-gate.webp',
     note:'婚活にまだ迷いのある方、とりあえずお試しした方におすすめのコースです。追加料金でフルサポートコースに変更可能です。',
     href:'#casual',
   },
