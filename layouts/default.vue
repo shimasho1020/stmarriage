@@ -522,7 +522,7 @@ onUnmounted(() => {
 .BODY
   &.not-top-page
     padding: 120px 0 0
-    background-image: url("/images/luxury-2.jpg")
+    background-image: url("/images/luxury-2.webp")
     background-size: 25%
     background-repeat: repeat
     background-color: var(--white-1)

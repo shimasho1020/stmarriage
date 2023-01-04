@@ -564,7 +564,7 @@ onBeforeUnmount(() => {
 .body
   height: auto
   position: relative
-  background-image: url("/images/luxury-2.jpg")
+  background-image: url("/images/luxury-2.webp")
   background-size: 25%
   background-repeat: repeat
   
