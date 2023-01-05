@@ -181,6 +181,13 @@ export default {
     // proxy: true
   },
 
+  vuetify: {
+    defaultAssets: {
+      font: false,
+      icons: false
+    }
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extend: (config) => {
