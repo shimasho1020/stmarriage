@@ -87,7 +87,7 @@ const titleAnimation = () => {
     y: 0,
     opacity: 1,
     stagger: {
-      amount: 2,
+      amount: 1.2,
       ease: "none"
     },
     onComplete: () => {
