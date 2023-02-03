@@ -1,13 +1,7 @@
 const GAID = 'G-LVM1BSG65Q'
 const GAcode = `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${GAID}');`
 
-const { FB_API_KEY, FB_AUTH_DOMAIN, FB_PROJECT_ID, FB_STORAGE_BUCKET, FB_MESSAGING_SENDER_ID, FB_ID, FB_MEASUREMENT_ID } = process.env;
-
 export default {
-  env :{
-    FB_API_KEY, FB_AUTH_DOMAIN, FB_PROJECT_ID, FB_STORAGE_BUCKET, FB_MESSAGING_SENDER_ID, FB_ID, FB_MEASUREMENT_ID
-  },
-
   loading: '~/components/loading.vue',
 
   // Target: https://go.nuxtjs.dev/config-target
@@ -209,5 +203,20 @@ export default {
         ],
       });
     },
+  },
+
+  // 公開されていいもの
+  publicRuntimeConfig: {
+    
+  },
+  // 公開したくないもの
+  privateRuntimeConfig: {
+    apiKey: process.env.FB_API_KEY,
+    authDomain: process.env.FB_AUTH_DOMAIN,
+    projectId: process.env.FB_PROJECT_ID,
+    storageBucket: process.env.FB_STORAGE_BUCKET,
+    messagingSenderId: process.env.FB_MESSAGING_SENDER_ID,
+    appId: process.env.FB_ID,
+    measurementId: process.env.FB_MEASUREMENT_ID,
   },
 }
