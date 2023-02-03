@@ -2,9 +2,6 @@ import { initializeApp } from "firebase/app"
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
-import createClient from '~/plugins/contentful.js'
-
-console.log(createClient)
 
 const firebaseConfig = {
   // apiKey: process.env.FB_API_KEY,
