@@ -23,9 +23,9 @@ const firebaseConfig = {
 
 export const firebaseApp = initializeApp(firebaseConfig);
 
-export default  ({app}) => {
+export default  ({$config: { apiKey }}) => {
   // console.log(app.context.$config.apiKey)
-  console.log(app.$fire.auth)
+  console.log(apiKey)
 }
 
 export const auth = getAuth(firebaseApp);
