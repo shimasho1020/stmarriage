@@ -3,7 +3,6 @@ import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
-console.log(apiKey)
 const firebaseConfig = {
   // apiKey: process.env.FB_API_KEY,
   // authDomain: process.env.FB_AUTH_DOMAIN,
@@ -25,7 +24,6 @@ export const firebaseApp = initializeApp(firebaseConfig);
 
 export default  ({app}) => {
   console.log(app)
-
 }
 
 export const auth = getAuth(firebaseApp);

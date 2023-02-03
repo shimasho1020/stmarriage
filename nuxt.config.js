@@ -197,4 +197,8 @@ export default {
       });
     },
   },
+
+  env: {
+    apiKey: process.env.firebaseApiKey || 'aaaaaaa',
+  },
 }
