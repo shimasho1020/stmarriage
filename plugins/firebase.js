@@ -28,7 +28,6 @@ export default ({app}) => {
   console.log(app.context.env.apiKey)
 }
 
-console.log(apiKey)
 export const auth = getAuth(firebaseApp);
 export const storage = getStorage(firebaseApp);
 export const firestore = getFirestore(firebaseApp);
