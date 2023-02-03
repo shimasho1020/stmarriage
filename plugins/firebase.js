@@ -20,12 +20,15 @@ const firebaseConfig = {
   measurementId: "G-84XCX1D1F6",
 }
 
+console.log('TEST',process.env.apiKey)
+
 export const firebaseApp = initializeApp(firebaseConfig);
 
-export default  ({app}) => {
+export default ({app}) => {
   console.log(app.context.env.apiKey)
 }
 
+console.log(apiKey)
 export const auth = getAuth(firebaseApp);
 export const storage = getStorage(firebaseApp);
 export const firestore = getFirestore(firebaseApp);
