@@ -5,7 +5,7 @@ const contentful = require('contentful')
  */
 const createClient = () => {
   return contentful.createClient({
-    apiKey: process.env.firebaseApiKey,
+    apiKey: process.env.FB_API_KEY,
   })
 }
 

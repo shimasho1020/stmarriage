@@ -199,6 +199,6 @@ export default {
   },
 
   env: {
-    apiKey: process.env.firebaseApiKey || 'aaaaaaa',
+    apiKey: process.env.FB_API_KEY || 'aaaaaaa',
   },
 }

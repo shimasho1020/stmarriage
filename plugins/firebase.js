@@ -22,9 +22,9 @@ const firebaseConfig = {
 
 export const firebaseApp = initializeApp(firebaseConfig);
 
-// export default  ({app}) => {
-//   console.log(app.context.env.apiKey)
-// }
+export default  ({app}) => {
+  console.log(app.context.env.apiKey)
+}
 
 export const auth = getAuth(firebaseApp);
 export const storage = getStorage(firebaseApp);
