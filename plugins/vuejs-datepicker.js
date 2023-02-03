@@ -1,4 +1,7 @@
 import Vue from 'vue'
-import DatePicker from 'vuejs-datepicker'
+import DatePicker from 'vue2-datepicker'
+import 'vue2-datepicker/index.css'
 
-Vue.component('DatePicker', DatePicker)
+import 'vue2-datepicker/locale/ja'
+
+Vue.use(DatePicker)
