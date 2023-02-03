@@ -9,6 +9,4 @@ const createClient = () => {
   })
 }
 
-console.log('TEST',process.env.firebaseApiKey)
-
 export default createClient
