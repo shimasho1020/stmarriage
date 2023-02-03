@@ -3,7 +3,8 @@ import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
-console.log(process.env.EMAIL_KEY)
+console.log(process.env.FB_API_KEY)
+// console.log(FB_API_KEY)
 const firebaseConfig = {
   // apiKey: process.env.FB_API_KEY,
   // authDomain: process.env.FB_AUTH_DOMAIN,
