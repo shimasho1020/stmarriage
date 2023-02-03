@@ -16,8 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed,  ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter } from '@nuxtjs/composition-api'
-const { app, store } = useContext()
+import { computed, useContext} from '@nuxtjs/composition-api'
+const { store } = useContext()
 
 let user = computed(() => store.getters['user'])
 

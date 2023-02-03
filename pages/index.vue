@@ -282,8 +282,8 @@
 <script setup lang="ts">
 import gsap from "gsap"
 import { computed, ref, onMounted, onBeforeUnmount, useContext, useAsync } from '@nuxtjs/composition-api'
-import { collection, addDoc, getDocs,  query,  orderBy } from "firebase/firestore"
-import { firestore, storage } from '~/plugins/firebase.js'
+import { collection, getDocs,  query,  orderBy } from "firebase/firestore"
+import { firestore } from '~/plugins/firebase.js'
 import { Interviewer, DisplayInterviewer } from '~/types/index'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
