@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
-// console.log(process.env.FB_API_KEY)
+console.log(process.env.apiKey)
 const firebaseConfig = {
   // apiKey: process.env.FB_API_KEY,
   // authDomain: process.env.FB_AUTH_DOMAIN,
@@ -23,10 +23,12 @@ const firebaseConfig = {
 
 export const firebaseApp = initializeApp(firebaseConfig);
 
-export default  ({$config: { apiKey }}) => {
-  // console.log(app.context.$config.apiKey)
-  console.log(apiKey)
-}
+// export default  ({app}, inject) => {
+//   // console.log(app.context.$config.apiKey)
+//   const Firestore = app.$fire.firestore
+//   inject('Firestore', Firestore)
+
+// }
 
 export const auth = getAuth(firebaseApp);
 export const storage = getStorage(firebaseApp);
