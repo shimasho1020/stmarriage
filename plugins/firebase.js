@@ -24,8 +24,8 @@ const firebaseConfig = {
 export const firebaseApp = initializeApp(firebaseConfig);
 
 export default  ({app}) => {
-  // inject('firebase', firebaseApp)
-  console.log(app.context.$config.apiKey)
+  // console.log(app.context.$config.apiKey)
+  console.log(process.env.EMAIL_KEY)
 }
 
 export const auth = getAuth(firebaseApp);
