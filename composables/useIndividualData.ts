@@ -1,5 +1,5 @@
-import { computed, ref, useAsync, useRouter } from '@nuxtjs/composition-api'
-import { Interviewer, CaseList, Interview } from '~/types/index'
+import { ref, useAsync, useRouter } from '@nuxtjs/composition-api'
+import { CaseList, Interview } from '~/types/index'
 import { getIndividualData } from '~/services/FirebaseService'
 
 export const useIndividualData = (id: string) => {

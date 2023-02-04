@@ -1,5 +1,5 @@
 import { computed, ref, useAsync } from '@nuxtjs/composition-api'
-import { Interviewer, DisplayInterviewer } from '~/types/index'
+import { DisplayInterviewer } from '~/types/index'
 import { getInterviewers } from '~/services/FirebaseService'
 
 export const useInterviewers = () => {

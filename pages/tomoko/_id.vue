@@ -189,7 +189,7 @@ export default defineComponent({
 </script>
 
 <script setup lang="ts">
-import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
+import { computed, ref, watch, onMounted, useContext, useRoute, useRouter } from '@nuxtjs/composition-api'
 import { useEditIndividualData } from '~/composables/useEditIndividualData'
 
 const { store } = useContext()
