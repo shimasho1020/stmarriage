@@ -5,18 +5,41 @@
   </div>
   <div class="body">
     <div class="menu">
-      <div
-        class="lists"
-        v-for="(value, index) in courses" v-bind:key="index"
-      >
-        <div class="cards" :class="{one:index==0,two:index==1,three:index==2}">
-          <a class="cards_wrap" v-bind:href="value.href">
-            <h2 class="cards_title">{{value.name}}</h2>
+      <div class="lists">
+        <div class="cards">
+          <a class="cards_wrap" href="#full">
+            <h2 class="cards_title">フルサポートコース</h2>
             <div class="cards_pic">
-              <img class="img" :src="value.img" alt="コース案内">
+              <img class="img" src="~/assets/images/wedding-table-desserts.webp" alt="コース案内">
             </div>
             <div class="cards_note">
-              {{value.note}}
+              充実したサポート内容のおススメコースです。当社の多くの会員様がこちらのコースで活動されています。
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="lists">
+        <div class="cards">
+          <a class="cards_wrap" href="#casual">
+            <h2 class="cards_title">カジュアルコース</h2>
+            <div class="cards_pic">
+              <img class="img" src="~/assets/images/casual.webp" alt="コース案内">
+            </div>
+            <div class="cards_note">
+              婚活にまだ迷いのある方、とりあえずお試しした方におすすめのコースです。追加料金でフルサポートコースに変更可能です。
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="lists">
+        <div class="cards">
+          <a class="cards_wrap" href="#counseling">
+            <h2 class="cards_title">カウンセリングコース</h2>
+            <div class="cards_pic">
+              <img class="img" src="~/assets/images/counseling.webp" alt="コース案内">
+            </div>
+            <div class="cards_note">
+              他社で婚活中の方、プライベートな恋愛でお悩みの方が気軽に電話で相談できるコースです。一人で悩んでいないでご相談ください。
             </div>
           </a>
         </div>
@@ -124,27 +147,6 @@ import { computed, useContext } from '@nuxtjs/composition-api'
 
 const { app, store } = useContext()
 
-const courses = [
-  {
-    name:'フルサポートコース',
-    img:'/images/wedding-table-desserts.webp',
-    note:'充実したサポート内容のおススメコースです。当社の多くの会員様がこちらのコースで活動されています。',
-    href:'#full',
-  },
-  {
-    name:'カジュアルコース',
-    img:'/images/casual.webp',
-    note:'婚活にまだ迷いのある方、とりあえずお試しした方におすすめのコースです。追加料金でフルサポートコースに変更可能です。',
-    href:'#casual',
-  },
-  {
-    name:'カウンセリングコース',
-    img: "/images/counseling.webp",
-    note:'他社で婚活中の方、プライベートな恋愛でお悩みの方が気軽に電話で相談できるコースです。一人で悩んでいないでご相談ください。',
-    href:'#counseling',
-  },
-]
-
 const fullTables = [
   {title:'入会金',price:'33,000円'},
   {title:'登録料',price:'33,000円'},
@@ -190,16 +192,17 @@ const counselingTables = [
       padding: 20px
 
       > .cards
-        border: solid 1px var(--sub)
-        border-radius: 10px
+        // border: solid 1px #00000033
+        border-radius: 12px
         padding: 0 25px 20px
         height: 100%
         text-align: center
         background-color: white
         background-image: url("/images/frame-topleft.svg"), url("/images/frame-topright.svg"), url("/images/frame-bottomleft.svg"), url("/images/frame-bottomright.svg")
-        background-position:  left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
+        background-position:  left 4px top 4px, right 4px top 4px, left 4px bottom 4px, right 4px bottom 4px
         background-size: 50px 50px
         transition-duration: .3s
+        box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
 
         &:hover
           transform: scale(1.1)
@@ -247,8 +250,15 @@ const counselingTables = [
       > .section
         border-radius: 30px
         padding: 40px 20px
-        background-color: var(--white-1)
+        background-color: white
+        background-image: url("/images/frame-topleft.svg"), url("/images/frame-topright.svg"), url("/images/frame-bottomleft.svg"), url("/images/frame-bottomright.svg")
+        background-position:  left 8px top 8px, right 8px top 8px, left 8px bottom 8px, right 8px bottom 8px
+        background-size: 70px 70px
         margin: 20px 0
+        box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
+
+        +sp-view
+          background-size: 50px 50px
 
         > .title
           +text-subtitle(36px)

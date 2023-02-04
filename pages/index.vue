@@ -601,7 +601,7 @@ onBeforeUnmount(() => {
           display: flex
           flex-wrap: wrap
           justify-content: space-between
-          gap: 0 5px
+          gap: 0 8px
           opacity: 0,
           transform: translateY(40px)
           +sp-view
@@ -644,11 +644,13 @@ onBeforeUnmount(() => {
               
           .case-card
             width: 100%
+            box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
+            border-radius: 16px
             > .case-item__image_block
               position: relative
               width: 100%
               overflow: hidden
-              border-radius: 8px 8px 0px 0px
+              border-radius: 16px 16px 0px 0px
               &::before
                 content:""
                 display: block
@@ -666,7 +668,7 @@ onBeforeUnmount(() => {
               height: fit-content
               flex-shrink: 0
               width: 100%
-              border-radius: 0 0 8px 8px
+              border-radius: 0 0 16px 16px
               padding: 30px
               +sp-view
                 padding: 24px 5vw

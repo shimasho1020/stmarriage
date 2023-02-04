@@ -303,12 +303,12 @@ onBeforeUnmount(() => {
     margin: auto
     padding: 20px
     border-radius: 20px
-    background-color: #ffffff88
+    background-color: #ffffffaa
     background-image: url("/images/frame-topleft.svg"), url("/images/frame-topright.svg"), url("/images/frame-bottomleft.svg"), url("/images/frame-bottomright.svg")
     background-position:  left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
     background-size: 50px 50px
     position: sticky
-    top: 75px
+    top: 70px
     z-index: 5
     display: block
 
