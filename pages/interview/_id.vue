@@ -40,47 +40,12 @@ export default defineComponent({
 </script>
 
 <script setup lang="ts">
-import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
-import { getStorage, ref as REF, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where } from "firebase/firestore"
-import { firestore, storage } from '~/plugins/firebase.js'
-import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
-
-const { app, store } = useContext()
+import { computed, useRoute, useRouter } from '@nuxtjs/composition-api'
+import { useIndividualData } from '~/composables/useIndividualData'
 
 const router = useRouter()
 const route = useRoute()
-const displayInterview = ref({} as Interview)
-const displayCaseList = ref({} as CaseList)
-const imageURL = ref()
-const imagePosition = computed(() => {
-  return store.getters['imagePosition'] ?? 0
-})
-
-useAsync(async () => {
-  const thisPageId = route.value.params.id
-  const docRef = doc(firestore, "interviewer", thisPageId);
-  const docSnap = await getDoc(docRef);
-  if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data())
-    const result = docSnap.data() as Interviewer
-    displayInterview.value = result.interview
-    displayCaseList.value = result.caseList
-    store.commit('insertCount', result.imagePosition ?? 0)
-  } else {
-    // doc.data() will be undefined in this case
-    console.log("No such document!");
-    router.push({path: '/'})
-  }
-
-  getDownloadURL(REF(storage, `images/${thisPageId}`))
-  .then((url) => {
-    imageURL.value = url
-  })
-  .catch((error) => {
-    console.log(error)
-  })
-})
+const { displayInterview, displayCaseList, imageURL, imagePosition } = useIndividualData(route.value.params.id)
 
 const changeSex = (sex: '' | '男性' | '女性') => {
   return sex === '男性' ? '女性' : '男性'

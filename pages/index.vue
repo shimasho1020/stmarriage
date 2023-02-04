@@ -281,13 +281,14 @@
 
 <script setup lang="ts">
 import gsap from "gsap"
-import { computed, ref, onMounted, onBeforeUnmount, useContext, useAsync } from '@nuxtjs/composition-api'
-import { collection, getDocs,  query,  orderBy } from "firebase/firestore"
-import { firestore } from '~/plugins/firebase.js'
-import { Interviewer, DisplayInterviewer } from '~/types/index'
+import { computed, ref, onMounted, onBeforeUnmount, useContext } from '@nuxtjs/composition-api'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+import { useInterviewers } from '~/composables/useInterviewers'
+
+const { store } = useContext()
+const { displayCaseList } = useInterviewers()
 
 const trigger: string[] = [
   '.intro',
@@ -328,42 +329,13 @@ const settings = {
   // "dotsClass": "dots"
 }
 
-
-const { app, store } = useContext()
-
-const interviewer = ref([] as DisplayInterviewer[])
-const displayCaseList = computed(() => {
-  return interviewer.value.map((val, index) => {
-      return {
-        id: val.id,
-        url: selectImg(index),
-        ...val.caseList
-      }
-    })
-})
-const selectImg = (index: number):string => {
-  if(index == 0) {return '/images/sample_couple_1.webp'}
-  else if(index == 1) {return '/images/sample_couple_2.webp'}
-  else {return '/images/sample_couple_3.webp'}
-}
-useAsync(async () => {
-  const q = query(collection(firestore, "interviewer"), orderBy("timeStamp", "desc"))
-  const querySnapshot = await getDocs(q)
-  interviewer.value = querySnapshot.docs.map((doc) => {
-  return {
-      id: doc.id,
-      ...doc.data() as Interviewer
-    }
-  }).filter(val => {
-    return val.isPublic && val.caseList.isInterview
-  })
-})
 let circleAnim: gsap.core.Tween 
 let headerAnim = ref<gsap.core.Tween>({} as gsap.core.Tween)
 let fuwaAnim = ref<gsap.core.Tween[]>([])
 let isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled'])
 const myObserver = ref<ResizeObserver>({} as ResizeObserver)
 const pageObserver = ref()
+
 onMounted(() => {
   const resizeObserver = new ResizeObserver(entries => {
     for (const entry of entries) {
@@ -420,6 +392,7 @@ onMounted(() => {
     el.style.bottom = "20px"
   }
 })
+
 onBeforeUnmount(() => {
   myObserver.value.unobserve(pageObserver.value)
   circleAnim.scrollTrigger?.disable()

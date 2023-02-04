@@ -42,51 +42,13 @@
   </template>
 
 <script setup  lang="ts">
-import gsap from "gsap"
-import { computed, defineComponent, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
-import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where, orderBy } from "firebase/firestore"
-import { getStorage, ref as REF, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { firestore, storage } from '~/plugins/firebase.js'
-import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
+import { useCaseList } from '~/composables/useCaseList'
 import Arrow from '~/assets/images/arrow.svg'
 components: {
   Arrow
 }
 
-const interviewer = ref([] as DisplayInterviewer[])
-const displayCaseList = computed(() => {
-  return interviewer.value.map((val) => {
-    return {
-      id: val.id,
-      url: val.url,
-      isPublic: val.isPublic,
-      imagePosition: val.imagePosition,
-      ...val.caseList
-    }
-  })
-})
-
-useAsync(async () => {
-  const q = query(collection(firestore, "interviewer"), orderBy("timeStamp", "desc"))
-  const querySnapshot = await getDocs(q)
-
-  const results = await Promise.all(
-    querySnapshot.docs.map(async(doc) => {
-      const url = await getDownloadURL(REF(storage, `images/${doc.id}`))
-      .catch((error) => {
-        console.log(error)
-      })
-      return {
-        id: doc.id,
-        url: url ?? '',
-        ...doc.data() as Interviewer
-      }
-    })
-  )
-  interviewer.value = results.filter(val => {
-    return val.isPublic
-  })
-})
+const { displayCaseList } = useCaseList(false)
 
 const changeSex = (sex: '' | '男性' | '女性') => {
   return sex === '男性' ? '女性' : '男性'

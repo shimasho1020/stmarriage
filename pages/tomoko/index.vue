@@ -65,58 +65,16 @@ export default defineComponent({
 </script>
 
 <script setup  lang="ts">
-import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
-import { getStorage, ref as REF, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where, orderBy } from "firebase/firestore"
-import { firestore, storage } from '~/plugins/firebase.js'
-import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
+import { computed, useContext, watch } from '@nuxtjs/composition-api'
+import { useCaseList } from '~/composables/useCaseList'
 
-const { app, store } = useContext()
+const { store } = useContext()
+const { displayCaseList } = useCaseList(true)
 
-let user = computed(() => store.getters['user'])
+const user = computed(() => store.getters['user'])
 const logout = () => {
   store.dispatch('logout')
 }
-
-const interviewer = ref([] as DisplayInterviewer[])
-const displayCaseList = computed(() => {
-  return interviewer.value.map((val) => {
-    return {
-      id: val.id,
-      isPublic: val.isPublic,
-      url: val.url,
-      imagePosition: val.imagePosition,
-      ...val.caseList
-    }
-  })
-})
-
-watch(interviewer,(val) => {
-  console.log(val)
-})
-watch(displayCaseList,(val) => {
-  console.log(val)
-})
-
-useAsync(async () => {
-  const q = query(collection(firestore, "interviewer"), orderBy("timeStamp", "desc"))
-  const querySnapshot = await getDocs(q)
-  
-  interviewer.value = await Promise.all(
-    querySnapshot.docs.map(async(doc) => {
-      const url = await getDownloadURL(REF(storage, `images/${doc.id}`))
-      .catch((error) => {
-        console.log(error)
-      })
-      return {
-        id: doc.id,
-        url: url ?? '',
-        ...doc.data() as Interviewer
-      }
-    })
-  )
-})
-
 
 const changeSex = (sex: '' | '男性' | '女性') => {
   return !sex ? '' : sex === '男性' ? '女性' : '男性'

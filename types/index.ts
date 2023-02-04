@@ -1,4 +1,3 @@
-import { serverTimestamp } from 'firebase/firestore';
 export type CaseList = {
   age: number
   term?: number

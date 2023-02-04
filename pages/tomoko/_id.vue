@@ -189,79 +189,35 @@ export default defineComponent({
 </script>
 
 <script setup lang="ts">
-import { computed, ref, watch, reactive, onMounted, onUnmounted, onBeforeUnmount, useContext, getCurrentInstance, useRoute, useRouter, useAsync } from '@nuxtjs/composition-api'
-import { getStorage, ref as REF, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { collection, addDoc, getDocs, doc, setDoc, updateDoc, serverTimestamp, arrayUnion, arrayRemove, runTransaction, getDoc, query, where } from "firebase/firestore"
-import { firestore, storage } from '~/plugins/firebase.js'
-import { CaseList, Interview, Interviewer, DisplayInterviewer } from '~/types/index'
+import { computed, ref, watch, onMounted, useContext, useRoute, useRouter } from '@nuxtjs/composition-api'
+import { useEditIndividualData } from '~/composables/useEditIndividualData'
 
-
-const { app, store } = useContext()
+const { store } = useContext()
 const router = useRouter()
 const route = useRoute()
+const { 
+  isNew, 
+  isPublic, 
+  interviewCount, 
+  aboutText, 
+  questionTitle, 
+  questionText, 
+  interview, 
+  caseList, 
+  imageURL, 
+  imagePosition, 
+  isSending,
+  isError,
+  completeMessage,
+  uploadImageFileData,
+  onSubmit,
+  previewFile,
+  addCount, 
+  subtractCount, 
+  clearCount 
+} = useEditIndividualData(route.value.params.id)
 
 let user = computed(() => store.getters['user'])
-
-const isPublic = ref(false)
-const caseList = ref({isInterview: false} as CaseList)
-const interview = computed<Interview>(() => {
-  return {
-    aboutText: aboutText.value,
-    interviewContents: questionTitle.value.map((val, index) => {
-      return {
-        title: val,
-        text: questionText.value[index]
-      }
-    }).filter((val) => {
-      return !!val.text && !!val.title
-    })
-  }
-})
-
-const interviewCount = ref(0)
-const aboutText = ref('')
-const questionTitle = ref<string[]>([])
-const questionText = ref<string[]>([])
-
-const isNew = ref(false)
-const thisPageId = ref('')
-
-const imageURL = ref()
-
-useAsync(async () => {
-  thisPageId.value = route.value.params.id
-  if(thisPageId.value == '0') {
-    isNew.value = true
-    interviewCount.value = 1
-    return
-  }
-  const docRef = doc(firestore, "interviewer", thisPageId.value);
-  const docSnap = await getDoc(docRef);
-  if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data())
-    const result = docSnap.data() as Interviewer
-    isPublic.value = result.isPublic
-    caseList.value = result.caseList
-    aboutText.value = result.interview.aboutText
-    store.commit('insertCount', result.imagePosition ?? 0)
-    result.interview.interviewContents.forEach((val) => {
-      questionTitle.value.push(val.title)
-      questionText.value.push(val.text)
-      interviewCount.value++
-    })
-  } else {
-    console.log("No such document!");
-  }
-
-  getDownloadURL(REF(storage, `images/${thisPageId.value}`))
-  .then((url) => {
-    imageURL.value = url
-  })
-  .catch((error) => {
-    console.log(error)
-  })
-})
-
 
 const itemsSex = ['男性', '女性']
 const itemsAge:number[] = []
@@ -276,27 +232,13 @@ const changeSex = (sex: '' | '男性' | '女性') => {
   return sex === '男性' ? '女性' : '男性'
 }
 
-const imagePosition = computed(() => {
-  return store.getters['imagePosition'] ?? 0
-})
 watch(imagePosition,(val) => {
   moveImg(val)
 })
 const moveImg = (count:number) => {
   document.querySelectorAll('.profImg').forEach((element:any) => {
-    // console.log(element.style)
     element.style.objectPosition = `center ${50 + count}%`;
   })
-}
-
-const addCount = () => {
-  store.commit('add')
-}
-const subtractCount = () => {
-  store.commit('subtract')
-}
-const clearCount = () => {
-  store.commit('clear')
 }
 
 const activeButton = computed(() => {
@@ -308,124 +250,6 @@ const activeButton = computed(() => {
           !!caseList.value.partnerAge &&
           !!imageURL
 })
-
-const isSending = ref(false)
-const isError = ref(false)
-const completeMessage = ref('')
-
-const onSubmit = async() => {
-  const data = isNew.value ? {
-    timeStamp: serverTimestamp(),
-    isPublic: isPublic.value,
-    caseList: caseList.value,
-    interview: interview.value,
-    imagePosition: imagePosition.value,
-  } : {
-    isPublic: isPublic.value,
-    caseList: caseList.value,
-    interview: interview.value,
-    imagePosition: imagePosition.value,
-  }
-
-  if(isSending.value){
-    return;
-  }
-  isSending.value = true;
-  completeMessage.value = '処理中…';
-
-  try{
-    if(isNew.value){
-      const exampleRef = collection(firestore, "interviewer") 
-      const response = await addDoc(exampleRef, data)
-      if (uploadImageFileData.value) {
-        await uploadImageFile(uploadImageFileData.value, response.id)
-      }
-      thisPageId.value = response.id
-    } else {
-      const exampleRef = doc(firestore, "interviewer", thisPageId.value)
-      await setDoc(exampleRef, data, { merge: true })
-      if (uploadImageFileData.value) {
-        await uploadImageFile(uploadImageFileData.value, thisPageId.value)
-      }
-    }
-    completeMessage.value = '保存しました';
-    isNew.value = false
-  } catch(e) {
-    completeMessage.value = '失敗しました' + 'ERROR: ' + e;
-    isError.value   = true;
-  } finally {
-    isSending.value = false;
-    setTimeout(() => {
-      completeMessage.value = ''
-    }, 2500)
-  }
-}
-
-const uploadImageFileData = ref<FileList>()
-
-function previewFile(event: Event) {
-  const file = (event.target as HTMLInputElement).files;
-  if(file === null) return
-  const blob = new Blob(file as any, { type: "image/*" });
-  const reader = new FileReader();
-  reader.addEventListener("load", function () {
-    // 画像ファイルを base64 文字列に変換します
-    imageURL.value = reader.result;
-  }, false);
-  reader.readAsDataURL(blob)
-
-  uploadImageFileData.value = file
-}
-
-const uploadImageFile = async(file: FileList, id: string) => {
-  const metadata = {
-    contentType: 'image/*'
-  }
-  // const storage = getStorage();
-  const storageRef = REF(storage, 'images/' + id);
-
-  const uploadTask = uploadBytesResumable(storageRef, file[0], metadata)
-  await new Promise((resolve, reject) => {
-    uploadTask.on('state_changed',
-    (snapshot) => {
-      // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      console.log('Upload is ' + progress + '% done');
-      switch (snapshot.state) {
-        case 'paused':
-          console.log('Upload is paused');
-          break;
-        case 'running':
-          console.log('Upload is running');
-          break;
-      }
-    }, 
-    (error) => {
-      switch (error.code) {
-        case 'storage/unauthorized':
-          // User doesn't have permission to access the object
-          break;
-        case 'storage/canceled':
-          // User canceled the upload
-          break;
-
-        // ...
-
-        case 'storage/unknown':
-          // Unknown error occurred, inspect error.serverResponse
-          break;
-      }
-      reject('画像のアップロードに失敗しました')
-    }, 
-    () => {
-      // Upload completed successfully, now we can get the download URL
-      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        console.log('File available at', downloadURL);
-      });
-      resolve('')
-    });
-  })
-}
 
 const backEditPage = () => {
   clearCount()

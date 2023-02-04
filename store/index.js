@@ -20,7 +20,7 @@ export const actions = {
   login({ dispatch }, payload) {
     signInWithEmailAndPassword(auth, payload.email, payload.password)
       .then(userCredential => {
-        console.log(userCredential.user)
+        // console.log(userCredential.user)
         console.log('ログインしました')
         dispatch('checkLogin')
       }).catch((error) => {
