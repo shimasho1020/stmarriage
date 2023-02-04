@@ -70,9 +70,6 @@ import { useCaseList } from '~/composables/useCaseList'
 
 const { store } = useContext()
 const { displayCaseList } = useCaseList(true)
-watch(displayCaseList,(val) => {
-  console.log(val)
-})
 
 const user = computed(() => store.getters['user'])
 const logout = () => {
