@@ -56,16 +56,18 @@ const changeSex = (sex: '' | '男性' | '女性') => {
 </script>
 
 <style lang="sass" scoped>
+.title_block
+  > .title
+    background-image: url("/images/luxury-2.webp")
+    background-size: 25%
+    background-repeat: repeat
+
 .arrow
   display: inline-block
   width: 24px
   height: 24px
   circle
     fill: var(--main)
-
-.title_block
-  > .title
-    background-color: var(--white-1)
 
 .body
   padding: 64px 0
@@ -89,10 +91,9 @@ const changeSex = (sex: '' | '男性' | '女性') => {
       > .case_item
         padding: 30px
         border-radius: 20px
-        background-color: var(--white-1)
-        background-image: url("/images/frame-topleft.svg"), url("/images/frame-topright.svg"), url("/images/frame-bottomleft.svg"), url("/images/frame-bottomright.svg")
-        background-position:  left 2px top 2px, right 2px top 2px, left 2px bottom 2px, right 2px bottom 2px
-        background-size: 50px 50px
+        background-image: url("/images/luxury-2.webp")
+        background-size: 25%
+        background-repeat: repeat
         display: flex
         justify-content: space-between
         flex-direction: row-reverse
@@ -101,7 +102,9 @@ const changeSex = (sex: '' | '男性' | '女性') => {
           padding: 0
           display: block
           border-radius: 20px
-          background-image: none
+          background-image: url("/images/luxury-2.webp")
+          background-size: 25%
+          background-repeat: repeat
 
         > .img_wrap
           position: relative

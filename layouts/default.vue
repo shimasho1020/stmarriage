@@ -56,7 +56,7 @@
       </nuxt-link>
     </div>
 
-    <div class="BODY" :class="{'not-top-page': $route.name !== 'index', 'interview-page': $route.name === 'interview', 'company-page': $route.name === 'company'}">
+    <div class="BODY" :class="{'not-top-page': $route.name !== 'index', 'interview-page': ($route.name === 'interview' || $route.name === 'flow'), 'company-page': $route.name === 'company'}">
       <nuxt/>
     </div>
 
