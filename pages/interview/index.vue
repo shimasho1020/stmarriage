@@ -48,7 +48,7 @@ components: {
   Arrow
 }
 
-const { displayCaseList } = useCaseList()
+const { displayCaseList } = useCaseList(false)
 
 const changeSex = (sex: '' | '男性' | '女性') => {
   return sex === '男性' ? '女性' : '男性'

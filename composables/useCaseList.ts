@@ -2,7 +2,7 @@ import { computed, ref, useAsync } from '@nuxtjs/composition-api'
 import { Interviewer, DisplayInterviewer } from '~/types/index'
 import { getInterviewerCaseList } from '~/services/FirebaseService'
 
-export const useCaseList = () => {
+export const useCaseList = (includeNotPublic: boolean) => {
   const interviewerCaseList = ref<DisplayInterviewer[]>([])
   useAsync( async() => {
     interviewerCaseList.value = await getInterviewerCaseList()
@@ -17,6 +17,9 @@ export const useCaseList = () => {
         ...val.caseList
       }
     })
+    .filter(val => {
+      return includeNotPublic ? true : val.isPublic
+    }) 
   })
 
   return { displayCaseList }
