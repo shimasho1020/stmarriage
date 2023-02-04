@@ -46,7 +46,7 @@
       </div>
       <div class="p-contact__item">
         <label for="date">面談希望日付<span class="necessary">(必須)</span></label><br>
-        <date-picker class="date_input" id="date" v-model="date" format='yyyy-MM-dd' placeholder="日付を選択"></date-picker>
+        <date-picker class="date_input" id="date" v-model="date" valueType="format" placeholder="日付を選択"></date-picker>
         <input type="hidden" name="date" v-model="formatDate">
       </div>
       <div class="p-contact__item">
@@ -89,20 +89,8 @@ let isSending = ref(false)
 let isError = ref(false)
 let completeMessage = ref('')
 
-const  getStringFromDate = (date: any) => {
-  if(!date) return ''
-  let year_str = date.getFullYear().toString()
-  //月だけ+1すること
-  let month_str = (1 + date.getMonth()).toString()
-  let day_str = date.getDate().toString()
-  let format_str = 'YYYY-MM-DD';
-  format_str = format_str.replace(/YYYY/g, year_str);
-  format_str = format_str.replace(/MM/g, month_str);
-  format_str = format_str.replace(/DD/g, day_str);
-  return format_str;
-};
 const formatDate = computed(() => {
-  return getStringFromDate(date.value)
+  return date.value
 })
 
 let activeButton = computed(() => {
