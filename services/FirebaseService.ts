@@ -2,7 +2,6 @@ import { getStorage, ref as REF, uploadBytesResumable, getDownloadURL } from "fi
 import { collection, addDoc, getDocs, doc, setDoc, updateDoc, arrayUnion, arrayRemove, runTransaction, getDoc, query, where, orderBy } from "firebase/firestore"
 import { firestore, storage } from '~/plugins/firebase.js'
 import { Interviewer, DisplayInterviewer } from '~/types/index'
-import { CaseList } from '../types/index';
 
 export const getInterviewers = async() => {
   const q = query(collection(firestore, "interviewer"), orderBy("timeStamp", "desc"))
@@ -40,4 +39,20 @@ export const getInterviewerCaseList = async() => {
   }) 
 
   return interviewerCaseList
+}
+
+export const getIndividualData = async(id: string) => {
+  const docRef = doc(firestore, "interviewer", id)
+  const docSnap = await getDoc(docRef)
+  if (!docSnap.exists()) {
+    throw new Error("No such document!")
+  }
+  const interviewer = docSnap.data() as Interviewer
+
+  const imageURL = await getDownloadURL(REF(storage, `images/${id}`))
+  .catch((error) => {
+    console.log(error)
+  }) ?? ''
+
+  return { interviewer, imageURL }
 }
