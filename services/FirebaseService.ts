@@ -24,9 +24,6 @@ export const getInterviewerCaseList = async() => {
   const results = await Promise.all(
     querySnapshot.docs.map(async(doc) => {
       const url = await getDownloadURL(REF(storage, `images/${doc.id}`))
-      // .catch((error) => {
-      //   console.log(error)
-      // })
       return {
         id: doc.id,
         url: url ?? '',
@@ -46,7 +43,7 @@ export const getIndividualData = async(id: string) => {
   }
   const interviewer = docSnap.data() as Interviewer
 
-  const imageURL = await getDownloadURL(REF(storage, `images/${id}`)) ?? ''
+  const imageURL = (await getDownloadURL(REF(storage, `images/${id}`))) ?? ''
 
   return { interviewer, imageURL }
 }
