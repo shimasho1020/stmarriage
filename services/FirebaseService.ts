@@ -46,10 +46,11 @@ export const getIndividualData = async(id: string) => {
   }
   const interviewer = docSnap.data() as Interviewer
 
-  let imageURL = (await getDownloadURL(REF(storage, `images/${id}`))
+  const URL = await getDownloadURL(REF(storage, `images/${id}`))
   .catch((error) => {
     console.log(error)
-  })) ?? ''
+  })
+  const imageURL = !!URL ? URL : ''
 
   return { interviewer, imageURL }
 }
