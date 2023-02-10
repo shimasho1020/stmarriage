@@ -14,7 +14,7 @@
     <hanabira id="kaze" class="hanabira --12"></hanabira>
     <hanabira id="kaze" class="hanabira --13"></hanabira>
     <div class="loading-body" v-if="loading">
-      <h1 class="page-title">
+      <div class="page-title">
         <div class="page-title__block">
           <div class="page-title__block--sp">
             <span class="page-title__character" v-for="text in Array.from('あなたの真剣な想いを')" :key="text">
@@ -27,7 +27,7 @@
             </span>
           </div>
         </div>
-      </h1>
+      </div>
     </div>
   </div>
 </template>
@@ -227,7 +227,7 @@ const titleAnimation = () => {
     margin: auto
     width: 1080px
     max-width: calc(100% - 10vw)
-    +text-subtitle(54px)
+    +text-title(54px)
     color: var(--white-1)
 
     +sp-view
