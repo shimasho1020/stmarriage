@@ -125,7 +125,7 @@
             <div class="self-cont">
               <div class="self-pic">
                 <div class="img_block">
-                  <img src="~/assets/images/ShimadaTomoko.webp" class="img" alt="カウンセラーの写真">
+                  <img src="~/assets/images/ShimadaTomoko.webp" class="img" alt="ダイヤモンドファミリークラブに勤めていた島田智子です">
                 </div>	
               </div>
               <div class="self-p">
