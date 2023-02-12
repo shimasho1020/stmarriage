@@ -5,9 +5,6 @@
   </div>
   <section class="section">
     <div class="section-wrap">
-      <!-- <div class="section_title_block --1">
-        <h2 class="title">IBJ会員データ</h2>
-      </div> -->
       <div class="section_body">
         <div class="content">
           <h2 class="title">日本結婚相談所連盟 IBJとは</h2>
@@ -221,32 +218,6 @@ const propAcademicData: ChartData = {
     width: 1080px
     max-width: calc(100% - 10vw)
     position: relative
-
-    // > .section_title_block
-    //   display: flex
-    //   justify-content: center
-    //   flex-wrap: wrap
-    //   width:100%
-    //   margin: 60px 0 60px
-    //   text-align: center
-    //   +sp-view
-    //     margin: 0 0 20px
-    //   > .title
-    //     +text-subtitle(32px)
-    //     position: relative
-    //     text-align: center
-    //     margin: 0 0 20px
-    //     +sp-view
-    //       +text-subtitle(28px)
-    //     &::before 
-    //       position: absolute
-    //       bottom: -10px
-    //       left: calc(50% - 50px)
-    //       width: 100px
-    //       height: 5px
-    //       content: ''
-    //       border-radius: 3px
-    //       background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
 
     > .section_body
       width: 90%
