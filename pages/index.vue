@@ -831,7 +831,7 @@ onBeforeUnmount(() => {
                 left: 0
                 bottom: -2px
                 width: 100%
-                height: 4px
+                height: 2px
                 background: -webkit-repeating-linear-gradient(-45deg, #6ad1c8, #6ad1c8 2px, #fff 2px, #fff 4px)
                 background: repeating-linear-gradient(-45deg, #6ad1c8, #6ad1c8 2px, #fff 2px, #fff 4px)
 
