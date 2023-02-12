@@ -28,3 +28,14 @@ export type DisplayInterviewer = Interviewer & {
   id: string
   url?: string
 }
+
+export type ChartDataset = {
+  label?: string,
+  data: any[],
+  borderColor?: string[] | string,
+  backgroundColor?: string[] | string,
+}
+export type ChartData = {
+  labels: string[],
+  datasets: ChartDataset[],
+}
