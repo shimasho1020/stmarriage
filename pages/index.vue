@@ -845,7 +845,7 @@ onBeforeUnmount(() => {
 
               +sp-view
                 padding: 0
-                font-size: 20px
+                font-size: 18px
 
               &::before,&::after 
                 content: ''
@@ -871,7 +871,8 @@ onBeforeUnmount(() => {
           > .about_body
             max-width: 560px
             margin: auto
-            width: 90%
+            width: 80%
+            min-width: 310px
             text-align: left
             +text-body(16px)
             color: var(--white-1)

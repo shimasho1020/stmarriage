@@ -15,10 +15,13 @@
         <nuxt-link class="menu--link" to="/price" :class="{'highlight': $route.name === 'price'}">
           <div class="link-wrap"><span class="link-text">料金プラン</span></div>
         </nuxt-link>
+        <nuxt-link class="menu--link" to="/data" :class="{'highlight': $route.name === 'data'}">
+          <div class="link-wrap"><span class="link-text">会員データ</span></div>
+        </nuxt-link>
+        <div class="spacer"></div>
         <nuxt-link class="menu--link" to="/flow" :class="{'highlight': $route.name === 'flow'}">
           <div class="link-wrap"><span class="link-text">入会から成婚まで</span></div>
         </nuxt-link>
-        <div class="spacer"></div>
         <nuxt-link class="menu--link" to="/interview" :class="{'highlight': $route.name === 'interview'}">
           <div class="link-wrap"><span class="link-text">ご成婚事例</span></div>
         </nuxt-link>
@@ -43,6 +46,7 @@
       <div class="sp-menu-wrap" :class="{'top-page': $route.name === 'index'}">
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/">ホーム</nuxt-link>
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/price">料金プラン</nuxt-link>
+        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/data">会員データ</nuxt-link>
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/flow">入会から成婚まで</nuxt-link>
         <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/interview">ご成婚事例</nuxt-link>
         <!-- <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/contact">相談フォーム</nuxt-link> -->
@@ -56,7 +60,7 @@
       </nuxt-link>
     </div>
 
-    <div class="BODY" :class="{'not-top-page': $route.name !== 'index', 'interview-page': ($route.name === 'interview' || $route.name === 'flow'), 'company-page': $route.name === 'company'}">
+    <div class="BODY" :class="{'not-top-page': $route.name !== 'index', 'interview-page': ($route.name === 'interview' || $route.name === 'flow'), 'company-page': ($route.name === 'company' || $route.name === 'data')}">
       <nuxt/>
     </div>
 
@@ -273,7 +277,7 @@ onUnmounted(() => {
     max-width: 640px
     display: flex
     justify-content: flex-end
-    column-gap: 23px
+    column-gap: 20px
     color: var(--white-1)
     padding: 5px 0 0
 
