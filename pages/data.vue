@@ -10,11 +10,14 @@
       </div> -->
       <div class="section_body">
         <div class="content">
-          <h3 class="title">IBJ(日本結婚相談所連盟)について</h3>
+          <h2 class="title">日本結婚相談所連盟 IBJとは</h2>
           <div class="text">
-            全国の結婚相談所3,694社が加盟する日本結婚相談所連盟。<br>
-            各加盟相談所に登録して、お見合い結婚をご希望されている会員は81,721名。<br>
-            加盟相談所の仲人が協力しながら幸せな成婚を生み出しています。
+            全国の結婚相談所3649社が加盟する、日本最大級の結婚相談所連盟です。<br>
+            登録人数は全国で約80,000人。<br>
+            加盟相談所が協力し合いながら、お見合いをセッティングし、交際をサポートしながら、ご成婚を生み出しています。
+          </div>
+          <div class="img_wrap">
+            <img class="img" src="~/assets/images/ibj_about.webp" alt="IBJについて">
           </div>
         </div>
         <div class="content --1">
@@ -79,11 +82,6 @@
           <div class="chart_wrap">
             <barChart :data="propAcademicData" label="学歴"></barChart>
           </div>
-          <!-- <div class="chart_wrap">
-            <div class="chart">
-              <multiCircleChart :data="propAcademicData" label="学歴" type="doughnut"></multiCircleChart>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
@@ -92,7 +90,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from '@nuxtjs/composition-api'
+import { ref, onMounted, computed } from '@nuxtjs/composition-api'
 import { ChartData } from '~/types/index'
 
 // ランダムな数値製造マシーン
@@ -104,32 +102,59 @@ function getRand (num: number) {
   return arr
 }
 
-const propTotalData: ChartData = {
-  labels: ['〜29歳', '30歳〜34歳', '35歳〜39歳', '40歳〜44歳', '45歳〜49歳', '50歳〜54歳', '55歳〜59歳', '60歳〜'],
-  datasets: [
-    {
-    label: '男性',
-    data: getRand(8),
-    borderColor: '#00CCFF',
-    backgroundColor: '#00CCFF',
-    },
-    {
-    label: '女性',
-    data: getRand(8),
-    borderColor: '#FFCCFF',
-    backgroundColor: '#FFCCFF',
-    },
-  ]
-}
-
 const propSuccessData: ChartData = {
   labels: ['2017年', '2018年', '2019年', '2020年', '2021年'],
   datasets: [
     {
       label: '成婚者数',
-      data: getRand(5),
+      data: [5708, 6344, 7847, 8624, 10803],
       borderColor: '#0066FF',
       backgroundColor: '#0066FF',
+    },
+  ]
+}
+
+const maleData = [1282,4510,6674,6349,6365,3766,2017,1956]
+const femaleData = [4019,9264,10131,6614,3796,1914,1007,984]
+const generationData = computed(() => {
+  const arr = []
+  for(let i = 0; i < femaleData.length; i++) {
+    if(i === 0 || i === 7){
+      arr.push(femaleData[i] + maleData[i])
+    } else if (i === 1 || i === 3 || i === 5) {
+      arr.push(femaleData[i] + maleData[i] + femaleData[i+1] + maleData[i+1])
+    }
+  }
+  return arr
+})
+const totalMembers = generationData.value.reduce((sum, element) => sum + element, 0)
+const maleAcademicData = computed(() => {
+  const arr = [55,18,14,12,1]
+  return arr.map((val) => {
+    return Math.round( val * totalMembers / 100)
+  })
+})
+const femaleAcademicData = computed(() => {
+  const arr = [71,12,9,7,1]
+  return arr.map((val) => {
+    return Math.round( val * totalMembers / 100)
+  })
+})
+
+const propTotalData: ChartData = {
+  labels: ['〜29歳', '30歳〜34歳', '35歳〜39歳', '40歳〜44歳', '45歳〜49歳', '50歳〜54歳', '55歳〜59歳', '60歳〜'],
+  datasets: [
+    {
+    label: '男性',
+    data: maleData,
+    borderColor: '#00CCFF',
+    backgroundColor: '#00CCFF',
+    },
+    {
+    label: '女性',
+    data: femaleData,
+    borderColor: '#FFCCFF',
+    backgroundColor: '#FFCCFF',
     },
   ]
 }
@@ -138,18 +163,18 @@ const propSexData: ChartData = {
   labels: ['男性', '女性',],
   datasets: [
     {
-      data: getRand(2),
+      data: [32919,37729],
       backgroundColor: ['#00CCFF','#FFCCFF'],
     },
   ]
 }
 
 const propAgeData: ChartData = {
-  labels: ['20代以下','30代','40代','50代','60代以上'],
+  labels: ['20代','30代','40代','50代','60代'],
   datasets: [
     {
-    data: getRand(5),
-    backgroundColor: ['#FFCCFF','#CCCCFF','#99CCFF', '#66CCFF', '#33CCFF'],
+    data: generationData.value,
+    backgroundColor: ['#FFCCFF','#CCCCFF', '#00CCFF', '#0099FF','#0066FF'],
     },
   ]
 }
@@ -159,7 +184,7 @@ const propIncomeData: ChartData = {
   datasets: [
     {
       label: '年収',
-      data: getRand(5),
+      data: [5214,6565,6199,4713,3328,1999,1197,3704],
       borderColor: '#0066FF',
       backgroundColor: '#0066FF',
     },
@@ -167,17 +192,17 @@ const propIncomeData: ChartData = {
 }
 
 const propAcademicData: ChartData = {
-  labels: ['高卒', '専門卒', '四大卒', '院卒', 'その他'],
+  labels: ['四大卒', '高卒', '院卒', '専門卒', 'その他'],
   datasets: [
     {
       label: '男性',
-      data: getRand(5),
+      data: maleAcademicData.value,
       borderColor: '#00CCFF',
       backgroundColor: '#00CCFF',
     },
     {
       label: '女性',
-      data: getRand(5),
+      data: femaleAcademicData.value,
       borderColor: '#FFCCFF',
       backgroundColor: '#FFCCFF',
     },
@@ -197,31 +222,31 @@ const propAcademicData: ChartData = {
     max-width: calc(100% - 10vw)
     position: relative
 
-    > .section_title_block
-      display: flex
-      justify-content: center
-      flex-wrap: wrap
-      width:100%
-      margin: 60px 0 60px
-      text-align: center
-      +sp-view
-        margin: 0 0 20px
-      > .title
-        +text-subtitle(32px)
-        position: relative
-        text-align: center
-        margin: 0 0 20px
-        +sp-view
-          +text-subtitle(28px)
-        &::before 
-          position: absolute
-          bottom: -10px
-          left: calc(50% - 50px)
-          width: 100px
-          height: 5px
-          content: ''
-          border-radius: 3px
-          background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
+    // > .section_title_block
+    //   display: flex
+    //   justify-content: center
+    //   flex-wrap: wrap
+    //   width:100%
+    //   margin: 60px 0 60px
+    //   text-align: center
+    //   +sp-view
+    //     margin: 0 0 20px
+    //   > .title
+    //     +text-subtitle(32px)
+    //     position: relative
+    //     text-align: center
+    //     margin: 0 0 20px
+    //     +sp-view
+    //       +text-subtitle(28px)
+    //     &::before 
+    //       position: absolute
+    //       bottom: -10px
+    //       left: calc(50% - 50px)
+    //       width: 100px
+    //       height: 5px
+    //       content: ''
+    //       border-radius: 3px
+    //       background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
 
     > .section_body
       width: 90%
@@ -238,8 +263,22 @@ const propAcademicData: ChartData = {
           border-left: solid 5px #17aaee
 
         > .text
-          +text-body(16px)
-          padding: 10px 20px 0
+          +text-body(20px)
+          padding: 10px 20px 10px
+
+          +sp-view
+            font-size: 16px
+
+        > .img_wrap
+          width: 50%
+          margin: auto
+
+          +sp-view
+            width: 100%
+            max-width: 500px
+
+          > .img
+            width: 100%
 
         > .data_table
           margin: 20px 0 
@@ -295,7 +334,6 @@ const propAcademicData: ChartData = {
               > .number
                 +text-title(22px)
                 text-align: center
-
 
 .content_wrap
   display: flex
