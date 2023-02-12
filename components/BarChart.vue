@@ -14,10 +14,14 @@ import { ChartData } from '~/types/index'
 type Props = {
   data: ChartData
   label?: string
+  height?: number
+  displayLegend?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
   data: () => ({} as ChartData),
-  label: ''
+  label: '',
+  height: 300,
+  displayLegend: true,
 })
 
 const { store } = useContext()
@@ -25,19 +29,12 @@ const { store } = useContext()
 const pageWidth = computed(() => {
   return window.innerWidth
 })
-// watch(pageWidth, (newVal) => {
-//   console.log('TEST', newVal)
-//   if(newVal < 750) {
-//     let canvas = document.getElementById( "target" ) ;
-//     (canvas as any).height = 300
-//   }
-// })
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 onMounted(() => {
   if(pageWidth.value < 750) {
     if(canvasRef.value) {
-      canvasRef.value.height = 300
+      canvasRef.value.height = props.height
     }
   }
   createCharts()
@@ -54,12 +51,13 @@ function createCharts () {
       indexAxis: 'y',
       elements: {
         bar: {
-          borderWidth: 2,
+          borderWidth: 1,
         }
       },
       responsive: true,
       plugins: {
         legend: {
+          display: props.displayLegend,
           position: 'top',
           labels:{
 

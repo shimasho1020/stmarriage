@@ -29,8 +29,17 @@ const sum = computed(() => {
   return total
 })
 
+const pageWidth = computed(() => {
+  return window.innerWidth
+})
+
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 onMounted(() => {
+  if(pageWidth.value < 750) {
+    if(canvasRef.value) {
+      canvasRef.value.height = 400
+    }
+  }
   createCharts()
 })
 
@@ -46,6 +55,27 @@ function createCharts () {
       plugins: {
         legend: {
           position: 'top',
+          labels: {
+            generateLabels: function(chart) { 
+              return chart.data.datasets.map(function(datasets, i) { 
+                return { 
+                  datasetIndex: i,
+                  text: datasets.label,
+                  fillStyle: (datasets.backgroundColor as any)[4], // 例　['#00FFFF', '#00CCFF', '#0099FF', '#0066FF', '#0033FF']
+                  strokeStyle: datasets.borderColor,
+                  // 表示状態に連動して取り消し線表示
+                  hidden: !chart.isDatasetVisible(i),
+                }
+              }) as any;
+            }
+          },
+          onClick: function(e, legendItem){
+            const index = legendItem.datasetIndex;
+            const ci = this.chart;
+            const meta = ci.getDatasetMeta(index as number);
+            meta.hidden = meta.hidden === null ? !ci.data.datasets[index as number].hidden : null as any;
+            ci.update();
+          },
         },
         title: {
           display: true,
