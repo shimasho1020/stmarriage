@@ -193,6 +193,7 @@ const resetForm = () => {
     padding: 5%
     background-color: var(--white-1)
     border-radius: 20px
+    box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
 
     > .title
       text-align: center

@@ -39,9 +39,9 @@
               </li>
             </ul>
           </div>
-          <div class="chart_wrap">
+          <!-- <div class="chart_wrap">
             <barChart :data="propSuccessData" label="成婚者数" :height="200" :displayLegend="false"></barChart>
-          </div>
+          </div> -->
         </div>
         <div class="content --2">
           <h3 class="title">年齢別会員数</h3>
@@ -80,7 +80,7 @@
         <div class="content --6">
           <h3 class="title">学歴</h3>
           <div class="chart_wrap">
-            <barChart :data="propAcademicData" label="学歴"></barChart>
+            <barChart :data="propAcademicData" label="学歴" :height="250"></barChart>
           </div>
         </div>
       </div>
@@ -282,7 +282,7 @@ const propAcademicData: ChartData = {
 
         > .data_table
           margin: 20px 0 
-          background-color: #fff
+          background-color: #f0f0f0
           padding: 20px
           border-radius: 8px
           overflow: hidden
@@ -294,7 +294,7 @@ const propAcademicData: ChartData = {
           > .list
             padding: 10px 0
             margin-bottom: 10px
-            background-color: #f5f5f5
+            background-color: #fff
             display: flex
 
             +sp-view
