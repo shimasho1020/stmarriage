@@ -124,17 +124,18 @@ const generationData = computed(() => {
   }
   return arr
 })
-const totalMembers = generationData.value.reduce((sum, element) => sum + element, 0)
+const maleMembers = maleData.reduce((sum, element) => sum + element, 0)
+const femaleMembers = femaleData.reduce((sum, element) => sum + element, 0)
 const maleAcademicData = computed(() => {
   const arr = [55,18,14,12,1]
   return arr.map((val) => {
-    return Math.round( val * totalMembers / 100)
+    return Math.round( val * maleMembers / 100)
   })
 })
 const femaleAcademicData = computed(() => {
   const arr = [71,12,9,7,1]
   return arr.map((val) => {
-    return Math.round( val * totalMembers / 100)
+    return Math.round( val * femaleMembers / 100)
   })
 })
 
