@@ -2,6 +2,7 @@
   <div class="top_page_body" ref="pageObserver">
     <div class="hero" >
       <div class="page-title">
+        <h1 class="keyword">ダイヤモンドファミリークラブにて10年で多くの会員様の幸せを叶えてきた経験を活かし、あなたの真剣な想いをサポートします</h1>
         <div class="page-title__block">
           <div class="page-title__block--sp">
             <span class="page-title__character" v-for="text in Array.from('あなたの真剣な想いを')" :key="text">
@@ -27,7 +28,7 @@
       </div>
       <div class="intro">
         <div class="intro-card">
-          <h1 class="intro-title">セントマリアージュ青山について</h1>
+          <h2 class="intro-title">セントマリアージュ青山について</h2>
           <div class="intro-cont">
             <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="セントマリアージュ青山"></div>
             <div class="text">
@@ -152,7 +153,7 @@
             <div class="self-table">
               <div class="text">セントマリアージュ青山で活動中の会員様（2022年８月現在）</div>
               <div class="table --1">
-                <h4 class="table_title">会員データ</h4>
+                <h3 class="table_title">会員データ</h3>
                 <ul class="table_list">
                   <li class="list_item th">年齢層</li>
                   <li class="list_item">20代半ば〜50代前半</li>
@@ -163,7 +164,7 @@
                 </ul>
               </div>
               <div class="table --2">
-                <h4 class="table_title"><span class="inline-block">ご職業</span><span class="inline-block">(一例)</span></h4>
+                <h3 class="table_title"><span class="inline-block">ご職業</span><span class="inline-block">(一例)</span></h3>
                 <ul class="table_list">
                   <li class="list_item">三菱グループ各社</li>
                   <li class="list_item">大手通信事業社</li>
@@ -414,10 +415,14 @@ onBeforeUnmount(() => {
 
 
 <style lang="sass" scoped>
-  > .img
-    width: 100%
-    height: 400px
-    object-fit: cover
+.keyword
+  position: absolute
+  top: 200px
+  opacity: 0
+.img
+  width: 100%
+  height: 400px
+  object-fit: cover
 .hero
   position: relative
   > .page-title
