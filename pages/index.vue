@@ -415,10 +415,6 @@ onBeforeUnmount(() => {
 
 
 <style lang="sass" scoped>
-.img
-  width: 100%
-  height: 400px
-  object-fit: cover
 .hero
   position: relative
   > .page-title
