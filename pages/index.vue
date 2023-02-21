@@ -333,6 +333,7 @@ const settings = {
 let circleAnim: gsap.core.Tween 
 let headerAnim = ref<gsap.core.Tween>({} as gsap.core.Tween)
 let fuwaAnim = ref<gsap.core.Tween[]>([])
+let fuwaSetAnim = ref<gsap.core.Tween[]>([])
 let isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled'])
 const myObserver = ref<ResizeObserver>({} as ResizeObserver)
 const pageObserver = ref()
@@ -372,6 +373,13 @@ onMounted(() => {
     },
     onStart: () => store.commit('changeHeaderToBlue'),
     onReverseComplete: () => store.commit('changeHeaderToTrans'),
+  })
+  trigger.forEach(value => {
+    let array: gsap.core.Tween = gsap.set(value, {
+      opacity: 0,
+      transform: 'translateY(40)',
+    })
+    fuwaSetAnim.value.push(array)
   })
   trigger.forEach(value => {
     let array: gsap.core.Tween = gsap.to(value, {
@@ -454,8 +462,8 @@ onBeforeUnmount(() => {
         object-position: 78% center
   > .intro
     padding: 240px 0 160px
-    opacity: 0,
-    transform: translateY(40px)
+    // opacity: 0,
+    // transform: translateY(40px)
     +sp-view
       padding: 100px 0 80px
     > .intro-card
@@ -561,8 +569,8 @@ onBeforeUnmount(() => {
         width:100%
         margin: 60px 0 60px
         text-align: center
-        opacity: 0,
-        transform: translateY(40px)
+        // opacity: 0,
+        // transform: translateY(40px)
         +sp-view
           margin: 0 0 20px
         > .title
@@ -605,8 +613,8 @@ onBeforeUnmount(() => {
           flex-wrap: wrap
           justify-content: space-between
           gap: 0 8px
-          opacity: 0,
-          transform: translateY(40px)
+          // opacity: 0,
+          // transform: translateY(40px)
           +sp-view
             width: 100%
             flex-direction: column
@@ -695,8 +703,8 @@ onBeforeUnmount(() => {
                 +text-subtitle(16px)
         > .link-block
           text-align: center
-          opacity: 0,
-          transform: translateY(40px)
+          // opacity: 0,
+          // transform: translateY(40px)
           border-radius: 25px
           background-color: var(--main)
           width: 70%
@@ -751,8 +759,8 @@ onBeforeUnmount(() => {
             gap: 40px
           > .self-pic
             flex: 0 0 30%
-            opacity: 0,
-            transform: translateY(40px)
+            // opacity: 0,
+            // transform: translateY(40px)
             +sp-view
               flex: 0 0 100%
             > .img_block
@@ -791,8 +799,8 @@ onBeforeUnmount(() => {
             position: relative
             line-height: 2
             flex: 0 0 60%
-            opacity: 0,
-            transform: translateY(40px)
+            // opacity: 0,
+            // transform: translateY(40px)
             +sp-view
               flex: 0 0 100%
             > .self-p_wrap
@@ -808,8 +816,8 @@ onBeforeUnmount(() => {
           text-align: center
           padding: 40px 0
           margin: 0 0 40px
-          opacity: 0
-          transform: translateY(40px)
+          // opacity: 0
+          // transform: translateY(40px)
 
           +sp-view
             margin: 0
@@ -874,8 +882,8 @@ onBeforeUnmount(() => {
           flex: 70%
 
           > .self-comments
-            opacity: 0
-            transform: translateY(40px)
+            // opacity: 0
+            // transform: translateY(40px)
             > .mini_comment
               +text-body(12px)
               color: var(--white-1)
@@ -906,8 +914,8 @@ onBeforeUnmount(() => {
             display: flex
             justify-content: space-between
             flex-wrap: wrap
-            opacity: 0
-            transform: translateY(40px)
+            // opacity: 0
+            // transform: translateY(40px)
 
             +sp-view
               width: 100%
@@ -974,8 +982,8 @@ onBeforeUnmount(() => {
             background-clip: text
             -webkit-text-fill-color: transparent
             margin: 0 0 80px
-            opacity: 0,
-            transform: translateY(40px)
+            // opacity: 0,
+            // transform: translateY(40px)
             line-height: 1.5
             +sp-view
               font-size: 20px
@@ -988,8 +996,8 @@ onBeforeUnmount(() => {
             row-gap: 40px
             > .content_body
               width: calc(50% - 30px)
-              opacity: 0
-              transform: translateY(40px)
+              // opacity: 0
+              // transform: translateY(40px)
               +sp-view
                 width: 100%
               > .top-service__img
@@ -1052,8 +1060,8 @@ onBeforeUnmount(() => {
               flex-wrap: wrap-reverse
               gap: 10px
             > .top-our_strengths__container--body
-              opacity: 0
-              transform: translateY(40px)
+              // opacity: 0
+              // transform: translateY(40px)
 
               > .top-our_strengths__container--point
                 +text-title(40px)
@@ -1103,8 +1111,8 @@ onBeforeUnmount(() => {
 
             
             > .top-our_strengths__container--img
-              opacity: 0
-              transform: translateY(40px)
+              // opacity: 0
+              // transform: translateY(40px)
               width: 95%
               // height: 25vw
               +sp-view
@@ -1149,8 +1157,8 @@ onBeforeUnmount(() => {
           display: inline-block
           margin: 20px auto
           +text-body(16px)
-          opacity: 0
-          transform: translateY(40px)
+          // opacity: 0
+          // transform: translateY(40px)
 
           +sp-view
             margin: 20px 0 
@@ -1165,7 +1173,7 @@ onBeforeUnmount(() => {
           width: 100%
           height: 400px
           object-fit: cover
-          opacity: 0
-          transform: translateY(40px)
+          // opacity: 0
+          // transform: translateY(40px)
 
 </style>
