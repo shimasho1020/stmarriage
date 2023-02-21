@@ -377,7 +377,7 @@ onMounted(() => {
   trigger.forEach(value => {
     let array: gsap.core.Tween = gsap.set(value, {
       opacity: 0,
-      transform: 'translateY(40)',
+      y: 40
     })
     fuwaSetAnim.value.push(array)
   })
@@ -390,7 +390,7 @@ onMounted(() => {
         invalidateOnRefresh: true,
       },
       opacity: 1,
-      transform: 'translateY(0)',
+      y: 0,
       duration: 1, 
     })
     fuwaAnim.value.push(array)
