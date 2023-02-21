@@ -1,5 +1,7 @@
 const GAID = 'G-LVM1BSG65Q'
-const GAcode = `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${GAID}');`
+const GAcode1 = `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${GAID}');`
+const AWID = 'AW-11094414057'
+const GAcode2 = `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${AWID}');`
 
 export default {
   loading: '~/components/loading.vue',
@@ -48,7 +50,17 @@ export default {
       },
       {
         hid: 'GAcode',
-        innerHTML: GAcode,
+        innerHTML: GAcode1,
+        defer: true,
+      },
+      {
+        hid: 'GAsrc',
+        src: 'https://www.googletagmanager.com/gtag/js?id=' + AWID,
+        defer: true,
+      },
+      {
+        hid: 'GAcode',
+        innerHTML: GAcode2,
         defer: true,
       }
     ],
