@@ -2,7 +2,6 @@
   <div class="top_page_body" ref="pageObserver">
     <div class="hero" >
       <div class="page-title">
-        <!-- <h1 class="keyword">ダイヤモンドファミリークラブにて10年で多くの会員様の幸せを叶えてきた経験を活かし、あなたの真剣な想いをサポートします</h1> -->
         <div class="page-title__block">
           <div class="page-title__block--sp">
             <span class="page-title__character" v-for="text in Array.from('あなたの真剣な想いを')" :key="text">
@@ -15,13 +14,6 @@
             </span>
           </div>
         </div>
-        <!-- <div class="page-title__block">
-          <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('サポートします')" :key="text">
-              <span class="page-title__child">{{ text }}</span>
-            </span>
-          </div>
-        </div> -->
       </div>
       <div class="img_block" >
         <img class="hero_img" src="~/assets/images/jewelry_hero.webp" alt="メイン写真">
