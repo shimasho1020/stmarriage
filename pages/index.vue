@@ -2,7 +2,7 @@
   <div class="top_page_body" ref="pageObserver">
     <div class="hero" >
       <div class="page-title">
-        <h1 class="keyword">ダイヤモンドファミリークラブにて10年で多くの会員様の幸せを叶えてきた経験を活かし、あなたの真剣な想いをサポートします</h1>
+        <!-- <h1 class="keyword">ダイヤモンドファミリークラブにて10年で多くの会員様の幸せを叶えてきた経験を活かし、あなたの真剣な想いをサポートします</h1> -->
         <div class="page-title__block">
           <div class="page-title__block--sp">
             <span class="page-title__character" v-for="text in Array.from('あなたの真剣な想いを')" :key="text">
@@ -28,7 +28,7 @@
       </div>
       <div class="intro">
         <div class="intro-card">
-          <h2 class="intro-title">セントマリアージュ青山について</h2>
+          <h1 class="intro-title">セントマリアージュ青山について</h1>
           <div class="intro-cont">
             <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="セントマリアージュ青山"></div>
             <div class="text">
@@ -415,10 +415,6 @@ onBeforeUnmount(() => {
 
 
 <style lang="sass" scoped>
-.keyword
-  position: absolute
-  top: 200px
-  opacity: 0
 .img
   width: 100%
   height: 400px
