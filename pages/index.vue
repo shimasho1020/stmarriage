@@ -26,7 +26,7 @@
             <div class="text">
               セントマリアージュ青山のホームページをご覧いただき、ありがとうございます。<br>
               大手結婚相談所にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。<br>
-              「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？　少しだけ勇気を出して始めてみたら、あなたの未来が変わります！<br>
+              <span class="resposive_text">「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？　少しだけ勇気を出して始めてみたら、あなたの未来が変わります！<br></span>
               オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。
             </div>
             <div class="img_block right"><img class="img" src="~/assets/images/clean_bouquet.webp" alt="セントマリアージュ青山"></div>
@@ -484,7 +484,6 @@ onBeforeUnmount(() => {
         padding: 0 17%
 
         +sp-view
-          display: none
           font-size: 20px
           padding: 0
 
@@ -515,6 +514,8 @@ onBeforeUnmount(() => {
           text-align: left
           +sp-view
             padding: 0 8px
+            > .resposive_text
+              display: none
         > .img_block
           flex: 0 0 25%
           position: relative
