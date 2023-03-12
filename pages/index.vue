@@ -4,12 +4,17 @@
       <div class="page-title">
         <div class="page-title__block">
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('あなたの真剣な想いを')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('経験豊かな成婚カウンセラーが')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('サポートします')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('マンツーマンであなたの婚活を')" :key="text">
+              <span class="page-title__child">{{ text }}</span>
+            </span>
+          </div>
+          <div class="page-title__block--sp">
+            <span class="page-title__character" v-for="text in Array.from('サポートします!')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
@@ -24,10 +29,9 @@
           <div class="intro-cont">
             <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="セントマリアージュ青山"></div>
             <div class="text">
-              セントマリアージュ青山のホームページをご覧いただき、ありがとうございます。<br>
-              大手結婚相談所にて多くの会員様の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。<br>
+              財閥系の大手結婚相談所にて多くの方々の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。<br>
               <span class="resposive_text">「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？　少しだけ勇気を出して始めてみたら、あなたの未来が変わります！<br></span>
-              オンライン・お電話での無料カウンセリングを随時お受けしていますので、ぜひお気軽にお問合せ・ご相談ください。
+              無料カウンセリングを随時受け付けています。是非お気軽にお問合せ、ご相談ください。
             </div>
             <div class="img_block right"><img class="img" src="~/assets/images/clean_bouquet.webp" alt="セントマリアージュ青山"></div>
           </div>
@@ -429,7 +433,7 @@ onBeforeUnmount(() => {
     +text-title(54px)
     color: var(--sub)
     +sp-view
-      +text-subtitle(27px)
+      +text-subtitle(24px)
       color: var(--sub)
     > .page-title__block
       display: flex

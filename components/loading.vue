@@ -17,12 +17,17 @@
       <div class="page-title">
         <div class="page-title__block">
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('あなたの真剣な想いを')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('経験豊かな成婚カウンセラーが')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('サポートします')" :key="text">
+            <span class="page-title__character" v-for="text in Array.from('マンツーマンであなたの婚活を')" :key="text">
+              <span class="page-title__child">{{ text }}</span>
+            </span>
+          </div>
+          <div class="page-title__block--sp">
+            <span class="page-title__character" v-for="text in Array.from('サポートします!')" :key="text">
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
@@ -87,7 +92,7 @@ const titleAnimation = () => {
     y: 0,
     opacity: 1,
     stagger: {
-      amount: 1.2,
+      amount: 1.4,
       ease: "none"
     },
     onComplete: () => {
@@ -231,7 +236,7 @@ const titleAnimation = () => {
     color: var(--white-1)
 
     +sp-view
-      +text-subtitle(27px)
+      +text-subtitle(24px)
       color: var(--white-1)
 
     > .page-title__block
