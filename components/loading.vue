@@ -237,6 +237,7 @@ const titleAnimation = () => {
 
     +sp-view
       +text-subtitle(24px)
+      transform: translate(-50%,-70%)
       color: var(--white-1)
 
     > .page-title__block

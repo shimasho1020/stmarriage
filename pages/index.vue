@@ -432,8 +432,10 @@ onBeforeUnmount(() => {
     max-width: calc(100% - 10vw)
     +text-title(54px)
     color: var(--sub)
+
     +sp-view
       +text-subtitle(24px)
+      transform: translate(-50%,-70%)
       color: var(--sub)
     > .page-title__block
       display: flex
@@ -463,7 +465,7 @@ onBeforeUnmount(() => {
   > .intro
     padding: 240px 0 160px
     +sp-view
-      padding: 100px 0 80px
+      padding: 80px 0 80px
     > .intro-card
       width: 1080px
       max-width: calc(100% - 10vw)
