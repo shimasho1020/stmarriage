@@ -29,9 +29,10 @@
           <div class="intro-cont">
             <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="セントマリアージュ青山"></div>
             <div class="text">
+              当社のホームページをご覧いただきありがとうございます。<br>
               財閥系の大手結婚相談所にて多くの方々の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。<br>
               <span class="resposive_text">「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？　少しだけ勇気を出して始めてみたら、あなたの未来が変わります！<br></span>
-              無料カウンセリングを随時受け付けています。是非お気軽にお問合せ、ご相談ください。
+              無料カウンセリングを随時受け付けております。是非お気軽にお問合せ、ご相談ください。
             </div>
             <div class="img_block right"><img class="img" src="~/assets/images/clean_bouquet.webp" alt="セントマリアージュ青山"></div>
           </div>
@@ -126,7 +127,14 @@
             </div>
             <div class="self-p">
               <div class="self-p_wrap">
-                <span class="inline-block">代表カウンセラーの島田智子です。<br>三菱の結婚相談所「ダイヤモンドファミリークラブ」のカウンセラーとして、約10年勤務しておりました。<br>延べ1000人以上の会員様を担当し、20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。　豊富な経験・知識を生かして、年齢、性別を問わず、お一人お一人に寄り添ったサポートをいたします。<br>「お見合いを成功させる秘訣」「異性に好かれる身だしなみ、行動、会話」「仮交際から真剣交際への進め方」「ご成婚への最後の一押し」等、幅広く丁寧にアドバイスいたします。<br>過去のご成婚者の方々から近況報告をいただいたり、元会員様から恋愛相談を受けたりと、現在でも長くお付き合いを続けさせていただいています。結婚後（成婚退会後）も何か悩みを抱えた時、いつでもご相談いただけるような身近な存在でありたいと思っております。<br>随時、無料相談（電話、zoom）を行っておりますので、お気軽にお問い合わせください。</span>
+                <span class="inline-block">
+                  代表カウンセラーの島田智子です。<br>
+                  三菱の結婚相談所「ダイヤモンドファミリークラブ」のカウンセラーとして、約10年勤務しておりました。<br>
+                  延べ1000人以上の会員様を担当し、20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。
+                  豊富な経験・知識を生かして、年齢、性別を問わず、お一人お一人に寄り添ったサポートをいたします。<br>
+                  「お見合いを成功させる秘訣」「異性に好かれる身だしなみ、行動、会話」「仮交際から真剣交際への進め方」「ご成婚への最後の一押し」等、幅広く丁寧にアドバイスいたします。
+                    <br>過去のご成婚者の方々から近況報告をいただいたり、元会員様から恋愛相談を受けたりと、現在でも長くお付き合いを続けさせていただいています。結婚後（成婚退会後）も何か悩みを抱えた時、いつでもご相談いただけるような身近な存在でありたいと思っております。
+                </span>
               </div>
             </div>
           </div>
@@ -141,9 +149,9 @@
           </div>
           <div class="self-body">
             <div class="self-comments">
-              <div class="self-comment 1"><span class="inline-block">入会1ヵ月以内のお見合い成立率</span><span class="big_font inline-block">&emsp;100%</span></div>
-              <div class="self-comment 2"><span class="inline-block">入会1カ月以内の交際成立率</span><span class="big_font inline-block">&emsp;93%</span></div>
-              <div class="self-comment 3"><span class="inline-block">成婚率</span><span class="big_font inline-block">&emsp;75%</span></div>
+              <div class="self-comment 1"><span class="inline-block">入会1ヵ月以内のお見合い成立率</span><span class="big_font inline-block">&emsp;95%</span></div>
+              <div class="self-comment 2"><span class="inline-block">入会1カ月以内の交際成立率</span><span class="big_font inline-block">&emsp;95%</span></div>
+              <div class="self-comment 3"><span class="inline-block">成婚率</span><span class="big_font inline-block">&emsp;70%</span></div>
               <div class="mini_comment">※成婚退会者数÷全退会者数</div>
             </div>
             <div class="self-table">
