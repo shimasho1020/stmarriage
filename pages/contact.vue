@@ -45,7 +45,7 @@
         <input type="radio" id="method" name="method" value="オンライン" v-model="method"> オンライン
       </div>
       <div class="p-contact__item">
-        <label for="date">面談希望日付<span class="necessary">(必須)</span></label><br>
+        <label for="date">面談希望日付</label><br>
         <date-picker class="date_input" id="date" v-model="date" valueType="format" placeholder="日付を選択"></date-picker>
         <input type="hidden" name="date" v-model="formatDate">
       </div>
@@ -193,7 +193,7 @@ const resetForm = () => {
     padding: 5%
     background-color: var(--white-1)
     border-radius: 20px
-    box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
+    box-shadow: 0 2px 14px rgba(0, 0, 0, .4)
 
     > .title
       text-align: center
