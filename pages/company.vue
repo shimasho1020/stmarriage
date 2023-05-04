@@ -31,6 +31,10 @@
             <span class="inline-block">東京メトロ銀座線・半蔵門線「青山一丁目駅」12分</span><br>
           </td>
         </tr>
+        <tr>
+          <th>営業時間</th>
+          <td>平日：11時〜19時<br>土日祝：10時〜18時<br>定休日：火曜</td>
+        </tr>
       </table>
     </div>
     <div class="access-map">

@@ -1,68 +1,78 @@
 <template>
-  <div class="p-contact">
-    <form class="p-contact__form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" @submit.prevent="onSubmit" :class="sendingClass">
-      <h1 class="title">無料相談フォーム</h1>
-      <input type="hidden" name="form-name" value="contact">
-      <input type="hidden" name="subject" value="Sales inquiry from mysitename.netlify.app" />
-      <div class="p-contact__item radio">
-        <label for="sex">性別<span class="necessary">(必須)</span></label><br>
-        <input type="radio" id="sex" name="sex" value="男性" v-model="sex"> 男性
-        <input type="radio" id="sex" name="sex" value="女性" v-model="sex"> 女性
+  <div>
+    <div class="line_contact">
+      <h1 class="title">LINE無料相談</h1>
+      <p class="subtitle">LINEでお気軽にご相談ください</p>
+      <div class="line_content">
+        <img style="width: 100px;" src="https://qr-official.line.me/gs/M_757vdwdn_GW.png">
+        <a href="https://lin.ee/Ord0MMk"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
       </div>
-      <div class="p-contact__item">
-        <label for="username">お名前<span class="necessary">(必須)</span></label><br>
-        <p class="necessary" v-if="username.length >= 30">※30文字以下で書いてください</p>
-        <input type="text" id="username" name="username" v-model="username" autocomplete="name" placeholder="姓名">
-      </div>
-      <div class="p-contact__item">
-        <label for="katakana">フリガナ<span class="necessary">(必須)</span></label><br>
-        <p class="necessary" v-if="katakana.length >= 30">※30文字以下で書いてください</p>
-        <input type="text" id="katakana" name="katakana" v-model="katakana" placeholder="フリガナ">
-      </div>
-      <div class="p-contact__item">
-        <label for="useremail">メールアドレス<span class="necessary">(必須)</span></label><br>
-        <p class="necessary" v-if="useremail.length !== 0 &&!checkEmailString(useremail)">※メールアドレス形式で入力してください</p>
-        <input type="text" id="useremail" name="useremail" v-model="useremail" autocomplete="email" placeholder="your@example.com">
-      </div>
-      <div class="p-contact__item">
-        <label for="number">電話番号</label><br>
-        <p class="necessary" v-if="number.length >= 30">※30文字以下で書いてください</p>
-        <input type="text" id="number" name="number" v-model="number" placeholder="090-1234-5678">
-      </div>
-      <div class="p-contact__item">
-        <label for="age">年齢<span class="necessary">(必須)</span></label><br>
-        <p class="necessary" v-if="age.length >= 30">※30文字以下で書いてください</p>
-        <input type="text" id="age" name="age" v-model="age" placeholder="35歳">
-      </div>
-      <div class="p-contact__item" v-show="sex === '男性'">
-        <label for="salary">年収</label><br>
-        <p class="necessary" v-if="salary.length >= 30">※30文字以下で書いてください</p>
-        <input type="text" id="salary" name="salary" v-model="salary" placeholder="400万円">
-      </div>
-      <div class="p-contact__item radio">
-        <label for="method">面談方法<span class="necessary">(必須)</span></label><br>
-        <input type="radio" id="method" name="method" value="対面" v-model="method"> 対面
-        <input type="radio" id="method" name="method" value="オンライン" v-model="method"> オンライン
-      </div>
-      <div class="p-contact__item">
-        <label for="date">面談希望日付</label><br>
-        <date-picker class="date_input" id="date" v-model="date" valueType="format" placeholder="日付を選択"></date-picker>
-        <input type="hidden" name="date" v-model="formatDate">
-      </div>
-      <div class="p-contact__item">
-        <label for="message">質問・その他</label><br>
-        <p class="necessary" v-if="message.length >= 500">※500文字以下で書いてください</p>
-        <textarea id="message" name="message" v-model="message" placeholder="その他、質問などです。"></textarea>
-      </div>
-      <div class="p-contact__item" v-show="false">
-        <label for="message">スパムでない場合は空欄</label>
-        <input type="text" name="bot-field" v-model="botField"/>
-      </div>
-      <div v-if="completeMessage" class="message">{{completeMessage}}</div>
-      <div class="p-contact__submit">
-        <button type="submit" :disabled="!activeButton">送信</button>
-      </div>
-    </form>
+    </div>
+    <div class="p-contact">
+      <form class="p-contact__form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" @submit.prevent="onSubmit" :class="sendingClass">
+        <h1 class="title">無料相談フォーム</h1>
+        <input type="hidden" name="form-name" value="contact">
+        <input type="hidden" name="subject" value="Sales inquiry from mysitename.netlify.app" />
+        <div class="p-contact__item radio">
+          <label for="sex">性別<span class="necessary">(必須)</span></label><br>
+          <input type="radio" id="sex" name="sex" value="男性" v-model="sex"> 男性
+          <input type="radio" id="sex" name="sex" value="女性" v-model="sex"> 女性
+        </div>
+        <div class="p-contact__item">
+          <label for="username">お名前<span class="necessary">(必須)</span></label><br>
+          <p class="necessary" v-if="username.length >= 30">※30文字以下で書いてください</p>
+          <input type="text" id="username" name="username" v-model="username" autocomplete="name" placeholder="姓名">
+        </div>
+        <div class="p-contact__item">
+          <label for="katakana">フリガナ<span class="necessary">(必須)</span></label><br>
+          <p class="necessary" v-if="katakana.length >= 30">※30文字以下で書いてください</p>
+          <input type="text" id="katakana" name="katakana" v-model="katakana" placeholder="フリガナ">
+        </div>
+        <div class="p-contact__item">
+          <label for="useremail">メールアドレス<span class="necessary">(必須)</span></label><br>
+          <p class="necessary" v-if="useremail.length !== 0 &&!checkEmailString(useremail)">※メールアドレス形式で入力してください</p>
+          <input type="text" id="useremail" name="useremail" v-model="useremail" autocomplete="email" placeholder="your@example.com">
+        </div>
+        <div class="p-contact__item">
+          <label for="number">電話番号</label><br>
+          <p class="necessary" v-if="number.length >= 30">※30文字以下で書いてください</p>
+          <input type="text" id="number" name="number" v-model="number" placeholder="090-1234-5678">
+        </div>
+        <div class="p-contact__item">
+          <label for="age">年齢<span class="necessary">(必須)</span></label><br>
+          <p class="necessary" v-if="age.length >= 30">※30文字以下で書いてください</p>
+          <input type="text" id="age" name="age" v-model="age" placeholder="35歳">
+        </div>
+        <div class="p-contact__item" v-show="sex === '男性'">
+          <label for="salary">年収</label><br>
+          <p class="necessary" v-if="salary.length >= 30">※30文字以下で書いてください</p>
+          <input type="text" id="salary" name="salary" v-model="salary" placeholder="400万円">
+        </div>
+        <div class="p-contact__item radio">
+          <label for="method">面談方法<span class="necessary">(必須)</span></label><br>
+          <input type="radio" id="method" name="method" value="対面" v-model="method"> 対面
+          <input type="radio" id="method" name="method" value="オンライン" v-model="method"> オンライン
+        </div>
+        <div class="p-contact__item">
+          <label for="date">面談希望日付</label><br>
+          <date-picker class="date_input" id="date" v-model="date" valueType="format" placeholder="日付を選択"></date-picker>
+          <input type="hidden" name="date" v-model="formatDate">
+        </div>
+        <div class="p-contact__item">
+          <label for="message">質問・その他</label><br>
+          <p class="necessary" v-if="message.length >= 500">※500文字以下で書いてください</p>
+          <textarea id="message" name="message" v-model="message" placeholder="その他、質問などです。"></textarea>
+        </div>
+        <div class="p-contact__item" v-show="false">
+          <label for="message">スパムでない場合は空欄</label>
+          <input type="text" name="bot-field" v-model="botField"/>
+        </div>
+        <div v-if="completeMessage" class="message">{{completeMessage}}</div>
+        <div class="p-contact__submit">
+          <button type="submit" :disabled="!activeButton">送信</button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -182,15 +192,40 @@ const resetForm = () => {
 
 .necessary
   color: #ff0000a0
+.line_contact
+  width: 800px
+  max-width: calc(100% - 10vw)
+  margin: auto
+  padding: 20px
+  background-color: var(--white-1)
+  border-radius: 20px
+  box-shadow: 0 2px 14px rgba(0, 0, 0, .4)
+  > .title
+    text-align: center
+    +text-title(32px)
+    padding: 0 0 8px
+    +sp-view
+      +text-title(24px)
+  > .subtitle
+    text-align: center
+    +text-subtitle(16px)
+    +sp-view
+      +text-subtitle(12px)
+
+  > .line_content
+    display: flex
+    justify-content: center
+    align-items: center
+    gap: 40px
 .p-contact
   padding: 40px 0 80px
   +sp-view
-    padding: 0 0 40px
+    padding: 40px 0 40px
   > .p-contact__form
     width: 800px
     max-width: calc(100% - 10vw)
     margin: auto
-    padding: 5%
+    padding: 40px
     background-color: var(--white-1)
     border-radius: 20px
     box-shadow: 0 2px 14px rgba(0, 0, 0, .4)
