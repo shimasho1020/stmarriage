@@ -20,7 +20,9 @@ export const useInterviewers = () => {
 }
 
 const selectImg = (index: number):string => {
-  if(index == 0) {return '/images/sample_couple_1.webp'}
-  else if(index == 1) {return '/images/sample_couple_2.webp'}
-  else {return '/images/sample_couple_3.webp'}
+  if(index == 0) {return '/images/sample_couple_4.webp'}
+  else if(index == 1) {return '/images/sample_couple_3.webp'}
+  else if(index == 2) {return '/images/sample_couple_2.webp'}
+  else if(index == 3) {return '/images/sample_couple_1.webp'}
+  else {return '/images/sample_couple_5.webp'}
 }
