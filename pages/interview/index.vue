@@ -19,12 +19,11 @@
             <div class="case_block">
               <h1 class="case_title"><span class="inline-block">{{item.age}}歳の{{item.sex}}会員様が</span><span class="inline-block">ご成婚されました！</span></h1>
               <div class="about">
-                <ol class="special_list">
-                <li>{{item.age}}歳{{item.sex}}</li>
-                <li v-if="item.job">{{item.job}}</li>
-                <li>交際期間{{item.datingTerm}}ヶ月</li>
-                <li>活動期間{{item.term}}ヶ月</li>
-                <li v-if="item.partnerAge">お相手は{{item.partnerAge}}歳{{changeSex(item.sex)}}</li>
+                <ol style="font-size: 40px;" class="special_list">
+                <li><span class="li_text">お相手　：{{item.partnerAge}}歳{{changeSex(item.sex)}}</span></li>
+                <!-- <li v-if="item.job">{{item.job}}</li> -->
+                <li><span class="li_text">交際期間：{{item.datingTerm}}ヶ月</span></li>
+                <li><span class="li_text">活動期間：{{item.term}}ヶ月</span></li>
               </ol>
               </div>
               <div class="link_wrap">
@@ -204,6 +203,6 @@ const changeSex = (sex: '' | '男性' | '女性') => {
               > .form
                 +text-body(16px)
           
-
-
+.li_text
+  +text-title(18px)
 </style>

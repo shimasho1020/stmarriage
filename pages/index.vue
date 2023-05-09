@@ -60,7 +60,7 @@
                     {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
                   </div>
                 </template>
-                <nuxt-link class="case-item" v-for="n of 3" :key="n" :to="`/interview/${displayCaseList[n-1]?.id ?? ''}`">
+                <nuxt-link class="case-item" v-for="n of 5" :key="n" :to="`/interview/${displayCaseList[n-1]?.id ?? ''}`">
                   <div class="case-card">
                     <div class="case-item__image_block">
                       <img class="case-item__image" :src="displayCaseList[n-1]?.url ?? ''" :alt="`${displayCaseList[n-1]?.age ?? ''}歳の${displayCaseList[n-1]?.sex ?? ''}会員様のご成婚事例`">
