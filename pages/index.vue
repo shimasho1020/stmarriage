@@ -162,9 +162,9 @@
                   <li class="list_item th">年齢層</li>
                   <li class="list_item">20代半ば〜50代前半</li>
                   <li class="list_item th">男女比</li>
-                  <li class="list_item">(約) 6対4</li>
-                  <li class="list_item th">男性平均年収</li>
-                  <li class="list_item">約1000万</li>
+                  <li class="list_item">(約) 5対5</li>
+                  <!-- <li class="list_item th">男性平均年収</li>
+                  <li class="list_item">約1000万</li> -->
                 </ul>
               </div>
               <div class="table --2">
@@ -397,7 +397,7 @@ onMounted(() => {
     let array: gsap.core.Tween = gsap.to(value, {
       scrollTrigger: {
         trigger: value,
-        start: 'top 80%',
+        start: 'top 85%',
         toggleActions: 'play none none reverse',
         invalidateOnRefresh: true,
       },
@@ -710,7 +710,7 @@ onBeforeUnmount(() => {
           text-align: center
           border-radius: 25px
           background-color: var(--main)
-          width: 70%
+          width: 100%
           margin: auto
           +sp-view
             width: 100%
@@ -723,14 +723,14 @@ onBeforeUnmount(() => {
               overflow: hidden
               display: flex
               align-items: center
-              height: 40px
+              height: 48px
               >.list-link-text
-                +text-title(24px)
+                +text-title(28px)
                 color: var(--white-1)
                 display: inline-block
                 white-space: nowrap
                 +sp-view
-                  +text-title(18px)
+                  +text-title(24px)
                   color: var(--white-1)
             > .right-arrow
               height: 11px
