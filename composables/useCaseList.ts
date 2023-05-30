@@ -1,19 +1,18 @@
-import { computed, ref, useAsync } from '@nuxtjs/composition-api'
+import { computed, ref, onMounted } from '@nuxtjs/composition-api'
 import { DisplayInterviewer } from '~/types/index'
 import { getInterviewerCaseList } from '~/services/FirebaseService'
+import { DisplayCaseList } from '~/types/index'
 
 export const useCaseList = (includeNotPublic: boolean) => {
-  const interviewerCaseList = ref<DisplayInterviewer[]>([])
-  useAsync( async() => {
-    interviewerCaseList.value = await getInterviewerCaseList()
-  })
-  const displayCaseList = computed(() => {
-    return interviewerCaseList.value.map((val) => {
+  const displayCaseList = ref<DisplayCaseList[]>([])
+  onMounted( async() => {
+    const results: DisplayInterviewer[] = await getInterviewerCaseList()
+    displayCaseList.value = results.map((val) => {
       return {
         id: val.id,
-        url: val.url,
+        url: val.url ?? '',
         isPublic: val.isPublic,
-        imagePosition: val.imagePosition,
+        imagePosition: val.imagePosition ?? 0,
         ...val.caseList
       }
     })

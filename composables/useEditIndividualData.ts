@@ -79,6 +79,7 @@ export const useEditIndividualData = (id: string) => {
   const onSubmit = async() => {
     const data = isNew.value ? {
       timeStamp: serverTimestamp(),
+      order: 0,
       isPublic: isPublic.value,
       caseList: caseList.value,
       interview: interview.value,
