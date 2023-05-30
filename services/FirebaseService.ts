@@ -4,7 +4,7 @@ import { firestore, storage } from '~/plugins/firebase.js'
 import { Interviewer, DisplayInterviewer } from '~/types/index'
 
 export const getInterviewers = async() => {
-  const q = query(collection(firestore, "interviewer"), orderBy("timeStamp", "desc"))
+  const q = query(collection(firestore, "interviewer"), orderBy("order", "asc"))
   const querySnapshot = await getDocs(q)
   const interviewers: DisplayInterviewer[] = querySnapshot.docs.map((doc) => {
   return {
@@ -19,7 +19,7 @@ export const getInterviewers = async() => {
 }
 
 export const getInterviewerCaseList = async() => {
-  const q = query(collection(firestore, "interviewer"), orderBy("timeStamp", "desc"))
+  const q = query(collection(firestore, "interviewer"), orderBy("order", "asc"))
   const querySnapshot = await getDocs(q)
   const results = await Promise.all(
     querySnapshot.docs.map(async(doc) => {
@@ -53,6 +53,14 @@ export const getIndividualData = async(id: string) => {
   const imageURL = !!URL ? URL : ''
 
   return { interviewer, imageURL }
+}
+
+export const editCaseOrder = async(id: string = 'AWSzvmqolFwuBmHFtDIM', order: number) => {
+  const exampleRef = doc(firestore, "interviewer", id)
+  await setDoc(exampleRef, {order}, { merge: true })
+  .catch((e) => {
+    throw new Error(e)
+  })
 }
 
 export const editIndividualData = async(id: string, uploadImageFileData: FileList | undefined, isNew: boolean, data: any) => {

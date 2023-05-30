@@ -9,6 +9,12 @@ export type CaseList = {
   img?: string
   isInterview: boolean
 }
+export type DisplayCaseList = {
+  id: string,
+  url: string,
+  isPublic: boolean,
+  imagePosition: number
+} & CaseList
 export type InterviewContent = {
   title: string
   text: string

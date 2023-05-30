@@ -12,12 +12,49 @@
     <div class="body">
       <h1 class="text-center pa-5">ご成婚事例編集ページ</h1>
       <div class="body_wrap pb-10">
-        <div class="pa-5" style="text-align: center;">
+        <div v-if="!isDragMode" class="pa-5" style="text-align: center;">
           <nuxt-link to="/tomoko/0" style="display: inline-block;">
             <v-btn height="50" width="200" color="blue" class="white--text">新しく追加する</v-btn>
           </nuxt-link>
         </div>
-        <div class="case_list">
+        <div class="pa-5" style="text-align: center;">
+          <v-btn v-if="!isDragMode" height="50" width="200" class="green--text font-weight-bold" @click="isDragMode = true">順番を変更する</v-btn>
+          <v-btn v-else height="50" width="200" color="green" class="white--text" :loading="loading" @click="handleClickSave">保存する</v-btn>
+        </div>
+        <draggable v-if="isDragMode" :list="displayCaseList" draggable=".item" class="case_list">
+          <div
+            class="case_item item dragMode"
+            v-for="item of displayCaseList"
+            :class="{moya: !item.isPublic}"
+            :key="item.id"
+          >
+            <div class="case_block">
+              <h1 class="case_title">{{item.name}}</h1>
+              <div class="text">
+                
+              </div>
+              <div class="about">
+                <ol class="special_list">
+                <li>{{item.age}}歳{{item.sex}}</li>
+                <li v-if="!!item.job">{{item.job}}</li>
+                <li>交際期間{{item.datingTerm}}ヶ月</li>
+                <li>活動期間{{item.term}}ヶ月</li>
+              </ol>
+              <div v-if="item.isPublic" class="green--text text-h5">現在公開中です</div>
+              <div v-if="!item.isPublic" class="red--text text-h5">現在非公開中です</div>
+              </div>
+              <div class="link_wrap">
+                <div v-if="!item.isInterview" class="link red--text text-h6">インタービューはありません</div>
+              </div>
+            </div>
+            <div class="case_img">
+              <div class="img_wrap">
+                <img class="img" :src="item.url" :style="{objectPosition: `center ${50 + (item.imagePosition ?? 0)}%`}">
+              </div>
+            </div>
+          </div>
+        </draggable>
+        <div v-else class="case_list">
           <nuxt-link
             class="case_item"
             v-for="(item, index) of displayCaseList"
@@ -37,8 +74,8 @@
                 <li>交際期間{{item.datingTerm}}ヶ月</li>
                 <li>活動期間{{item.term}}ヶ月</li>
               </ol>
-              <div v-if="item.isPublic" class="green--text text-h4">現在公開中です</div>
-              <div v-if="!item.isPublic" class="red--text text-h4">現在非公開中です</div>
+              <div v-if="item.isPublic" class="green--text text-h5">現在公開中です</div>
+              <div v-if="!item.isPublic" class="red--text text-h5">現在非公開中です</div>
               </div>
               <div class="link_wrap">
                 <div v-if="!item.isInterview" class="link red--text text-h6">インタービューはありません</div>
@@ -65,8 +102,10 @@ export default defineComponent({
 </script>
 
 <script setup  lang="ts">
-import { computed, useContext, watch } from '@nuxtjs/composition-api'
+import { computed, useContext, ref } from '@nuxtjs/composition-api'
 import { useCaseList } from '~/composables/useCaseList'
+import draggable from 'vuedraggable'
+import { editCaseOrder } from '~/services/FirebaseService'
 
 const { store } = useContext()
 const { displayCaseList } = useCaseList(true)
@@ -78,6 +117,19 @@ const logout = () => {
 
 const changeSex = (sex: '' | '男性' | '女性') => {
   return !sex ? '' : sex === '男性' ? '女性' : '男性'
+}
+
+const isDragMode = ref(false)
+const loading = ref(false)
+const handleClickSave = async() => {
+  loading.value = true
+  await Promise.all(
+    displayCaseList.value.map((element, index) => {
+      return editCaseOrder(element.id, index + 1)
+    })
+  )
+  loading.value = false
+  isDragMode.value = false
 }
 </script>
 
@@ -107,6 +159,9 @@ const changeSex = (sex: '' | '男性' | '女性') => {
         background-size: 50px 50px
         display: flex
         justify-content: space-between
+
+        &.dragMode
+          border: 2px solid lightGreen
 
         > .case_block
           > .case_title
@@ -149,7 +204,7 @@ const changeSex = (sex: '' | '男性' | '女性') => {
             width: 100%
 
         > .case_img
-          flex: 0 0 35%
+          flex: 0 0 220px
 
           > .img_wrap
             position: relative
