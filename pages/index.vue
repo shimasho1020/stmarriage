@@ -185,7 +185,8 @@
               <span class="inline-block">セントマリアージュ青山が</span>
               <span class="inline-block">IBJ AWARD 2021年下期</span>
               <span class="inline-block">IBJ AWARD 2022年上期</span>
-              <span class="inline-block">を受賞しました！</span>
+              <span class="inline-block">IBJ AWARD 2023年上期</span><br>
+              <span class="inline-block">3年連続受賞しました！</span>
             </div>
             <div class="content_wrap --2">
               <div class="content_body img">
@@ -199,12 +200,18 @@
                     <img src="~/assets/images/IBJ_award_2022_back.webp" class="c-img__img" alt="ibjアワード2">
                   </div>	
                 </div> 
+                <div class="top-service__img">
+                  <div class="c-img">
+                    <img src="~/assets/images/IBJ_award_2023_front.webp" class="c-img__img" alt="ibjアワード3">
+                  </div>	
+                </div> 
               </div>
               <div class="content_body text">
-                <p>IBJ AWARD とは、日本結婚相談所連盟（IBJ)の加盟店3,362社の中で、過去６か月間で特に顕著な実績を残した結婚相談所に贈られる賞です。<br>
+                <p>IBJアワードとは、日本結婚相談所連盟（IBJ）の加盟店3741社のなかで、過去6ヶ月間で特に顕著な実績を残した相談所に贈られる賞です。<br>
                   当社は開業から1年以上の相談所を対象とした「PREMIUM部門」で受賞いたしました。こちらの受賞率は全加盟店の中で約2割となります。<br>
                   選定基準は、「入会数、成婚数」「地域への貢献度」「ガイドライン、法令の遵守」「クレームやトラブルがない事」等になります。<br>
                   これらの厳しい選定基準をクリアし、日本結婚相談所連盟(IBJ)がお勧めできる優良結婚相談所としてお墨付きをいただいたことになります。<br>
+                  これからも、お1人でも多くの会員様に幸せになっていただくよう、心を込めてサポートさせていただきます！<br>
                 </p>
               </div>
             </div>
@@ -987,11 +994,16 @@ onBeforeUnmount(() => {
             row-gap: 40px
             > .content_body
               width: calc(50% - 30px)
+              display: flex
+              flex-wrap: wrap
               +sp-view
                 width: 100%
               > .top-service__img
-                width: 40%
+                flex: 0 0 40%
                 margin: auto
+
+                +sp-view
+                  flex: 1
 
                 > .c-img
                   position: relative
