@@ -4,8 +4,7 @@
       <h1 class="title">LINE無料相談</h1>
       <p class="subtitle">LINEでお気軽にご相談ください</p>
       <div class="line_content">
-        <img style="width: 100px;" src="https://qr-official.line.me/gs/M_757vdwdn_GW.png">
-        <a href="https://lin.ee/Ord0MMk"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
+        <img style="width: 100px;" src="~/assets/images/line-qrl.jpg">
       </div>
     </div>
     <div class="p-contact">
