@@ -1,40 +1,70 @@
 <template>
   <div class="top_page_body" ref="pageObserver">
-    <div class="hero" >
+    <div class="hero">
       <div class="page-title">
         <div class="page-title__block">
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('経験豊かな成婚カウンセラーが')" :key="text">
+            <span
+              class="page-title__character"
+              v-for="text in Array.from('経験豊かな成婚カウンセラーが')"
+              :key="text"
+            >
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('マンツーマンであなたの婚活を')" :key="text">
+            <span
+              class="page-title__character"
+              v-for="text in Array.from('マンツーマンであなたの婚活を')"
+              :key="text"
+            >
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
           <div class="page-title__block--sp">
-            <span class="page-title__character" v-for="text in Array.from('サポートします!')" :key="text">
+            <span
+              class="page-title__character"
+              v-for="text in Array.from('サポートします!')"
+              :key="text"
+            >
               <span class="page-title__child">{{ text }}</span>
             </span>
           </div>
         </div>
       </div>
-      <div class="img_block" >
-        <img class="hero_img" src="~/assets/images/jewelry_hero.webp" alt="メイン写真">
+      <div class="img_block">
+        <img
+          class="hero_img"
+          src="~/assets/images/jewelry_hero.webp"
+          alt="メイン写真"
+        />
       </div>
       <div class="intro">
         <div class="intro-card">
           <h1 class="intro-title">セントマリアージュ青山について</h1>
           <div class="intro-cont">
-            <div class="img_block left"><img class="img" src="~/assets/images/marriage-gate.webp" alt="セントマリアージュ青山"></div>
+            <div class="img_block left">
+              <img
+                class="img"
+                src="~/assets/images/marriage-gate.webp"
+                alt="セントマリアージュ青山"
+              />
+            </div>
             <div class="text">
-              当社のホームページをご覧いただきありがとうございます。<br>
-              財閥系の大手結婚相談所にて多くの方々の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。<br>
-              <span class="resposive_text">「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？　少しだけ勇気を出して始めてみたら、あなたの未来が変わります！<br></span>
+              当社のホームページをご覧いただきありがとうございます。<br />
+              財閥系の大手結婚相談所にて多くの方々の幸せを叶えてきた経験をもとに、お一人お一人に合ったきめ細やかなサポートをおこないます。<br />
+              <span class="resposive_text"
+                >「結婚はしたいけど、結婚相談所には抵抗がある」「いつか自然に運命の相手と出会えるはず」と考えている方、何もしないで時間だけが過ぎていませんか？　少しだけ勇気を出して始めてみたら、あなたの未来が変わります！<br
+              /></span>
               無料カウンセリングを随時受け付けております。是非お気軽にお問合せ、ご相談ください。
             </div>
-            <div class="img_block right"><img class="img" src="~/assets/images/clean_bouquet.webp" alt="セントマリアージュ青山"></div>
+            <div class="img_block right">
+              <img
+                class="img"
+                src="~/assets/images/clean_bouquet.webp"
+                alt="セントマリアージュ青山"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -45,7 +75,9 @@
           <div class="section_title_block --1">
             <h2 class="title">ご成婚者様からの声</h2>
             <div class="title__border"></div>
-            <p class="title__sub point">セントマリアージュ青山でご成婚された方々</p>
+            <p class="title__sub point">
+              セントマリアージュ青山でご成婚された方々
+            </p>
           </div>
           <div class="case_list">
             <div class="slide_wrap">
@@ -60,18 +92,40 @@
                     {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
                   </div>
                 </template>
-                <nuxt-link class="case-item" v-for="n of 5" :key="n" :to="`/interview/${displayCaseList[n-1]?.id ?? ''}`">
+                <nuxt-link
+                  class="case-item"
+                  v-for="n of 5"
+                  :key="n"
+                  :to="`/interview/${displayCaseList[n - 1]?.id ?? ''}`"
+                >
                   <div class="case-card">
                     <div class="case-item__image_block">
-                      <img class="case-item__image" :src="displayCaseList[n-1]?.url ?? ''" :alt="`${displayCaseList[n-1]?.age ?? ''}歳の${displayCaseList[n-1]?.sex ?? ''}会員様のご成婚事例`">
+                      <img
+                        class="case-item__image"
+                        :src="displayCaseList[n - 1]?.url ?? ''"
+                        :alt="`${displayCaseList[n - 1]?.age ?? ''}歳の${
+                          displayCaseList[n - 1]?.sex ?? ''
+                        }会員様のご成婚事例`"
+                      />
                     </div>
                     <div class="card">
                       <div class="__link">
-                        <p class="__title"><span class="inline-block">{{displayCaseList[n-1]?.age ?? ''}}歳の{{displayCaseList[n-1]?.sex ?? ''}}会員様が</span><span class="inline-block">ご成婚されました！</span></p>
-                        <ArrowImage class="right-arrow" direction="right"></ArrowImage>
+                        <p class="__title">
+                          <span class="inline-block"
+                            >{{ displayCaseList[n - 1]?.age ?? '' }}歳の{{
+                              displayCaseList[n - 1]?.sex ?? ''
+                            }}会員様が</span
+                          ><span class="inline-block">ご成婚されました！</span>
+                        </p>
+                        <ArrowImage
+                          class="right-arrow"
+                          direction="right"
+                        ></ArrowImage>
                       </div>
                       <p class="__title">
-                        <span class="inline-block">インタビュー内容はこちら</span>
+                        <span class="inline-block"
+                          >インタビュー内容はこちら</span
+                        >
                       </p>
                     </div>
                   </div>
@@ -79,19 +133,32 @@
               </VueSlickCarousel>
             </div>
             <nuxt-link
-                class="case-item case-wrap"
-                v-for="n of 3" 
-                :key="n" 
-                :to="`/interview/${displayCaseList[n-1]?.id ?? ''}`"
+              class="case-item case-wrap"
+              v-for="n of 3"
+              :key="n"
+              :to="`/interview/${displayCaseList[n - 1]?.id ?? ''}`"
             >
               <div class="case-card">
                 <div class="case-item__image_block">
-                  <img class="case-item__image" :src="displayCaseList[n-1]?.url ?? ''" alt="インタビュー">
+                  <img
+                    class="case-item__image"
+                    :src="displayCaseList[n - 1]?.url ?? ''"
+                    alt="インタビュー"
+                  />
                 </div>
                 <div class="card">
                   <div class="__link">
-                    <p class="__title"><span class="inline-block">{{displayCaseList[n-1]?.age ?? ''}}歳の{{displayCaseList[n-1]?.sex ?? ''}}会員様が</span><span class="inline-block">ご成婚されました！</span></p>
-                    <ArrowImage class="right-arrow" direction="right"></ArrowImage>
+                    <p class="__title">
+                      <span class="inline-block"
+                        >{{ displayCaseList[n - 1]?.age ?? '' }}歳の{{
+                          displayCaseList[n - 1]?.sex ?? ''
+                        }}会員様が</span
+                      ><span class="inline-block">ご成婚されました！</span>
+                    </p>
+                    <ArrowImage
+                      class="right-arrow"
+                      direction="right"
+                    ></ArrowImage>
                   </div>
                   <p class="__title">
                     <span class="inline-block">インタビュー内容はこちら</span>
@@ -105,7 +172,9 @@
           <div class="link-block">
             <nuxt-link class="list-link" to="/interview">
               <div class="list-link-wrap" ref="linkPos3">
-                <span class="list-link-text inline-block">ご成婚事例を全て見る</span>
+                <span class="list-link-text inline-block"
+                  >ご成婚事例を全て見る</span
+                >
               </div>
               <ArrowImage class="right-arrow" direction="right"></ArrowImage>
             </nuxt-link>
@@ -115,32 +184,42 @@
       <section class="section --2">
         <div class="section-wrap">
           <div class="section_title_block --2">
-            <h2 class="title"><span class="inline-block">カウンセラーからの</span><span class="inline-block">ご挨拶</span></h2>
+            <h2 class="title">
+              <span class="inline-block">カウンセラーからの</span
+              ><span class="inline-block">ご挨拶</span>
+            </h2>
             <div class="title__border"></div>
             <p class="title__sub">カウンセラーからのご挨拶</p>
           </div>
           <div class="self_introduction">
             <div class="self-pic">
               <div class="img_block">
-                <img src="~/assets/images/ShimadaTomoko.webp" class="img" alt="三菱の結婚相談所「ダイヤモンドファミリークラブ」に勤めていた島田智子です">
-              </div>	
+                <img
+                  src="~/assets/images/ShimadaTomoko.webp"
+                  class="img"
+                  alt="三菱の結婚相談所「ダイヤモンドファミリークラブ」に勤めていた島田智子です"
+                />
+              </div>
             </div>
             <div class="self-p">
               <div class="self-p_wrap">
                 <span class="inline-block">
-                  代表カウンセラーの島田智子です。<br>
-                  三菱の結婚相談所「ダイヤモンドファミリークラブ」のカウンセラーとして、約10年勤務しておりました。<br>
+                  代表カウンセラーの島田智子です。<br />
+                  三菱の結婚相談所「ダイヤモンドファミリークラブ」のカウンセラーとして、約10年勤務しておりました。<br />
                   延べ1000人以上の会員様を担当し、20代から50代までの幅広い年齢層の方々のご成婚実績が多数ございます。
-                  豊富な経験・知識を生かして、年齢、性別を問わず、お一人お一人に寄り添ったサポートをいたします。<br>
+                  豊富な経験・知識を生かして、年齢、性別を問わず、お一人お一人に寄り添ったサポートをいたします。<br />
                   「お見合いを成功させる秘訣」「異性に好かれる身だしなみ、行動、会話」「仮交際から真剣交際への進め方」「ご成婚への最後の一押し」等、幅広く丁寧にアドバイスいたします。
-                    <br>過去のご成婚者の方々から近況報告をいただいたり、元会員様から恋愛相談を受けたりと、現在でも長くお付き合いを続けさせていただいています。結婚後（成婚退会後）も何か悩みを抱えた時、いつでもご相談いただけるような身近な存在でありたいと思っております。
+                  <br />過去のご成婚者の方々から近況報告をいただいたり、元会員様から恋愛相談を受けたりと、現在でも長くお付き合いを続けさせていただいています。結婚後（成婚退会後）も何か悩みを抱えた時、いつでもご相談いただけるような身近な存在でありたいと思っております。
                 </span>
               </div>
             </div>
           </div>
           <div class="about_diamond_family_club">
             <span class="title_wrap">
-              <h2 class="title"><span class="inline-block">ダイヤモンドファミリークラブに</span><span class="inline-block">ついて</span></h2>
+              <h2 class="title">
+                <span class="inline-block">ダイヤモンドファミリークラブに</span
+                ><span class="inline-block">ついて</span>
+              </h2>
             </span>
             <div class="about_body">
               ダイヤモンドファミリークラブとは、1972年に三菱グループの社員のために設立された結婚相談所です。
@@ -149,13 +228,24 @@
           </div>
           <div class="self-body">
             <div class="self-comments">
-              <div class="self-comment 1"><span class="inline-block">入会1ヵ月以内のお見合い成立率</span><span class="big_font inline-block">&emsp;95%</span></div>
-              <div class="self-comment 2"><span class="inline-block">入会1カ月以内の交際成立率</span><span class="big_font inline-block">&emsp;95%</span></div>
-              <div class="self-comment 3"><span class="inline-block">成婚率</span><span class="big_font inline-block">&emsp;70%</span></div>
+              <div class="self-comment 1">
+                <span class="inline-block">入会1ヵ月以内のお見合い成立率</span
+                ><span class="big_font inline-block">&emsp;95%</span>
+              </div>
+              <div class="self-comment 2">
+                <span class="inline-block">入会1カ月以内の交際成立率</span
+                ><span class="big_font inline-block">&emsp;95%</span>
+              </div>
+              <div class="self-comment 3">
+                <span class="inline-block">成婚率</span
+                ><span class="big_font inline-block">&emsp;70%</span>
+              </div>
               <div class="mini_comment">※成婚退会者数÷全退会者数</div>
             </div>
             <div class="self-table">
-              <div class="text">セントマリアージュ青山で活動中の会員様（2022年８月現在）</div>
+              <div class="text">
+                セントマリアージュ青山で活動中の会員様（2022年８月現在）
+              </div>
               <div class="table --1">
                 <h3 class="table_title">会員データ</h3>
                 <ul class="table_list">
@@ -168,7 +258,10 @@
                 </ul>
               </div>
               <div class="table --2">
-                <h3 class="table_title"><span class="inline-block">ご職業</span><span class="inline-block">(一例)</span></h3>
+                <h3 class="table_title">
+                  <span class="inline-block">ご職業</span
+                  ><span class="inline-block">(一例)</span>
+                </h3>
                 <ul class="table_list">
                   <li class="list_item">三菱グループ各社</li>
                   <li class="list_item">大手通信事業社</li>
@@ -183,35 +276,58 @@
           <div class="award_wrap">
             <div class="award-title">
               <span class="inline-block">セントマリアージュ青山が</span>
-              <span class="inline-block">IBJ AWARD 2021年下期</span>
+              <span class="inline-block">IBJ AWARD 2023年下期</span>
+              <span class="inline-block">IBJ AWARD 2023年上期</span>
               <span class="inline-block">IBJ AWARD 2022年上期</span>
-              <span class="inline-block">IBJ AWARD 2023年上期</span><br>
+              <span class="inline-block">IBJ AWARD 2021年下期</span><br />
               <span class="inline-block">3年連続受賞しました！</span>
             </div>
             <div class="content_wrap --2">
               <div class="content_body img">
                 <div class="top-service__img">
                   <div class="c-img">
-                    <img src="~/assets/images/IBJ_award_2021.webp" class="c-img__img" alt="ibjアワード1">
-                  </div>	
-                </div> 
+                    <img
+                      src="~/assets/images/IBJ_award_2023_front.webp"
+                      class="c-img__img"
+                      alt="ibjアワード1"
+                    />
+                  </div>
+                </div>
                 <div class="top-service__img">
                   <div class="c-img">
-                    <img src="~/assets/images/IBJ_award_2022_back.webp" class="c-img__img" alt="ibjアワード2">
-                  </div>	
-                </div> 
+                    <img
+                      src="~/assets/images/IBJ_award_2023_front.webp"
+                      class="c-img__img"
+                      alt="ibjアワード2"
+                    />
+                  </div>
+                </div>
                 <div class="top-service__img">
                   <div class="c-img">
-                    <img src="~/assets/images/IBJ_award_2023_front.webp" class="c-img__img" alt="ibjアワード3">
-                  </div>	
-                </div> 
+                    <img
+                      src="~/assets/images/IBJ_award_2022_back.webp"
+                      class="c-img__img"
+                      alt="ibjアワード3"
+                    />
+                  </div>
+                </div>
+                <div class="top-service__img">
+                  <div class="c-img">
+                    <img
+                      src="~/assets/images/IBJ_award_2021.webp"
+                      class="c-img__img"
+                      alt="ibjアワード3"
+                    />
+                  </div>
+                </div>
               </div>
               <div class="content_body text">
-                <p>IBJアワードとは、日本結婚相談所連盟（IBJ）の加盟店3741社のなかで、過去6ヶ月間で特に顕著な実績を残した相談所に贈られる賞です。<br>
-                  当社は開業から1年以上の相談所を対象とした「PREMIUM部門」で受賞いたしました。こちらの受賞率は全加盟店の中で約2割となります。<br>
-                  選定基準は、「入会数、成婚数」「地域への貢献度」「ガイドライン、法令の遵守」「クレームやトラブルがない事」等になります。<br>
-                  これらの厳しい選定基準をクリアし、日本結婚相談所連盟(IBJ)がお勧めできる優良結婚相談所としてお墨付きをいただいたことになります。<br>
-                  これからも、お1人でも多くの会員様に幸せになっていただくよう、心を込めてサポートさせていただきます！<br>
+                <p>
+                  IBJアワードとは、日本結婚相談所連盟IBJの全加盟店の中で、過去6ヶ月間で特に顕著な実績を残した相談所に贈られる賞です。<br />
+                  2023年下期は、全加盟店4,032社のうち617社が受賞しており、こちらの受賞率は約15%となります。
+                  選定基準は、「入会数、成婚数」「地域への貢献度」「ガイドライン、法令の遵守」「クレームやトラブルがない事」等になります。<br />
+                  これらの厳しい選定基準をクリアし、日本結婚相談所連盟(IBJ)がお勧めできる優良結婚相談所としてお墨付きをいただいたことになります。<br />
+                  これからも、お1人でも多くの会員様に幸せになっていただくよう、心を込めてサポートさせていただきます！<br />
                 </p>
               </div>
             </div>
@@ -229,36 +345,53 @@
             <li class="content_body ---1 top-our_strengths__container">
               <div class="top-our_strengths__container--body ---1">
                 <h3 class="top-our_strengths__container--point">1</h3>
-                <p class="top-our_strengths__container--heading">全国約80,000人を対象に<br>お相手探し</p>
+                <p class="top-our_strengths__container--heading">
+                  全国約80,000人を対象に<br />お相手探し
+                </p>
                 <p class="top-our_strengths__container--about">
-                  セントマリアージュ青山は、会員数・成婚数業界ナンバー１の<span class="big_font">日本結婚相談所連盟(IBJ)</span>の正規加盟店です。<br>
-                  IBJに加盟している相談所の全国<span class="big_font">約80,000人</span>の会員様を対象に、ご自身のスマホやパソコンを使ってスムーズなお相手探しができます。<br>
-                  毎月4,200名以上の新規会員の方が入会していますので、常に新たな出会いが期待できます。<br>
-                  お見合いのセッティング、交際から成婚まで、カウンセラーがきめ細かくサポートさせていただきます。<br><br>
+                  セントマリアージュ青山は、会員数・成婚数業界ナンバー１の<span
+                    class="big_font"
+                    >日本結婚相談所連盟(IBJ)</span
+                  >の正規加盟店です。<br />
+                  IBJに加盟している相談所の全国<span class="big_font"
+                    >約80,000人</span
+                  >の会員様を対象に、ご自身のスマホやパソコンを使ってスムーズなお相手探しができます。<br />
+                  毎月4,200名以上の新規会員の方が入会していますので、常に新たな出会いが期待できます。<br />
+                  お見合いのセッティング、交際から成婚まで、カウンセラーがきめ細かくサポートさせていただきます。<br /><br />
                 </p>
               </div>
               <div class="top-our_strengths__container--img ---1">
                 <div class="img_block --1">
-                  <img src="~/assets/images/black_wedding.webp" class="img" alt="丁寧なサポート">
-                </div>	
-              </div> 
+                  <img
+                    src="~/assets/images/black_wedding.webp"
+                    class="img"
+                    alt="丁寧なサポート"
+                  />
+                </div>
+              </div>
             </li>
             <li class="content_body ---2 top-our_strengths__container">
               <div class="top-our_strengths__container--body ---2">
                 <h3 class="top-our_strengths__container--point">2</h3>
-                <p class="top-our_strengths__container--heading">経験に基づく<br>きめ細やかなサポート</p>
+                <p class="top-our_strengths__container--heading">
+                  経験に基づく<br />きめ細やかなサポート
+                </p>
                 <p class="top-our_strengths__container--about">
-                  三菱の結婚相談所「ダイヤモンドファミリークラブ」で約10年間勤務し、延べ1000人以上の会員様の担当カウンセラーとして婚活サポートを行ってきました。<br>
-                  幅広い年齢層の成婚実績が多数ございますので、経験に基づく的確なアドバイスをいたします。<br>
-                  お見合い後の振り返りや、交際中の状況を確認しながら活動状況に応じてアドバイスをさせていただきます。<br>
+                  三菱の結婚相談所「ダイヤモンドファミリークラブ」で約10年間勤務し、延べ1000人以上の会員様の担当カウンセラーとして婚活サポートを行ってきました。<br />
+                  幅広い年齢層の成婚実績が多数ございますので、経験に基づく的確なアドバイスをいたします。<br />
+                  お見合い後の振り返りや、交際中の状況を確認しながら活動状況に応じてアドバイスをさせていただきます。<br />
                   婚活中は誰にも相談できず孤独に陥りがちですが、いつでもメールや電話で相談いただける体制を整えています。
                 </p>
               </div>
               <div class="top-our_strengths__container--img ---2">
                 <div class="img_block">
-                  <img src="~/assets/images/wedding_hall.webp" class="img" alt="満足度">
-                </div>	
-              </div> 
+                  <img
+                    src="~/assets/images/wedding_hall.webp"
+                    class="img"
+                    alt="満足度"
+                  />
+                </div>
+              </div>
             </li>
           </ul>
         </div>
@@ -271,26 +404,57 @@
             <p class="title__sub">アクセス</p>
           </div>
           <div class="access-comment big">
-            <span class="inline-block"><span style="font-weight: bold">【営業時間】</span><br><span class="inline-block">&emsp;平日 11:00～19:00</span><span class="inline-block">&emsp;(火曜定休日) </span><br><span class="inline-block">&emsp;土日祝11:00～18:00</span></span><br>
-            <span class="inline-block"><span style="font-weight: bold">【所在地】</span><br><span class="inline-block">&emsp;〒107-0052</span><span class="inline-block">&emsp;東京都港区赤坂4丁目8番19号</span><span class="inline-block">&emsp;赤坂フロントタウン3階</span></span><br>
-            <span class="inline-block"><span style="font-weight: bold">【電話番号】</span><br><span class="inline-block">&emsp;080-7002-0555</span></span><br>
+            <span class="inline-block"
+              ><span style="font-weight: bold">【営業時間】</span><br /><span
+                class="inline-block"
+                >&emsp;平日 11:00～19:00</span
+              ><span class="inline-block">&emsp;(火曜定休日) </span><br /><span
+                class="inline-block"
+                >&emsp;土日祝11:00～18:00</span
+              ></span
+            ><br />
+            <span class="inline-block"
+              ><span style="font-weight: bold">【所在地】</span><br /><span
+                class="inline-block"
+                >&emsp;〒107-0052</span
+              ><span class="inline-block">&emsp;東京都港区赤坂4丁目8番19号</span
+              ><span class="inline-block"
+                >&emsp;赤坂フロントタウン3階</span
+              ></span
+            ><br />
+            <span class="inline-block"
+              ><span style="font-weight: bold">【電話番号】</span><br /><span
+                class="inline-block"
+                >&emsp;080-7002-0555</span
+              ></span
+            ><br />
           </div>
           <div class="access-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.036612253006!2d139.73172281533948!3d35.67610048019553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c7e44c75e5d%3A0x739a7864f075e711!2z44CSMTA3LTAwNTIg5p2x5Lqs6YO95riv5Yy66LWk5Z2C77yU5LiB55uu77yY4oiS77yR77yZIOi1pOWdguODleODreODs-ODiOOCv-OCpuODsyAz6ZqO!5e0!3m2!1sja!2sjp!4v1670508275711!5m2!1sja!2sjp"
-            width="100%"
-            height="400" 
-            style="border:0;" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.036612253006!2d139.73172281533948!3d35.67610048019553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c7e44c75e5d%3A0x739a7864f075e711!2z44CSMTA3LTAwNTIg5p2x5Lqs6YO95riv5Yy66LWk5Z2C77yU5LiB55uu77yY4oiS77yR77yZIOi1pOWdguODleODreODs-ODiOOCv-OCpuODsyAz6ZqO!5e0!3m2!1sja!2sjp!4v1670508275711!5m2!1sja!2sjp"
+              width="100%"
+              height="400"
+              style="border: 0"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
             >
             </iframe>
           </div>
           <div class="access-comment small">
-            <span class="inline-block" style="font-weight: bold">【交通】</span><br>
-            <span class="inline-block">&emsp;東京メトロ銀座線・丸の内線「赤坂見付駅」4分</span><br>
-            <span class="inline-block">&emsp;東京メトロ千代田線「赤坂駅」8分</span><br>
-            <span class="inline-block">&emsp;東京メトロ有楽町線・南北線・半蔵門線「永田町駅」9分</span><br>
-            <span class="inline-block">&emsp;東京メトロ銀座線・半蔵門線「青山一丁目駅」12分</span><br>
+            <span class="inline-block" style="font-weight: bold">【交通】</span
+            ><br />
+            <span class="inline-block"
+              >&emsp;東京メトロ銀座線・丸の内線「赤坂見付駅」4分</span
+            ><br />
+            <span class="inline-block"
+              >&emsp;東京メトロ千代田線「赤坂駅」8分</span
+            ><br />
+            <span class="inline-block"
+              >&emsp;東京メトロ有楽町線・南北線・半蔵門線「永田町駅」9分</span
+            ><br />
+            <span class="inline-block"
+              >&emsp;東京メトロ銀座線・半蔵門線「青山一丁目駅」12分</span
+            ><br />
           </div>
         </div>
       </section>
@@ -299,8 +463,14 @@
 </template>
 
 <script setup lang="ts">
-import gsap from "gsap"
-import { computed, ref, onMounted, onBeforeUnmount, useContext } from '@nuxtjs/composition-api'
+import gsap from 'gsap'
+import {
+  computed,
+  ref,
+  onMounted,
+  onBeforeUnmount,
+  useContext,
+} from '@nuxtjs/composition-api'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
@@ -334,31 +504,33 @@ const trigger: string[] = [
   '.access-comment.small',
 ]
 const settings = {
-  "fade": false,
-  "arrows": true,
-  "dots": true,
-  "infinite": true,
-  "slidesToShow": 1,
-  "slidesToScroll": 1,
-  "autoplay": true,
-  "speed": 1000,
-  "autoplaySpeed": 3000,
+  fade: false,
+  arrows: true,
+  dots: true,
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  speed: 1000,
+  autoplaySpeed: 3000,
   // "cssEase": "linear",
-  "swipe": true,
-  "pauseOnHover": true,
+  swipe: true,
+  pauseOnHover: true,
   // "dotsClass": "dots"
 }
 
-let circleAnim: gsap.core.Tween 
+let circleAnim: gsap.core.Tween
 let headerAnim = ref<gsap.core.Tween>({} as gsap.core.Tween)
 let fuwaAnim = ref<gsap.core.Tween[]>([])
 let fuwaSetAnim = ref<gsap.core.Tween[]>([])
-let isLoadingEnabled = computed<boolean>(() => store.getters['isLoadingEnabled'])
+let isLoadingEnabled = computed<boolean>(
+  () => store.getters['isLoadingEnabled']
+)
 const myObserver = ref<ResizeObserver>({} as ResizeObserver)
 const pageObserver = ref()
 
 onMounted(() => {
-  const resizeObserver = new ResizeObserver(entries => {
+  const resizeObserver = new ResizeObserver((entries) => {
     for (const entry of entries) {
       fuwaAnim.value.forEach((val) => {
         val.scrollTrigger?.refresh()
@@ -368,23 +540,27 @@ onMounted(() => {
   })
   myObserver.value = resizeObserver
   myObserver.value.observe(pageObserver.value)
-  if(isLoadingEnabled.value) {
+  if (isLoadingEnabled.value) {
     store.dispatch('startLoading')
   }
-  circleAnim = gsap.fromTo(".flow_block",{
-    opacity: 0,
-  }, {
-    scrollTrigger: {
-      trigger: '.body',
-      start: 'top bottom',
-      end: 'bottom bottom',
-      toggleActions: 'play reverse play reverse',
+  circleAnim = gsap.fromTo(
+    '.flow_block',
+    {
+      opacity: 0,
     },
-    opacity: 1,
-    duration: .3, 
-  })
-  
-  headerAnim.value = gsap.to(".header_wrap",{
+    {
+      scrollTrigger: {
+        trigger: '.body',
+        start: 'top bottom',
+        end: 'bottom bottom',
+        toggleActions: 'play reverse play reverse',
+      },
+      opacity: 1,
+      duration: 0.3,
+    }
+  )
+
+  headerAnim.value = gsap.to('.header_wrap', {
     scrollTrigger: {
       trigger: '.intro',
       start: 'top 40%',
@@ -393,14 +569,14 @@ onMounted(() => {
     onStart: () => store.commit('changeHeaderToBlue'),
     onReverseComplete: () => store.commit('changeHeaderToTrans'),
   })
-  trigger.forEach(value => {
+  trigger.forEach((value) => {
     let array: gsap.core.Tween = gsap.set(value, {
       opacity: 0,
-      y: 40
+      y: 40,
     })
     fuwaSetAnim.value.push(array)
   })
-  trigger.forEach(value => {
+  trigger.forEach((value) => {
     let array: gsap.core.Tween = gsap.to(value, {
       scrollTrigger: {
         trigger: value,
@@ -410,14 +586,14 @@ onMounted(() => {
       },
       opacity: 1,
       y: 0,
-      duration: 1, 
+      duration: 1,
     })
     fuwaAnim.value.push(array)
   })
 
-  const el = document.getElementsByClassName('slick-dots')[0]  as HTMLElement
-  if(el){
-    el.style.bottom = "20px"
+  const el = document.getElementsByClassName('slick-dots')[0] as HTMLElement
+  if (el) {
+    el.style.bottom = '20px'
   }
 })
 
@@ -425,13 +601,11 @@ onBeforeUnmount(() => {
   myObserver.value.unobserve(pageObserver.value)
   circleAnim.scrollTrigger?.disable()
   headerAnim.value.scrollTrigger?.disable()
-  fuwaAnim.value.forEach(value => {
+  fuwaAnim.value.forEach((value) => {
     value.scrollTrigger?.disable()
   })
 })
-  
 </script>
-
 
 <style lang="sass" scoped>
 .hero
@@ -508,7 +682,7 @@ onBeforeUnmount(() => {
           font-size: 20px
           padding: 0
 
-        &::before,&::after 
+        &::before,&::after
           content: ''
           position: absolute
           top: 50%
@@ -518,11 +692,11 @@ onBeforeUnmount(() => {
           background-color: #000875
           +sp-view
             display: none
-          
-        &::before 
+
+        &::before
           left:0
           background: linear-gradient(-45deg, transparent, #000875 10%, #000875 30%, transparent)
-        &::after 
+        &::after
           right: 0
           background: linear-gradient(-45deg, transparent, #000875 70%, #000875 90%, transparent)
       > .intro-cont
@@ -552,11 +726,11 @@ onBeforeUnmount(() => {
           &.left
             &::after
               background-image: linear-gradient(90deg, transparent 0 60%, #FFF 100%), linear-gradient(0deg, transparent 0 60%, #FFF 100%)
-          
+
           &.right
             &::after
               background-image: linear-gradient(270deg, transparent 0 40%, #FFF 100%),linear-gradient(0deg, transparent 0 60%, #FFF 100%)
-          
+
           > .img
             width: 100%
             height: 20vw
@@ -567,7 +741,7 @@ onBeforeUnmount(() => {
   background-image: url("/images/luxury-2.webp")
   background-size: 25%
   background-repeat: repeat
-  
+
   > .section
     // padding: 150px 0 150px
     > .section-wrap
@@ -594,7 +768,7 @@ onBeforeUnmount(() => {
           margin: 0 0 20px
           +sp-view
             +text-subtitle(32px)
-          &::before 
+          &::before
             position: absolute
             bottom: -10px
             left: calc(50% - 50px)
@@ -664,7 +838,7 @@ onBeforeUnmount(() => {
             +sp-view
               min-width: 240px
               display: none
-              
+
           .case-card
             width: 100%
             box-shadow: 0 2px 14px rgba(0, 0, 0, .1)
@@ -750,7 +924,7 @@ onBeforeUnmount(() => {
         > .section_title_block
           > .title
             color: var(--white-1)
-            &::before 
+            &::before
               background-image: linear-gradient(135deg, #000875 0%, #17aaee 37%,  #17aaee 63%, #000875 100%)
           > .title__border
             background: var(--white-1)
@@ -817,7 +991,7 @@ onBeforeUnmount(() => {
                 left: 0
                 width: 100%
                 height: 100%
-                
+
         > .about_diamond_family_club
           text-align: center
           padding: 40px 0
@@ -852,7 +1026,7 @@ onBeforeUnmount(() => {
                 padding: 0
                 font-size: 18px
 
-              &::before,&::after 
+              &::before,&::after
                 content: ''
                 position: absolute
                 top: 50%
@@ -864,15 +1038,15 @@ onBeforeUnmount(() => {
                 +sp-view
                   font-size: 20px
                   display: none
-                
-              &::before 
+
+              &::before
                 left: 0
                 +sp-view
                   display: none
 
-              &::after 
+              &::after
                 right: 0
-              
+
           > .about_body
             max-width: 560px
             margin: auto
@@ -903,7 +1077,7 @@ onBeforeUnmount(() => {
               +sp-view
                 font-size: 22px
                 line-height: 1.5
-              
+
               > .big_font
                 font-size: 48px
                 display: inline-block
@@ -919,8 +1093,8 @@ onBeforeUnmount(() => {
 
             +sp-view
               width: 100%
-              margin: 0 
-            
+              margin: 0
+
             > .text
               width: 100%
               text-align: center
@@ -963,7 +1137,7 @@ onBeforeUnmount(() => {
                   margin-bottom: 5px
                   +sp-view
                     font-size: 12px
-              
+
               &.--1
                 > .table_list
                   > .list_item
@@ -971,7 +1145,7 @@ onBeforeUnmount(() => {
                     &.th
                       background: var(--main)
                       color: var(--white-1)
-                      
+
         > .award_wrap
           > .award-title
             text-align: center
@@ -1027,7 +1201,7 @@ onBeforeUnmount(() => {
               &.img
                 display: flex
                 // flex-direction: column
-                gap: 40px
+                gap: 20px
               &.text
                 +text-body(16px)
                 color: var(--white-1)
@@ -1081,7 +1255,7 @@ onBeforeUnmount(() => {
                   width: 50px
                   height: 3px
                   background: var(--sub)
-                  display: block 
+                  display: block
                   margin: 5% 0 8%
                   +sp-view
                     margin: 0% 0 8%
@@ -1107,7 +1281,7 @@ onBeforeUnmount(() => {
                   font-weight: bold
                   +sp-view
 
-            
+
             > .top-our_strengths__container--img
               width: 95%
               +sp-view
@@ -1136,7 +1310,7 @@ onBeforeUnmount(() => {
                   width: 100%
                   top: 0
                   object-fit: cover
-              
+
     &.--4
       background-color: var(--white-1)
       > .section-wrap
@@ -1153,17 +1327,16 @@ onBeforeUnmount(() => {
           +text-body(16px)
 
           +sp-view
-            margin: 20px 0 
+            margin: 20px 0
 
           &.small
             +text-body(16px)
 
             +sp-view
               +text-body(12px)
-          
+
         > .access-map
           width: 100%
           height: 400px
           object-fit: cover
-
 </style>
