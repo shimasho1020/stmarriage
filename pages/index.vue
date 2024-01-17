@@ -287,7 +287,7 @@
                 <div class="top-service__img">
                   <div class="c-img">
                     <img
-                      src="~/assets/images/IBJ_award_2023_front.webp"
+                      src="~/assets/images/IBJ_award_2023_back.webp"
                       class="c-img__img"
                       alt="ibjアワード1"
                     />
