@@ -244,7 +244,7 @@
             </div>
             <div class="self-table">
               <div class="text">
-                セントマリアージュ青山で活動中の会員様（2022年８月現在）
+                セントマリアージュ青山で活動中の会員様（2024年3月現在）
               </div>
               <div class="table --1">
                 <h3 class="table_title">会員データ</h3>

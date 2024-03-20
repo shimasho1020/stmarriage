@@ -1,172 +1,213 @@
 <template>
-<div class="">
-  <div class="title_block" style="text-align:center">
-    <h1 class="title">料金プラン</h1>
-  </div>
-  <div class="body">
-    <div class="menu">
-      <div class="lists">
-        <div class="cards">
-          <a class="cards_wrap" href="#full">
-            <h2 class="cards_title">フルサポートコース</h2>
-            <div class="cards_pic">
-              <img class="img" src="~/assets/images/wedding-table-desserts.webp" alt="コース案内">
-            </div>
-            <div class="cards_note">
-              充実したサポート内容のおススメコースです。当社の多くの会員様がこちらのコースで活動されています。
-            </div>
-          </a>
+  <div class="">
+    <div class="title_block" style="text-align: center">
+      <h1 class="title">料金プラン</h1>
+      <div class="coution">
+        ※4月1日より料金改定をいたします。<br />新規入会金　33,000円 →
+        55,000円<br />※3月31日までにご契約いただいた方には、現行通りとさていただきます。
+      </div>
+    </div>
+    <div class="body">
+      <div class="menu">
+        <div class="lists">
+          <div class="cards">
+            <a class="cards_wrap" href="#full">
+              <h2 class="cards_title">フルサポートコース</h2>
+              <div class="cards_pic">
+                <img
+                  class="img"
+                  src="~/assets/images/wedding-table-desserts.webp"
+                  alt="コース案内"
+                />
+              </div>
+              <div class="cards_note">
+                充実したサポート内容のおススメコースです。当社の多くの会員様がこちらのコースで活動されています。
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- <div class="lists">
+          <div class="cards">
+            <a class="cards_wrap" href="#casual">
+              <h2 class="cards_title">カジュアルコース</h2>
+              <div class="cards_pic">
+                <img
+                  class="img"
+                  src="~/assets/images/casual.webp"
+                  alt="コース案内"
+                />
+              </div>
+              <div class="cards_note">
+                婚活にまだ迷いのある方、とりあえずお試しした方におすすめのコースです。追加料金でフルサポートコースに変更可能です。
+              </div>
+            </a>
+          </div>
+        </div> -->
+        <div class="lists">
+          <div class="cards">
+            <a class="cards_wrap" href="#counseling">
+              <h2 class="cards_title">カウンセリングコース</h2>
+              <div class="cards_pic">
+                <img
+                  class="img"
+                  src="~/assets/images/counseling.webp"
+                  alt="コース案内"
+                />
+              </div>
+              <div class="cards_note">
+                他社で婚活中の方、プライベートな恋愛でお悩みの方が気軽に電話で相談できるコースです。一人で悩んでいないでご相談ください。
+              </div>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="lists">
-        <div class="cards">
-          <a class="cards_wrap" href="#casual">
-            <h2 class="cards_title">カジュアルコース</h2>
-            <div class="cards_pic">
-              <img class="img" src="~/assets/images/casual.webp" alt="コース案内">
+      <div class="colum">
+        <div class="section_wrap" id="full">
+          <div class="section full">
+            <h1 class="title"><span>フルサポートコース</span></h1>
+            <div class="subtitle">
+              充実したサポート内容をリーズナブルに提供しているおすすめコースです。
             </div>
-            <div class="cards_note">
-              婚活にまだ迷いのある方、とりあえずお試しした方におすすめのコースです。追加料金でフルサポートコースに変更可能です。
+            <div class="subtitle">
+              当社のほとんど会員様が、こちらのコースで活動されています。
             </div>
-          </a>
+            <div class="content">
+              <div class="content_img">
+                <img
+                  class="img"
+                  src="~/assets/images/wedding-table-desserts.webp"
+                  alt="フルサポートコース"
+                />
+              </div>
+              <table class="color_table">
+                <tr v-for="(value, index) in fullTables" v-bind:key="index">
+                  <th>{{ value.title }}</th>
+                  <td>{{ value.price }}</td>
+                </tr>
+              </table>
+              <div class="list_block">
+                <h3 class="list_title">入会時サポート内容</h3>
+                <ol class="original_list">
+                  <li>プロフィールシート作成サポート</li>
+                  <li>写真館への同行（希望者のみ）</li>
+                </ol>
+              </div>
+              <div class="list_block">
+                <h3 class="list_title">活動時サポート内容</h3>
+                <ol class="original_list">
+                  <li>
+                    お申し込み：月 <span class="highlight">50件</span>まで無料
+                  </li>
+                  <li>お申し受け：無制限</li>
+                  <li>カウンセラーからの紹介：月数名</li>
+                  <li>
+                    お見合い料：<span class="highlight">無料</span
+                    >（月８回まで）
+                  </li>
+                  <li>お見合いセッティング（お店の代行予約等）</li>
+                  <li>電話、メールでのご相談：無制限</li>
+                  <li>面談（対面orZOOM)：月１回</li>
+                </ol>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="lists">
-        <div class="cards">
-          <a class="cards_wrap" href="#counseling">
-            <h2 class="cards_title">カウンセリングコース</h2>
-            <div class="cards_pic">
-              <img class="img" src="~/assets/images/counseling.webp" alt="コース案内">
+        <!-- <div class="section_wrap" id="casual">
+          <div class="section casual">
+            <h1 class="title"><span>カジュアルコース</span></h1>
+            <div class="subtitle">
+              活動に迷いがある方、とりあえずお試ししたい方におすすめのコースです。
             </div>
-            <div class="cards_note">
-              他社で婚活中の方、プライベートな恋愛でお悩みの方が気軽に電話で相談できるコースです。一人で悩んでいないでご相談ください。
+            <div class="content">
+              <div class="content_img">
+                <img src="~/assets/images/casual.webp" alt="カジュアルコース" />
+              </div>
+              <table class="color_table">
+                <tr v-for="(value, index) in casualTables" v-bind:key="index">
+                  <th>{{ value.title }}</th>
+                  <td>{{ value.price }}</td>
+                </tr>
+              </table>
+              <div class="list_block">
+                <h3 class="list_title">入会時サポート内容</h3>
+                <ol class="original_list">
+                  <li>プロフィールシート作成サポート</li>
+                </ol>
+              </div>
+              <div class="list_block">
+                <h3 class="list_title">活動時サポート内容</h3>
+                <ol class="original_list">
+                  <li>
+                    お申し込み：月 <span class="highlight">30件</span>まで無料
+                  </li>
+                  <li>お申し受け：無制限</li>
+                  <li>お見合い料：あり（１回　3,300円）</li>
+                  <li>お見合いセッティング（お店の代行予約等）</li>
+                  <li>電話、メールでのご相談：無制限</li>
+                  <li>
+                    フルサポートコースへの変更：可能（入会金の差額をお支払いいただきます）
+                  </li>
+                </ol>
+              </div>
             </div>
-          </a>
+          </div>
+        </div> -->
+        <div class="section_wrap" id="counseling">
+          <div class="section counseling">
+            <h1 class="title"><span>カウンセリングコース</span></h1>
+            <div class="subtitle">
+              他社で活動している方、プライベートな恋愛、結婚でお悩みを抱えている方、<br />お気軽にご相談ください。
+            </div>
+            <div class="content">
+              <div class="content_img">
+                <img
+                  src="~assets/images/counseling.webp"
+                  alt="カウンセリングコース"
+                />
+              </div>
+              <table class="color_table">
+                <div><span>電話でのご相談</span></div>
+                <tr
+                  v-for="(value, index) in counselingTables"
+                  v-bind:key="index"
+                >
+                  <th>{{ value.title }}</th>
+                  <td>{{ value.price }}</td>
+                </tr>
+                <div>※　電話料金：無料<br />（当社負担）</div>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="colum">
-      <div class="section_wrap" id="full">
-        <div class="section full">
-          <h1 class="title"><span>フルサポートコース</span></h1>
-          <div class="subtitle">充実したサポート内容をリーズナブルに提供しているおすすめコースです。</div>
-          <div class="subtitle">当社のほとんど会員様が、こちらのコースで活動されています。</div>
-          <div class="content">
-            <div class="content_img">
-              <img class="img" src="~/assets/images/wedding-table-desserts.webp" alt="フルサポートコース">
-            </div>
-            <table class="color_table">
-              <tr v-for="(value, index) in fullTables" v-bind:key="index">
-                <th>{{value.title}}</th>
-                <td>{{value.price}}</td>
-              </tr>
-            </table>
-            <div class="list_block">
-              <h3 class="list_title">入会時サポート内容</h3>
-              <ol class="original_list">
-                <li>プロフィールシート作成サポート</li>
-                <li>写真館への同行（希望者のみ）</li>
-              </ol>
-            </div>
-            <div class="list_block">
-              <h3 class="list_title">活動時サポート内容</h3>
-              <ol class="original_list">
-                <li>お申し込み：月 <span class="highlight">50件</span>まで無料</li>
-                <li>お申し受け：無制限</li>
-                <li>カウンセラーからの紹介：月数名</li>
-                <li>お見合い料：<span class="highlight">無料</span>（月８回まで）</li>
-                <li>お見合いセッティング（お店の代行予約等）</li>
-                <li>電話、メールでのご相談：無制限</li>
-                <li>面談（対面orZOOM)：月１回</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="section_wrap" id="casual">
-        <div class="section casual" >
-          <h1 class="title"><span>カジュアルコース</span></h1>
-          <div class="subtitle">活動に迷いがある方、とりあえずお試ししたい方におすすめのコースです。</div>
-          <div class="content">
-            <div class="content_img">
-              <img src="~/assets/images/casual.webp" alt="カジュアルコース">
-            </div>
-            <table class="color_table">
-              <tr v-for="(value, index) in casualTables" v-bind:key="index">
-                <th>{{value.title}}</th>
-                <td>{{value.price}}</td>
-              </tr>
-            </table>
-            <div class="list_block">
-              <h3 class="list_title">入会時サポート内容</h3>
-              <ol class="original_list">
-                <li>プロフィールシート作成サポート</li>
-              </ol>
-            </div>
-            <div class="list_block">
-              <h3 class="list_title">活動時サポート内容</h3>
-              <ol class="original_list">
-                <li>お申し込み：月 <span class="highlight">30件</span>まで無料</li>
-                <li>お申し受け：無制限</li>
-                <li>お見合い料：あり（１回　3,300円）</li>
-                <li>お見合いセッティング（お店の代行予約等）</li>
-                <li>電話、メールでのご相談：無制限</li>
-                <li>フルサポートコースへの変更：可能（入会金の差額をお支払いいただきます）</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="section_wrap" id="counseling">
-        <div class="section counseling">
-          <h1 class="title"><span>カウンセリングコース</span></h1>
-          <div class="subtitle">他社で活動している方、プライベートな恋愛、結婚でお悩みを抱えている方、<br>お気軽にご相談ください。</div>
-          <div class="content">
-            <div class="content_img">
-              <img src="~assets/images/counseling.webp" alt="カウンセリングコース">
-            </div>
-            <table class="color_table">
-              <div><span>電話でのご相談</span></div>
-              <tr v-for="(value, index) in counselingTables" v-bind:key="index">
-                <th>{{value.title}}</th>
-                <td>{{value.price}}</td>
-              </tr>
-              <div>※　電話料金：無料<br>（当社負担）</div>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
-</div>
 </template>
 
 <script setup lang="ts">
 import { computed, useContext } from '@nuxtjs/composition-api'
 
-
 const { app, store } = useContext()
 
 const fullTables = [
-  {title:'入会金',price:'33,000円'},
-  {title:'登録料',price:'33,000円'},
-  {title:'月会費',price:'11,000円'},
-  {title:'お見合い料',price:'0円'},
-  {title:'ご成婚費',price:'165,000円'},
+  { title: '入会金', price: '33,000円' },
+  { title: '登録料', price: '33,000円' },
+  { title: '月会費', price: '11,000円' },
+  { title: 'お見合い料', price: '0円' },
+  { title: 'ご成婚費', price: '165,000円' },
 ]
 const casualTables = [
-  {title:'入会金',price:'0円'},
-  {title:'登録料',price:'33,000円'},
-  {title:'月会費',price:'6,600円'},
-  {title:'お見合い料',price:'3,300円'},
-  {title:'ご成婚費',price:'165,000円'},
+  { title: '入会金', price: '0円' },
+  { title: '登録料', price: '33,000円' },
+  { title: '月会費', price: '6,600円' },
+  { title: 'お見合い料', price: '3,300円' },
+  { title: 'ご成婚費', price: '165,000円' },
 ]
 const counselingTables = [
-  {title:'30分間',price:'2,200円'},
-  {title:'1時間',price:'3,300円'},
-  {title:'2時間',price:'5,500円'},
+  { title: '30分間', price: '2,200円' },
+  { title: '1時間', price: '3,300円' },
+  { title: '2時間', price: '5,500円' },
 ]
-
 </script>
 
 <style lang="sass" scoped>
@@ -177,9 +218,14 @@ const counselingTables = [
   color: yellow
   color: orange
 
+.coution
+  +text-body(16px)
+  color: red
+  +sp-view
+    font-size: 14px
 .body
   > .menu
-    padding: 64px 0 
+    padding: 64px 0
     display: flex
     width: 100%
     justify-content: center
@@ -232,7 +278,7 @@ const counselingTables = [
               height: 100%
               object-fit: cover
               object-position: 50% 10%
-                
+
           > .cards_note
             +text-body(16px)
             margin-top: 10px
@@ -243,7 +289,7 @@ const counselingTables = [
     margin: auto
     width: 1080px
     max-width: calc(100% - 10vw)
-    
+
     > .section_wrap
       padding: 40px 0 20px
 
@@ -269,7 +315,7 @@ const counselingTables = [
           +sp-view
             +text-subtitle(28px)
 
-          &::before 
+          &::before
             position: absolute
             bottom: -10px
             left: calc(50% - 50px)
@@ -288,7 +334,7 @@ const counselingTables = [
           display: flex
           flex-wrap: wrap
           justify-content: space-around
-          padding: 20px 
+          padding: 20px
           margin: 20px 0 0
 
           +sp-view
@@ -305,7 +351,7 @@ const counselingTables = [
             img
               width: 100%
               border-radius: 15px
-          
+
           > .color_table
             width: 400px
 
@@ -345,7 +391,7 @@ const counselingTables = [
                 -o-transform: translateY(-50%)
                 -ms-transform: translateY(-50%)
                 transform: translateY(-50%)
-              
+
               &::after
                 top: 10px
                 left: -20px
@@ -355,6 +401,4 @@ const counselingTables = [
 
             > .original_list
               padding:  10px 20px
-
-
 </style>
