@@ -2,10 +2,10 @@
   <div class="">
     <div class="title_block" style="text-align: center">
       <h1 class="title">料金プラン</h1>
-      <div class="coution">
+      <!-- <div class="coution">
         ※4月1日より料金改定をいたします。<br />新規入会金　33,000円 →
         55,000円<br />※3月31日までにご契約いただいた方には、現行通りとさていただきます。
-      </div>
+      </div> -->
     </div>
     <div class="body">
       <div class="menu">
@@ -190,11 +190,11 @@ import { computed, useContext } from '@nuxtjs/composition-api'
 const { app, store } = useContext()
 
 const fullTables = [
-  { title: '入会金', price: '33,000円' },
+  { title: '入会金', price: '55,000円' },
   { title: '登録料', price: '33,000円' },
   { title: '月会費', price: '11,000円' },
   { title: 'お見合い料', price: '0円' },
-  { title: 'ご成婚費', price: '165,000円' },
+  { title: 'ご成婚費', price: '198,000円' },
 ]
 const casualTables = [
   { title: '入会金', price: '0円' },
