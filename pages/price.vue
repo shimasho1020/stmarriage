@@ -68,9 +68,9 @@
             <div class="subtitle">
               充実したサポート内容をリーズナブルに提供しているおすすめコースです。
             </div>
-            <div class="subtitle">
+            <!-- <div class="subtitle">
               当社のほとんど会員様が、こちらのコースで活動されています。
-            </div>
+            </div> -->
             <div class="content">
               <div class="content_img">
                 <img
