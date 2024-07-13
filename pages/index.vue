@@ -101,7 +101,7 @@
                 </p>
                 <a
                   class="news-item__text__url"
-                  href=""
+                  href="https://drive.google.com/file/d/18ZLPVEImDlUlfWriecEc61AalWeTIGZ6/view?pli=1"
                   target="_blank"
                   rel="noopener noreferrer"
                   >パーティーの案内はこちら</a
