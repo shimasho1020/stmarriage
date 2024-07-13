@@ -70,6 +70,54 @@
       </div>
     </div>
     <div class="body">
+      <section class="section --0">
+        <div class="section-wrap">
+          <div class="section_title_block --0">
+            <h2 class="title">お知らせ</h2>
+            <div class="title__border"></div>
+          </div>
+          <div class="news-block">
+            <div class="news-item">
+              <div class="news-item__date">2024.07.13</div>
+              <div class="news-item__text">
+                <p class="news-item__text__content">
+                  「IBJアワード　プレミアム部門2024年上期」5期連続受賞しました！
+                </p>
+              </div>
+              <div class="news-item__img">
+                <img
+                  src="~/assets/images/IBJ_award_2024_front.png"
+                  class="img"
+                  alt="新着情報"
+                />
+              </div>
+            </div>
+            <div class="news-item">
+              <div class="news-item__date">2024.07.13</div>
+              <div class="news-item__text">
+                <p class="news-item__text__content">
+                  8月25日(日)
+                  「赤坂プリンスホテル」でのお見合いパーティーのご案内
+                </p>
+                <a
+                  class="news-item__text__url"
+                  href=""
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >パーティーの案内はこちら</a
+                >
+              </div>
+              <div class="news-item__img">
+                <img
+                  src="~/assets/images/news_2.jpg"
+                  class="img"
+                  alt="新着情報"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section class="section --1">
         <div class="section-wrap">
           <div class="section_title_block --1">
@@ -264,8 +312,8 @@
                 </h3>
                 <ul class="table_list">
                   <li class="list_item">三菱グループ各社</li>
-                  <li class="list_item">大手通信事業社</li>
-                  <li class="list_item">大手建設会社</li>
+                  <li class="list_item">大手総合商社</li>
+                  <li class="list_item">医師</li>
                   <li class="list_item">大手金融機関</li>
                   <li class="list_item">大手広告代理店</li>
                   <li class="list_item">弁護士</li>
@@ -275,15 +323,27 @@
           </div>
           <div class="award_wrap">
             <div class="award-title">
-              <span class="inline-block">セントマリアージュ青山が</span>
-              <span class="inline-block">IBJ AWARD 2023年下期</span>
-              <span class="inline-block">IBJ AWARD 2023年上期</span>
-              <span class="inline-block">IBJ AWARD 2022年上期</span>
+              <span class="inline-block">セントマリアージュ青山が</span><br />
+              <span class="inline-block"
+                >IBJアワード　プレミアム部門2024年上期</span
+              ><br />
+              <span class="inline-block">IBJ AWARD 2023年下期</span><br />
+              <span class="inline-block">IBJ AWARD 2023年上期</span><br />
+              <span class="inline-block">IBJ AWARD 2022年上期</span><br />
               <span class="inline-block">IBJ AWARD 2021年下期</span><br />
-              <span class="inline-block">3年連続受賞しました！</span>
+              <span class="inline-block">5期連続受賞しました！</span>
             </div>
             <div class="content_wrap --2">
               <div class="content_body img">
+                <div class="top-service__img">
+                  <div class="c-img">
+                    <img
+                      src="~/assets/images/IBJ_award_2024_front.png"
+                      class="c-img__img"
+                      alt="ibjアワード1"
+                    />
+                  </div>
+                </div>
                 <div class="top-service__img">
                   <div class="c-img">
                     <img
@@ -481,6 +541,8 @@ const { displayCaseList } = useInterviewers()
 
 const trigger: string[] = [
   '.intro',
+  '.section_title_block.--0',
+  '.news-block',
   '.section_title_block.--1',
   '.case_list',
   '.link-block',
@@ -794,6 +856,71 @@ onBeforeUnmount(() => {
             +text-subtitle(16px)
             width: 100%
             margin-top: 0
+    &.--0
+      .section-wrap
+        .news-block
+          display: flex
+          flex-direction: column
+          gap: 20px
+          padding: 20px
+          background-color: #fff
+
+          +sp-view
+            width: 100%
+            flex-direction: column
+
+          .news-item
+            display: flex
+            align-items: center
+            padding: 10px
+            border-bottom: 1px solid #e0e0e0
+
+            +sp-view
+              flex-direction: column
+              align-items: flex-start
+
+            &__date
+              min-width: 100px
+              +text-body(16px)
+              color: #999
+              +sp-view
+                +text-body(14px)
+                color: #999
+
+            &__text
+              flex-grow: 1
+              padding: 0 20px
+
+              &__content
+                +text-body(16px)
+                font-weight: bold
+                +sp-view
+                  +text-body(14px)
+                  font-weight: bold
+
+              &__url
+                +text-body(14px)
+                color: var(--main)
+                text-decoration: underline
+                cursor: pointer
+                +sp-view
+                  +text-body(12px)
+                  color: var(--main)
+
+            &__img
+              width: 200px
+
+              +sp-view
+                display: none
+
+              img
+                width: 100%
+                height: auto
+                border-radius: 5px
+
+
+
+
     &.--1
       > .section-wrap
         > .case_list
@@ -1182,7 +1309,7 @@ onBeforeUnmount(() => {
                 > .c-img
                   position: relative
                   width: 100%
-                  border-radius: 20px
+                  border-radius: 12px
                   overflow: hidden
                   &::before
                     content:""
