@@ -92,7 +92,7 @@
                 />
               </div>
             </div>
-            <div class="news-item">
+            <!-- <div class="news-item">
               <div class="news-item__date">2024.07.13</div>
               <div class="news-item__text">
                 <p class="news-item__text__content">
@@ -114,7 +114,7 @@
                   alt="新着情報"
                 />
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>
@@ -324,9 +324,7 @@
           <div class="award_wrap">
             <div class="award-title">
               <span class="inline-block">セントマリアージュ青山が</span><br />
-              <span class="inline-block"
-                >IBJアワード　プレミアム部門2024年上期</span
-              ><br />
+              <span class="inline-block">IBJ AWARD 2024年上期</span><br />
               <span class="inline-block">IBJ AWARD 2023年下期</span><br />
               <span class="inline-block">IBJ AWARD 2023年上期</span><br />
               <span class="inline-block">IBJ AWARD 2022年上期</span><br />
