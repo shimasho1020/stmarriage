@@ -92,6 +92,21 @@
                 />
               </div>
             </div>
+            <div class="news-item">
+              <div class="news-item__date">2025.02.28</div>
+              <div class="news-item__text">
+                <p class="news-item__text__content">
+                  「IBJアワード　プレミアム部門2024年下期」6期連続受賞しました！
+                </p>
+              </div>
+              <div class="news-item__img">
+                <img
+                  src="~/assets/images/IBJ_award_2024_back.jpg"
+                  class="img"
+                  alt="新着情報"
+                />
+              </div>
+            </div>
             <!-- <div class="news-item">
               <div class="news-item__date">2024.07.13</div>
               <div class="news-item__text">
@@ -324,15 +339,25 @@
           <div class="award_wrap">
             <div class="award-title">
               <span class="inline-block">セントマリアージュ青山が</span><br />
+              <span class="inline-block">IBJ AWARD 2024年下期</span><br />
               <span class="inline-block">IBJ AWARD 2024年上期</span><br />
               <span class="inline-block">IBJ AWARD 2023年下期</span><br />
               <span class="inline-block">IBJ AWARD 2023年上期</span><br />
               <span class="inline-block">IBJ AWARD 2022年上期</span><br />
               <span class="inline-block">IBJ AWARD 2021年下期</span><br />
-              <span class="inline-block">5期連続受賞しました！</span>
+              <span class="inline-block">6期連続受賞しました！</span>
             </div>
             <div class="content_wrap --2">
               <div class="content_body img">
+                <div class="top-service__img">
+                  <div class="c-img">
+                    <img
+                      src="~/assets/images/IBJ_award_2024_back.jpg"
+                      class="c-img__img"
+                      alt="ibjアワード1"
+                    />
+                  </div>
+                </div>
                 <div class="top-service__img">
                   <div class="c-img">
                     <img
