@@ -1,72 +1,158 @@
 <template>
-  <div class="all"> 
-    <div class="header_wrap" :class="{'top-page': $route.name === 'index'}">
-    <header class="header active"
-            ref="pageHeader"
-            id="header">
-      <nuxt-link @click.native.prevent="nuxtLinkTrigger" to="/" class="logo" :class="{'top-page': $route.name === 'index'}">
-        <div class="logo-sub">日本結婚所連盟（ＩＢＪ）　正規加盟店</div>
-        <div class="logo-main">セントマリアージュ青山</div>
-      </nuxt-link>
-      <div class="menu pc pc-header" id="header-menu-pc" :class="{'top-page': $route.name === 'index'}">
-        <nuxt-link class="menu--link" to="/" :class="{'highlight': $route.name === 'index'}">
-          <div class="link-wrap"><span class="link-text">ホーム</span></div>
+  <div class="all">
+    <div class="header_wrap" :class="{ 'top-page': $route.name === 'index' }">
+      <header class="header active" ref="pageHeader" id="header">
+        <nuxt-link
+          @click.native.prevent="nuxtLinkTrigger"
+          to="/"
+          class="logo"
+          :class="{ 'top-page': $route.name === 'index' }"
+        >
+          <div class="logo-sub">ＩＢＪ正規加盟店</div>
+          <div class="logo-main">セントマリアージュ青山</div>
         </nuxt-link>
-        <nuxt-link class="menu--link" to="/price" :class="{'highlight': $route.name === 'price'}">
-          <div class="link-wrap"><span class="link-text">料金プラン</span></div>
-        </nuxt-link>
-        <nuxt-link class="menu--link" to="/data" :class="{'highlight': $route.name === 'data'}">
-          <div class="link-wrap"><span class="link-text">会員データ</span></div>
-        </nuxt-link>
-        <div class="spacer"></div>
-        <nuxt-link class="menu--link" to="/flow" :class="{'highlight': $route.name === 'flow'}">
-          <div class="link-wrap"><span class="link-text">入会から成婚まで</span></div>
-        </nuxt-link>
-        <nuxt-link class="menu--link" to="/interview" :class="{'highlight': $route.name === 'interview'}">
-          <div class="link-wrap"><span class="link-text">ご成婚事例</span></div>
-        </nuxt-link>
-        <!-- <nuxt-link class="menu--link" to="/contact" :class="{'highlight': $route.name === 'contact'}">
+        <div
+          class="menu pc pc-header"
+          id="header-menu-pc"
+          :class="{ 'top-page': $route.name === 'index' }"
+        >
+          <nuxt-link
+            class="menu--link"
+            to="/"
+            :class="{ highlight: $route.name === 'index' }"
+          >
+            <div class="link-wrap"><span class="link-text">ホーム</span></div>
+          </nuxt-link>
+          <nuxt-link
+            class="menu--link"
+            to="/price"
+            :class="{ highlight: $route.name === 'price' }"
+          >
+            <div class="link-wrap">
+              <span class="link-text">料金プラン</span>
+            </div>
+          </nuxt-link>
+          <nuxt-link
+            class="menu--link"
+            to="/data"
+            :class="{ highlight: $route.name === 'data' }"
+          >
+            <div class="link-wrap">
+              <span class="link-text">会員データ</span>
+            </div>
+          </nuxt-link>
+          <div class="spacer"></div>
+          <nuxt-link
+            class="menu--link"
+            to="/flow"
+            :class="{ highlight: $route.name === 'flow' }"
+          >
+            <div class="link-wrap">
+              <span class="link-text">入会から成婚まで</span>
+            </div>
+          </nuxt-link>
+          <nuxt-link
+            class="menu--link"
+            to="/interview"
+            :class="{ highlight: $route.name === 'interview' }"
+          >
+            <div class="link-wrap">
+              <span class="link-text">ご成婚事例</span>
+            </div>
+          </nuxt-link>
+          <!-- <nuxt-link class="menu--link" to="/contact" :class="{'highlight': $route.name === 'contact'}">
           <div class="link-wrap"><span class="link-text">相談フォーム</span></div>
         </nuxt-link> -->
-        <nuxt-link class="menu--link" to="/company" :class="{'highlight': $route.name === 'company'}">
-          <div class="link-wrap"><span class="link-text">会社概要</span></div>
-        </nuxt-link>
-      </div>
-      <div
+          <nuxt-link
+            class="menu--link"
+            to="/company"
+            :class="{ highlight: $route.name === 'company' }"
+          >
+            <div class="link-wrap"><span class="link-text">会社概要</span></div>
+          </nuxt-link>
+        </div>
+        <div
           class="menu sp"
           @click="toggleMenu"
-          :class="{'top-page': $route.name === 'index'}"
-      >
-        <span></span>
-        <div class="menu_text">メニュー</div>
-      </div>
-    </header>
+          :class="{ 'top-page': $route.name === 'index' }"
+        >
+          <span></span>
+          <div class="menu_text">メニュー</div>
+        </div>
+      </header>
     </div>
     <div class="sp-menu" ref="sideMenu">
-      <div class="sp-menu-wrap" :class="{'top-page': $route.name === 'index'}">
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/">ホーム</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/price">料金プラン</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/data">会員データ</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/flow">入会から成婚まで</nuxt-link>
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/interview">ご成婚事例</nuxt-link>
+      <div
+        class="sp-menu-wrap"
+        :class="{ 'top-page': $route.name === 'index' }"
+      >
+        <nuxt-link
+          @click.native.prevent="nuxtLinkTrigger"
+          class="menu--link sp"
+          to="/"
+          >ホーム</nuxt-link
+        >
+        <nuxt-link
+          @click.native.prevent="nuxtLinkTrigger"
+          class="menu--link sp"
+          to="/price"
+          >料金プラン</nuxt-link
+        >
+        <nuxt-link
+          @click.native.prevent="nuxtLinkTrigger"
+          class="menu--link sp"
+          to="/data"
+          >会員データ</nuxt-link
+        >
+        <nuxt-link
+          @click.native.prevent="nuxtLinkTrigger"
+          class="menu--link sp"
+          to="/flow"
+          >入会から成婚まで</nuxt-link
+        >
+        <nuxt-link
+          @click.native.prevent="nuxtLinkTrigger"
+          class="menu--link sp"
+          to="/interview"
+          >ご成婚事例</nuxt-link
+        >
         <!-- <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/contact">相談フォーム</nuxt-link> -->
-        <nuxt-link @click.native.prevent="nuxtLinkTrigger" class="menu--link sp" to="/company">会社概要</nuxt-link>
+        <nuxt-link
+          @click.native.prevent="nuxtLinkTrigger"
+          class="menu--link sp"
+          to="/company"
+          >会社概要</nuxt-link
+        >
       </div>
-    </div>  
-    <div class="flow_block" v-if="$route.name !== 'contact'" :class="{'top-page': $route.name === 'index'}">
+    </div>
+    <div
+      class="flow_block"
+      v-if="$route.name !== 'contact'"
+      :class="{ 'top-page': $route.name === 'index' }"
+    >
       <nuxt-link to="/contact" class="circle_form">
-        <span class="inline-block">無料相談<br>フォーム<br></span>
+        <span class="inline-block">無料相談<br />フォーム<br /></span>
         <div class="mail_icon_wrap"><mail class="mail_icon"></mail></div>
       </nuxt-link>
     </div>
 
-    <div class="BODY" :class="{'not-top-page': $route.name !== 'index', 'interview-page': ($route.name === 'interview' || $route.name === 'flow'), 'company-page': ($route.name === 'company' || $route.name === 'data')}">
-      <nuxt/>
+    <div
+      class="BODY"
+      :class="{
+        'not-top-page': $route.name !== 'index',
+        'interview-page': $route.name === 'interview' || $route.name === 'flow',
+        'company-page': $route.name === 'company' || $route.name === 'data',
+      }"
+    >
+      <nuxt />
     </div>
 
     <footer class="footer">
       <div class="footer-wrap">
-        <get-in-touch v-if="$route.name !== 'contact'" class="get-in-touch"></get-in-touch>
+        <get-in-touch
+          v-if="$route.name !== 'contact'"
+          class="get-in-touch"
+        ></get-in-touch>
         <div class="bottom">
           <div class="bottom-block">Copyright ©️ 2022 St. Mariage Aoyama</div>
         </div>
@@ -75,22 +161,28 @@
   </div>
 </template>
 
-
-
 <script setup lang="ts">
-import gsap from "gsap"
-import { computed, ref, watch, onMounted, onUnmounted, useContext, useRoute, useRouter } from '@nuxtjs/composition-api'
+import gsap from 'gsap'
+import {
+  computed,
+  ref,
+  watch,
+  onMounted,
+  onUnmounted,
+  useContext,
+  useRoute,
+  useRouter,
+} from '@nuxtjs/composition-api'
 import mail from '~/assets/images/mail_icon.svg'
 components: {
   mail
 }
 
-
 const router = useRouter()
 const route = useRoute()
 const { app, store } = useContext()
 
-let sideActive= ref<boolean>(false)
+let sideActive = ref<boolean>(false)
 let pageWidth = ref<number>(900)
 const sideMenu = ref()
 const pageHeader = ref()
@@ -99,7 +191,7 @@ const nuxtLinkTrigger = (event: any) => {
   if (sideActive.value) {
     toggleMenu()
   }
-  router.push({path: event.target.pathname || '/'})
+  router.push({ path: event.target.pathname || '/' })
 }
 
 const toggleMenu = () => {
@@ -114,11 +206,11 @@ const toggleMenu = () => {
       opacity: 0,
       transform: 'translateY(40px)',
       stagger: {
-        each: .1,
-      }
+        each: 0.1,
+      },
     })
     gsap.to('.sp-menu-wrap', {
-      duration: .7,
+      duration: 0.7,
       autoAlpha: 0,
       onComplete: () => {
         classList.remove('active')
@@ -126,22 +218,22 @@ const toggleMenu = () => {
     })
     headerClassList.remove('side-active')
   } else {
-    if(!headerColor.value){
+    if (!headerColor.value) {
       store.commit('changeHeaderToBlue')
     }
     sideActive.value = true
     headerClassList.add('side-active')
     classList.add('active')
     gsap.to('.sp-menu-wrap', {
-      duration: .7,
+      duration: 0.7,
       autoAlpha: 1,
     })
     gsap.to('.menu--link.sp', {
       opacity: 1,
       transform: 'translateY(0)',
       stagger: {
-        each: .1,
-      }
+        each: 0.1,
+      },
     })
   }
 }
@@ -155,43 +247,45 @@ watch(pageWidth, (newVal, oldVal) => {
   if (newVal > 770 && sideActive.value) toggleMenu()
 })
 
-let headerColor = computed<boolean>(() => store.getters['headerScrollTriggerActive'])
+let headerColor = computed<boolean>(
+  () => store.getters['headerScrollTriggerActive']
+)
 let formDisplay = computed<boolean>(() => store.getters['formDisplayActive'])
 
 watch(headerColor, (newVal, oldVal) => {
   const color = '#010146'
-  if(newVal){
-    gsap.to(".header_wrap", {
+  if (newVal) {
+    gsap.to('.header_wrap', {
       'background-color': color,
     })
-    gsap.to(".logo", {
+    gsap.to('.logo', {
       color: '#eff4f4',
     })
-    gsap.to(".menu", {
+    gsap.to('.menu', {
       color: '#eff4f4',
     })
   } else {
-    gsap.to(".header_wrap", {
+    gsap.to('.header_wrap', {
       'background-color': '#00000000',
     })
-    gsap.to(".logo", {
+    gsap.to('.logo', {
       color: color,
     })
-    gsap.to(".menu", {
+    gsap.to('.menu', {
       color: color,
     })
   }
 })
 watch(formDisplay, (newVal, oldVal) => {
-  if(newVal){
-    gsap.to(".flow_block", {
+  if (newVal) {
+    gsap.to('.flow_block', {
       opacity: 1,
-      duration: .3, 
+      duration: 0.3,
     })
   } else {
-    gsap.to(".flow_block", {
+    gsap.to('.flow_block', {
       opacity: 0,
-      duration: .3, 
+      duration: 0.3,
     })
   }
 })
@@ -204,7 +298,6 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('resize', watchWidth, false)
 })
-
 </script>
 
 <style lang="sass">
@@ -313,7 +406,7 @@ onUnmounted(() => {
         display: none
 
       &.highlight
-        &::before 
+        &::before
           position: absolute
           bottom: -10px
           left: calc(50%)
@@ -329,7 +422,7 @@ onUnmounted(() => {
         display: flex
         align-items: center
         position: relative
-          
+
         > .link-text
           display: inline-block
           white-space: nowrap
@@ -434,7 +527,7 @@ onUnmounted(() => {
 
         &.access
           display: none
-      
+
       &.top-page
         > .menu--link
           &.access
@@ -487,8 +580,8 @@ onUnmounted(() => {
       margin: 0
       path
         fill: var(--white-1)
-    
-    &::before 
+
+    &::before
       position: absolute
       content: ""
       display: block
@@ -507,12 +600,12 @@ onUnmounted(() => {
         height: 120px
         width: 120px
 
-@keyframes pulseMotion 
-  0% 
+@keyframes pulseMotion
+  0%
     transform: scale(1, 1)
     background-color: #5f51e080
 
-  100% 
+  100%
     transform: scale(1.4, 1.4)
     background-color: #5f51e000
 
@@ -550,6 +643,4 @@ onUnmounted(() => {
 
       +sp-view
         padding: 25px 5vw
-
 </style>
-

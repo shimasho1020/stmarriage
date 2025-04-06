@@ -297,23 +297,22 @@
               </div>
               <div class="self-comment 2">
                 <span class="inline-block">入会1カ月以内の交際成立率</span
-                ><span class="big_font inline-block">&emsp;95%</span>
+                ><span class="big_font inline-block">&emsp;90%</span>
               </div>
               <div class="self-comment 3">
                 <span class="inline-block">成婚率</span
                 ><span class="big_font inline-block">&emsp;70%</span>
               </div>
               <div class="mini_comment">※成婚退会者数÷全退会者数</div>
+              <div class="mini_comment">※2025年4月現在</div>
             </div>
             <div class="self-table">
-              <div class="text">
-                セントマリアージュ青山で活動中の会員様（2024年3月現在）
-              </div>
+              <div class="text">セントマリアージュ青山で活動中の会員様</div>
               <div class="table --1">
                 <h3 class="table_title">会員データ</h3>
                 <ul class="table_list">
                   <li class="list_item th">年齢層</li>
-                  <li class="list_item">20代半ば〜50代前半</li>
+                  <li class="list_item">20代半ばから60代半ば</li>
                   <li class="list_item th">男女比</li>
                   <li class="list_item">(約) 5対5</li>
                   <!-- <li class="list_item th">男性平均年収</li>
@@ -406,10 +405,10 @@
               </div>
               <div class="content_body text">
                 <p>
-                  IBJアワードとは、日本結婚相談所連盟IBJの全加盟店の中で、過去6ヶ月間で特に顕著な実績を残した相談所に贈られる賞です。<br />
-                  2023年下期は、全加盟店4,032社のうち617社が受賞しており、こちらの受賞率は約15%となります。
+                  IBJアワードとは、IBJの全加盟店の中で、過去6ヶ月間で特に顕著な実績を残した相談所に贈られる賞です。<br />
+                  2023年下期は、全加盟店約4,500社のうち617社が受賞しており、こちらの受賞率は約15%となります。
                   選定基準は、「入会数、成婚数」「地域への貢献度」「ガイドライン、法令の遵守」「クレームやトラブルがない事」等になります。<br />
-                  これらの厳しい選定基準をクリアし、日本結婚相談所連盟(IBJ)がお勧めできる優良結婚相談所としてお墨付きをいただいたことになります。<br />
+                  これらの厳しい選定基準をクリアし、IBJがお勧めできる優良結婚相談所としてお墨付きをいただいたことになります。<br />
                   これからも、お1人でも多くの会員様に幸せになっていただくよう、心を込めてサポートさせていただきます！<br />
                 </p>
               </div>
@@ -429,15 +428,15 @@
               <div class="top-our_strengths__container--body ---1">
                 <h3 class="top-our_strengths__container--point">1</h3>
                 <p class="top-our_strengths__container--heading">
-                  全国約80,000人を対象に<br />お相手探し
+                  全国約90,000人を対象に<br />お相手探し
                 </p>
                 <p class="top-our_strengths__container--about">
                   セントマリアージュ青山は、会員数・成婚数業界ナンバー１の<span
                     class="big_font"
-                    >日本結婚相談所連盟(IBJ)</span
+                    >IBJ</span
                   >の正規加盟店です。<br />
                   IBJに加盟している相談所の全国<span class="big_font"
-                    >約80,000人</span
+                    >約90,000人</span
                   >の会員様を対象に、ご自身のスマホやパソコンを使ってスムーズなお相手探しができます。<br />
                   毎月4,200名以上の新規会員の方が入会していますので、常に新たな出会いが期待できます。<br />
                   お見合いのセッティング、交際から成婚まで、カウンセラーがきめ細かくサポートさせていただきます。<br /><br />

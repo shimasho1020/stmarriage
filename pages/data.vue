@@ -1,89 +1,105 @@
 <template>
-<div>
-  <div class="title_block" style="text-align:center">
-    <h1 class="title">IBJ会員データ</h1>
-  </div>
-  <section class="section">
-    <div class="section-wrap">
-      <div class="section_body">
-        <div class="content">
-          <h2 class="title">日本結婚相談所連盟 IBJとは</h2>
-          <div class="text">
-            全国の結婚相談所3649社が加盟する、日本最大級の結婚相談所連盟です。<br>
-            登録人数は全国で約80,000人。<br>
-            加盟相談所が協力し合いながら、お見合いをセッティングし、ご成婚を生み出しています。
+  <div>
+    <div class="title_block" style="text-align: center">
+      <h1 class="title">IBJ会員データ</h1>
+    </div>
+    <section class="section">
+      <div class="section-wrap">
+        <div class="section_body">
+          <div class="content">
+            <h2 class="title">IBJとは</h2>
+            <div class="text">
+              全国の結婚相談所3649社が加盟する、日本最大級の結婚相談所連盟です。<br />
+              登録人数は全国で約90,000人。<br />
+              加盟相談所が協力し合いながら、お見合いをセッティングし、ご成婚を生み出しています。
+            </div>
+            <div class="img_wrap">
+              <img
+                class="img"
+                src="~/assets/images/ibj_about_2.png"
+                alt="IBJについて"
+              />
+            </div>
           </div>
-          <div class="img_wrap">
-            <img class="img" src="~/assets/images/ibj_about.webp" alt="IBJについて">
-          </div>
-        </div>
-        <div class="content --1">
-          <h3 class="title">成婚者数</h3>
-          <div class="data_table">
-            <p class="subtitle">年間成婚者数</p>
-            <ul class="list">
-              <li>
-                <span class="year">2019年</span>
-                <span class="number">11,909名</span>
-              </li>
-              <li>
-                <span class="year">2020年</span>
-                <span class="number">12,249名</span>
-              </li>
-              <li>
-                <span class="year">2021年</span>
-                <span class="number">14,671名</span>
-              </li>
-            </ul>
-          </div>
-          <!-- <div class="chart_wrap">
+          <div class="content --1">
+            <h3 class="title">成婚者数</h3>
+            <div class="data_table">
+              <p class="subtitle">年間成婚者数</p>
+              <ul class="list">
+                <li>
+                  <span class="year">2019年</span>
+                  <span class="number">11,909名</span>
+                </li>
+                <li>
+                  <span class="year">2020年</span>
+                  <span class="number">12,249名</span>
+                </li>
+                <li>
+                  <span class="year">2021年</span>
+                  <span class="number">14,671名</span>
+                </li>
+              </ul>
+            </div>
+            <!-- <div class="chart_wrap">
             <barChart :data="propSuccessData" label="成婚者数" :height="200" :displayLegend="false"></barChart>
           </div> -->
-        </div>
-        <div class="content --2">
-          <h3 class="title">年齢別会員数</h3>
-          <div class="data_table">
-            <p class="subtitle">総会員数(2023年2月現在)</p>
-            <div class="list">
-              <div class="cell">
-                <div class="number">81,721名</div>
+          </div>
+          <div class="content --2">
+            <h3 class="title">年齢別会員数</h3>
+            <div class="data_table">
+              <p class="subtitle">総会員数(2023年2月現在)</p>
+              <div class="list">
+                <div class="cell">
+                  <div class="number">81,721名</div>
+                </div>
+              </div>
+            </div>
+            <div class="chart_wrap">
+              <barChart :data="propTotalData" label="年齢別会員数"></barChart>
+            </div>
+          </div>
+          <div class="content_wrap">
+            <div class="content --3">
+              <h3 class="title">男女比率</h3>
+              <div class="chart_wrap">
+                <circleChart :data="propSexData" label="男女比率"></circleChart>
+              </div>
+            </div>
+            <div class="content --4">
+              <h3 class="title">年代別会員比率</h3>
+              <div class="chart_wrap">
+                <circleChart
+                  :data="propAgeData"
+                  label="年代別会員比率"
+                ></circleChart>
               </div>
             </div>
           </div>
-          <div class="chart_wrap">
-            <barChart :data="propTotalData" label="年齢別会員数"></barChart>
-          </div>
-        </div>
-        <div class="content_wrap">
-          <div class="content --3">
-            <h3 class="title">男女比率</h3>
+          <div class="content --5">
+            <h3 class="title">年収(男性)</h3>
             <div class="chart_wrap">
-              <circleChart :data="propSexData" label="男女比率"></circleChart>
+              <barChart
+                :data="propIncomeData"
+                label="男性の年収"
+                :height="200"
+                :displayLegend="false"
+              ></barChart>
             </div>
           </div>
-          <div class="content --4">
-            <h3 class="title">年代別会員比率</h3>
+          <div class="content --6">
+            <h3 class="title">学歴</h3>
             <div class="chart_wrap">
-              <circleChart :data="propAgeData" label="年代別会員比率"></circleChart>
+              <barChart
+                :data="propAcademicData"
+                label="学歴"
+                :height="250"
+              ></barChart>
             </div>
-          </div>
-        </div>
-        <div class="content --5">
-          <h3 class="title">年収(男性)</h3>
-          <div class="chart_wrap">
-            <barChart :data="propIncomeData" label="男性の年収" :height="200" :displayLegend="false"></barChart>
-          </div>
-        </div>
-        <div class="content --6">
-          <h3 class="title">学歴</h3>
-          <div class="chart_wrap">
-            <barChart :data="propAcademicData" label="学歴" :height="250"></barChart>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -91,7 +107,7 @@ import { ref, onMounted, computed } from '@nuxtjs/composition-api'
 import { ChartData } from '~/types/index'
 
 // ランダムな数値製造マシーン
-function getRand (num: number) {
+function getRand(num: number) {
   const arr: number[] = []
   for (let i = 0; i < num; i++) {
     arr.push(Math.floor(Math.random() * 1000))
@@ -108,18 +124,20 @@ const propSuccessData: ChartData = {
       borderColor: '#0066FF',
       backgroundColor: '#0066FF',
     },
-  ]
+  ],
 }
 
-const maleData = [1282,4510,6674,6349,6365,3766,2017,1956]
-const femaleData = [4019,9264,10131,6614,3796,1914,1007,984]
+const maleData = [1282, 4510, 6674, 6349, 6365, 3766, 2017, 1956]
+const femaleData = [4019, 9264, 10131, 6614, 3796, 1914, 1007, 984]
 const generationData = computed(() => {
   const arr = []
-  for(let i = 0; i < femaleData.length; i++) {
-    if(i === 0 || i === 7){
+  for (let i = 0; i < femaleData.length; i++) {
+    if (i === 0 || i === 7) {
       arr.push(femaleData[i] + maleData[i])
     } else if (i === 1 || i === 3 || i === 5) {
-      arr.push(femaleData[i] + maleData[i] + femaleData[i+1] + maleData[i+1])
+      arr.push(
+        femaleData[i] + maleData[i] + femaleData[i + 1] + maleData[i + 1]
+      )
     }
   }
   return arr
@@ -127,54 +145,63 @@ const generationData = computed(() => {
 const maleMembers = maleData.reduce((sum, element) => sum + element, 0)
 const femaleMembers = femaleData.reduce((sum, element) => sum + element, 0)
 const maleAcademicData = computed(() => {
-  const arr = [55,18,14,12,1]
+  const arr = [55, 18, 14, 12, 1]
   return arr.map((val) => {
-    return Math.round( val * maleMembers / 100)
+    return Math.round((val * maleMembers) / 100)
   })
 })
 const femaleAcademicData = computed(() => {
-  const arr = [71,12,9,7,1]
+  const arr = [71, 12, 9, 7, 1]
   return arr.map((val) => {
-    return Math.round( val * femaleMembers / 100)
+    return Math.round((val * femaleMembers) / 100)
   })
 })
 
 const propTotalData: ChartData = {
-  labels: ['〜29歳', '30歳〜34歳', '35歳〜39歳', '40歳〜44歳', '45歳〜49歳', '50歳〜54歳', '55歳〜59歳', '60歳〜'],
+  labels: [
+    '〜29歳',
+    '30歳〜34歳',
+    '35歳〜39歳',
+    '40歳〜44歳',
+    '45歳〜49歳',
+    '50歳〜54歳',
+    '55歳〜59歳',
+    '60歳〜',
+  ],
   datasets: [
     {
-    label: '男性',
-    data: maleData,
-    borderColor: '#00CCFF',
-    backgroundColor: '#00CCFF',
+      label: '男性',
+      data: maleData,
+      borderColor: '#00CCFF',
+      backgroundColor: '#00CCFF',
     },
     {
-    label: '女性',
-    data: femaleData,
-    borderColor: '#FFCCFF',
-    backgroundColor: '#FFCCFF',
+      label: '女性',
+      data: femaleData,
+      borderColor: '#FFCCFF',
+      backgroundColor: '#FFCCFF',
     },
-  ]
+  ],
 }
 
 const propSexData: ChartData = {
-  labels: ['男性', '女性',],
+  labels: ['男性', '女性'],
   datasets: [
     {
-      data: [32919,37729],
-      backgroundColor: ['#00CCFF','#FFCCFF'],
+      data: [32919, 37729],
+      backgroundColor: ['#00CCFF', '#FFCCFF'],
     },
-  ]
+  ],
 }
 
 const propAgeData: ChartData = {
-  labels: ['20代','30代','40代','50代','60代'],
+  labels: ['20代', '30代', '40代', '50代', '60代'],
   datasets: [
     {
-    data: generationData.value,
-    backgroundColor: ['#FFCCFF','#CCCCFF', '#00CCFF', '#0099FF','#0066FF'],
+      data: generationData.value,
+      backgroundColor: ['#FFCCFF', '#CCCCFF', '#00CCFF', '#0099FF', '#0066FF'],
     },
-  ]
+  ],
 }
 
 const propIncomeData: ChartData = {
@@ -182,11 +209,11 @@ const propIncomeData: ChartData = {
   datasets: [
     {
       label: '年収',
-      data: [5214,6565,6199,4713,3328,1999,1197,3704],
+      data: [5214, 6565, 6199, 4713, 3328, 1999, 1197, 3704],
       borderColor: '#0066FF',
       backgroundColor: '#0066FF',
     },
-  ]
+  ],
 }
 
 const propAcademicData: ChartData = {
@@ -204,16 +231,15 @@ const propAcademicData: ChartData = {
       borderColor: '#FFCCFF',
       backgroundColor: '#FFCCFF',
     },
-  ]
+  ],
 }
-
 </script>
 
 <style lang="sass" scoped>
 .section
-  padding: 80px 0 
+  padding: 80px 0
   +sp-view
-    padding: 40px 0 
+    padding: 40px 0
   > .section-wrap
     margin: auto
     width: 1080px
@@ -253,7 +279,7 @@ const propAcademicData: ChartData = {
             width: 100%
 
         > .data_table
-          margin: 20px 0 
+          margin: 20px 0
           background-color: #f0f0f0
           padding: 20px
           border-radius: 8px
