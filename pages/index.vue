@@ -78,15 +78,23 @@
           </div>
           <div class="news-block">
             <div class="news-item">
-              <div class="news-item__date">2024.07.13</div>
+              <div class="news-item__date">2025.10</div>
               <div class="news-item__text">
                 <p class="news-item__text__content">
-                  「IBJアワード　プレミアム部門2024年上期」5期連続受賞しました！
+                  9月に4名の会員様が成婚退会されました。（30代女性、20代女性、40代男性、50代男性）　10月は2名の会員様が成婚予定です。
+                </p>
+              </div>
+            </div>
+            <div class="news-item">
+              <div class="news-item__date">2025.08.15</div>
+              <div class="news-item__text">
+                <p class="news-item__text__content">
+                  「IBJアワード　プレミアム部門2025年上期」7期連続受賞しました！
                 </p>
               </div>
               <div class="news-item__img">
                 <img
-                  src="~/assets/images/IBJ_award_2024_front.png"
+                  src="~/assets/images/IBJ_award_2025_front.png"
                   class="img"
                   alt="新着情報"
                 />
@@ -108,15 +116,15 @@
               </div>
             </div>
             <div class="news-item">
-              <div class="news-item__date">2025.08.15</div>
+              <div class="news-item__date">2024.07.13</div>
               <div class="news-item__text">
                 <p class="news-item__text__content">
-                  「IBJアワード　プレミアム部門2025年上期」7期連続受賞しました！
+                  「IBJアワード　プレミアム部門2024年上期」5期連続受賞しました！
                 </p>
               </div>
               <div class="news-item__img">
                 <img
-                  src="~/assets/images/IBJ_award_2025_front.png"
+                  src="~/assets/images/IBJ_award_2024_front.png"
                   class="img"
                   alt="新着情報"
                 />
