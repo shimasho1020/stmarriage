@@ -78,10 +78,25 @@
           </div>
           <div class="news-block">
             <div class="news-item">
-              <div class="news-item__date">2025.10</div>
+              <div class="news-item__date">2026.01</div>
               <div class="news-item__text">
                 <p class="news-item__text__content">
-                  9月に4名の会員様が成婚退会されました。（30代女性、20代女性、40代男性、50代男性）　10月は2名の会員様が成婚予定です。
+                  「IBJアワード　プレミアム部門2025年下期」8期連続受賞しました！
+                </p>
+              </div>
+              <div class="news-item__img">
+                <img
+                  src="~/assets/images/IBJ_award_2025_back.webp"
+                  class="img"
+                  alt="新着情報"
+                />
+              </div>
+            </div>
+            <div class="news-item">
+              <div class="news-item__date">2025.12</div>
+              <div class="news-item__text">
+                <p class="news-item__text__content">
+                  2025年下半期、6名の方が成婚退会されました。（30代女性、20代女性、40代男性、50代男性、30代男性、30代女性）
                 </p>
               </div>
             </div>
@@ -361,6 +376,7 @@
           <div class="award_wrap">
             <div class="award-title">
               <span class="inline-block">セントマリアージュ青山が</span><br />
+              <span class="inline-block">IBJ AWARD 2025年下期</span><br />
               <span class="inline-block">IBJ AWARD 2025年上期</span><br />
               <span class="inline-block">IBJ AWARD 2024年下期</span><br />
               <span class="inline-block">IBJ AWARD 2024年上期</span><br />
@@ -368,10 +384,19 @@
               <span class="inline-block">IBJ AWARD 2023年上期</span><br />
               <span class="inline-block">IBJ AWARD 2022年上期</span><br />
               <span class="inline-block">IBJ AWARD 2021年下期</span><br />
-              <span class="inline-block">7期連続受賞しました！</span>
+              <span class="inline-block">8期連続受賞しました！</span>
             </div>
             <div class="content_wrap --2">
               <div class="content_body img">
+                <div class="top-service__img">
+                  <div class="c-img">
+                    <img
+                      src="~/assets/images/IBJ_award_2025_back.webp"
+                      class="c-img__img"
+                      alt="ibjアワード1"
+                    />
+                  </div>
+                </div>
                 <div class="top-service__img">
                   <div class="c-img">
                     <img
@@ -439,7 +464,7 @@
               <div class="content_body text">
                 <p>
                   IBJアワードとは、IBJの全加盟店の中で、過去6ヶ月間で特に顕著な実績を残した相談所に贈られる賞です。<br />
-                  2023年下期は、全加盟店約4,500社のうち617社が受賞しており、こちらの受賞率は約15%となります。
+                  2025年下期は、全加盟店約4,766社のうち644社が受賞しており、こちらの受賞率は13.5%となります。
                   選定基準は、「入会数、成婚数」「地域への貢献度」「ガイドライン、法令の遵守」「クレームやトラブルがない事」等になります。<br />
                   これらの厳しい選定基準をクリアし、IBJがお勧めできる優良結婚相談所としてお墨付きをいただいたことになります。<br />
                   これからも、お1人でも多くの会員様に幸せになっていただくよう、心を込めてサポートさせていただきます！<br />
