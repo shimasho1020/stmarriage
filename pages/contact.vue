@@ -43,7 +43,7 @@
           <input type="text" id="age" name="age" v-model="age" placeholder="35歳">
         </div>
         <div class="p-contact__item" v-show="sex === '男性'">
-          <label for="salary">年収</label><br>
+          <label for="salary">年収<span class="necessary">(必須)</span></label><br>
           <p class="necessary" v-if="salary.length >= 30">※30文字以下で書いてください</p>
           <input type="text" id="salary" name="salary" v-model="salary" placeholder="400万円">
         </div>
@@ -103,10 +103,12 @@ const formatDate = computed(() => {
 })
 
 let activeButton = computed(() => {
+  const salaryValid = sex.value === '男性' ? (salary.value.length > 0 && salary.value.length < 30) : true
   return sex.value.length > 0
   && username.value.length > 0 &&  username.value.length < 30
   && katakana.value.length > 0 &&  katakana.value.length < 30
   && age.value.length > 0 &&  age.value.length < 30
+  && salaryValid
   && method.value.length > 0
   && !!date.value
   && message.value.length < 500

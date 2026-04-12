@@ -9,8 +9,8 @@
           <div class="content">
             <h2 class="title">IBJとは</h2>
             <div class="text">
-              全国の結婚相談所約4,500社が加盟する、日本最大級の結婚相談所連盟です。<br />
-              登録人数は全国で約90,000人。<br />
+              全国の結婚相談所約4,800社が加盟する、日本最大級の結婚相談所連盟です。<br />
+              登録人数は全国で約107,000人。<br />
               加盟相談所が協力し合いながら、お見合いをセッティングし、ご成婚を生み出しています。
             </div>
             <div class="img_wrap">
@@ -27,16 +27,16 @@
               <p class="subtitle">年間成婚者数</p>
               <ul class="list">
                 <li>
-                  <span class="year">2019年</span>
-                  <span class="number">11,909名</span>
+                  <span class="year">2022年</span>
+                  <span class="number">12,437名</span>
                 </li>
                 <li>
-                  <span class="year">2020年</span>
-                  <span class="number">12,249名</span>
+                  <span class="year">2023年</span>
+                  <span class="number">13,516名</span>
                 </li>
                 <li>
-                  <span class="year">2021年</span>
-                  <span class="number">14,671名</span>
+                  <span class="year">2024年</span>
+                  <span class="number">15,374名</span>
                 </li>
               </ul>
             </div>
@@ -47,10 +47,10 @@
           <div class="content --2">
             <h3 class="title">年齢別会員数</h3>
             <div class="data_table">
-              <p class="subtitle">総会員数(2023年2月現在)</p>
+              <p class="subtitle">総会員数(2026年3月現在)</p>
               <div class="list">
                 <div class="cell">
-                  <div class="number">81,721名</div>
+                  <div class="number">107,597人</div>
                 </div>
               </div>
             </div>
@@ -116,34 +116,46 @@ function getRand(num: number) {
 }
 
 const propSuccessData: ChartData = {
-  labels: ['2017年', '2018年', '2019年', '2020年', '2021年'],
+  labels: ['2022年', '2023年', '2024年'],
   datasets: [
     {
       label: '成婚者数',
-      data: [5708, 6344, 7847, 8624, 10803],
+      data: [12437, 13516, 15374],
       borderColor: '#0066FF',
       backgroundColor: '#0066FF',
     },
   ],
 }
 
-const maleData = [1282, 4510, 6674, 6349, 6365, 3766, 2017, 1956]
-const femaleData = [4019, 9264, 10131, 6614, 3796, 1914, 1007, 984]
+const totalMembers = 107597
+const maleTotal = Math.round(totalMembers * 0.545)
+const femaleTotal = Math.round(totalMembers * 0.455)
+const maleData = [
+  Math.round(maleTotal * 0.082),
+  Math.round(maleTotal * 0.202),
+  Math.round(maleTotal * 0.235),
+  Math.round(maleTotal * 0.178),
+  Math.round(maleTotal * 0.123),
+  Math.round(maleTotal * 0.180),
+]
+const femaleData = [
+  Math.round(femaleTotal * 0.158),
+  Math.round(femaleTotal * 0.272),
+  Math.round(femaleTotal * 0.263),
+  Math.round(femaleTotal * 0.149),
+  Math.round(femaleTotal * 0.068),
+  Math.round(femaleTotal * 0.089),
+]
 const generationData = computed(() => {
-  const arr = []
-  for (let i = 0; i < femaleData.length; i++) {
-    if (i === 0 || i === 7) {
-      arr.push(femaleData[i] + maleData[i])
-    } else if (i === 1 || i === 3 || i === 5) {
-      arr.push(
-        femaleData[i] + maleData[i] + femaleData[i + 1] + maleData[i + 1]
-      )
-    }
-  }
-  return arr
+  return [
+    maleData[0] + femaleData[0],
+    maleData[1] + femaleData[1] + maleData[2] + femaleData[2],
+    maleData[3] + femaleData[3] + maleData[4] + femaleData[4],
+    maleData[5] + femaleData[5],
+  ]
 })
-const maleMembers = maleData.reduce((sum, element) => sum + element, 0)
-const femaleMembers = femaleData.reduce((sum, element) => sum + element, 0)
+const maleMembers = maleTotal
+const femaleMembers = femaleTotal
 const maleAcademicData = computed(() => {
   const arr = [55, 18, 14, 12, 1]
   return arr.map((val) => {
@@ -159,14 +171,12 @@ const femaleAcademicData = computed(() => {
 
 const propTotalData: ChartData = {
   labels: [
-    '〜29歳',
-    '30歳〜34歳',
-    '35歳〜39歳',
-    '40歳〜44歳',
-    '45歳〜49歳',
-    '50歳〜54歳',
-    '55歳〜59歳',
-    '60歳〜',
+    '20代',
+    '30代前半',
+    '30代後半',
+    '40代前半',
+    '40代後半',
+    '50代以上',
   ],
   datasets: [
     {
@@ -188,18 +198,18 @@ const propSexData: ChartData = {
   labels: ['男性', '女性'],
   datasets: [
     {
-      data: [32919, 37729],
+      data: [54.5, 45.5],
       backgroundColor: ['#00CCFF', '#FFCCFF'],
     },
   ],
 }
 
 const propAgeData: ChartData = {
-  labels: ['20代', '30代', '40代', '50代', '60代'],
+  labels: ['20代', '30代', '40代', '50代以上'],
   datasets: [
     {
       data: generationData.value,
-      backgroundColor: ['#FFCCFF', '#CCCCFF', '#00CCFF', '#0099FF', '#0066FF'],
+      backgroundColor: ['#FFCCFF', '#CCCCFF', '#00CCFF', '#0066FF'],
     },
   ],
 }
